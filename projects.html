@@ -7,9 +7,8 @@
   <title>Engineering Projects | Rupesh Lal Karn</title>
 
   <meta name="description"
-        content="Engineering projects by Rupesh Lal Karn:
-        TRICAR vehicle design and fabrication, and
-        GOKART engine modification.">
+        content="TRICAR vehicle design and fabrication,
+        and GOKART engine modification by Rupesh Lal Karn.">
 
   <link rel="stylesheet" href="style.css">
 
@@ -40,25 +39,36 @@
       outline-offset: 5px;
     }
 
-    /* Matching image sizes on both cards */
-    .project-cover {
-      display: block;
-      flex-shrink: 0;
+    /* Matching frames for both project covers */
+    .project-cover-frame {
+      position: relative;
       width: 100%;
-      height: clamp(210px, 24vw, 300px);
-      object-fit: cover;
-      object-position: center;
+      aspect-ratio: 3 / 2;
+      flex-shrink: 0;
+      overflow: hidden;
       margin-bottom: 24px;
       border: 1px solid #29425b;
       border-radius: 14px;
-      background: #0d1c2e;
+      background: #0a1726;
     }
 
-    .project-link[href="gokart.html"] .project-cover {
-      object-position: 45% 55%;
+    /* Show the full photograph without stretching */
+    .project-cover-frame .project-cover {
+      position: absolute;
+      inset: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      object-fit: contain;
+      object-position: center;
+      margin: 0;
+      border: 0;
+      border-radius: 0;
     }
 
     .project-link h2 {
+      min-height: 2.6em;
       margin: 16px 0;
       font-size: clamp(23px, 2.3vw, 29px);
       line-height: 1.3;
@@ -95,11 +105,8 @@
         gap: 24px;
       }
 
-      .project-cover {
-        height: clamp(210px, 52vw, 320px);
-      }
-
       .project-link h2 {
+        min-height: 0;
         font-size: 25px;
       }
     }
@@ -165,11 +172,13 @@
       <!-- TRICAR -->
       <a class="card project-link" href="tricar.html">
 
-        <img class="project-cover"
-             src="Tricar_2.jpeg"
-             alt="Side view of the TRICAR prototype with its tubular chassis and blue seat"
-             width="1280"
-             height="720">
+        <div class="project-cover-frame">
+          <img class="project-cover"
+               src="Tricar_cover.jpg"
+               alt="TRICAR prototype with a driver seated at the steering wheel in the workshop"
+               width="1280"
+               height="720">
+        </div>
 
         <span class="card-number">
           PROJECT 01 / VEHICLE DESIGN
@@ -199,11 +208,13 @@
       <!-- GOKART -->
       <a class="card project-link" href="gokart.html">
 
-        <img class="project-cover"
-             src="Gokart_2.jpg"
-             alt="Go-kart being driven during an outdoor demonstration"
-             width="1617"
-             height="1080">
+        <div class="project-cover-frame">
+          <img class="project-cover"
+               src="Gokart_2.jpg"
+               alt="Go-kart being driven during an outdoor demonstration"
+               width="1617"
+               height="1080">
+        </div>
 
         <span class="card-number">
           PROJECT 02 / AUTOMOTIVE ENGINEERING
@@ -237,10 +248,7 @@
 
 <footer>
   <div class="container footer-inner">
-    <span>
-      © <span id="year"></span> Rupesh Lal Karn
-    </span>
-
+    <span>© <span id="year"></span> Rupesh Lal Karn</span>
     <a href="contact.html">Contact</a>
   </div>
 </footer>
