@@ -1,146 +1,180 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Engineering Projects | Rupesh Lal Karn</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Engineering Projects | Rupesh Lal Karn</title>
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    .project-cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
+
+    .project-link {
+      display: flex;
+      flex-direction: column;
+      color: #edf5ff;
+      text-decoration: none;
+    }
+
+    .project-link:hover {
+      color: #edf5ff;
+      border-color: #69b9ff;
+    }
+
+    .project-link:focus-visible {
+      outline: 3px solid #69b9ff;
+      outline-offset: 5px;
+    }
+
+    .project-label {
+      padding: 40px 20px;
+      margin-bottom: 24px;
+      border: 1px solid #29425b;
+      border-radius: 14px;
+      background: #0d1c2e;
+      text-align: center;
+      font-size: 30px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 20px 0;
+    }
+
+    .project-action {
+      margin-top: auto;
+      padding-top: 24px;
+      color: #69b9ff;
+      font-weight: 600;
+    }
+
+    @media (max-width: 700px) {
+      .project-cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
 <header class="navbar">
-<a class="logo" href="index.html">Rupesh Lal <span>Karn.</span></a>
-<button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
-<nav class="nav-links">
-<a href="index.html">Home</a>
-<a href="about.html">About</a>
-<a href="research.html">Research</a>
-<a href="experience.html">Experience</a>
-<a href="publications.html">Publications</a>
-<a href="teaching.html">Teaching</a>
-<a class="active" href="projects.html">Projects</a>
-<a href="skills.html">Skills</a>
-<a href="contact.html">Contact</a>
-</nav>
+  <a class="logo" href="index.html">
+    Rupesh Lal <span>Karn.</span>
+  </a>
+
+  <button class="menu-toggle"
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded="false">
+    ☰
+  </button>
+
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="research.html">Research</a>
+    <a href="experience.html">Experience</a>
+    <a href="publications.html">Publications</a>
+    <a href="teaching.html">Teaching</a>
+    <a class="active" href="projects.html" aria-current="page">
+      Projects
+    </a>
+    <a href="skills.html">Skills</a>
+    <a href="contact.html">Contact</a>
+  </nav>
 </header>
 
 <main>
-<section class="page-hero">
-<div class="container">
-<p class="eyebrow">ENGINEERING PROJECTS</p>
-<h1>From Engineering Concepts to Working Machines</h1>
-<p>Selected practical engineering projects involving design, simulation, fabrication, and automotive system modification.</p>
-</div>
-</section>
 
-<section class="section">
-<div class="container">
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">ENGINEERING PROJECTS</p>
 
-<div class="two-col">
+      <h1>From Engineering Concepts to Working Machines</h1>
 
-<!-- TRI-CAR -->
+      <p>
+        Selected practical engineering projects involving
+        design, simulation, fabrication, and automotive
+        system modification. Select a project to explore
+        its details.
+      </p>
+    </div>
+  </section>
 
-<article class="card">
+  <section class="section">
+    <div class="container project-cards">
 
-<div class="project-placeholder">
-TRI-CAR
-</div>
+      <a class="card project-link" href="tricar.html">
+        <div class="project-label">TRICAR</div>
 
-<img
-  class="project-image"
-  src="images/tricar-main.jpg"
-  alt="Tri-Car vehicle project"
-  data-project-image
-  hidden>
+        <span class="card-number">
+          PROJECT 01 / VEHICLE DESIGN
+        </span>
 
-<span class="card-number">PROJECT 01 / VEHICLE DESIGN</span>
+        <h2>Tri-Car: Design, Simulation &amp; Fabrication</h2>
 
-<h2>Tri-Car: Design, Simulation & Fabrication</h2>
+        <p>
+          Design, simulation, fabrication, and assembly
+          of a three-wheeled vehicle.
+        </p>
 
-<p>
-A mechanical engineering project involving the
-design, simulation, fabrication, and assembly
-of a three-wheeled vehicle.
-</p>
+        <div class="project-tags">
+          <span class="tag">Mechanical Design</span>
+          <span class="tag">Simulation</span>
+          <span class="tag">Fabrication</span>
+        </div>
 
-<h3>Project Activities</h3>
-<ul>
-<li>Mechanical design and simulation</li>
-<li>Vehicle fabrication and assembly</li>
-<li>Integration of mechanical components</li>
-</ul>
+        <span class="project-action">Explore TRICAR →</span>
+      </a>
 
-<div>
-<span class="tag">Mechanical Design</span>
-<span class="tag">Vehicle Engineering</span>
-<span class="tag">Simulation</span>
-<span class="tag">Fabrication</span>
-</div>
+      <a class="card project-link" href="gokart.html">
+        <div class="project-label">GOKART</div>
 
-<div class="project-gallery">
-<img src="images/tricar-1.jpg" alt="Tri-Car project photo 1" data-gallery-image>
-<img src="images/tricar-2.jpg" alt="Tri-Car project photo 2" data-gallery-image>
-</div>
+        <span class="card-number">
+          PROJECT 02 / AUTOMOTIVE ENGINEERING
+        </span>
 
-</article>
+        <h2>Go-Kart: Engine Modification</h2>
 
-<!-- GO-KART -->
+        <p>
+          Modification of an existing go-kart through
+          engine replacement, mechanical integration,
+          and assembly.
+        </p>
 
-<article class="card">
+        <div class="project-tags">
+          <span class="tag">Automotive Engineering</span>
+          <span class="tag">SI Engine</span>
+          <span class="tag">Engine Modification</span>
+        </div>
 
-<div class="project-placeholder">
-GO-KART
-</div>
+        <span class="project-action">Explore GOKART →</span>
+      </a>
 
-<img
-  class="project-image"
-  src="images/gokart-main.jpg"
-  alt="Go-Kart engineering project"
-  data-project-image
-  hidden>
+    </div>
+  </section>
 
-<span class="card-number">PROJECT 02 / AUTOMOTIVE ENGINEERING</span>
-
-<h2>Go-Kart: Engine Modification</h2>
-
-<p>
-An automotive engineering project involving
-modification of an existing go-kart through
-replacement of its generator engine with
-a spark-ignition engine.
-</p>
-
-<h3>Project Activities</h3>
-<ul>
-<li>Modification of the existing go-kart</li>
-<li>Replacement of the generator engine</li>
-<li>Mechanical integration and assembly</li>
-</ul>
-
-<div>
-<span class="tag">Automotive Engineering</span>
-<span class="tag">SI Engine</span>
-<span class="tag">Engine Modification</span>
-</div>
-
-<div class="project-gallery">
-<img src="images/gokart-1.jpg" alt="Go-Kart project photo 1" data-gallery-image>
-<img src="images/gokart-2.jpg" alt="Go-Kart project photo 2" data-gallery-image>
-</div>
-
-</article>
-
-</div>
-</div>
-</section>
 </main>
 
-<footer><div class="container footer-inner">
-<span>© <span id="year"></span> Rupesh Lal Karn</span>
-<a href="contact.html">Contact</a>
-</div></footer>
+<footer>
+  <div class="container footer-inner">
+    <span>© <span id="year"></span> Rupesh Lal Karn</span>
+    <a href="contact.html">Contact</a>
+  </div>
+</footer>
 
 <script src="main.js"></script>
+
 </body>
 </html>
