@@ -32,16 +32,15 @@
       outline-offset: 5px;
     }
 
-    .project-label {
-      padding: 40px 20px;
+    .project-cover {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: contain;
       margin-bottom: 24px;
       border: 1px solid #29425b;
       border-radius: 14px;
       background: #0d1c2e;
-      text-align: center;
-      font-size: 30px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
     }
 
     .project-tags {
@@ -87,9 +86,13 @@
     <a href="experience.html">Experience</a>
     <a href="publications.html">Publications</a>
     <a href="teaching.html">Teaching</a>
-    <a class="active" href="projects.html" aria-current="page">
+
+    <a class="active"
+       href="projects.html"
+       aria-current="page">
       Projects
     </a>
+
     <a href="skills.html">Skills</a>
     <a href="contact.html">Contact</a>
   </nav>
@@ -115,8 +118,14 @@
   <section class="section">
     <div class="container project-cards">
 
+      <!-- TRICAR -->
       <a class="card project-link" href="tricar.html">
-        <div class="project-label">TRICAR</div>
+
+        <img class="project-cover"
+             src="Tricar_2.jpeg"
+             alt="Side view of the TRICAR prototype with its tubular chassis and blue seat"
+             width="1280"
+             height="720">
 
         <span class="card-number">
           PROJECT 01 / VEHICLE DESIGN
@@ -135,11 +144,19 @@
           <span class="tag">Fabrication</span>
         </div>
 
-        <span class="project-action">Explore TRICAR →</span>
+        <span class="project-action">
+          Explore TRICAR →
+        </span>
       </a>
 
+      <!-- GOKART -->
       <a class="card project-link" href="gokart.html">
-        <div class="project-label">GOKART</div>
+
+        <img class="project-cover"
+             src="Gokart_2.jpg"
+             alt="Go-kart being driven during an outdoor demonstration"
+             width="1617"
+             height="1080">
 
         <span class="card-number">
           PROJECT 02 / AUTOMOTIVE ENGINEERING
@@ -159,7 +176,9 @@
           <span class="tag">Engine Modification</span>
         </div>
 
-        <span class="project-action">Explore GOKART →</span>
+        <span class="project-action">
+          Explore GOKART →
+        </span>
       </a>
 
     </div>
