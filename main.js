@@ -48,3 +48,86 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+
+// =======================================
+// CONFERENCE TABS
+// =======================================
+
+document.addEventListener("DOMContentLoaded", () => {
+
+  const tabs = document.querySelectorAll(
+    "[data-conference-tab]"
+  );
+
+  const panels = document.querySelectorAll(
+    "[data-conference-panel]"
+  );
+
+  if (!tabs.length) return;
+
+  function activateTab(name) {
+
+    tabs.forEach(tab => {
+      const active =
+        tab.dataset.conferenceTab === name;
+
+      tab.classList.toggle("active", active);
+      tab.setAttribute(
+        "aria-selected",
+        String(active)
+      );
+      tab.tabIndex = active ? 0 : -1;
+    });
+
+    panels.forEach(panel => {
+      panel.hidden =
+        panel.dataset.conferencePanel !== name;
+    });
+
+    history.replaceState(
+      null,
+      "",
+      "#" + name
+    );
+  }
+
+  tabs.forEach((tab, index) => {
+    tab.addEventListener("click", () => {
+      activateTab(tab.dataset.conferenceTab);
+    });
+
+    tab.addEventListener("keydown", event => {
+      const keys = [
+        "ArrowLeft", "ArrowRight",
+        "Home", "End"
+      ];
+
+      if (!keys.includes(event.key)) return;
+
+      event.preventDefault();
+
+      let next = index;
+
+      if (event.key === "ArrowRight")
+        next = (index + 1) % tabs.length;
+
+      if (event.key === "ArrowLeft")
+        next = (index - 1 + tabs.length) % tabs.length;
+
+      if (event.key === "Home") next = 0;
+      if (event.key === "End")
+        next = tabs.length - 1;
+
+      tabs[next].focus();
+
+      activateTab(
+        tabs[next].dataset.conferenceTab
+      );
+    });
+  });
+
+  activateTab(
+    location.hash === "#oral" ? "oral" : "poster"
+  );
+
+});
