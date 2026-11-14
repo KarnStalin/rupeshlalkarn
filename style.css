@@ -399,3 +399,107 @@ footer {
   .hero h1 { font-size: 48px; }
   .project-gallery img { height: 110px; }
 }
+
+/* ======================================
+   RESEARCH NAVIGATION
+   ====================================== */
+
+.research-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 0 0 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.research-tabs a {
+  padding: 12px 20px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--text);
+  font-weight: 600;
+  font-size: 14px;
+  transition: all .2s ease;
+}
+
+.research-tabs a:hover,
+.research-tabs a.active {
+  background: var(--blue);
+  color: var(--bg);
+  border-color: var(--blue);
+}
+
+/* CONFERENCE SUB-TABS */
+
+.conference-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 25px 0 35px;
+}
+
+.conference-tab {
+  padding: 12px 22px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: var(--card);
+  color: var(--text);
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.conference-tab:hover,
+.conference-tab.active {
+  background: #274d73;
+  color: white;
+  border-color: var(--blue);
+}
+
+.conference-tab:focus-visible,
+.research-tabs a:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.conference-panel[hidden] {
+  display: none;
+}
+
+/* PRESENTATION CARDS */
+
+.presentation-card {
+  padding: 28px;
+  margin: 22px 0;
+  border-radius: 16px;
+  border: 1px solid var(--border);
+  background: linear-gradient(
+    145deg, #15283e, #0c1b2c
+  );
+}
+
+.presentation-card h3 {
+  margin: 14px 0;
+  color: var(--text);
+}
+
+.presentation-card p {
+  color: var(--muted);
+}
+
+.presentation-card .btn {
+  margin-top: 12px;
+}
+
+@media (max-width: 700px) {
+  .research-tabs a,
+  .conference-tab {
+    padding: 10px 13px;
+    font-size: 12px;
+  }
+
+  .presentation-card {
+    padding: 20px;
+  }
+}
