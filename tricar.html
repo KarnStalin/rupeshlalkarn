@@ -6,6 +6,11 @@
 
   <title>TRICAR | Rupesh Lal Karn</title>
 
+  <meta name="description"
+        content="TRICAR: design, CAD modelling, fabrication,
+        and assembly of a three-wheeled vehicle by
+        Rupesh Lal Karn and the project team.">
+
   <link rel="stylesheet" href="style.css">
 
   <style>
@@ -15,37 +20,112 @@
       margin-bottom: 24px;
     }
 
+    .project-intro {
+      max-width: 850px;
+    }
+
     .project-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 20px;
+      gap: 10px;
+      margin: 24px 0 0;
     }
 
-    .photo-placeholder {
-      padding: 44px 24px;
-      border: 1px dashed #466581;
-      border-radius: 14px;
+    .project-overview {
+      margin-bottom: 36px;
+    }
+
+    .project-stages {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+
+    .project-stages h3 {
+      margin-top: 12px;
+    }
+
+    .tricar-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px;
+    }
+
+    .tricar-photo {
+      margin: 0;
+      overflow: hidden;
       background: #0d1c2e;
-      color: #a4b7cd;
-      text-align: center;
+      border: 1px solid #29425b;
+      border-radius: 18px;
     }
 
-    .project-photo {
-      margin: 24px 0;
+    .tricar-photo > a {
+      display: block;
+      background: #101b29;
     }
 
-    .project-photo img {
+    .tricar-photo img {
       display: block;
       width: 100%;
-      max-height: 600px;
+      height: 400px;
       object-fit: contain;
-      border-radius: 14px;
     }
 
-    .project-photo figcaption {
-      padding: 16px 0;
+    .tricar-photo figcaption {
+      padding: 26px;
+    }
+
+    .tricar-photo h3 {
+      margin: 10px 0 12px;
+      font-size: 24px;
+    }
+
+    .tricar-photo p {
+      margin-bottom: 0;
       color: #a4b7cd;
+    }
+
+    .tricar-photo-wide {
+      grid-column: 1 / -1;
+    }
+
+    .tricar-photo-wide img {
+      height: auto;
+      max-height: 650px;
+    }
+
+    .project-bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid #29425b;
+    }
+
+    .project-bottom a {
+      color: #69b9ff;
+    }
+
+    .project-back:focus-visible,
+    .tricar-gallery a:focus-visible,
+    .project-bottom a:focus-visible {
+      outline: 3px solid #69b9ff;
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 750px) {
+      .project-stages,
+      .tricar-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .tricar-photo img {
+        height: auto;
+        max-height: 550px;
+      }
     }
   </style>
 </head>
@@ -79,63 +159,251 @@
 
   <section class="page-hero">
     <div class="container">
+
       <a class="project-back" href="projects.html">
         ← Back to Projects
       </a>
 
-      <p class="eyebrow">PROJECT 01 / VEHICLE DESIGN</p>
+      <p class="eyebrow">
+        PROJECT 01 / VEHICLE DESIGN &amp; FABRICATION
+      </p>
 
       <h1>TRICAR</h1>
 
-      <p>
-        Design, simulation, fabrication, and assembly
-        of a three-wheeled vehicle.
+      <p class="project-intro">
+        From a digital chassis model to a fabricated
+        three-wheeled vehicle. This project brought together
+        mechanical design, workshop fabrication, component
+        integration, and collaborative assembly.
       </p>
+
+      <div class="project-tags">
+        <span class="tag">CAD Modelling</span>
+        <span class="tag">Chassis Fabrication</span>
+        <span class="tag">Steering Integration</span>
+        <span class="tag">Vehicle Assembly</span>
+        <span class="tag">Teamwork</span>
+      </div>
+
     </div>
   </section>
 
   <section class="section">
     <div class="container">
 
-      <article class="card">
+      <article class="card project-overview">
         <h2>Project overview</h2>
 
         <p>
-          This mechanical engineering project brings together
-          vehicle design and practical fabrication. The work
-          involves developing a three-wheeled vehicle through
-          design, simulation, component integration, and assembly.
+          TRICAR is a mechanical engineering project involving
+          the design, simulation, fabrication, and assembly
+          of a three-wheeled vehicle. Working as part of the
+          project team, I contributed to bringing the vehicle
+          concept into a physical prototype.
         </p>
 
-        <h3>Project activities</h3>
-
-        <ul>
-          <li>Mechanical design and simulation</li>
-          <li>Vehicle fabrication and assembly</li>
-          <li>Integration of mechanical components</li>
-        </ul>
-
-        <div class="project-tags">
-          <span class="tag">Mechanical Design</span>
-          <span class="tag">Vehicle Engineering</span>
-          <span class="tag">Simulation</span>
-          <span class="tag">Fabrication</span>
-        </div>
+        <p>
+          The photographs document the tubular chassis,
+          steering arrangement, workshop fabrication,
+          mechanical assembly, and team activities.
+          The CAD model provides a view of the overall
+          vehicle layout before and alongside fabrication.
+        </p>
       </article>
 
-      <h2 class="section-title">Project photographs</h2>
+      <div class="project-stages">
 
-      <div class="photo-placeholder">
-        TRICAR photographs and captions will be added here.
+        <article class="card">
+          <span class="card-number">01 / DESIGN</span>
+          <h3>Vehicle layout and CAD</h3>
+          <p>
+            Development of the chassis concept and component
+            layout, considering the driver's seating position,
+            wheel arrangement, and available space for
+            mechanical systems.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="card-number">02 / FABRICATION</span>
+          <h3>Building the chassis</h3>
+          <p>
+            Workshop fabrication and joining of tubular
+            frame members to turn the vehicle layout
+            into a physical structure.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="card-number">03 / ASSEMBLY</span>
+          <h3>Mechanical integration</h3>
+          <p>
+            Integration of steering, wheels, seating,
+            and other mechanical components through
+            collaborative assembly work.
+          </p>
+        </article>
+
       </div>
 
-      <!-- TRICAR images will be placed here. -->
+      <h2 class="section-title">From design to assembly</h2>
 
       <p>
-        <a class="project-back" href="gokart.html">
-          Explore the GOKART project →
-        </a>
+        Seven images documenting the project's development.
+        Select a photograph to view the original in this tab.
       </p>
+
+      <div class="tricar-gallery">
+
+        <!-- CAD MODEL -->
+        <figure class="tricar-photo">
+          <a href="Tricar_Design.png"
+             aria-label="View original TRICAR CAD model">
+            <img src="Tricar_Design.png"
+                 alt="Three-dimensional CAD model of the TRICAR tubular chassis, seating, steering, and three-wheel layout"
+                 loading="lazy">
+          </a>
+
+          <figcaption>
+            <span class="eyebrow">01 / DIGITAL DESIGN</span>
+            <h3>Chassis and vehicle layout</h3>
+            <p>
+              The CAD model shows the tubular frame,
+              three-wheel arrangement, seating position,
+              and steering layout, providing a reference
+              for fabrication and component placement.
+            </p>
+          </figcaption>
+        </figure>
+
+        <!-- CHASSIS -->
+        <figure class="tricar-photo">
+          <a href="Tricar_6.jpg"
+             aria-label="View original TRICAR chassis photograph">
+            <img src="Tricar_6.jpg"
+                 alt="Front view of the fabricated tubular chassis with two front wheels and steering rack"
+                 loading="lazy">
+          </a>
+
+          <figcaption>
+            <span class="eyebrow">02 / CHASSIS FABRICATION</span>
+            <h3>Frame and front steering assembly</h3>
+            <p>
+              The fabricated chassis with its front wheels
+              and steering rack installed. This view highlights
+              the frame members and mechanical connections
+              at the front of the vehicle.
+            </p>
+          </figcaption>
+        </figure>
+
+        <!-- WELDING -->
+        <figure class="tricar-photo">
+          <a href="Tricar_5.jpg"
+             aria-label="View original TRICAR fabrication photograph">
+            <img src="Tricar_5.jpg"
+                 alt="Welding work on the TRICAR tubular frame during fabrication"
+                 loading="lazy">
+          </a>
+
+          <figcaption>
+            <span class="eyebrow">03 / WORKSHOP FABRICATION</span>
+            <h3>Joining the frame members</h3>
+            <p>
+              Welding work during chassis fabrication,
+              documenting the transition from individual
+              frame members to an assembled vehicle structure.
+            </p>
+          </figcaption>
+        </figure>
+
+        <!-- ASSEMBLY -->
+        <figure class="tricar-photo">
+          <a href="Tricar_4.jpg"
+             aria-label="View original TRICAR assembly photograph">
+            <img src="Tricar_4.jpg"
+                 alt="Team members working around the steering and mechanical components of the vehicle in a workshop"
+                 loading="lazy">
+          </a>
+
+          <figcaption>
+            <span class="eyebrow">04 / MECHANICAL INTEGRATION</span>
+            <h3>Collaborative assembly work</h3>
+            <p>
+              Team members working around the chassis
+              and steering area during component
+              installation and assembly.
+            </p>
+          </figcaption>
+        </figure>
+
+        <!-- SIDE VIEW -->
+        <figure class="tricar-photo">
+          <a href="Tricar_2.jpeg"
+             aria-label="View original TRICAR side view">
+            <img src="Tricar_2.jpeg"
+                 alt="Side view of the assembled three-wheeled vehicle with a blue seat and exposed tubular frame"
+                 loading="lazy">
+          </a>
+
+          <figcaption>
+            <span class="eyebrow">05 / VEHICLE CONFIGURATION</span>
+            <h3>Assembled vehicle: side view</h3>
+            <p>
+              The side view shows the seating position,
+              steering wheel, tubular structure, and rear
+              wheel arrangement within the assembled prototype.
+            </p>
+          </figcaption>
+        </figure>
+
+        <!-- LARGE TEAM PHOTO -->
+        <figure class="tricar-photo">
+          <a href="Tricar_3.jpeg"
+             aria-label="View original TRICAR project team photograph">
+            <img src="Tricar_3.jpeg"
+                 alt="Project team standing behind the assembled TRICAR vehicle in the workshop"
+                 loading="lazy">
+          </a>
+
+          <figcaption>
+            <span class="eyebrow">06 / PROJECT TEAM</span>
+            <h3>Team and assembled prototype</h3>
+            <p>
+              A workshop photograph of the team with
+              the vehicle, documenting the collaborative
+              effort behind its development and assembly.
+            </p>
+          </figcaption>
+        </figure>
+
+        <!-- WORKSHOP GROUP -->
+        <figure class="tricar-photo tricar-photo-wide">
+          <a href="Tricar_1.JPG"
+             aria-label="View original TRICAR workshop group photograph">
+            <img src="Tricar_1.JPG"
+                 alt="Workshop group standing beside the TRICAR prototype viewed from the side"
+                 loading="lazy">
+          </a>
+
+          <figcaption>
+            <span class="eyebrow">07 / WORKSHOP COLLABORATION</span>
+            <h3>Bringing the project together</h3>
+            <p>
+              The project group alongside the assembled
+              prototype. The exposed frame makes the
+              vehicle's component layout and construction
+              visible.
+            </p>
+          </figcaption>
+        </figure>
+
+      </div>
+
+      <div class="project-bottom">
+        <a href="projects.html">← Back to Projects</a>
+        <a href="gokart.html">Explore GOKART →</a>
+      </div>
 
     </div>
   </section>
@@ -145,7 +413,7 @@
 <footer>
   <div class="container footer-inner">
     <span>© <span id="year"></span> Rupesh Lal Karn</span>
-    <a href="projects.html">Back to Projects</a>
+    <a href="contact.html">Contact</a>
   </div>
 </footer>
 
