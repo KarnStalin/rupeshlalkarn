@@ -4,7 +4,6 @@
 
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
 
@@ -14,19 +13,21 @@
         content="Research interests of Rupesh Lal Karn in MXenes,
         photothermal conversion, electrochemistry,
         magnetic materials, alternative fuels,
-        and scientific modeling.">
+        and scientific data analysis.">
 
   <link rel="stylesheet" href="style.css">
 
   <style>
 
-    /* RESEARCH SUB-NAVIGATION */
+    /* =====================================
+       RESEARCH PAGE NAVIGATION
+       ===================================== */
 
     .research-tabs {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-bottom: 40px;
+      margin: 0 0 38px;
       padding-bottom: 20px;
       border-bottom: 1px solid #29425b;
     }
@@ -34,14 +35,15 @@
     .research-tabs a {
       display: inline-block;
       padding: 12px 20px;
+      background: #142940;
       border: 1px solid #29425b;
       border-radius: 10px;
-      background: #142940;
       color: #ffffff;
       font-size: 14px;
       font-weight: 600;
       text-decoration: none;
-      transition: background 0.2s ease;
+      transition: background 0.2s ease,
+                  border-color 0.2s ease;
     }
 
     .research-tabs a:hover,
@@ -56,11 +58,38 @@
       outline-offset: 3px;
     }
 
-    .section-intro {
+    /* =====================================
+       RESEARCH INTRODUCTION
+       ===================================== */
+
+    .research-intro {
       max-width: 850px;
-      margin-bottom: 30px;
+      margin-bottom: 34px;
       line-height: 1.8;
     }
+
+    /* =====================================
+       RESEARCH CARD DETAILS
+       ===================================== */
+
+    .research-card h3 {
+      margin-bottom: 14px;
+    }
+
+    .research-card p {
+      line-height: 1.75;
+    }
+
+    .research-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    /* =====================================
+       MOBILE RESPONSIVENESS
+       ===================================== */
 
     @media (max-width: 700px) {
 
@@ -98,24 +127,38 @@
     ☰
   </button>
 
-  <nav class="nav-links">
+  <nav class="nav-links"
+       aria-label="Main navigation">
 
-    <a href="index.html">Home</a>
+    <a href="index.html">
+      Home
+    </a>
 
-    <a href="about.html">About</a>
+    <a href="about.html">
+      About
+    </a>
 
-    <a class="active" href="research.html"
+    <a href="research.html"
+       class="active"
        aria-current="page">
       Research
     </a>
 
-    <a href="experience.html">Experience</a>
+    <a href="experience.html">
+      Experience
+    </a>
 
-    <a href="projects.html">Projects</a>
+    <a href="projects.html">
+      Projects
+    </a>
 
-    <a href="skills.html">Skills</a>
+    <a href="skills.html">
+      Skills
+    </a>
 
-    <a href="contact.html">Contact</a>
+    <a href="contact.html">
+      Contact
+    </a>
 
   </nav>
 
@@ -141,8 +184,9 @@
     </h1>
 
     <p>
-      Experimental investigations of structure,
-      surface chemistry, processing, and
+      Experimental investigations of
+      material processing, structure,
+      surface chemistry, and
       functional performance.
     </p>
 
@@ -159,7 +203,9 @@
 
   <div class="container">
 
-    <!-- RESEARCH SUB-NAVIGATION -->
+    <!-- =================================
+         RESEARCH SUB-NAVIGATION
+         ================================= -->
 
     <nav class="research-tabs"
          aria-label="Research sections">
@@ -181,29 +227,38 @@
     </nav>
 
 
-    <!-- RESEARCH INTERESTS -->
+    <!-- =================================
+         RESEARCH INTERESTS
+         ================================= -->
 
     <h2 class="section-title">
       Research Interests
     </h2>
 
-    <p class="section-intro">
+    <p class="research-intro">
       My research focuses on understanding
       the relationships between material
       processing, structure, surface chemistry,
-      and functional performance, with
+      and functional performance.
+
+      My work integrates experimental
+      characterization, quantitative analysis,
+      and physics-guided approaches, with
       applications in sustainable energy,
-      advanced materials, and engineering.
+      functional materials, and engineering.
     </p>
 
 
-    <!-- RESEARCH CARDS -->
+    <!-- =================================
+         RESEARCH AREA CARDS
+         ================================= -->
 
     <div class="card-grid">
 
-      <!-- 01: TWO-DIMENSIONAL MATERIALS -->
 
-      <article class="card">
+      <!-- 01: MXENES -->
+
+      <article class="card research-card">
 
         <span class="card-number">
           01 / TWO-DIMENSIONAL MATERIALS
@@ -214,24 +269,32 @@
         </h3>
 
         <p>
-          Synthesis and characterization of
-          titanium-based MXenes, including
-          acid etching, DMSO intercalation,
-          and transition-metal chalcogenide
+          Synthesis, processing, and
+          characterization of titanium-based
+          MXenes, including acid etching,
+          DMSO intercalation, and
+          transition-metal chalcogenide
           composites.
+
+          Investigation of processing-induced
+          structural changes and surface
+          chemistry using complementary
+          characterization techniques.
         </p>
 
-        <span class="tag">MXenes</span>
-        <span class="tag">XRD</span>
-        <span class="tag">Raman</span>
-        <span class="tag">XPS</span>
+        <div class="research-tags">
+          <span class="tag">MXenes</span>
+          <span class="tag">XRD</span>
+          <span class="tag">Raman</span>
+          <span class="tag">XPS</span>
+        </div>
 
       </article>
 
 
-      <!-- 02: PHOTOTHERMAL CONVERSION -->
+      <!-- 02: PHOTOTHERMAL -->
 
-      <article class="card">
+      <article class="card research-card">
 
         <span class="card-number">
           02 / PHOTOTHERMAL CONVERSION
@@ -242,23 +305,29 @@
         </h3>
 
         <p>
-          Investigation of the photothermal
-          response of MAX phases,
+          Experimental investigation of
+          photothermal heating in MAX phases,
           acid-etched MXenes, and
           intercalated MXenes under
           near-infrared irradiation.
+
+          Quantitative evaluation of
+          temperature evolution and
+          net photothermal heat generation.
         </p>
 
-        <span class="tag">Photothermal</span>
-        <span class="tag">Heat Generation</span>
-        <span class="tag">MATLAB</span>
+        <div class="research-tags">
+          <span class="tag">Photothermal</span>
+          <span class="tag">Heat Generation</span>
+          <span class="tag">MATLAB</span>
+        </div>
 
       </article>
 
 
       <!-- 03: ELECTROCHEMISTRY -->
 
-      <article class="card">
+      <article class="card research-card">
 
         <span class="card-number">
           03 / ELECTROCHEMISTRY
@@ -270,24 +339,31 @@
 
         <p>
           Electrochemical characterization
-          of functional materials,
+          of functional materials for
+          energy-related applications,
           including oxygen evolution
           reaction activity,
-          charge-transfer behavior,
-          and reaction kinetics.
+          charge-transfer resistance,
+          and electrochemical kinetics.
+
+          Analysis using voltammetry,
+          impedance spectroscopy,
+          and Tafel relationships.
         </p>
 
-        <span class="tag">LSV</span>
-        <span class="tag">EIS</span>
-        <span class="tag">Tafel</span>
-        <span class="tag">OER</span>
+        <div class="research-tags">
+          <span class="tag">LSV</span>
+          <span class="tag">EIS</span>
+          <span class="tag">Tafel</span>
+          <span class="tag">OER</span>
+        </div>
 
       </article>
 
 
       <!-- 04: MAGNETIC MATERIALS -->
 
-      <article class="card">
+      <article class="card research-card">
 
         <span class="card-number">
           04 / MAGNETIC MATERIALS
@@ -300,22 +376,30 @@
         <p>
           Structural and magnetic
           investigations of complex
-          oxides using diffraction,
+          oxide materials using
+          X-ray diffraction,
+          Rietveld refinement,
           Raman spectroscopy,
-          and magnetic measurement
-          techniques.
+          and magnetic measurements.
+
+          Exploration of relationships
+          between crystal structure
+          and magnetic behavior.
         </p>
 
-        <span class="tag">Magnetism</span>
-        <span class="tag">Rietveld</span>
-        <span class="tag">PPMS</span>
+        <div class="research-tags">
+          <span class="tag">Magnetism</span>
+          <span class="tag">Rietveld</span>
+          <span class="tag">Raman</span>
+          <span class="tag">PPMS</span>
+        </div>
 
       </article>
 
 
-      <!-- 05: SUSTAINABLE ENERGY -->
+      <!-- 05: ALTERNATIVE FUELS -->
 
-      <article class="card">
+      <article class="card research-card">
 
         <span class="card-number">
           05 / SUSTAINABLE ENERGY
@@ -326,24 +410,29 @@
         </h3>
 
         <p>
-          Experimental studies involving
+          Experimental investigations of
           biodiesel, waste plastic
-          pyrolysis oil, nanoparticle
-          additives, combustion,
-          engine performance,
-          and emissions.
+          pyrolysis oil, and
+          nanoparticle-enhanced fuel blends.
+
+          Evaluation of combustion
+          characteristics, engine
+          performance, and emissions
+          in internal combustion engines.
         </p>
 
-        <span class="tag">Biodiesel</span>
-        <span class="tag">Combustion</span>
-        <span class="tag">Nanoparticles</span>
+        <div class="research-tags">
+          <span class="tag">Biodiesel</span>
+          <span class="tag">Combustion</span>
+          <span class="tag">Nanoparticles</span>
+        </div>
 
       </article>
 
 
-      <!-- 06: QUANTITATIVE ANALYSIS -->
+      <!-- 06: DATA ANALYSIS -->
 
-      <article class="card">
+      <article class="card research-card">
 
         <span class="card-number">
           06 / QUANTITATIVE ANALYSIS
@@ -354,18 +443,25 @@
         </h3>
 
         <p>
-          Analysis of experimental
-          results using MATLAB,
+          Computational analysis and
+          interpretation of experimental
+          measurements using MATLAB,
           spectral fitting,
           statistical methods,
-          kinetic interpretation,
-          and physics-guided
-          descriptors.
+          and kinetic analysis.
+
+          Development and evaluation of
+          physics-guided descriptors
+          to investigate relationships
+          between material properties
+          and functional performance.
         </p>
 
-        <span class="tag">MATLAB</span>
-        <span class="tag">Modeling</span>
-        <span class="tag">Statistics</span>
+        <div class="research-tags">
+          <span class="tag">MATLAB</span>
+          <span class="tag">Modeling</span>
+          <span class="tag">Statistics</span>
+        </div>
 
       </article>
 
@@ -379,7 +475,7 @@
 
 
 <!-- =====================================
-     WEBSITE FOOTER
+     FOOTER
      ===================================== -->
 
 <footer>
@@ -401,7 +497,7 @@
 
 
 <!-- =====================================
-     JAVASCRIPT
+     SHARED JAVASCRIPT
      ===================================== -->
 
 <script src="main.js"></script>
