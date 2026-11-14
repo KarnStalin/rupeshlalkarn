@@ -1,28 +1,20 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <title>Research | Rupesh Lal Karn</title>
 
   <meta name="description"
         content="Research interests of Rupesh Lal Karn in MXenes,
-        photothermal conversion, electrochemistry,
-        magnetic materials, alternative fuels,
-        and scientific data analysis.">
+        photothermal conversion, electrochemistry, magnetic materials,
+        alternative fuels, and scientific data analysis.">
 
   <link rel="stylesheet" href="style.css">
 
   <style>
-
-    /* =====================================
-       RESEARCH PAGE NAVIGATION
-       ===================================== */
-
+    /* Research navigation */
     .research-tabs {
       display: flex;
       flex-wrap: wrap;
@@ -42,8 +34,7 @@
       font-size: 14px;
       font-weight: 600;
       text-decoration: none;
-      transition: background 0.2s ease,
-                  border-color 0.2s ease;
+      transition: background 0.2s ease, border-color 0.2s ease;
     }
 
     .research-tabs a:hover,
@@ -58,19 +49,11 @@
       outline-offset: 3px;
     }
 
-    /* =====================================
-       RESEARCH INTRODUCTION
-       ===================================== */
-
     .research-intro {
       max-width: 850px;
       margin-bottom: 34px;
       line-height: 1.8;
     }
-
-    /* =====================================
-       RESEARCH CARD DETAILS
-       ===================================== */
 
     .research-card h3 {
       margin-bottom: 14px;
@@ -87,12 +70,226 @@
       margin-top: 18px;
     }
 
-    /* =====================================
-       MOBILE RESPONSIVENESS
-       ===================================== */
+    /* Clickable research topics */
+    .materials-trigger,
+    .materials-title {
+      color: inherit;
+      background: none;
+      border: 0;
+      padding: 0;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .materials-trigger {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #69b9ff;
+    }
+
+    .materials-title {
+      font: inherit;
+    }
+
+    .materials-title:hover {
+      color: #69b9ff;
+    }
+
+    .materials-open {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      margin-top: 24px;
+      padding: 14px 0 0;
+      border: 0;
+      border-top: 1px solid #29425b;
+      color: #69b9ff;
+      background: none;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 600;
+    }
+
+    .fuel-topic {
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    .fuel-topic:hover {
+      border-color: #69b9ff;
+      color: #69b9ff;
+    }
+
+    .materials-trigger:focus-visible,
+    .materials-title:focus-visible,
+    .materials-open:focus-visible,
+    .fuel-topic:focus-visible {
+      outline: 2px solid #69b9ff;
+      outline-offset: 4px;
+    }
+
+    /* Gallery layers */
+    .research-dialog {
+      width: min(1060px, calc(100% - 32px));
+      max-height: 90dvh;
+      padding: 0;
+      border: 1px solid #29425b;
+      border-radius: 22px;
+      background: #07111f;
+      color: #edf5ff;
+      overscroll-behavior: contain;
+    }
+
+    .research-dialog::backdrop {
+      background: rgba(2, 8, 18, 0.85);
+      backdrop-filter: blur(7px);
+    }
+
+    body:has(.research-dialog[open]) {
+      overflow: hidden;
+    }
+
+    .materials-shell {
+      padding: clamp(24px, 5vw, 56px);
+      position: relative;
+    }
+
+    .materials-close-form {
+      position: absolute;
+      right: 18px;
+      top: 18px;
+    }
+
+    .materials-close {
+      width: 40px;
+      height: 40px;
+      border: 1px solid #29425b;
+      border-radius: 50%;
+      background: #142940;
+      color: #edf5ff;
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    #materials-title,
+    #fuels-title {
+      font-size: clamp(28px, 5vw, 46px);
+      letter-spacing: -0.04em;
+      margin: 16px 32px 8px 0;
+    }
+
+    .materials-lead {
+      color: #69b9ff;
+      font-size: 20px;
+      margin: 0 0 18px;
+    }
+
+    .materials-description {
+      color: #a4b7cd;
+      max-width: 640px;
+    }
+
+    .materials-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 30px 0 20px;
+    }
+
+    .materials-filters button {
+      border: 1px solid #29425b;
+      background: #142940;
+      color: #edf5ff;
+      padding: 9px 18px;
+      border-radius: 30px;
+      cursor: pointer;
+      font: inherit;
+    }
+
+    .materials-filters button[aria-pressed="true"] {
+      background: #69b9ff;
+      color: #07111f;
+      border-color: #69b9ff;
+    }
+
+    .materials-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .materials-figure {
+      margin: 0;
+      border: 1px solid #29425b;
+      background: #0d1c2e;
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    .materials-figure a {
+      display: block;
+      background: #ffffff;
+    }
+
+    .materials-figure img {
+      display: block;
+      width: 100%;
+      height: 280px;
+      object-fit: contain;
+    }
+
+    .materials-figure figcaption {
+      padding: 20px;
+    }
+
+    .materials-figure h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .materials-figure p,
+    .materials-status {
+      color: #a4b7cd;
+    }
+
+    .materials-figure p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .materials-empty {
+      grid-column: 1 / -1;
+      padding: 45px 24px;
+      text-align: center;
+      border: 1px dashed #29425b;
+      border-radius: 14px;
+      background: #0d1c2e;
+    }
+
+    .materials-empty p {
+      color: #a4b7cd;
+      max-width: 460px;
+      margin: 12px auto;
+    }
+
+    .materials-footnote {
+      margin: 32px 0 0;
+      padding-top: 20px;
+      border-top: 1px solid #29425b;
+      color: #a4b7cd;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+    }
+
+    .research-dialog button:focus-visible,
+    .materials-figure a:focus-visible {
+      outline: 2px solid #69b9ff;
+      outline-offset: 4px;
+    }
 
     @media (max-width: 700px) {
-
       .research-tabs {
         gap: 8px;
       }
@@ -101,21 +298,23 @@
         padding: 10px 13px;
         font-size: 12px;
       }
-
     }
 
-  </style>
+    @media (max-width: 600px) {
+      .materials-gallery {
+        grid-template-columns: 1fr;
+      }
 
+      .materials-figure img {
+        height: 230px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- =====================================
-     MAIN WEBSITE NAVIGATION
-     ===================================== -->
-
 <header class="navbar">
-
   <a class="logo" href="index.html">
     Rupesh Lal <span>Karn.</span>
   </a>
@@ -127,380 +326,612 @@
     ☰
   </button>
 
-  <nav class="nav-links"
-       aria-label="Main navigation">
-
-    <a href="index.html">
-      Home
-    </a>
-
-    <a href="about.html">
-      About
-    </a>
-
-    <a href="research.html"
-       class="active"
-       aria-current="page">
+  <nav class="nav-links" aria-label="Main navigation">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="research.html" class="active" aria-current="page">
       Research
     </a>
-
-    <a href="experience.html">
-      Experience
-    </a>
-
-    <a href="projects.html">
-      Projects
-    </a>
-
-    <a href="skills.html">
-      Skills
-    </a>
-
-    <a href="contact.html">
-      Contact
-    </a>
-
+    <a href="experience.html">Experience</a>
+    <a href="projects.html">Projects</a>
+    <a href="skills.html">Skills</a>
+    <a href="contact.html">Contact</a>
   </nav>
-
 </header>
-
 
 <main>
 
-<!-- =====================================
-     RESEARCH PAGE INTRODUCTION
-     ===================================== -->
-
-<section class="page-hero">
-
-  <div class="container">
-
-    <p class="eyebrow">
-      RESEARCH AREAS
-    </p>
-
-    <h1>
-      Materials, Energy &amp; Engineering Research
-    </h1>
-
-    <p>
-      Experimental investigations of
-      material processing, structure,
-      surface chemistry, and
-      functional performance.
-    </p>
-
-  </div>
-
-</section>
-
-
-<!-- =====================================
-     RESEARCH CONTENT
-     ===================================== -->
-
-<section class="section">
-
-  <div class="container">
-
-    <!-- =================================
-         RESEARCH SUB-NAVIGATION
-         ================================= -->
-
-    <nav class="research-tabs"
-         aria-label="Research sections">
-
-      <a href="research.html"
-         class="active"
-         aria-current="page">
-        Research Interests
-      </a>
-
-      <a href="publications.html">
-        Publications
-      </a>
-
-      <a href="conferences.html">
-        Conferences
-      </a>
-
-    </nav>
-
-
-    <!-- =================================
-         RESEARCH INTERESTS
-         ================================= -->
-
-    <h2 class="section-title">
-      Research Interests
-    </h2>
-
-    <p class="research-intro">
-      My research focuses on understanding
-      the relationships between material
-      processing, structure, surface chemistry,
-      and functional performance.
-
-      My work integrates experimental
-      characterization, quantitative analysis,
-      and physics-guided approaches, with
-      applications in sustainable energy,
-      functional materials, and engineering.
-    </p>
-
-
-    <!-- =================================
-         RESEARCH AREA CARDS
-         ================================= -->
-
-    <div class="card-grid">
-
-
-      <!-- 01: MXENES -->
-
-      <article class="card research-card">
-
-        <span class="card-number">
-          01 / TWO-DIMENSIONAL MATERIALS
-        </span>
-
-        <h3>
-          MXenes &amp; Functional Composites
-        </h3>
-
-        <p>
-          Synthesis, processing, and
-          characterization of titanium-based
-          MXenes, including acid etching,
-          DMSO intercalation, and
-          transition-metal chalcogenide
-          composites.
-
-          Investigation of processing-induced
-          structural changes and surface
-          chemistry using complementary
-          characterization techniques.
-        </p>
-
-        <div class="research-tags">
-          <span class="tag">MXenes</span>
-          <span class="tag">XRD</span>
-          <span class="tag">Raman</span>
-          <span class="tag">XPS</span>
-        </div>
-
-      </article>
-
-
-      <!-- 02: PHOTOTHERMAL -->
-
-      <article class="card research-card">
-
-        <span class="card-number">
-          02 / PHOTOTHERMAL CONVERSION
-        </span>
-
-        <h3>
-          Laser-Induced Heating
-        </h3>
-
-        <p>
-          Experimental investigation of
-          photothermal heating in MAX phases,
-          acid-etched MXenes, and
-          intercalated MXenes under
-          near-infrared irradiation.
-
-          Quantitative evaluation of
-          temperature evolution and
-          net photothermal heat generation.
-        </p>
-
-        <div class="research-tags">
-          <span class="tag">Photothermal</span>
-          <span class="tag">Heat Generation</span>
-          <span class="tag">MATLAB</span>
-        </div>
-
-      </article>
-
-
-      <!-- 03: ELECTROCHEMISTRY -->
-
-      <article class="card research-card">
-
-        <span class="card-number">
-          03 / ELECTROCHEMISTRY
-        </span>
-
-        <h3>
-          Electrocatalytic Materials
-        </h3>
-
-        <p>
-          Electrochemical characterization
-          of functional materials for
-          energy-related applications,
-          including oxygen evolution
-          reaction activity,
-          charge-transfer resistance,
-          and electrochemical kinetics.
-
-          Analysis using voltammetry,
-          impedance spectroscopy,
-          and Tafel relationships.
-        </p>
-
-        <div class="research-tags">
-          <span class="tag">LSV</span>
-          <span class="tag">EIS</span>
-          <span class="tag">Tafel</span>
-          <span class="tag">OER</span>
-        </div>
-
-      </article>
-
-
-      <!-- 04: MAGNETIC MATERIALS -->
-
-      <article class="card research-card">
-
-        <span class="card-number">
-          04 / MAGNETIC MATERIALS
-        </span>
-
-        <h3>
-          Complex Magnetic Oxides
-        </h3>
-
-        <p>
-          Structural and magnetic
-          investigations of complex
-          oxide materials using
-          X-ray diffraction,
-          Rietveld refinement,
-          Raman spectroscopy,
-          and magnetic measurements.
-
-          Exploration of relationships
-          between crystal structure
-          and magnetic behavior.
-        </p>
-
-        <div class="research-tags">
-          <span class="tag">Magnetism</span>
-          <span class="tag">Rietveld</span>
-          <span class="tag">Raman</span>
-          <span class="tag">PPMS</span>
-        </div>
-
-      </article>
-
-
-      <!-- 05: ALTERNATIVE FUELS -->
-
-      <article class="card research-card">
-
-        <span class="card-number">
-          05 / SUSTAINABLE ENERGY
-        </span>
-
-        <h3>
-          Alternative Fuels &amp; Nanoparticles
-        </h3>
-
-        <p>
-          Experimental investigations of
-          biodiesel, waste plastic
-          pyrolysis oil, and
-          nanoparticle-enhanced fuel blends.
-
-          Evaluation of combustion
-          characteristics, engine
-          performance, and emissions
-          in internal combustion engines.
-        </p>
-
-        <div class="research-tags">
-          <span class="tag">Biodiesel</span>
-          <span class="tag">Combustion</span>
-          <span class="tag">Nanoparticles</span>
-        </div>
-
-      </article>
-
-
-      <!-- 06: DATA ANALYSIS -->
-
-      <article class="card research-card">
-
-        <span class="card-number">
-          06 / QUANTITATIVE ANALYSIS
-        </span>
-
-        <h3>
-          Scientific Data Analysis
-        </h3>
-
-        <p>
-          Computational analysis and
-          interpretation of experimental
-          measurements using MATLAB,
-          spectral fitting,
-          statistical methods,
-          and kinetic analysis.
-
-          Development and evaluation of
-          physics-guided descriptors
-          to investigate relationships
-          between material properties
-          and functional performance.
-        </p>
-
-        <div class="research-tags">
-          <span class="tag">MATLAB</span>
-          <span class="tag">Modeling</span>
-          <span class="tag">Statistics</span>
-        </div>
-
-      </article>
-
+  <section class="page-hero">
+    <div class="container">
+      <p class="eyebrow">RESEARCH AREAS</p>
+
+      <h1>Materials, Energy &amp; Engineering Research</h1>
+
+      <p>
+        Experimental investigations of material processing,
+        structure, surface chemistry, and functional performance.
+      </p>
     </div>
+  </section>
 
-  </div>
+  <section class="section">
+    <div class="container">
 
-</section>
+      <nav class="research-tabs" aria-label="Research sections">
+        <a href="research.html" class="active" aria-current="page">
+          Research Interests
+        </a>
+        <a href="publications.html">Publications</a>
+        <a href="conferences.html">Conferences</a>
+      </nav>
+
+      <h2 class="section-title">Research Interests</h2>
+
+      <p class="research-intro">
+        My research focuses on understanding the relationships
+        between material processing, structure, surface chemistry,
+        and functional performance.
+
+        My work integrates experimental characterization,
+        quantitative analysis, and physics-guided approaches,
+        with applications in sustainable energy, functional
+        materials, and engineering.
+      </p>
+
+      <div class="card-grid">
+
+        <!-- 01: TWO-DIMENSIONAL MATERIALS -->
+        <article class="card research-card">
+
+          <button class="card-number materials-trigger"
+                  type="button"
+                  data-open-materials
+                  aria-haspopup="dialog"
+                  aria-controls="materials-dialog">
+            01 / TWO-DIMENSIONAL MATERIALS
+            <span aria-hidden="true">↗</span>
+          </button>
+
+          <h3>
+            <button class="materials-title"
+                    type="button"
+                    data-open-materials
+                    aria-haspopup="dialog"
+                    aria-controls="materials-dialog">
+              MXenes &amp; Functional Composites
+            </button>
+          </h3>
+
+          <p>
+            Synthesis, processing, and characterization of
+            titanium-based MXenes, including acid etching,
+            DMSO intercalation, and transition-metal
+            chalcogenide composites.
+
+            Investigation of processing-induced structural
+            changes and surface chemistry using complementary
+            characterization techniques.
+          </p>
+
+          <div class="research-tags">
+            <span class="tag">MXenes</span>
+            <span class="tag">XRD</span>
+            <span class="tag">Raman</span>
+            <span class="tag">XPS</span>
+          </div>
+
+          <button class="materials-open"
+                  type="button"
+                  data-open-materials
+                  aria-haspopup="dialog"
+                  aria-controls="materials-dialog">
+            Explore current work
+            <span aria-hidden="true">↗</span>
+          </button>
+        </article>
+
+        <!-- 02: PHOTOTHERMAL CONVERSION -->
+        <article class="card research-card">
+          <span class="card-number">
+            02 / PHOTOTHERMAL CONVERSION
+          </span>
+
+          <h3>Laser-Induced Heating</h3>
+
+          <p>
+            Experimental investigation of photothermal heating
+            in MAX phases, acid-etched MXenes, and intercalated
+            MXenes under near-infrared irradiation.
+
+            Quantitative evaluation of temperature evolution
+            and net photothermal heat generation.
+          </p>
+
+          <div class="research-tags">
+            <span class="tag">Photothermal</span>
+            <span class="tag">Heat Generation</span>
+            <span class="tag">MATLAB</span>
+          </div>
+        </article>
+
+        <!-- 03: ELECTROCHEMISTRY -->
+        <article class="card research-card">
+          <span class="card-number">
+            03 / ELECTROCHEMISTRY
+          </span>
+
+          <h3>Electrocatalytic Materials</h3>
+
+          <p>
+            Electrochemical characterization of functional
+            materials for energy-related applications,
+            including oxygen evolution reaction activity,
+            charge-transfer resistance, and electrochemical
+            kinetics.
+
+            Analysis using voltammetry, impedance spectroscopy,
+            and Tafel relationships.
+          </p>
+
+          <div class="research-tags">
+            <span class="tag">LSV</span>
+            <span class="tag">EIS</span>
+            <span class="tag">Tafel</span>
+            <span class="tag">OER</span>
+          </div>
+        </article>
+
+        <!-- 04: MAGNETIC MATERIALS -->
+        <article class="card research-card">
+          <span class="card-number">
+            04 / MAGNETIC MATERIALS
+          </span>
+
+          <h3>Complex Magnetic Oxides</h3>
+
+          <p>
+            Structural and magnetic investigations of complex
+            oxide materials using X-ray diffraction,
+            Rietveld refinement, Raman spectroscopy, and
+            magnetic measurements.
+
+            Exploration of relationships between crystal
+            structure and magnetic behavior.
+          </p>
+
+          <div class="research-tags">
+            <span class="tag">Magnetism</span>
+            <span class="tag">Rietveld</span>
+            <span class="tag">Raman</span>
+            <span class="tag">PPMS</span>
+          </div>
+        </article>
+
+        <!-- 05: SUSTAINABLE ENERGY -->
+        <article class="card research-card">
+          <span class="card-number">
+            05 / SUSTAINABLE ENERGY
+          </span>
+
+          <h3>Alternative Fuels &amp; Nanoparticles</h3>
+
+          <p>
+            Experimental investigations of biodiesel,
+            waste plastic pyrolysis oil, and
+            nanoparticle-enhanced fuel blends.
+
+            Evaluation of combustion characteristics,
+            engine performance, and emissions in
+            internal combustion engines.
+          </p>
+
+          <div class="research-tags">
+            <button class="tag fuel-topic"
+                    type="button"
+                    data-fuel-topic="biodiesel"
+                    aria-haspopup="dialog"
+                    aria-controls="fuels-dialog">
+              Biodiesel
+            </button>
+
+            <button class="tag fuel-topic"
+                    type="button"
+                    data-fuel-topic="plastic-fuel"
+                    aria-haspopup="dialog"
+                    aria-controls="fuels-dialog">
+              Plastic Fuel
+            </button>
+
+            <button class="tag fuel-topic"
+                    type="button"
+                    data-fuel-topic="combustion-emission"
+                    aria-haspopup="dialog"
+                    aria-controls="fuels-dialog">
+              Combustion and Emission
+            </button>
+
+            <button class="tag fuel-topic"
+                    type="button"
+                    data-fuel-topic="nanoparticles"
+                    aria-haspopup="dialog"
+                    aria-controls="fuels-dialog">
+              Nanoparticles
+            </button>
+          </div>
+        </article>
+
+        <!-- 06: QUANTITATIVE ANALYSIS -->
+        <article class="card research-card">
+          <span class="card-number">
+            06 / QUANTITATIVE ANALYSIS
+          </span>
+
+          <h3>Scientific Data Analysis</h3>
+
+          <p>
+            Computational analysis and interpretation of
+            experimental measurements using MATLAB,
+            spectral fitting, statistical methods,
+            and kinetic analysis.
+
+            Development and evaluation of physics-guided
+            descriptors to investigate relationships
+            between material properties and functional
+            performance.
+          </p>
+
+          <div class="research-tags">
+            <span class="tag">MATLAB</span>
+            <span class="tag">Modeling</span>
+            <span class="tag">Statistics</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
 
 </main>
 
-
-<!-- =====================================
-     FOOTER
-     ===================================== -->
-
 <footer>
-
   <div class="container footer-inner">
-
     <span>
-      © <span id="year"></span>
-      Rupesh Lal Karn
+      © <span id="year"></span> Rupesh Lal Karn
     </span>
-
-    <a href="contact.html">
-      Contact
-    </a>
-
+    <a href="contact.html">Contact</a>
   </div>
-
 </footer>
 
+<!-- MXENE AND COMPOSITE GALLERY -->
+<dialog id="materials-dialog"
+        class="research-dialog"
+        aria-labelledby="materials-title">
 
-<!-- =====================================
-     SHARED JAVASCRIPT
-     ===================================== -->
+  <div class="materials-shell">
+    <form method="dialog" class="materials-close-form">
+      <button class="materials-close"
+              aria-label="Close materials gallery">
+        ×
+      </button>
+    </form>
+
+    <p class="eyebrow">RESEARCH IN FOCUS / 01</p>
+
+    <h2 id="materials-title">Two-dimensional materials</h2>
+
+    <p class="materials-lead">
+      MXenes &amp; Functional Composites
+    </p>
+
+    <p class="materials-description">
+      A visual collection of my current work on MXene
+      synthesis, processing, and composite materials.
+    </p>
+
+    <div class="materials-filters"
+         role="group"
+         aria-label="Filter research images">
+      <button type="button"
+              data-material-filter="all"
+              aria-pressed="true">
+        All work
+      </button>
+
+      <button type="button"
+              data-material-filter="mxene"
+              aria-pressed="false">
+        MXenes
+      </button>
+
+      <button type="button"
+              data-material-filter="composite"
+              aria-pressed="false">
+        Composites
+      </button>
+    </div>
+
+    <p id="materials-status"
+       class="materials-status"
+       role="status"></p>
+
+    <div id="materials-gallery" class="materials-gallery"></div>
+
+    <p class="materials-footnote">
+      CURRENT WORK · Rupesh Lal Karn
+    </p>
+  </div>
+</dialog>
+
+<!-- SUSTAINABLE ENERGY GALLERY -->
+<dialog id="fuels-dialog"
+        class="research-dialog"
+        aria-labelledby="fuels-title">
+
+  <div class="materials-shell">
+    <form method="dialog" class="materials-close-form">
+      <button class="materials-close"
+              aria-label="Close sustainable energy gallery">
+        ×
+      </button>
+    </form>
+
+    <p class="eyebrow">
+      RESEARCH IN FOCUS / 05 · SUSTAINABLE ENERGY
+    </p>
+
+    <h2 id="fuels-title">Alternative Fuels &amp; Nanoparticles</h2>
+
+    <p class="materials-lead">
+      Alternative Fuels &amp; Nanoparticles
+    </p>
+
+    <p id="fuels-description" class="materials-description"></p>
+
+    <p id="fuels-status"
+       class="materials-status"
+       role="status"></p>
+
+    <div id="fuels-gallery" class="materials-gallery"></div>
+
+    <p class="materials-footnote">
+      CURRENT WORK · Rupesh Lal Karn
+    </p>
+  </div>
+</dialog>
 
 <script src="main.js"></script>
+
+<script>
+  /*
+    RESEARCH IMAGES
+
+    Upload images to images/research/ in your GitHub repository.
+    Then add entries to the array below.
+
+    Available categories:
+      mxene
+      composite
+      biodiesel
+      plastic-fuel
+      combustion-emission
+      nanoparticles
+
+    Example entry:
+    {
+      src: "images/research/biodiesel.jpg",
+      title: "Biodiesel research",
+      alt: "Describe what is visible in the image",
+      caption: "Your figure caption.",
+      category: "biodiesel"
+    }
+
+    Separate multiple entries with commas.
+  */
+
+  window.researchImages = [];
+</script>
+
+<script>
+(() => {
+  function setupGallery(prefix, fuelTopics = null) {
+    const dialog = document.getElementById(`${prefix}-dialog`);
+    if (!dialog) return;
+
+    const gallery = document.getElementById(`${prefix}-gallery`);
+    const status = document.getElementById(`${prefix}-status`);
+
+    const allImages = Array.isArray(window.researchImages)
+      ? window.researchImages
+      : [];
+
+    const images = allImages.filter(image => {
+      if (fuelTopics) {
+        return Object.prototype.hasOwnProperty.call(
+          fuelTopics,
+          image.category
+        );
+      }
+
+      return ["mxene", "composite"].includes(image.category);
+    });
+
+    function render(category) {
+      gallery.replaceChildren();
+
+      const selected = images.filter(image =>
+        category === "all" || image.category === category
+      );
+
+      status.textContent = selected.length
+        ? `${selected.length} research image${
+            selected.length === 1 ? "" : "s"
+          } · Select an image to open the full resolution.`
+        : "";
+
+      if (!selected.length) {
+        const empty = document.createElement("div");
+        empty.className = "materials-empty";
+
+        const heading = document.createElement("h3");
+
+        if (fuelTopics) {
+          heading.textContent =
+            `${fuelTopics[category].title} image collection`;
+        } else if (category === "mxene") {
+          heading.textContent = "MXene image collection";
+        } else if (category === "composite") {
+          heading.textContent = "Composite image collection";
+        } else {
+          heading.textContent = "A closer look at current work";
+        }
+
+        const description = document.createElement("p");
+        description.textContent =
+          "Research images will be added here soon.";
+
+        empty.append(heading, description);
+        gallery.append(empty);
+      }
+
+      selected.forEach(image => {
+        const url = new URL(image.src, location.href);
+
+        if (
+          url.origin !== location.origin ||
+          !["http:", "https:", "file:"].includes(url.protocol)
+        ) {
+          return;
+        }
+
+        const figure = document.createElement("figure");
+        figure.className = "materials-figure";
+
+        const link = document.createElement("a");
+        link.href = url.href;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.setAttribute(
+          "aria-label",
+          `${image.title} — open full-resolution image in a new tab`
+        );
+
+        const img = document.createElement("img");
+        img.src = url.href;
+        img.alt = image.alt || image.title;
+        img.loading = "lazy";
+
+        const caption = document.createElement("figcaption");
+
+        const heading = document.createElement("h3");
+        heading.textContent = image.title;
+
+        const description = document.createElement("p");
+        description.textContent = image.caption || "";
+
+        img.addEventListener("error", () => {
+          const message = document.createElement("p");
+          message.textContent =
+            "Image unavailable. Please check back soon.";
+          link.replaceWith(message);
+        });
+
+        link.append(img);
+        caption.append(heading, description);
+        figure.append(link, caption);
+        gallery.append(figure);
+      });
+    }
+
+    if (!fuelTopics) {
+      document.querySelectorAll("[data-open-materials]")
+        .forEach(button => {
+          button.addEventListener("click", () => {
+            dialog.showModal();
+          });
+        });
+
+      document.querySelectorAll("[data-material-filter]")
+        .forEach(button => {
+          button.addEventListener("click", () => {
+            document.querySelectorAll("[data-material-filter]")
+              .forEach(item => {
+                item.setAttribute(
+                  "aria-pressed",
+                  String(item === button)
+                );
+              });
+
+            render(button.dataset.materialFilter);
+          });
+        });
+
+      render("all");
+    } else {
+      document.querySelectorAll("[data-fuel-topic]")
+        .forEach(button => {
+          button.addEventListener("click", () => {
+            const category = button.dataset.fuelTopic;
+            const topic = fuelTopics[category];
+
+            document.getElementById("fuels-title").textContent =
+              topic.title;
+
+            document.getElementById("fuels-description").textContent =
+              topic.description;
+
+            render(category);
+            dialog.showModal();
+          });
+        });
+    }
+
+    // Close when clicking outside the gallery panel.
+    // Escape and the close button also close the dialog.
+    dialog.addEventListener("click", event => {
+      if (event.target !== dialog) return;
+
+      const bounds = dialog.getBoundingClientRect();
+
+      if (
+        event.clientX < bounds.left ||
+        event.clientX > bounds.right ||
+        event.clientY < bounds.top ||
+        event.clientY > bounds.bottom
+      ) {
+        dialog.close();
+      }
+    });
+  }
+
+  setupGallery("materials");
+
+  setupGallery("fuels", {
+    "biodiesel": {
+      title: "Biodiesel",
+      description:
+        "Current work on biodiesel and fuel blends for sustainable energy applications."
+    },
+
+    "plastic-fuel": {
+      title: "Plastic Fuel",
+      description:
+        "Current work on waste plastic pyrolysis oil and alternative fuel blends."
+    },
+
+    "combustion-emission": {
+      title: "Combustion and Emission",
+      description:
+        "Investigations of combustion characteristics, engine performance, and exhaust emissions."
+    },
+
+    "nanoparticles": {
+      title: "Nanoparticles",
+      description:
+        "Current work on nanoparticle-enhanced fuel blends and their performance."
+    }
+  });
+})();
+</script>
 
 </body>
 </html>
