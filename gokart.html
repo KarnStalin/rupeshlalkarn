@@ -6,6 +6,10 @@
 
   <title>GOKART | Rupesh Lal Karn</title>
 
+  <meta name="description"
+        content="GOKART engine modification, mechanical integration,
+        assembly, and vehicle demonstration by Rupesh Lal Karn.">
+
   <link rel="stylesheet" href="style.css">
 
   <style>
@@ -15,37 +19,112 @@
       margin-bottom: 24px;
     }
 
+    .project-intro {
+      max-width: 850px;
+    }
+
     .project-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 20px;
+      gap: 10px;
+      margin: 24px 0 0;
     }
 
-    .photo-placeholder {
-      padding: 44px 24px;
-      border: 1px dashed #466581;
-      border-radius: 14px;
+    .project-overview {
+      margin-bottom: 36px;
+    }
+
+    .project-stages {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+
+    .project-stages h3 {
+      margin-top: 12px;
+    }
+
+    .gokart-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px;
+    }
+
+    .gokart-photo {
+      margin: 0;
+      overflow: hidden;
       background: #0d1c2e;
-      color: #a4b7cd;
-      text-align: center;
+      border: 1px solid #29425b;
+      border-radius: 18px;
     }
 
-    .project-photo {
-      margin: 24px 0;
+    .gokart-photo > a {
+      display: block;
+      background: #101b29;
     }
 
-    .project-photo img {
+    .gokart-photo img {
       display: block;
       width: 100%;
-      max-height: 600px;
+      height: 440px;
       object-fit: contain;
-      border-radius: 14px;
     }
 
-    .project-photo figcaption {
-      padding: 16px 0;
+    .gokart-photo figcaption {
+      padding: 26px;
+    }
+
+    .gokart-photo h3 {
+      margin: 10px 0 12px;
+      font-size: 24px;
+    }
+
+    .gokart-photo p {
+      margin-bottom: 0;
       color: #a4b7cd;
+    }
+
+    .gokart-photo-wide {
+      grid-column: 1 / -1;
+    }
+
+    .gokart-photo-wide img {
+      height: auto;
+      max-height: 700px;
+    }
+
+    .project-bottom {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 36px;
+      padding-top: 24px;
+      border-top: 1px solid #29425b;
+    }
+
+    .project-bottom a {
+      color: #69b9ff;
+    }
+
+    .project-back:focus-visible,
+    .gokart-gallery a:focus-visible,
+    .project-bottom a:focus-visible {
+      outline: 3px solid #69b9ff;
+      outline-offset: 4px;
+    }
+
+    @media (max-width: 750px) {
+      .project-stages,
+      .gokart-gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .gokart-photo img {
+        height: auto;
+        max-height: 600px;
+      }
     }
   </style>
 </head>
@@ -77,8 +156,10 @@
 
 <main>
 
+  <!-- PROJECT INTRODUCTION -->
   <section class="page-hero">
     <div class="container">
+
       <a class="project-back" href="projects.html">
         ← Back to Projects
       </a>
@@ -89,54 +170,166 @@
 
       <h1>GOKART</h1>
 
-      <p>
-        Engine modification and mechanical integration
-        of an existing go-kart.
+      <p class="project-intro">
+        Engine modification, mechanical integration, and
+        assembly of an existing go-kart. This project
+        connects workshop engineering with a practical
+        vehicle demonstration.
       </p>
+
+      <div class="project-tags">
+        <span class="tag">Engine Modification</span>
+        <span class="tag">SI Engine</span>
+        <span class="tag">Mechanical Integration</span>
+        <span class="tag">Vehicle Assembly</span>
+      </div>
+
     </div>
   </section>
 
   <section class="section">
     <div class="container">
 
-      <article class="card">
+      <!-- PROJECT OVERVIEW -->
+      <article class="card project-overview">
         <h2>Project overview</h2>
 
         <p>
-          This automotive engineering project involves modifying
-          an existing go-kart by replacing its generator engine
-          with a spark-ignition engine. The work focuses on engine
-          replacement, mechanical integration, and assembly.
+          This automotive engineering project involved
+          modifying an existing go-kart by replacing its
+          generator engine with a spark-ignition engine.
+          The work focused on integrating the replacement
+          engine with the existing vehicle and assembling
+          its mechanical components.
         </p>
 
-        <h3>Project activities</h3>
-
-        <ul>
-          <li>Modification of the existing go-kart</li>
-          <li>Replacement of the generator engine</li>
-          <li>Mechanical integration and assembly</li>
-        </ul>
-
-        <div class="project-tags">
-          <span class="tag">Automotive Engineering</span>
-          <span class="tag">SI Engine</span>
-          <span class="tag">Engine Modification</span>
-        </div>
+        <p>
+          The photographs document the go-kart in the
+          workshop, its exposed component layout outdoors,
+          and a driving demonstration. They show the
+          relationship between the chassis, driver's seat,
+          steering arrangement, and rear-mounted engine.
+        </p>
       </article>
 
-      <h2 class="section-title">Project photographs</h2>
+      <!-- PROJECT STAGES -->
+      <div class="project-stages">
 
-      <div class="photo-placeholder">
-        GOKART photographs and captions will be added here.
+        <article class="card">
+          <span class="card-number">01 / MODIFICATION</span>
+          <h3>Engine replacement</h3>
+          <p>
+            Replacement of the existing generator engine
+            with a spark-ignition engine as the central
+            modification to the go-kart.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="card-number">02 / INTEGRATION</span>
+          <h3>Mechanical assembly</h3>
+          <p>
+            Integration of the engine and associated
+            mechanical components within the existing
+            go-kart layout.
+          </p>
+        </article>
+
+        <article class="card">
+          <span class="card-number">03 / DEMONSTRATION</span>
+          <h3>Vehicle operation</h3>
+          <p>
+            An outdoor driving demonstration documenting
+            the assembled go-kart in use.
+          </p>
+        </article>
+
       </div>
 
-      <!-- GOKART images will be placed here. -->
+      <!-- PROJECT PHOTOGRAPHS -->
+      <h2 class="section-title">Workshop to demonstration</h2>
 
       <p>
-        <a class="project-back" href="tricar.html">
-          Explore the TRICAR project →
-        </a>
+        Select a photograph to view the original in this tab.
       </p>
+
+      <div class="gokart-gallery">
+
+        <!-- EXISTING FILE: Gokart_3.jpg -->
+        <figure class="gokart-photo">
+          <a href="Gokart_3.jpg"
+             aria-label="View original workshop photograph">
+            <img src="Gokart_3.jpg"
+                 alt="Go-kart in a workshop showing its front steering, blue seat, and rear-mounted engine"
+                 loading="lazy">
+          </a>
+
+          <figcaption>
+            <span class="eyebrow">01 / WORKSHOP ASSEMBLY</span>
+
+            <h3>Engine and chassis integration</h3>
+
+            <p>
+              The go-kart in the workshop with its engine
+              and mechanical components exposed. This view
+              shows the arrangement of the driver's seat,
+              steering, and engine within the existing frame.
+            </p>
+          </figcaption>
+        </figure>
+
+        <!-- EXISTING FILE: Gokart_1.jpg -->
+        <figure class="gokart-photo">
+          <a href="Gokart_1.jpg"
+             aria-label="View original outdoor go-kart photograph">
+            <img src="Gokart_1.jpg"
+                 alt="Outdoor view of the go-kart showing its chassis, blue seat, steering, rear engine, and fuel tank"
+                 loading="lazy">
+          </a>
+
+          <figcaption>
+            <span class="eyebrow">02 / VEHICLE LAYOUT</span>
+
+            <h3>Assembled go-kart outdoors</h3>
+
+            <p>
+              An outdoor view of the vehicle showing
+              the exposed chassis, seating position,
+              steering arrangement, rear-mounted engine,
+              and fuel tank.
+            </p>
+          </figcaption>
+        </figure>
+
+        <!-- EXISTING FILE: Gokart_2.jpg -->
+        <figure class="gokart-photo gokart-photo-wide">
+          <a href="Gokart_2.jpg"
+             aria-label="View original go-kart driving demonstration photograph">
+            <img src="Gokart_2.jpg"
+                 alt="A driver operating the go-kart on a paved outdoor court with observers nearby"
+                 loading="lazy">
+          </a>
+
+          <figcaption>
+            <span class="eyebrow">03 / DRIVING DEMONSTRATION</span>
+
+            <h3>From workshop assembly to vehicle operation</h3>
+
+            <p>
+              The assembled go-kart during an outdoor
+              driving demonstration, documenting the
+              practical application of the engine
+              modification and mechanical integration work.
+            </p>
+          </figcaption>
+        </figure>
+
+      </div>
+
+      <div class="project-bottom">
+        <a href="projects.html">← Back to Projects</a>
+        <a href="tricar.html">Explore TRICAR →</a>
+      </div>
 
     </div>
   </section>
@@ -146,7 +339,7 @@
 <footer>
   <div class="container footer-inner">
     <span>© <span id="year"></span> Rupesh Lal Karn</span>
-    <a href="projects.html">Back to Projects</a>
+    <a href="contact.html">Contact</a>
   </div>
 </footer>
 
