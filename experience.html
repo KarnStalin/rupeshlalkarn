@@ -7,19 +7,129 @@
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
 
-  <title>
-    Research Experience | Rupesh Lal Karn
-  </title>
+  <title>Experience | Rupesh Lal Karn</title>
 
   <meta name="description"
-        content="Research appointments, grants, and collaborations of Rupesh Lal Karn.">
+        content="Research and teaching experience of
+        Rupesh Lal Karn in materials science,
+        mechanical engineering, energy research,
+        and engineering education.">
 
   <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    /* =====================================
+       EXPERIENCE SUB-NAVIGATION
+       ===================================== */
+
+    .experience-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #29425b;
+    }
+
+    .experience-tabs a {
+      display: inline-block;
+      padding: 12px 20px;
+      background: #142940;
+      border: 1px solid #29425b;
+      border-radius: 10px;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .experience-tabs a:hover,
+    .experience-tabs a:focus-visible {
+      background: #69b9ff;
+      border-color: #69b9ff;
+      color: #081727;
+    }
+
+    .experience-tabs a:focus-visible {
+      outline: 2px solid #69b9ff;
+      outline-offset: 3px;
+    }
+
+    /* =====================================
+       EXPERIENCE SECTIONS
+       ===================================== */
+
+    .experience-panel {
+      scroll-margin-top: 110px;
+      margin-bottom: 65px;
+    }
+
+    .experience-panel h2 {
+      margin-bottom: 22px;
+    }
+
+    .experience-intro {
+      max-width: 850px;
+      margin-bottom: 30px;
+      line-height: 1.8;
+    }
+
+    .experience-group {
+      margin-top: 38px;
+    }
+
+    .experience-group .eyebrow {
+      margin-bottom: 12px;
+    }
+
+    .experience-group h2 {
+      margin-bottom: 25px;
+    }
+
+    .experience-entry {
+      margin-bottom: 24px;
+    }
+
+    .experience-entry p {
+      line-height: 1.8;
+    }
+
+    .experience-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .experience-divider {
+      border: 0;
+      border-top: 1px solid #29425b;
+      margin: 55px 0;
+    }
+
+    @media (max-width: 700px) {
+
+      .experience-tabs {
+        gap: 8px;
+      }
+
+      .experience-tabs a {
+        padding: 10px 13px;
+        font-size: 12px;
+      }
+
+    }
+
+  </style>
 </head>
 
 <body>
 
-<!-- NAVIGATION -->
+<!-- =====================================
+     MAIN WEBSITE NAVIGATION
+     ===================================== -->
 
 <header class="navbar">
 
@@ -27,28 +137,32 @@
     Rupesh Lal <span>Karn.</span>
   </a>
 
-  <button
-    class="menu-toggle"
-    type="button"
-    aria-label="Toggle navigation"
-    aria-expanded="false">
+  <button class="menu-toggle"
+          type="button"
+          aria-label="Toggle navigation"
+          aria-expanded="false">
     ☰
   </button>
 
-  <nav class="nav-links">
+  <nav class="nav-links"
+       aria-label="Main navigation">
 
     <a href="index.html">Home</a>
+
     <a href="about.html">About</a>
+
     <a href="research.html">Research</a>
 
-    <a href="experience.html" class="active">
+    <a href="experience.html"
+       class="active"
+       aria-current="page">
       Experience
     </a>
 
-    <a href="publications.html">Publications</a>
-    <a href="teaching.html">Teaching</a>
     <a href="projects.html">Projects</a>
+
     <a href="skills.html">Skills</a>
+
     <a href="contact.html">Contact</a>
 
   </nav>
@@ -58,27 +172,27 @@
 
 <main>
 
-<!-- PAGE HEADER -->
+<!-- =====================================
+     EXPERIENCE PAGE INTRODUCTION
+     ===================================== -->
 
 <section class="page-hero">
 
   <div class="container">
 
     <p class="eyebrow">
-      RESEARCH EXPERIENCE
+      ACADEMIC &amp; PROFESSIONAL EXPERIENCE
     </p>
 
     <h1>
-      Research Appointments &amp; Collaborations
+      Research &amp; Teaching Experience
     </h1>
 
     <p>
-      Research experience in materials science,
-      functional nanomaterials, electrochemistry,
-      sustainable energy, and automotive engineering,
-      supported through academic institutions and
-      research funding programs in the United States
-      and Nepal.
+      Research appointments, scientific
+      collaborations, teaching responsibilities,
+      and academic mentorship across institutions
+      in the United States and Nepal.
     </p>
 
   </div>
@@ -86,305 +200,471 @@
 </section>
 
 
-<!-- RESEARCH EXPERIENCE IN THE UNITED STATES -->
+<!-- =====================================
+     EXPERIENCE CONTENT
+     ===================================== -->
 
 <section class="section">
 
   <div class="container">
 
-    <p class="eyebrow">
-      UNITED STATES
-    </p>
+    <!-- EXPERIENCE SUB-NAVIGATION -->
 
-    <h2 class="section-title">
-      Graduate Research Experience
-    </h2>
+    <nav class="experience-tabs"
+         aria-label="Experience categories">
 
+      <a href="#research">
+        Research Experience
+      </a>
 
-    <!-- CEES -->
+      <a href="#teaching">
+        Teaching Experience
+      </a>
 
-    <div class="entry">
-
-      <small>
-        AUGUST 2026 – PRESENT
-      </small>
-
-      <h3>
-        Graduate Research Assistant
-      </h3>
-
-      <p>
-        <strong>
-          Center for Energy and Environmental
-          Sustainability (CEES)
-        </strong>
-        <br>
-        Prairie View A&amp;M University
-        <br>
-        Texas, United States
-      </p>
-
-      <p>
-        Graduate research activities involving
-        energy and environmental materials,
-        experimental characterization,
-        scientific data analysis, and
-        materials research.
-      </p>
-
-      <span class="tag">
-        Energy Materials
-      </span>
-
-      <span class="tag">
-        Experimental Research
-      </span>
-
-      <span class="tag">
-        Materials Characterization
-      </span>
-
-    </div>
+    </nav>
 
 
-    <!-- DOE RESEARCH -->
+    <!-- =================================
+         RESEARCH EXPERIENCE
+         ================================= -->
 
-    <div class="entry">
+    <section id="research"
+             class="experience-panel">
 
-      <small>
-        FALL 2025 – SUMMER 2026
-      </small>
+      <h2 class="section-title">
+        Research Experience
+      </h2>
 
-      <h3>
-        Graduate Research Assistant
-      </h3>
-
-      <p>
-        <strong>
-          U.S. Department of Energy
-          (DOE)-Supported Research
-        </strong>
-        <br>
-        Prairie View A&amp;M University
-      </p>
-
-      <p>
-        Conducted experimental investigations
-        of MXenes and functional nanomaterial
-        composites, including synthesis,
-        structural characterization,
-        surface chemistry analysis,
-        electrochemical testing, and
-        photothermal measurements.
-      </p>
-
-      <span class="tag">MXenes</span>
-      <span class="tag">Nanomaterials</span>
-      <span class="tag">Photothermal Conversion</span>
-      <span class="tag">Electrochemistry</span>
-
-    </div>
-
-
-    <!-- NSF RESEARCH -->
-
-    <div class="entry">
-
-      <small>
-        SPRING 2025
-      </small>
-
-      <h3>
-        Graduate Research Assistant
-      </h3>
-
-      <p>
-        <strong>
-          National Science Foundation
-          (NSF)-Supported Research
-        </strong>
-        <br>
-        Prairie View A&amp;M University
-      </p>
-
-      <p>
-        Investigated complex magnetic oxide
-        materials using X-ray diffraction,
-        Rietveld refinement, Raman spectroscopy,
-        and magnetic characterization
-        techniques.
-      </p>
-
-      <span class="tag">Magnetic Oxides</span>
-      <span class="tag">XRD</span>
-      <span class="tag">Raman Spectroscopy</span>
-      <span class="tag">Magnetic Characterization</span>
-
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- RESEARCH EXPERIENCE IN NEPAL -->
-
-<section class="section">
-
-  <div class="container">
-
-    <p class="eyebrow">
-      NEPAL
-    </p>
-
-    <h2 class="section-title">
-      Research Grants &amp; Collaborations
-    </h2>
-
-
-    <!-- THAPATHALI CAMPUS RESEARCH GRANT -->
-
-    <div class="entry">
-
-      <small>
-        INSTITUTIONAL RESEARCH GRANT · NEPAL
-      </small>
-
-      <h3>
-        Co-Principal Investigator (Co-PI)
-      </h3>
-
-      <p>
-        <strong>
-          Thapathali Campus Research Grant
-        </strong>
-        <br>
-        Thapathali Campus,
-        Institute of Engineering
-        <br>
-        Tribhuvan University, Nepal
-      </p>
-
-      <p>
-        Served as Co-Principal Investigator
-        in an institutionally supported
-        engineering research project,
-        contributing to research planning,
+      <p class="experience-intro">
+        My research experience includes
+        graduate research appointments,
+        grant-supported projects,
         experimental investigations,
-        data analysis, and interpretation
-        of research findings.
+        materials characterization,
+        and collaborative scientific research.
       </p>
 
-      <p>
-        <a
-          href="https://tcioe.edu.np/"
-          class="text-link"
-          target="_blank"
-          rel="noopener noreferrer">
-          Visit Thapathali Campus Website →
-        </a>
+
+      <!-- UNITED STATES -->
+
+      <div class="experience-group">
+
+        <p class="eyebrow">
+          UNITED STATES
+        </p>
+
+        <h2>
+          Graduate Research Appointments
+        </h2>
+
+
+        <!-- CEES -->
+
+        <div class="entry experience-entry">
+
+          <small>
+            AUGUST 2026 – PRESENT
+          </small>
+
+          <h3>
+            Graduate Research Assistant
+          </h3>
+
+          <p>
+            <strong>
+              Center for Energy and Environmental
+              Sustainability (CEES)
+            </strong>
+            <br>
+            Prairie View A&amp;M University
+            <br>
+            Texas, United States
+          </p>
+
+          <p>
+            Graduate research activities involving
+            energy and environmental materials,
+            experimental characterization,
+            scientific data analysis,
+            and materials research.
+          </p>
+
+          <div class="experience-tags">
+            <span class="tag">Energy Materials</span>
+            <span class="tag">Experimental Research</span>
+            <span class="tag">Materials Characterization</span>
+          </div>
+
+        </div>
+
+
+        <!-- DOE -->
+
+        <div class="entry experience-entry">
+
+          <small>
+            FALL 2025 – SUMMER 2026
+          </small>
+
+          <h3>
+            Graduate Research Assistant
+          </h3>
+
+          <p>
+            <strong>
+              U.S. Department of Energy
+              (DOE)-Supported Research
+            </strong>
+            <br>
+            Prairie View A&amp;M University
+          </p>
+
+          <p>
+            Conducted experimental investigations
+            of MXenes and functional nanomaterial
+            composites, including synthesis,
+            structural characterization,
+            surface chemistry analysis,
+            electrochemical testing,
+            and photothermal measurements.
+          </p>
+
+          <div class="experience-tags">
+            <span class="tag">MXenes</span>
+            <span class="tag">Nanomaterials</span>
+            <span class="tag">Photothermal Conversion</span>
+            <span class="tag">Electrochemistry</span>
+          </div>
+
+        </div>
+
+
+        <!-- NSF -->
+
+        <div class="entry experience-entry">
+
+          <small>
+            SPRING 2025
+          </small>
+
+          <h3>
+            Graduate Research Assistant
+          </h3>
+
+          <p>
+            <strong>
+              National Science Foundation
+              (NSF)-Supported Research
+            </strong>
+            <br>
+            Prairie View A&amp;M University
+          </p>
+
+          <p>
+            Investigated complex magnetic oxide
+            materials using X-ray diffraction,
+            Rietveld refinement,
+            Raman spectroscopy,
+            and magnetic characterization
+            techniques.
+          </p>
+
+          <div class="experience-tags">
+            <span class="tag">Magnetic Oxides</span>
+            <span class="tag">XRD</span>
+            <span class="tag">Raman Spectroscopy</span>
+            <span class="tag">Magnetic Characterization</span>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- NEPAL -->
+
+      <div class="experience-group">
+
+        <p class="eyebrow">
+          NEPAL
+        </p>
+
+        <h2>
+          Research Grants &amp; Collaborations
+        </h2>
+
+
+        <!-- THAPATHALI CAMPUS -->
+
+        <div class="entry experience-entry">
+
+          <small>
+            INSTITUTIONAL RESEARCH GRANT · NEPAL
+          </small>
+
+          <h3>
+            Co-Principal Investigator (Co-PI)
+          </h3>
+
+          <p>
+            <strong>
+              Thapathali Campus Research Grant
+            </strong>
+            <br>
+            Thapathali Campus,
+            Institute of Engineering
+            <br>
+            Tribhuvan University, Nepal
+          </p>
+
+          <p>
+            Served as Co-Principal Investigator
+            in an institutionally supported
+            engineering research project,
+            contributing to research planning,
+            experimental investigations,
+            data analysis, and interpretation
+            of research findings.
+          </p>
+
+          <p>
+            <a
+              href="https://tcioe.edu.np/"
+              class="text-link"
+              target="_blank"
+              rel="noopener noreferrer">
+              Visit Thapathali Campus Website →
+            </a>
+          </p>
+
+          <div class="experience-tags">
+            <span class="tag">Co-Principal Investigator</span>
+            <span class="tag">Research Grant</span>
+            <span class="tag">Engineering Research</span>
+          </div>
+
+        </div>
+
+
+        <!-- UGC NEPAL -->
+
+        <div class="entry experience-entry">
+
+          <small>
+            GRANT-SUPPORTED RESEARCH · NEPAL
+          </small>
+
+          <h3>
+            Research Assistant
+          </h3>
+
+          <p>
+            <strong>
+              University Grants Commission
+              (UGC Nepal)
+            </strong>
+          </p>
+
+          <p>
+            Contributed to grant-supported
+            engineering research, including
+            experimental investigations,
+            research data collection,
+            quantitative analysis,
+            and preparation of technical
+            research findings.
+          </p>
+
+          <div class="experience-tags">
+            <span class="tag">Research Assistant</span>
+            <span class="tag">UGC Nepal</span>
+            <span class="tag">Experimental Research</span>
+          </div>
+
+        </div>
+
+
+        <!-- AEPC NEPAL -->
+
+        <div class="entry experience-entry">
+
+          <small>
+            ENERGY RESEARCH · NEPAL
+          </small>
+
+          <h3>
+            Research Assistant
+          </h3>
+
+          <p>
+            <strong>
+              Alternative Energy Promotion Centre
+              (AEPC Nepal)
+            </strong>
+          </p>
+
+          <p>
+            Contributed to research activities
+            related to alternative energy
+            and sustainable energy technologies,
+            supporting experimental
+            investigations, data analysis,
+            and technical research documentation.
+          </p>
+
+          <div class="experience-tags">
+            <span class="tag">Research Assistant</span>
+            <span class="tag">Alternative Energy</span>
+            <span class="tag">Sustainable Energy</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <hr class="experience-divider">
+
+
+    <!-- =================================
+         TEACHING EXPERIENCE
+         ================================= -->
+
+    <section id="teaching"
+             class="experience-panel">
+
+      <h2 class="section-title">
+        Teaching Experience
+      </h2>
+
+      <p class="experience-intro">
+        My teaching experience includes
+        undergraduate engineering instruction,
+        technical laboratory education,
+        student mentorship, and supervision
+        of undergraduate research projects.
       </p>
 
-      <span class="tag">
-        Co-Principal Investigator
-      </span>
 
-      <span class="tag">
-        Research Grant
-      </span>
+      <!-- ASSISTANT LECTURER -->
 
-      <span class="tag">
-        Engineering Research
-      </span>
+      <div class="entry experience-entry">
 
-    </div>
+        <small>
+          ENGINEERING EDUCATION · NEPAL
+        </small>
 
+        <h3>
+          Assistant Lecturer
+        </h3>
 
-    <!-- UNIVERSITY GRANTS COMMISSION -->
+        <p>
+          <strong>
+            Thapathali Campus,
+            Institute of Engineering
+          </strong>
+          <br>
+          Tribhuvan University, Nepal
+        </p>
 
-    <div class="entry">
+        <p>
+          Contributed to undergraduate
+          engineering education in
+          mechanical and automobile
+          engineering-related subjects,
+          including classroom instruction,
+          engineering concepts,
+          and academic guidance.
+        </p>
 
-      <small>
-        GRANT-SUPPORTED RESEARCH · NEPAL
-      </small>
+        <div class="experience-tags">
+          <span class="tag">Mechanical Engineering</span>
+          <span class="tag">Automobile Engineering</span>
+          <span class="tag">Undergraduate Teaching</span>
+        </div>
 
-      <h3>
-        Research Assistant
-      </h3>
-
-      <p>
-        <strong>
-          University Grants Commission
-          (UGC Nepal)
-        </strong>
-      </p>
-
-      <p>
-        Contributed to grant-supported
-        engineering research, including
-        experimental investigations,
-        research data collection,
-        quantitative analysis,
-        and preparation of technical
-        research findings.
-      </p>
-
-      <span class="tag">
-        Research Assistant
-      </span>
-
-      <span class="tag">
-        UGC Nepal
-      </span>
-
-      <span class="tag">
-        Experimental Research
-      </span>
-
-    </div>
+      </div>
 
 
-    <!-- ALTERNATIVE ENERGY PROMOTION CENTRE -->
+      <!-- ENGINEERING TEACHING -->
 
-    <div class="entry">
+      <div class="entry experience-entry">
 
-      <small>
-        ENERGY RESEARCH · NEPAL
-      </small>
+        <small>
+          ENGINEERING EDUCATION · NEPAL
+        </small>
 
-      <h3>
-        Research Assistant
-      </h3>
+        <h3>
+          Assistant Lecturer
+        </h3>
 
-      <p>
-        <strong>
-          Alternative Energy Promotion Centre
-          (AEPC Nepal)
-        </strong>
-      </p>
+        <p>
+          <strong>
+            Kathmandu Engineering College (KCC)
+          </strong>
+          <br>
+          Nepal
+        </p>
 
-      <p>
-        Contributed to research activities
-        related to alternative energy
-        and sustainable energy technologies,
-        supporting experimental
-        investigations, data analysis,
-        and technical research documentation.
-      </p>
+        <p>
+          Supported engineering education
+          through instruction and academic
+          guidance in subjects related to
+          thermodynamics, internal combustion
+          engines, instrumentation,
+          and engineering drawing.
+        </p>
 
-      <span class="tag">
-        Research Assistant
-      </span>
+        <div class="experience-tags">
+          <span class="tag">Thermodynamics</span>
+          <span class="tag">IC Engines</span>
+          <span class="tag">Instrumentation</span>
+          <span class="tag">Engineering Drawing</span>
+        </div>
 
-      <span class="tag">
-        Alternative Energy
-      </span>
+      </div>
 
-      <span class="tag">
-        Sustainable Energy
-      </span>
 
-    </div>
+      <!-- UNDERGRADUATE SUPERVISION -->
+
+      <div class="entry experience-entry">
+
+        <small>
+          ACADEMIC MENTORSHIP
+        </small>
+
+        <h3>
+          Undergraduate Thesis Supervision
+          &amp; Mentorship
+        </h3>
+
+        <p>
+          <strong>
+            Engineering Education · Nepal
+          </strong>
+        </p>
+
+        <p>
+          Supervised and mentored
+          undergraduate engineering
+          research projects, providing
+          guidance on research methodology,
+          experimental design,
+          technical analysis,
+          and thesis preparation.
+        </p>
+
+        <div class="experience-tags">
+          <span class="tag">Thesis Supervision</span>
+          <span class="tag">Research Mentorship</span>
+          <span class="tag">Academic Guidance</span>
+        </div>
+
+      </div>
+
+    </section>
 
   </div>
 
@@ -393,7 +673,9 @@
 </main>
 
 
-<!-- FOOTER -->
+<!-- =====================================
+     FOOTER
+     ===================================== -->
 
 <footer>
 
@@ -413,7 +695,9 @@
 </footer>
 
 
-<!-- SHARED JAVASCRIPT -->
+<!-- =====================================
+     SHARED JAVASCRIPT
+     ===================================== -->
 
 <script src="main.js"></script>
 
