@@ -289,6 +289,47 @@
       outline-offset: 4px;
     }
 
+    /* Light orange theme inside Plastic Fuel */
+    #fuels-dialog.plastic-fuel-theme {
+      background: #fff2e5;
+      color: #462819;
+      border-color: #e8ae7c;
+    }
+
+    #fuels-dialog.plastic-fuel-theme .eyebrow,
+    #fuels-dialog.plastic-fuel-theme .materials-lead {
+      color: #914519;
+    }
+
+    #fuels-dialog.plastic-fuel-theme .materials-description,
+    #fuels-dialog.plastic-fuel-theme .materials-status,
+    #fuels-dialog.plastic-fuel-theme .materials-figure p,
+    #fuels-dialog.plastic-fuel-theme .materials-footnote,
+    #fuels-dialog.plastic-fuel-theme .materials-empty p {
+      color: #704b35;
+    }
+
+    #fuels-dialog.plastic-fuel-theme .materials-figure,
+    #fuels-dialog.plastic-fuel-theme .materials-empty {
+      background: #fffaf5;
+      border-color: #edc6a3;
+    }
+
+    #fuels-dialog.plastic-fuel-theme .materials-close {
+      background: #ffe0c2;
+      color: #462819;
+      border-color: #dda575;
+    }
+
+    #fuels-dialog.plastic-fuel-theme .materials-footnote {
+      border-color: #edc6a3;
+    }
+
+    #fuels-dialog.plastic-fuel-theme button:focus-visible,
+    #fuels-dialog.plastic-fuel-theme a:focus-visible {
+      outline-color: #914519;
+    }
+
     @media (max-width: 700px) {
       .research-tabs {
         gap: 8px;
@@ -340,7 +381,6 @@
 </header>
 
 <main>
-
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">RESEARCH AREAS</p>
@@ -382,7 +422,6 @@
 
         <!-- 01: TWO-DIMENSIONAL MATERIALS -->
         <article class="card research-card">
-
           <button class="card-number materials-trigger"
                   type="button"
                   data-open-materials
@@ -590,7 +629,6 @@
       </div>
     </div>
   </section>
-
 </main>
 
 <footer>
@@ -703,10 +741,13 @@
 
 <script>
   /*
-    RESEARCH IMAGES
+    Upload these four JPG files beside research.html:
+      plastic-fuel-apparatus.jpg
+      plastic-fuel-samples.jpg
+      plastic-fuel-collection.jpg
+      plastic-fuel-setup.jpg
 
-    Upload images to images/research/ in your GitHub repository.
-    Then add entries to the array below.
+    Add future image entries to this array.
 
     Available categories:
       mxene
@@ -715,20 +756,38 @@
       plastic-fuel
       combustion-emission
       nanoparticles
-
-    Example entry:
-    {
-      src: "images/research/biodiesel.jpg",
-      title: "Biodiesel research",
-      alt: "Describe what is visible in the image",
-      caption: "Your figure caption.",
-      category: "biodiesel"
-    }
-
-    Separate multiple entries with commas.
   */
 
-  window.researchImages = [];
+  window.researchImages = [
+    {
+      src: "plastic-fuel-apparatus.jpg",
+      title: "Laboratory Fuel Apparatus",
+      alt: "Laboratory apparatus with a collection outlet and graduated cylinder",
+      caption: "Laboratory apparatus used in the experimental study of plastic-derived fuels.",
+      category: "plastic-fuel"
+    },
+    {
+      src: "plastic-fuel-samples.jpg",
+      title: "Collected Liquid Samples",
+      alt: "Three graduated cylinders containing samples labelled PP, HGPD, and LGPD",
+      caption: "Liquid samples labelled PP, HGPD, and LGPD, showing differences in colour and collected volume.",
+      category: "plastic-fuel"
+    },
+    {
+      src: "plastic-fuel-collection.jpg",
+      title: "Liquid Product Collection",
+      alt: "A researcher collecting a liquid sample in a flask beside laboratory equipment",
+      caption: "Collection of a liquid sample during laboratory work on plastic-to-fuel conversion.",
+      category: "plastic-fuel"
+    },
+    {
+      src: "plastic-fuel-setup.jpg",
+      title: "Plastic-to-Fuel Experimental Setup",
+      alt: "Plastic-to-fuel apparatus with piping, a transparent chamber, and a control panel",
+      caption: "Experimental apparatus used to investigate plastic-to-fuel conversion and liquid product recovery.",
+      category: "plastic-fuel"
+    }
+  ];
 </script>
 
 <script>
@@ -873,6 +932,11 @@
             const category = button.dataset.fuelTopic;
             const topic = fuelTopics[category];
 
+            dialog.classList.toggle(
+              "plastic-fuel-theme",
+              category === "plastic-fuel"
+            );
+
             document.getElementById("fuels-title").textContent =
               topic.title;
 
@@ -885,8 +949,8 @@
         });
     }
 
-    // Close when clicking outside the gallery panel.
-    // Escape and the close button also close the dialog.
+    // Close by clicking outside the panel.
+    // Escape and the × button also close the gallery.
     dialog.addEventListener("click", event => {
       if (event.target !== dialog) return;
 
@@ -915,7 +979,7 @@
     "plastic-fuel": {
       title: "Plastic Fuel",
       description:
-        "Current work on waste plastic pyrolysis oil and alternative fuel blends."
+        "My work investigates the conversion of waste plastics into liquid fuels through pyrolysis. These photographs show the laboratory equipment, liquid product collection, and samples used in this research."
     },
 
     "combustion-emission": {
