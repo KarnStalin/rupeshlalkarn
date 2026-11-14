@@ -131,3 +131,69 @@ document.addEventListener("DOMContentLoaded", () => {
   );
 
 });
+
+/* ==========================================
+   CONFERENCE TABS
+   Poster Presentations / Oral Presentations
+   ========================================== */
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const tabs = document.querySelectorAll(
+    "[data-conference-tab]"
+  );
+
+  const panels = document.querySelectorAll(
+    "[data-conference-panel]"
+  );
+
+  if (tabs.length === 0 || panels.length === 0) {
+    return;
+  }
+
+  function showTab(selectedTab) {
+
+    tabs.forEach(function (tab) {
+      const isActive =
+        tab.dataset.conferenceTab === selectedTab;
+
+      tab.classList.toggle("active", isActive);
+
+      tab.setAttribute(
+        "aria-selected",
+        String(isActive)
+      );
+
+      tab.tabIndex = isActive ? 0 : -1;
+    });
+
+    panels.forEach(function (panel) {
+      const isActive =
+        panel.dataset.conferencePanel === selectedTab;
+
+      panel.hidden = !isActive;
+    });
+
+    history.replaceState(
+      null,
+      "",
+      "#" + selectedTab
+    );
+  }
+
+  tabs.forEach(function (tab) {
+
+    tab.addEventListener("click", function () {
+      showTab(tab.dataset.conferenceTab);
+    });
+
+  });
+
+  // Open the correct tab from the URL
+  if (window.location.hash === "#oral") {
+    showTab("oral");
+  } else {
+    showTab("poster");
+  }
+
+});
