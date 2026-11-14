@@ -6,18 +6,26 @@
 
   <title>Engineering Projects | Rupesh Lal Karn</title>
 
+  <meta name="description"
+        content="Engineering projects by Rupesh Lal Karn:
+        TRICAR vehicle design and fabrication, and
+        GOKART engine modification.">
+
   <link rel="stylesheet" href="style.css">
 
   <style>
     .project-cards {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
+      align-items: stretch;
       gap: 28px;
     }
 
     .project-link {
       display: flex;
       flex-direction: column;
+      min-width: 0;
+      overflow: hidden;
       color: #edf5ff;
       text-decoration: none;
     }
@@ -32,27 +40,51 @@
       outline-offset: 5px;
     }
 
+    /* Matching image sizes on both cards */
     .project-cover {
       display: block;
+      flex-shrink: 0;
       width: 100%;
-      aspect-ratio: 16 / 10;
-      object-fit: contain;
+      height: clamp(210px, 24vw, 300px);
+      object-fit: cover;
+      object-position: center;
       margin-bottom: 24px;
       border: 1px solid #29425b;
       border-radius: 14px;
       background: #0d1c2e;
     }
 
+    .project-link[href="gokart.html"] .project-cover {
+      object-position: 45% 55%;
+    }
+
+    .project-link h2 {
+      margin: 16px 0;
+      font-size: clamp(23px, 2.3vw, 29px);
+      line-height: 1.3;
+    }
+
+    .project-link p {
+      margin: 0 0 20px;
+      color: #a4b7cd;
+      line-height: 1.75;
+    }
+
     .project-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin: 20px 0;
+      margin: 0 0 24px;
     }
 
     .project-action {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
       margin-top: auto;
-      padding-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid #29425b;
       color: #69b9ff;
       font-weight: 600;
     }
@@ -60,6 +92,15 @@
     @media (max-width: 700px) {
       .project-cards {
         grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
+      .project-cover {
+        height: clamp(210px, 52vw, 320px);
+      }
+
+      .project-link h2 {
+        font-size: 25px;
       }
     }
   </style>
@@ -67,6 +108,7 @@
 
 <body>
 
+<!-- MAIN NAVIGATION -->
 <header class="navbar">
   <a class="logo" href="index.html">
     Rupesh Lal <span>Karn.</span>
@@ -100,6 +142,7 @@
 
 <main>
 
+  <!-- PAGE INTRODUCTION -->
   <section class="page-hero">
     <div class="container">
       <p class="eyebrow">ENGINEERING PROJECTS</p>
@@ -110,11 +153,12 @@
         Selected practical engineering projects involving
         design, simulation, fabrication, and automotive
         system modification. Select a project to explore
-        its details.
+        its development and photographs.
       </p>
     </div>
   </section>
 
+  <!-- PROJECT CARDS -->
   <section class="section">
     <div class="container project-cards">
 
@@ -135,7 +179,8 @@
 
         <p>
           Design, simulation, fabrication, and assembly
-          of a three-wheeled vehicle.
+          of a three-wheeled vehicle, bringing a digital
+          concept into a physical prototype.
         </p>
 
         <div class="project-tags">
@@ -145,8 +190,10 @@
         </div>
 
         <span class="project-action">
-          Explore TRICAR →
+          Explore TRICAR
+          <span aria-hidden="true">→</span>
         </span>
+
       </a>
 
       <!-- GOKART -->
@@ -167,7 +214,7 @@
         <p>
           Modification of an existing go-kart through
           engine replacement, mechanical integration,
-          and assembly.
+          and assembly, followed by a vehicle demonstration.
         </p>
 
         <div class="project-tags">
@@ -177,8 +224,10 @@
         </div>
 
         <span class="project-action">
-          Explore GOKART →
+          Explore GOKART
+          <span aria-hidden="true">→</span>
         </span>
+
       </a>
 
     </div>
@@ -188,7 +237,10 @@
 
 <footer>
   <div class="container footer-inner">
-    <span>© <span id="year"></span> Rupesh Lal Karn</span>
+    <span>
+      © <span id="year"></span> Rupesh Lal Karn
+    </span>
+
     <a href="contact.html">Contact</a>
   </div>
 </footer>
