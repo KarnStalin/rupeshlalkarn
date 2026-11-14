@@ -4,7 +4,6 @@
 
 <head>
   <meta charset="UTF-8">
-
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
 
@@ -13,16 +12,16 @@
   </title>
 
   <meta name="description"
-        content="Scientific poster presentations,
-        oral conference presentations,
-        and research contributions by
-        Rupesh Lal Karn.">
+        content="Conference posters, oral presentations,
+        and academic research contributions
+        by Rupesh Lal Karn.">
 
   <link rel="stylesheet" href="style.css">
 
   <style>
-
-    /* Research navigation */
+    /* ==========================================
+       RESEARCH NAVIGATION
+       ========================================== */
 
     .research-tabs {
       display: flex;
@@ -30,80 +29,78 @@
       gap: 12px;
       margin-bottom: 40px;
       padding-bottom: 20px;
-      border-bottom: 1px solid
-        rgba(150, 180, 220, 0.2);
+      border-bottom: 1px solid #29425b;
     }
 
     .research-tabs a {
       display: inline-block;
-      padding: 12px 20px;
+      padding: 13px 20px;
+      border: 1px solid #29425b;
       border-radius: 10px;
-      border: 1px solid
-        rgba(150, 180, 220, 0.25);
       background: #142940;
       color: #ffffff;
-      text-decoration: none;
+      font-size: 14px;
       font-weight: 600;
-      transition: all 0.2s ease;
+      text-decoration: none;
+      transition: background 0.2s ease;
     }
 
     .research-tabs a:hover,
     .research-tabs a.active {
       background: #69b9ff;
-      color: #081727;
       border-color: #69b9ff;
+      color: #081727;
     }
 
-    /* Conference tabs */
+    /* ==========================================
+       POSTER / ORAL NAVIGATION
+       ========================================== */
 
     .conference-tabs {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin: 28px 0 32px;
+      margin: 30px 0 40px;
     }
 
     .conference-tab {
+      display: inline-block;
       padding: 13px 24px;
-      border-radius: 10px;
-      border: 1px solid
-        rgba(150, 180, 220, 0.3);
       background: #142940;
+      border: 1px solid #29425b;
+      border-radius: 10px;
       color: #ffffff;
-      font-size: 15px;
+      font-size: 14px;
       font-weight: 600;
-      cursor: pointer;
+      text-decoration: none;
       transition: all 0.2s ease;
     }
 
     .conference-tab:hover,
-    .conference-tab.active {
-      background: #274e78;
+    .conference-tab:focus-visible {
+      background: #69b9ff;
       border-color: #69b9ff;
-      color: #ffffff;
+      color: #081727;
     }
 
-    .conference-tab:focus-visible,
-    .research-tabs a:focus-visible {
-      outline: 2px solid #69b9ff;
-      outline-offset: 3px;
-    }
-
-    /* Presentation panels */
+    /* ==========================================
+       PRESENTATION SECTIONS
+       ========================================== */
 
     .conference-panel {
-      padding-top: 10px;
-    }
-
-    .conference-panel[hidden] {
-      display: none !important;
+      scroll-margin-top: 110px;
+      margin-bottom: 70px;
     }
 
     .conference-panel h2 {
       margin-bottom: 18px;
     }
 
-    /* Presentation cards */
+    .presentation-note {
+      color: #a9bdd1;
+      line-height: 1.8;
+      margin-bottom: 26px;
+    }
 
     .presentation-card {
       background: linear-gradient(
@@ -111,10 +108,7 @@
         #152a42,
         #0c1b2c
       );
-
-      border: 1px solid
-        rgba(150, 180, 220, 0.2);
-
+      border: 1px solid #29425b;
       border-radius: 16px;
       padding: 28px;
       margin: 22px 0;
@@ -122,8 +116,8 @@
 
     .presentation-card h3 {
       color: #ffffff;
-      margin: 16px 0;
       line-height: 1.5;
+      margin: 16px 0;
     }
 
     .presentation-card p {
@@ -136,38 +130,52 @@
     }
 
     .presentation-meta {
-      color: #9fb6cc;
+      color: #a9bdd1;
       font-size: 14px;
-      margin-bottom: 14px;
     }
 
     .presentation-link {
       display: inline-block;
-      margin-top: 16px;
+      margin-top: 18px;
       padding: 12px 20px;
       border-radius: 9px;
       background: #69b9ff;
       color: #081727;
       font-weight: 700;
       text-decoration: none;
+      transition: background 0.2s ease;
     }
 
     .presentation-link:hover {
       background: #a3d6ff;
     }
 
-    .presentation-note {
-      color: #a9bdd1;
-      margin: 12px 0 25px;
-      line-height: 1.8;
-    }
-
     .conference-subheading {
       margin-top: 45px;
     }
 
-    @media (max-width: 700px) {
+    /* Poster PDF preview */
 
+    .poster-preview {
+      margin-top: 24px;
+      border: 1px solid #29425b;
+      border-radius: 12px;
+      overflow: hidden;
+      background: #ffffff;
+    }
+
+    .poster-preview iframe {
+      display: block;
+      width: 100%;
+      height: 480px;
+      border: none;
+    }
+
+    /* ==========================================
+       MOBILE RESPONSIVENESS
+       ========================================== */
+
+    @media (max-width: 700px) {
       .research-tabs {
         gap: 8px;
       }
@@ -186,17 +194,18 @@
         padding: 20px;
       }
 
+      .poster-preview iframe {
+        height: 300px;
+      }
     }
-
   </style>
-
 </head>
 
 <body>
 
-<!-- =====================================
-     MAIN NAVIGATION
-     ===================================== -->
+<!-- ==========================================
+     MAIN WEBSITE NAVIGATION
+     ========================================== -->
 
 <header class="navbar">
 
@@ -204,35 +213,28 @@
     Rupesh Lal <span>Karn.</span>
   </a>
 
-  <button class="menu-toggle"
-          type="button"
-          aria-label="Toggle navigation"
-          aria-expanded="false">
+  <button
+    class="menu-toggle"
+    type="button"
+    aria-label="Toggle navigation"
+    aria-expanded="false">
     ☰
   </button>
 
   <nav class="nav-links">
-
     <a href="index.html">Home</a>
-
     <a href="about.html">About</a>
 
-    <a class="active" href="research.html">
+    <a href="research.html" class="active">
       Research
     </a>
 
     <a href="experience.html">Experience</a>
-
     <a href="publications.html">Publications</a>
-
     <a href="teaching.html">Teaching</a>
-
     <a href="projects.html">Projects</a>
-
     <a href="skills.html">Skills</a>
-
     <a href="contact.html">Contact</a>
-
   </nav>
 
 </header>
@@ -240,12 +242,11 @@
 
 <main>
 
-<!-- =====================================
+<!-- ==========================================
      PAGE INTRODUCTION
-     ===================================== -->
+     ========================================== -->
 
 <section class="page-hero">
-
   <div class="container">
 
     <p class="eyebrow">
@@ -257,27 +258,24 @@
     </h1>
 
     <p>
-      Scientific research communicated
-      through national and international
-      conferences, research posters,
-      oral presentations, and
-      academic seminars.
+      Scientific research communicated through
+      national and international conferences,
+      research posters, oral presentations,
+      and academic seminars.
     </p>
 
   </div>
-
 </section>
 
 
-<!-- =====================================
-     CONFERENCE CONTENT
-     ===================================== -->
+<!-- ==========================================
+     MAIN CONFERENCE CONTENT
+     ========================================== -->
 
 <section class="section">
-
   <div class="container">
 
-    <!-- FIRST LEVEL: RESEARCH TABS -->
+    <!-- FIRST LEVEL: RESEARCH NAVIGATION -->
 
     <nav class="research-tabs"
          aria-label="Research sections">
@@ -299,65 +297,40 @@
     </nav>
 
 
-    <!-- SECOND LEVEL: CONFERENCE TABS -->
+    <!-- SECOND LEVEL: PRESENTATION NAVIGATION -->
 
-    <div class="conference-tabs"
-         role="tablist"
+    <nav class="conference-tabs"
          aria-label="Presentation categories">
 
-      <button
-        type="button"
-        id="poster-tab"
-        class="conference-tab active"
-        data-conference-tab="poster"
-        role="tab"
-        aria-selected="true"
-        aria-controls="poster-panel">
-
+      <a href="#poster-panel"
+         class="conference-tab">
         Poster Presentations
+      </a>
 
-      </button>
-
-      <button
-        type="button"
-        id="oral-tab"
-        class="conference-tab"
-        data-conference-tab="oral"
-        role="tab"
-        aria-selected="false"
-        aria-controls="oral-panel"
-        tabindex="-1">
-
+      <a href="#oral-panel"
+         class="conference-tab">
         Oral Presentations
+      </a>
 
-      </button>
-
-    </div>
+    </nav>
 
 
-    <!-- =================================
+    <!-- ======================================
          POSTER PRESENTATIONS
-         ================================= -->
+         ====================================== -->
 
-    <section
-      id="poster-panel"
-      class="conference-panel"
-      data-conference-panel="poster"
-      role="tabpanel"
-      aria-labelledby="poster-tab">
+    <section id="poster-panel"
+             class="conference-panel">
 
-      <h2>
-        Poster Presentations
-      </h2>
+      <h2>Poster Presentations</h2>
 
       <p class="presentation-note">
-        Research findings presented through
-        scientific posters at academic
-        conferences and research symposia.
+        Scientific research posters presented at
+        academic conferences and research symposia.
       </p>
 
 
-      <!-- TEXAS A&M CONFERENCE -->
+      <!-- TEXAS A&M CONFERENCE POSTER -->
 
       <article class="presentation-card">
 
@@ -371,10 +344,14 @@
           Ti₃AlCN-Derived Ti₃CNTₓ
         </h3>
 
+        <p>
+          <strong>
+            10th Annual Texas A&amp;M
+            Conference on Energy
+          </strong>
+        </p>
+
         <p class="presentation-meta">
-          10th Annual Texas A&amp;M
-          Conference on Energy
-          <br>
           College Station, Texas, USA
         </p>
 
@@ -387,58 +364,64 @@
 
         <p>
           This research investigates
-          processing-induced structural
-          and surface-chemical changes
-          in Ti₃AlCN-derived Ti₃CNTₓ
-          MXenes.
+          processing-induced structural and
+          surface-chemical changes in
+          Ti₃AlCN-derived Ti₃CNTₓ MXenes.
 
-          The work combines XRD,
-          Raman spectroscopy, FTIR,
-          XPS, BET analysis, and
-          photothermal measurements
-          with physics-guided
+          The work combines X-ray diffraction,
+          Raman spectroscopy, FTIR, XPS,
+          BET analysis, and photothermal
+          measurements with physics-guided
           predictive modeling.
         </p>
 
-        <a
-          href="Poster_RLK.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-          class="presentation-link">
+        <!-- POSTER PDF LINK -->
 
-          View Research Poster (PDF)
-
+        <a href="Poster_RLK.pdf"
+           target="_blank"
+           rel="noopener noreferrer"
+           class="presentation-link">
+          View Full Research Poster (PDF)
         </a>
+
+        <!-- POSTER PREVIEW -->
+
+        <div class="poster-preview">
+          <iframe
+            src="Poster_RLK.pdf#toolbar=0"
+            title="Texas A&M Energy Conference Research Poster"
+            loading="lazy">
+          </iframe>
+        </div>
+
+        <p class="presentation-meta">
+          If the PDF preview does not display
+          on your device, use the button above
+          to open the complete poster.
+        </p>
 
       </article>
 
     </section>
 
 
-    <!-- =================================
+    <!-- ======================================
          ORAL PRESENTATIONS
-         ================================= -->
+         ====================================== -->
 
-    <section
-      id="oral-panel"
-      class="conference-panel"
-      data-conference-panel="oral"
-      role="tabpanel"
-      aria-labelledby="oral-tab"
-      hidden>
+    <section id="oral-panel"
+             class="conference-panel">
 
-      <h2>
-        Oral Presentations
-      </h2>
+      <h2>Oral Presentations</h2>
 
       <p class="presentation-note">
-        Research presentations delivered
-        at national and international
-        conferences and academic seminars.
+        Research presentations delivered at
+        national and international conferences
+        and academic seminars.
       </p>
 
 
-      <!-- NATIONAL CONFERENCE 2022 -->
+      <!-- PRESENTATION 1 -->
 
       <article class="presentation-card">
 
@@ -448,9 +431,9 @@
 
         <h3>
           Performance and Combustion
-          Characteristics of Blends
-          of Crude Plastic Fuel in
-          a Single-Cylinder DI Engine
+          Characteristics of Blends of
+          Crude Plastic Fuel in a
+          Single-Cylinder DI Engine
         </h3>
 
         <p>
@@ -461,14 +444,13 @@
         </p>
 
         <p class="presentation-meta">
-          June 26–28, 2022
-          <br>
+          June 26–28, 2022<br>
           Kathmandu, Nepal
         </p>
 
         <p>
-          Research presentation on
-          the performance and combustion
+          Research presentation on the
+          performance and combustion
           characteristics of crude
           plastic-derived fuel blends
           in a diesel engine.
@@ -477,7 +459,7 @@
       </article>
 
 
-      <!-- INTERNATIONAL CONFERENCE 2022 -->
+      <!-- PRESENTATION 2 -->
 
       <article class="presentation-card">
 
@@ -493,29 +475,27 @@
 
         <p>
           <strong>
-            International Conference
-            organized by the
-            Biotechnology Society of Nepal
+            International Conference organized
+            by the Biotechnology Society of Nepal
           </strong>
         </p>
 
         <p class="presentation-meta">
-          December 17–19, 2022
-          <br>
+          December 17–19, 2022<br>
           Kathmandu, Nepal
         </p>
 
         <p>
           Research presentation concerning
           the analysis and characterization
-          of gasoline-range fuels
-          derived from waste plastic.
+          of gasoline-range fuels derived
+          from waste plastic.
         </p>
 
       </article>
 
 
-      <!-- BIODIESEL PRESENTATION -->
+      <!-- PRESENTATION 3 -->
 
       <article class="presentation-card">
 
@@ -524,39 +504,34 @@
         </span>
 
         <h3>
-          Feasibility of Blends
-          of Biodiesel from
-          Waste Cooking Oil
+          Feasibility of Blends of Biodiesel
+          from Waste Cooking Oil
           for a DI Engine
         </h3>
 
         <p>
           <strong>
-            International Conference
-            organized by the
-            Biotechnology Society of Nepal
+            International Conference organized
+            by the Biotechnology Society of Nepal
           </strong>
         </p>
 
         <p class="presentation-meta">
-          December 17–19, 2022
-          <br>
+          December 17–19, 2022<br>
           Kathmandu, Nepal
         </p>
 
         <p>
-          Research presentation
-          examining biodiesel
-          derived from waste
-          cooking oil and its
-          potential application
-          in diesel engines.
+          Research presentation examining
+          biodiesel derived from waste
+          cooking oil and its potential
+          application in diesel engines.
         </p>
 
       </article>
 
 
-      <!-- JATROPHA SEMINAR -->
+      <!-- PRESENTATION 4 -->
 
       <article class="presentation-card">
 
@@ -572,9 +547,8 @@
 
         <p>
           <strong>
-            Regional Seminar
-            organized by
-            Nepal Institute of Technology
+            Regional Seminar organized
+            by Nepal Institute of Technology
           </strong>
         </p>
 
@@ -583,74 +557,86 @@
         </p>
 
         <p>
-          Oral presentation
-          discussing the potential
-          of Jatropha cultivation
-          for biodiesel production
-          in Nepal.
+          Research presentation discussing
+          the potential of Jatropha
+          cultivation for biodiesel
+          production in Nepal.
         </p>
 
       </article>
 
+    </section>
 
-      <!-- ADDITIONAL CONTRIBUTIONS -->
 
-      <h2 class="conference-subheading">
+    <!-- ======================================
+         ADDITIONAL CONFERENCE CONTRIBUTIONS
+         ====================================== -->
+
+    <section id="additional-contributions"
+             class="conference-panel">
+
+      <h2>
         Additional Conference Contributions
       </h2>
 
       <p class="presentation-note">
-        Additional research presented
-        at the 9th National Conference
-        on Science and Technology.
-        The presentation format
-        is not specified in the CV.
+        Additional conference research
+        contributions for which the presentation
+        format has not yet been confirmed.
       </p>
 
+
+      <!-- ADDITIONAL CONTRIBUTION 1 -->
 
       <article class="presentation-card">
 
         <span class="tag">
-          Research Presentation
+          Conference Contribution
         </span>
 
         <h3>
-          Factors Affecting
-          the Production of Biodiesel
+          Factors Affecting the
+          Production of Biodiesel
         </h3>
 
+        <p>
+          <strong>
+            9th National Conference
+            on Science and Technology
+          </strong>
+        </p>
+
         <p class="presentation-meta">
-          9th National Conference
-          on Science and Technology
-          <br>
-          June 26–28, 2022
-          <br>
+          June 26–28, 2022<br>
           Kathmandu, Nepal
         </p>
 
       </article>
 
 
+      <!-- ADDITIONAL CONTRIBUTION 2 -->
+
       <article class="presentation-card">
 
         <span class="tag">
-          Research Presentation
+          Conference Contribution
         </span>
 
         <h3>
-          Selective Recovery of
-          Precious Metal Ions
-          from E-Waste Leachate
-          Using Polymer Ion
-          Exchange Adsorbents
+          Selective Recovery of Precious
+          Metal Ions from E-Waste Leachate
+          Using Polymer Ion Exchange Adsorbents
         </h3>
 
+        <p>
+          <strong>
+            9th National Conference
+            on Science and Technology
+          </strong>
+        </p>
+
         <p class="presentation-meta">
-          9th National Conference
-          on Science and Technology
-          <br>
-          June 26–28, 2022
-          <br>
+          June 26–28, 2022<br>
           Kathmandu, Nepal
         </p>
 
@@ -659,18 +645,16 @@
     </section>
 
   </div>
-
 </section>
 
 </main>
 
 
-<!-- =====================================
+<!-- ==========================================
      FOOTER
-     ===================================== -->
+     ========================================== -->
 
 <footer>
-
   <div class="container footer-inner">
 
     <span>
@@ -683,152 +667,14 @@
     </a>
 
   </div>
-
 </footer>
 
 
-<!-- =====================================
-     SHARED JAVASCRIPT
-     ===================================== -->
+<!-- ==========================================
+     SHARED WEBSITE JAVASCRIPT
+     ========================================== -->
 
 <script src="main.js"></script>
-
-
-<!-- =====================================
-     CONFERENCE TAB FUNCTIONALITY
-     ===================================== -->
-
-<script>
-
-(function () {
-
-  function initializeConferenceTabs() {
-
-    const tabs = document.querySelectorAll(
-      "[data-conference-tab]"
-    );
-
-    const panels = document.querySelectorAll(
-      "[data-conference-panel]"
-    );
-
-    if (!tabs.length || !panels.length) {
-      return;
-    }
-
-    function showTab(name) {
-
-      tabs.forEach(function (tab) {
-
-        const active =
-          tab.dataset.conferenceTab === name;
-
-        tab.classList.toggle("active", active);
-
-        tab.setAttribute(
-          "aria-selected",
-          String(active)
-        );
-
-        tab.tabIndex = active ? 0 : -1;
-
-      });
-
-      panels.forEach(function (panel) {
-
-        panel.hidden =
-          panel.dataset.conferencePanel !== name;
-
-      });
-
-      if (window.location.hash !== "#" + name) {
-        history.replaceState(
-          null,
-          "",
-          "#" + name
-        );
-      }
-
-    }
-
-    tabs.forEach(function (tab, index) {
-
-      tab.addEventListener("click", function () {
-        showTab(tab.dataset.conferenceTab);
-      });
-
-      tab.addEventListener("keydown", function (event) {
-
-        if (![
-          "ArrowLeft",
-          "ArrowRight",
-          "Home",
-          "End"
-        ].includes(event.key)) {
-          return;
-        }
-
-        event.preventDefault();
-
-        let nextIndex = index;
-
-        if (event.key === "ArrowRight") {
-          nextIndex = (index + 1) % tabs.length;
-        }
-
-        if (event.key === "ArrowLeft") {
-          nextIndex =
-            (index - 1 + tabs.length) % tabs.length;
-        }
-
-        if (event.key === "Home") {
-          nextIndex = 0;
-        }
-
-        if (event.key === "End") {
-          nextIndex = tabs.length - 1;
-        }
-
-        tabs[nextIndex].focus();
-
-        showTab(
-          tabs[nextIndex].dataset.conferenceTab
-        );
-
-      });
-
-    });
-
-    showTab(
-      window.location.hash === "#oral"
-        ? "oral"
-        : "poster"
-    );
-
-    window.addEventListener("hashchange", function () {
-
-      showTab(
-        window.location.hash === "#oral"
-          ? "oral"
-          : "poster"
-      );
-
-    });
-
-  }
-
-  if (document.readyState === "loading") {
-    document.addEventListener(
-      "DOMContentLoaded",
-      initializeConferenceTabs
-    );
-  } else {
-    initializeConferenceTabs();
-  }
-
-})();
-
-</script>
 
 </body>
 </html>
