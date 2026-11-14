@@ -4,6 +4,7 @@
 
 <head>
   <meta charset="UTF-8">
+
   <meta name="viewport"
         content="width=device-width, initial-scale=1.0">
 
@@ -16,6 +17,66 @@
         and scientific modeling.">
 
   <link rel="stylesheet" href="style.css">
+
+  <style>
+
+    /* RESEARCH SUB-NAVIGATION */
+
+    .research-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid #29425b;
+    }
+
+    .research-tabs a {
+      display: inline-block;
+      padding: 12px 20px;
+      border: 1px solid #29425b;
+      border-radius: 10px;
+      background: #142940;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .research-tabs a:hover,
+    .research-tabs a.active {
+      background: #69b9ff;
+      border-color: #69b9ff;
+      color: #081727;
+    }
+
+    .research-tabs a:focus-visible {
+      outline: 2px solid #69b9ff;
+      outline-offset: 3px;
+    }
+
+    .section-intro {
+      max-width: 850px;
+      margin-bottom: 30px;
+      line-height: 1.8;
+    }
+
+    @media (max-width: 700px) {
+
+      .research-tabs {
+        gap: 8px;
+      }
+
+      .research-tabs a {
+        padding: 10px 13px;
+        font-size: 12px;
+      }
+
+    }
+
+  </style>
+
 </head>
 
 <body>
@@ -40,17 +101,20 @@
   <nav class="nav-links">
 
     <a href="index.html">Home</a>
+
     <a href="about.html">About</a>
 
-    <a class="active" href="research.html">
+    <a class="active" href="research.html"
+       aria-current="page">
       Research
     </a>
 
     <a href="experience.html">Experience</a>
-    <a href="publications.html">Publications</a>
-    <a href="teaching.html">Teaching</a>
+
     <a href="projects.html">Projects</a>
+
     <a href="skills.html">Skills</a>
+
     <a href="contact.html">Contact</a>
 
   </nav>
@@ -95,9 +159,7 @@
 
   <div class="container">
 
-    <!-- =================================
-         RESEARCH NAVIGATION TABS
-         ================================= -->
+    <!-- RESEARCH SUB-NAVIGATION -->
 
     <nav class="research-tabs"
          aria-label="Research sections">
@@ -119,9 +181,7 @@
     </nav>
 
 
-    <!-- =================================
-         RESEARCH INTERESTS HEADING
-         ================================= -->
+    <!-- RESEARCH INTERESTS -->
 
     <h2 class="section-title">
       Research Interests
@@ -137,12 +197,9 @@
     </p>
 
 
-    <!-- =================================
-         RESEARCH CARDS
-         ================================= -->
+    <!-- RESEARCH CARDS -->
 
     <div class="card-grid">
-
 
       <!-- 01: TWO-DIMENSIONAL MATERIALS -->
 
@@ -311,7 +368,6 @@
         <span class="tag">Statistics</span>
 
       </article>
-
 
     </div>
 
