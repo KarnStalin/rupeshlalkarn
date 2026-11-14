@@ -2,620 +2,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Rupesh Lal Karn | Researcher & Engineer</title>
-
-  <meta name="description"
-    content="Academic portfolio of Rupesh Lal Karn, materials researcher and mechanical engineer.">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
-    rel="stylesheet">
-
-  <style>
-    :root {
-      --bg: #07111f;
-      --surface: #102238;
-      --border: #29435e;
-      --text: #edf5ff;
-      --muted: #a4b7cd;
-      --blue: #6cbaff;
-      --purple: #b09bff;
-      --green: #b7f0d2;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: var(--bg);
-      color: var(--text);
-      font-family: "DM Sans", sans-serif;
-      line-height: 1.7;
-    }
-
-    h1, h2, h3 {
-      font-family: "Space Grotesk", sans-serif;
-      line-height: 1.2;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    a:hover {
-      color: var(--blue);
-    }
-
-    .container {
-      max-width: 1180px;
-      margin: auto;
-      padding: 0 25px;
-    }
-
-    /* NAVIGATION */
-
-    header {
-      background: rgba(7, 17, 31, 0.96);
-      border-bottom: 1px solid var(--border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      backdrop-filter: blur(15px);
-    }
-
-    .navbar {
-      min-height: 80px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 25px;
-    }
-
-    .logo {
-      font-family: "Space Grotesk", sans-serif;
-      font-size: 21px;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .logo span {
-      color: var(--blue);
-    }
-
-    .nav-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 17px;
-    }
-
-    .nav-links a {
-      color: #c7d8ea;
-      font-size: 12px;
-      font-weight: 600;
-      transition: color .2s;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--blue);
-    }
-
-    .menu-button {
-      display: none;
-      background: transparent;
-      color: white;
-      border: 1px solid var(--border);
-      padding: 8px 14px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    /* HERO */
-
-    .hero {
-      min-height: calc(100vh - 150px);
-      display: flex;
-      align-items: center;
-      background:
-        radial-gradient(
-          ellipse at 85% 25%,
-          #173a60,
-          transparent 55%
-        ),
-        radial-gradient(
-          ellipse at 5% 90%,
-          #22224c,
-          transparent 55%
-        );
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr .8fr;
-      gap: 55px;
-      align-items: center;
-      padding-top: 70px;
-      padding-bottom: 70px;
-    }
-
-    .eyebrow {
-      color: var(--green);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .16em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      font-size: clamp(48px, 6vw, 82px);
-      letter-spacing: -.06em;
-      margin: 20px 0;
-    }
-
-    h1 span {
-      background: linear-gradient(
-        90deg,
-        var(--blue),
-        var(--purple)
-      );
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: transparent;
-    }
-
-    .hero-description {
-      color: #c4d5e7;
-      font-size: 18px;
-      max-width: 670px;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 13px;
-      margin: 30px 0;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 13px 22px;
-      border-radius: 10px;
-      font-size: 14px;
-      font-weight: 700;
-      transition: transform .2s;
-    }
-
-    .btn:hover {
-      transform: translateY(-3px);
-    }
-
-    .primary {
-      background: linear-gradient(
-        110deg,
-        var(--blue),
-        var(--purple)
-      );
-      color: #07111f;
-    }
-
-    .primary:hover {
-      color: #07111f;
-    }
-
-    .secondary {
-      border: 1px solid #6984a2;
-      color: white;
-    }
-
-    .portrait {
-      width: 100%;
-      max-width: 390px;
-      display: block;
-      margin: auto;
-      aspect-ratio: 1 / 1.12;
-      object-fit: cover;
-      object-position: center top;
-      border-radius: 24px;
-      border: 1px solid #ffffff40;
-      box-shadow: 0 30px 90px #0009;
-    }
-
-    .location {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    /* FEATURED PAGE LINKS */
-
-    .explore {
-      padding: 65px 0 90px;
-      background: #0b1a2b;
-    }
-
-    .explore h2 {
-      font-size: 35px;
-      letter-spacing: -.04em;
-    }
-
-    .explore-intro {
-      color: var(--muted);
-      max-width: 720px;
-    }
-
-    .feature-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-      margin-top: 35px;
-    }
-
-    .feature-card {
-      background: linear-gradient(
-        145deg,
-        #15283e,
-        #0c1b2c
-      );
-      border: 1px solid var(--border);
-      border-radius: 18px;
-      padding: 28px;
-      transition: transform .25s, border-color .25s;
-    }
-
-    .feature-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--blue);
-    }
-
-    .feature-number {
-      color: var(--purple);
-      font-size: 13px;
-      font-weight: 700;
-    }
-
-    .feature-card h3 {
-      font-size: 22px;
-      margin: 12px 0;
-    }
-
-    .feature-card p {
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .feature-link {
-      display: inline-block;
-      color: var(--blue);
-      font-weight: 700;
-      font-size: 13px;
-      margin-top: 10px;
-    }
-
-    /* FOOTER */
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 30px 0;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .footer-row {
-      display: flex;
-      justify-content: space-between;
-      gap: 15px;
-      flex-wrap: wrap;
-    }
-
-    /* MOBILE */
-
-    @media (max-width: 980px) {
-      .menu-button {
-        display: block;
-      }
-
-      .nav-links {
-        display: none;
-        position: absolute;
-        top: 80px;
-        left: 0;
-        right: 0;
-        background: #07111f;
-        padding: 24px;
-        border-bottom: 1px solid var(--border);
-        flex-direction: column;
-      }
-
-      .nav-links.open {
-        display: flex;
-      }
-
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .portrait {
-        max-width: 340px;
-      }
-
-      .feature-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media (max-width: 650px) {
-      .container {
-        padding: 0 20px;
-      }
-
-      h1 {
-        font-size: 50px;
-      }
-
-      .hero-description {
-        font-size: 16px;
-      }
-
-      .feature-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .explore {
-        padding: 55px 0;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rupesh Lal Karn | Academic Portfolio</title>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-  <!-- NAVIGATION -->
+<header class="navbar">
+  <a class="logo" href="index.html">Rupesh Lal <span>Karn.</span></a>
+  <button class="menu-toggle" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+  <nav class="nav-links">
+    <a class="active" href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="research.html">Research</a>
+    <a href="experience.html">Experience</a>
+    <a href="publications.html">Publications</a>
+    <a href="teaching.html">Teaching</a>
+    <a href="projects.html">Projects</a>
+    <a href="skills.html">Skills</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
 
-  <header>
-    <div class="container navbar">
+<main>
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow">MATERIALS RESEARCHER · MECHANICAL ENGINEER</p>
+      <h1>Rupesh Lal <span>Karn.</span></h1>
+      <h2>Exploring Materials, Energy & Engineering</h2>
 
-      <a href="index.html" class="logo">
-        Rupesh Lal <span>Karn.</span>
+      <p class="lead">
+        Graduate researcher in Engineering at Prairie View A&amp;M
+        University, working at the intersection of functional
+        materials, photothermal conversion, electrochemistry,
+        and materials characterization.
+      </p>
+
+      <p class="lead">
+        My academic background combines experimental
+        materials research with automobile engineering,
+        alternative fuels, and engineering education.
+      </p>
+
+      <div class="buttons">
+        <a class="btn primary" href="research.html">Explore Research</a>
+        <a class="btn outline" href="projects.html">Engineering Projects</a>
+        <a class="btn outline" href="Rupesh_Lal_Karn_CV.pdf" target="_blank" rel="noopener">View CV</a>
+      </div>
+
+      <p class="muted">Prairie View A&amp;M University · Texas, USA</p>
+    </div>
+
+    <div class="portrait-frame">
+      <img src="profile.png" alt="Portrait of Rupesh Lal Karn">
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="eyebrow">EXPLORE</p>
+    <h2 class="section-title">My Academic & Engineering Journey</h2>
+
+    <div class="card-grid">
+      <a class="card" href="research.html">
+        <span class="card-number">01</span>
+        <h3>Research</h3>
+        <p>MXenes, photothermal conversion, electrochemistry, magnetic oxides, and energy materials.</p>
+        <span class="card-link">Explore Research →</span>
       </a>
 
-      <button
-        class="menu-button"
-        type="button"
-        aria-expanded="false"
-        aria-controls="nav-links"
-        onclick="toggleMenu()">
-        ☰ Menu
-      </button>
+      <a class="card" href="publications.html">
+        <span class="card-number">02</span>
+        <h3>Publications</h3>
+        <p>Selected research publications in fuels, combustion, and materials science.</p>
+        <span class="card-link">View Publications →</span>
+      </a>
 
-      <nav class="nav-links" id="nav-links"
-           aria-label="Main navigation">
+      <a class="card" href="projects.html">
+        <span class="card-number">03</span>
+        <h3>Engineering Projects</h3>
+        <p>Tri-Car vehicle development and Go-Kart engine modification.</p>
+        <span class="card-link">View Projects →</span>
+      </a>
 
-        <a href="index.html" class="active">Home</a>
-        <a href="about.html">About</a>
-        <a href="research.html">Research</a>
-        <a href="experience.html">Experience</a>
-        <a href="publications.html">Publications</a>
-        <a href="teaching.html">Teaching</a>
-        <a href="projects.html">Projects</a>
-        <a href="skills.html">Skills</a>
-        <a href="contact.html">Contact</a>
+      <a class="card" href="teaching.html">
+        <span class="card-number">04</span>
+        <h3>Teaching & Mentorship</h3>
+        <p>Engineering teaching, physics education, and undergraduate thesis supervision.</p>
+        <span class="card-link">View Teaching →</span>
+      </a>
 
-      </nav>
+      <a class="card" href="about.html">
+        <span class="card-number">05</span>
+        <h3>About & Education</h3>
+        <p>Academic qualifications, background, research interests, and career journey.</p>
+        <span class="card-link">Learn More →</span>
+      </a>
+
+      <a class="card" href="experience.html">
+        <span class="card-number">06</span>
+        <h3>Research Experience</h3>
+        <p>Research appointments, laboratory work, and scientific collaborations.</p>
+        <span class="card-link">View Experience →</span>
+      </a>
     </div>
-  </header>
+  </div>
+</section>
+</main>
 
-  <main>
+<footer>
+  <div class="container footer-inner">
+    <span>© <span id="year"></span> Rupesh Lal Karn</span>
+    <a href="mailto:rkarn@pvamu.edu">rkarn@pvamu.edu</a>
+  </div>
+</footer>
 
-    <!-- HOMEPAGE -->
-
-    <section class="hero">
-      <div class="container hero-grid">
-
-        <div>
-
-          <div class="eyebrow">
-            Materials Researcher · Mechanical Engineer
-          </div>
-
-          <h1>
-            Rupesh Lal<br>
-            <span>Karn.</span>
-          </h1>
-
-          <p class="hero-description">
-            Exploring the relationship between
-            materials, structure, processing,
-            and performance through experimental
-            characterization, electrochemistry,
-            photothermal studies, and
-            engineering analysis.
-          </p>
-
-          <div class="hero-actions">
-
-            <a href="research.html"
-               class="btn primary">
-              Explore Research
-            </a>
-
-            <a href="Rupesh_Lal_Karn_CV.pdf"
-               class="btn secondary"
-               target="_blank"
-               rel="noopener noreferrer">
-              View CV
-            </a>
-
-            <a href="contact.html"
-               class="btn secondary">
-              Contact
-            </a>
-
-          </div>
-
-          <p class="location">
-            Prairie View A&amp;M University · Texas, USA
-          </p>
-
-        </div>
-
-        <div>
-          <img
-            src="profile.png.png"
-            class="portrait"
-            alt="Rupesh Lal Karn">
-        </div>
-
-      </div>
-    </section>
-
-    <!-- PAGE PREVIEWS -->
-
-    <section class="explore">
-
-      <div class="container">
-
-        <div class="eyebrow">
-          Explore My Work
-        </div>
-
-        <h2>Research. Engineering. Education.</h2>
-
-        <p class="explore-intro">
-          Explore my academic journey, research
-          contributions, engineering projects,
-          publications, and teaching experience.
-        </p>
-
-        <div class="feature-grid">
-
-          <a href="research.html" class="feature-card">
-            <div class="feature-number">01 / RESEARCH</div>
-            <h3>Research</h3>
-            <p>
-              MXenes, photothermal conversion,
-              electrocatalysis, magnetic oxides,
-              and functional materials.
-            </p>
-            <span class="feature-link">
-              Explore Research →
-            </span>
-          </a>
-
-          <a href="publications.html" class="feature-card">
-            <div class="feature-number">02 / PUBLICATIONS</div>
-            <h3>Publications</h3>
-            <p>
-              Selected peer-reviewed publications,
-              research articles, and DOI links.
-            </p>
-            <span class="feature-link">
-              View Publications →
-            </span>
-          </a>
-
-          <a href="projects.html" class="feature-card">
-            <div class="feature-number">03 / PROJECTS</div>
-            <h3>Engineering Projects</h3>
-            <p>
-              Tri-Car design, simulation,
-              fabrication, and Go-Kart
-              engine modification.
-            </p>
-            <span class="feature-link">
-              View Projects →
-            </span>
-          </a>
-
-          <a href="teaching.html" class="feature-card">
-            <div class="feature-number">04 / TEACHING</div>
-            <h3>Teaching & Mentorship</h3>
-            <p>
-              Engineering education, physics teaching,
-              and undergraduate thesis supervision.
-            </p>
-            <span class="feature-link">
-              View Teaching →
-            </span>
-          </a>
-
-          <a href="about.html" class="feature-card">
-            <div class="feature-number">05 / EDUCATION</div>
-            <h3>About & Education</h3>
-            <p>
-              Academic background, graduate
-              education, and undergraduate
-              engineering studies.
-            </p>
-            <span class="feature-link">
-              Learn More →
-            </span>
-          </a>
-
-          <a href="experience.html" class="feature-card">
-            <div class="feature-number">06 / EXPERIENCE</div>
-            <h3>Research Experience</h3>
-            <p>
-              Research appointments, laboratory
-              experience, and scientific
-              collaborations.
-            </p>
-            <span class="feature-link">
-              View Experience →
-            </span>
-          </a>
-
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-
-  <footer>
-    <div class="container footer-row">
-
-      <span>
-        © <span id="year"></span>
-        Rupesh Lal Karn. All rights reserved.
-      </span>
-
-      <span>
-        <a href="mailto:rkarn@pvamu.edu">
-          rkarn@pvamu.edu
-        </a>
-      </span>
-
-    </div>
-  </footer>
-
-  <script>
-    function toggleMenu() {
-      const menu = document.getElementById("nav-links");
-      const button = document.querySelector(".menu-button");
-
-      const isOpen = menu.classList.toggle("open");
-
-      button.setAttribute(
-        "aria-expanded",
-        String(isOpen)
-      );
-    }
-
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
-  </script>
-
+<script src="main.js"></script>
 </body>
 </html>
