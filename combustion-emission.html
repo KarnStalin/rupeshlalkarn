@@ -3,26 +3,253 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Combustion and Emission | Rupesh Lal Karn</title>
-  <link rel="stylesheet" href="fuel-research.css">
+
+  <meta name="description"
+        content="Engine combustion, exhaust emission, and smoke opacity
+        testing: laboratory work by Rupesh Lal Karn.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #e8eaed;
+      color: #20262e;
+      font-family: Arial, sans-serif;
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .wrap {
+      width: min(1200px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    .site-header {
+      padding: 18px 0;
+      background: #f7f8fa;
+      border-bottom: 1px solid #c8cdd4;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand {
+      font-size: 20px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .back {
+      color: #334b63;
+      font-weight: 600;
+    }
+
+    .hero {
+      max-width: 950px;
+      padding: 52px 0 30px;
+    }
+
+    .eyebrow {
+      color: #43576c;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+    }
+
+    h1 {
+      margin: 18px 0 24px;
+      font-size: clamp(36px, 5vw, 62px);
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+    }
+
+    h2,
+    h3 {
+      line-height: 1.3;
+    }
+
+    p {
+      color: #4a5563;
+    }
+
+    .lead {
+      max-width: 850px;
+      font-size: 19px;
+    }
+
+    .topic-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding-bottom: 28px;
+      margin-bottom: 32px;
+      border-bottom: 1px solid #c8cdd4;
+    }
+
+    .topic-nav a {
+      padding: 9px 17px;
+      border: 1px solid #aeb7c2;
+      border-radius: 28px;
+      text-decoration: none;
+    }
+
+    .topic-nav a:hover,
+    .topic-nav a[aria-current="page"] {
+      background: #334b63;
+      color: #ffffff;
+      border-color: #334b63;
+    }
+
+    .overview,
+    .photos {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px;
+    }
+
+    .overview {
+      margin-bottom: 44px;
+    }
+
+    .panel {
+      padding: 28px;
+      background: #f8f9fb;
+      border: 1px solid #c8cdd4;
+      border-radius: 18px;
+    }
+
+    .panel h2 {
+      margin-top: 0;
+      font-size: 24px;
+    }
+
+    .panel p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-title {
+      margin-bottom: 10px;
+      font-size: 32px;
+    }
+
+    .photos figure {
+      margin: 0;
+      overflow: hidden;
+      background: #f8f9fb;
+      border: 1px solid #c8cdd4;
+      border-radius: 18px;
+    }
+
+    .photos figure > a {
+      display: block;
+      background: #d8dde3;
+    }
+
+    .photos img {
+      display: block;
+      width: 100%;
+      height: 380px;
+      object-fit: contain;
+    }
+
+    .photos figcaption {
+      padding: 26px;
+    }
+
+    .photos h3 {
+      margin: 10px 0;
+      font-size: 24px;
+    }
+
+    .photos p {
+      margin-bottom: 0;
+    }
+
+    .research-note {
+      margin-top: 32px;
+    }
+
+    footer {
+      padding: 28px 0;
+      margin-top: 44px;
+      border-top: 1px solid #c8cdd4;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    a:focus-visible {
+      outline: 3px solid #334b63;
+      outline-offset: 5px;
+    }
+
+    @media (max-width: 700px) {
+      .overview,
+      .photos {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding-top: 32px;
+      }
+
+      .photos img {
+        height: auto;
+        max-height: 520px;
+      }
+
+      .wrap {
+        width: calc(100% - 32px);
+      }
+    }
+  </style>
 </head>
+
 <body>
 
 <header class="site-header">
   <div class="wrap header-inner">
-    <a class="brand" href="index.html">Rupesh Lal Karn.</a>
-    <a class="back" href="research.html">← Back to Research</a>
+    <a class="brand" href="index.html">
+      Rupesh Lal Karn.
+    </a>
+
+    <a class="back" href="research.html">
+      ← Back to Research
+    </a>
   </div>
 </header>
 
 <main class="wrap">
+
   <header class="hero">
-    <p class="eyebrow">SUSTAINABLE ENERGY / ENGINE RESEARCH</p>
+    <p class="eyebrow">
+      SUSTAINABLE ENERGY / ENGINE RESEARCH
+    </p>
+
     <h1>Combustion and Emission</h1>
+
     <p class="lead">
-      Investigation of combustion characteristics,
-      engine performance, and emissions in
-      internal combustion engines.
+      Experimental work on engine combustion, exhaust emissions,
+      and smoke opacity. These photographs document laboratory
+      testing, engine instrumentation, and the review of
+      experimental measurements.
     </p>
   </header>
 
@@ -30,32 +257,182 @@
     <a href="alternative-fuels.html">Overview</a>
     <a href="biodiesel.html">Biodiesel</a>
     <a href="plastic-fuel.html">Plastic Fuel</a>
+
     <a href="combustion-emission.html" aria-current="page">
       Combustion and Emission
     </a>
+
     <a href="nanoparticles.html">Nanoparticles</a>
   </nav>
 
-  <section class="panel">
-    <h2>Research focus</h2>
+  <!-- TEST EXPLANATIONS -->
+  <section class="overview" aria-label="Understanding the tests">
+
+    <article class="panel">
+      <p class="eyebrow">01 / ENERGY CONVERSION</p>
+
+      <h2>Combustion testing</h2>
+
+      <p>
+        Combustion testing examines how fuel burns inside an
+        engine and how chemical energy is converted into
+        useful work. Cylinder pressure recorded against
+        crank angle can be used to study combustion timing,
+        pressure development, and heat-release behaviour.
+      </p>
+
+      <p>
+        Engine speed, load, and fuel consumption provide
+        additional context for comparing operating conditions
+        and evaluating alternative fuel blends.
+      </p>
+    </article>
+
+    <article class="panel">
+      <p class="eyebrow">02 / EXHAUST CHARACTERISATION</p>
+
+      <h2>Emission and opacity testing</h2>
+
+      <p>
+        Emission testing examines engine exhaust to understand
+        the environmental effects of fuel use. Depending on
+        the analyser, measurements may include carbon monoxide,
+        hydrocarbons, carbon dioxide, and nitrogen oxides.
+      </p>
+
+      <p>
+        Smoke opacity testing measures how much light is
+        blocked by an exhaust sample. It helps assess smoke
+        behaviour and complements gas measurements; it is
+        not a direct measurement of particulate mass.
+      </p>
+    </article>
+
+  </section>
+
+  <!-- LABORATORY PHOTOGRAPHS -->
+  <section aria-labelledby="laboratory-title">
+
+    <h2 class="section-title" id="laboratory-title">
+      Inside the laboratory
+    </h2>
+
     <p>
-      This work examines the performance of alternative
-      fuel blends through experimental evaluation
-      of combustion and exhaust emissions.
+      Engine testing, instrument checks, and experimental
+      data review. Select a photograph to view the original image.
+    </p>
+
+    <div class="photos">
+
+      <figure>
+        <a href="VCR%20engine.jpg"
+           aria-label="View original research engine setup photo">
+          <img src="VCR%20engine.jpg"
+               alt="Laboratory engine test rig with control instruments and a computer displaying engine analysis software"
+               loading="lazy">
+        </a>
+
+        <figcaption>
+          <span class="eyebrow">01 / ENGINE TEST FACILITY</span>
+
+          <h3>Research engine setup</h3>
+
+          <p>
+            The engine test rig, instrumentation panel,
+            and computer interface used for laboratory
+            investigations of engine performance and combustion.
+          </p>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <a href="Combustion%20Testing.jpeg"
+           aria-label="View original combustion testing photo">
+          <img src="Combustion%20Testing.jpeg"
+               alt="Researchers reviewing measurements on a computer beside an engine instrumentation panel"
+               loading="lazy">
+        </a>
+
+        <figcaption>
+          <span class="eyebrow">02 / COMBUSTION ANALYSIS</span>
+
+          <h3>Reviewing experimental measurements</h3>
+
+          <p>
+            Collaborative review of engine test measurements
+            at the data-acquisition workstation, connecting
+            instrument readings with the interpretation
+            of combustion behaviour.
+          </p>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <a href="Emission%20Testing.jpg"
+           aria-label="View original emission testing photo">
+          <img src="Emission%20Testing.jpg"
+               alt="A laboratory group working with test equipment beside a vehicle with its bonnet open"
+               loading="lazy">
+        </a>
+
+        <figcaption>
+          <span class="eyebrow">03 / EMISSION TESTING</span>
+
+          <h3>Vehicle testing and instrument checks</h3>
+
+          <p>
+            Preparation and inspection of testing equipment
+            during a vehicle laboratory session. Instrument
+            checks and consistent operating conditions
+            support meaningful exhaust measurements.
+          </p>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <a href="Opacity%20Testing.jpg"
+           aria-label="View original opacity testing photo">
+          <img src="Opacity%20Testing.jpg"
+               alt="Two researchers checking a handheld instrument and recording observations beside an engine test rig"
+               loading="lazy">
+        </a>
+
+        <figcaption>
+          <span class="eyebrow">04 / SMOKE OPACITY</span>
+
+          <h3>Instrument readings and record keeping</h3>
+
+          <p>
+            Checking instrument readings and recording
+            observations during engine laboratory work
+            associated with smoke opacity testing.
+          </p>
+        </figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+  <section class="panel research-note">
+    <h2>Connecting combustion with emissions</h2>
+
+    <p>
+      Combustion and exhaust measurements provide complementary
+      views of engine operation. Examining them together helps
+      assess the relationships between fuel properties,
+      operating conditions, energy conversion, and pollutant
+      formation.
     </p>
   </section>
 
-  <section class="panel">
-    <h2>Experiments and results</h2>
-    <p>
-      Experimental photographs, measurement details,
-      and research figures will be added here.
-    </p>
-  </section>
 </main>
 
 <footer>
-  <div class="wrap">
+  <div class="wrap footer-inner">
+    <span>
+      Rupesh Lal Karn · Experimental Engine Research
+    </span>
+
     <a class="back" href="alternative-fuels.html">
       ← Alternative Fuels &amp; Nanoparticles
     </a>
