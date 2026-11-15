@@ -8,27 +8,22 @@
 
   <meta
     name="description"
-    content="Characterization-derived descriptors, thermal modelling,
-    photothermal modelling, electrochemical modelling, and physics-guided
-    descriptor modelling by Rupesh Lal Karn."
+    content="Explore Rupesh Lal Karn's work in descriptor extraction,
+    thermal modelling, photothermal modelling, electrochemical modelling,
+    and physics-guided descriptor modelling."
   >
 
   <style>
     :root {
       --background: #0b1725;
-      --panel: #122438;
       --text: #eef5ff;
-      --muted: #b6c8dc;
+      --muted: #b8c9dc;
       --line: #2a4056;
+      --blue: #9bd2ff;
     }
 
     * {
       box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 24px;
     }
 
     body {
@@ -38,16 +33,15 @@
       font-family: system-ui, -apple-system, BlinkMacSystemFont,
         "Segoe UI", sans-serif;
       font-size: 17px;
-      line-height: 1.8;
+      line-height: 1.75;
     }
 
     a {
-      color: #9bd2ff;
+      color: var(--blue);
       text-underline-offset: 5px;
     }
 
-    a:focus-visible,
-    summary:focus-visible {
+    a:focus-visible {
       outline: 3px solid #ffda9b;
       outline-offset: 5px;
     }
@@ -86,20 +80,21 @@
 
     .hero {
       max-width: 960px;
-      padding: 65px 0 42px;
+      padding: 64px 0 42px;
     }
 
     .eyebrow {
+      margin-bottom: 20px;
       color: #9fe5cd;
       font-size: 12px;
       font-weight: 750;
-      letter-spacing: .16em;
+      letter-spacing: .15em;
       text-transform: uppercase;
     }
 
     h1 {
-      margin: 22px 0;
-      font-size: clamp(40px, 6vw, 74px);
+      margin: 0 0 25px;
+      font-size: clamp(39px, 6vw, 72px);
       line-height: 1.1;
       letter-spacing: -.045em;
     }
@@ -108,312 +103,162 @@
       color: #a9d8ff;
     }
 
-    p {
+    .hero p {
+      max-width: 880px;
       margin: 0 0 20px;
       color: var(--muted);
+      font-size: 20px;
     }
 
-    .lead {
-      max-width: 900px;
-      font-size: 21px;
-    }
-
-    .quick-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin: 28px 0 38px;
-    }
-
-    .quick-links a {
-      padding: 9px 15px;
-      border: 1px solid var(--line);
-      border-radius: 24px;
-      text-decoration: none;
-      font-size: 14px;
-      background: #112235;
-    }
-
-    .quick-links a:hover {
-      background: #1b334b;
-    }
-
-    .model-section {
-      margin-bottom: 23px;
-      border: 1px solid var(--section-line);
-      border-radius: 20px;
-      background: var(--section-bg);
-      overflow: hidden;
-    }
-
-    .descriptor {
-      --accent: #99e6c2;
-      --section-bg: #102b2a;
-      --section-line: #32615a;
-    }
-
-    .thermal {
-      --accent: #ffd097;
-      --section-bg: #30271f;
-      --section-line: #715539;
-    }
-
-    .photothermal {
-      --accent: #ffe28b;
-      --section-bg: #2c2a19;
-      --section-line: #6b6134;
-    }
-
-    .electrochemical {
-      --accent: #cdb6ff;
-      --section-bg: #25223a;
-      --section-line: #574b78;
-    }
-
-    .physics {
-      --accent: #9bd5ff;
-      --section-bg: #142a3c;
-      --section-line: #355f7c;
-    }
-
-    .section-heading {
-      position: relative;
-      display: block;
-      padding: 30px 76px 30px 32px;
-      cursor: pointer;
-      list-style: none;
-    }
-
-    .section-heading::-webkit-details-marker {
-      display: none;
-    }
-
-    .section-heading::after {
-      content: "+";
-      position: absolute;
-      right: 28px;
-      top: 37px;
-      display: grid;
-      place-items: center;
-      width: 34px;
-      height: 34px;
-      border: 1px solid var(--section-line);
-      border-radius: 50%;
-      color: var(--accent);
-      font-size: 24px;
-      line-height: 1;
-    }
-
-    .model-section[open] > .section-heading::after {
-      content: "−";
-    }
-
-    .section-heading:hover {
-      background: rgba(255, 255, 255, .025);
-    }
-
-    .section-number {
-      display: block;
-      margin-bottom: 9px;
-      color: var(--accent);
-      font-family: ui-monospace, monospace;
-      font-size: 12px;
+    .section-label {
+      margin: 10px 0 22px;
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 650;
       letter-spacing: .13em;
       text-transform: uppercase;
     }
 
-    h2 {
-      margin: 0 0 10px;
+    .model-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .model-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 32px;
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      background: var(--card-background);
       color: var(--text);
-      font-size: clamp(25px, 3.2vw, 36px);
-      line-height: 1.2;
+      text-decoration: none;
+      transition:
+        transform .2s ease,
+        border-color .2s ease,
+        box-shadow .2s ease;
+    }
+
+    .model-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--accent);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, .18);
+    }
+
+    .descriptor {
+      --accent: #99e6c2;
+      --card-background: #102b2a;
+      --card-border: #32615a;
+    }
+
+    .thermal {
+      --accent: #ffd097;
+      --card-background: #30271f;
+      --card-border: #715539;
+    }
+
+    .photothermal {
+      --accent: #ffe28b;
+      --card-background: #2c2a19;
+      --card-border: #6b6134;
+    }
+
+    .electrochemical {
+      --accent: #cdb6ff;
+      --card-background: #25223a;
+      --card-border: #574b78;
+    }
+
+    .physics {
+      --accent: #9bd5ff;
+      --card-background: #142a3c;
+      --card-border: #355f7c;
+      grid-column: 1 / -1;
+    }
+
+    .card-number {
+      margin-bottom: 18px;
+      color: var(--accent);
+      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
+      font-size: 12px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0 0 18px;
+      font-size: clamp(25px, 3vw, 33px);
+      line-height: 1.25;
       letter-spacing: -.025em;
     }
 
-    .section-intro {
-      display: block;
-      max-width: 840px;
+    .model-card p {
+      margin: 0 0 24px;
       color: var(--muted);
       font-size: 16px;
-      font-weight: 400;
     }
 
-    .section-content {
-      padding: 0 32px 32px;
-      border-top: 1px solid var(--section-line);
-    }
-
-    .opening {
-      margin-top: 26px;
-    }
-
-    h3 {
-      margin: 30px 0 12px;
-      color: var(--accent);
-      font-size: 21px;
-      line-height: 1.4;
-    }
-
-    h4 {
-      margin: 0 0 10px;
-      color: var(--text);
-      font-size: 17px;
-    }
-
-    strong {
-      color: var(--text);
-    }
-
-    .equation {
-      margin: 20px 0;
-      padding: 18px 20px;
-      background: rgba(0, 0, 0, .24);
-      border-left: 3px solid var(--accent);
-      border-radius: 0 10px 10px 0;
-      color: var(--accent);
-      font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-      font-size: 14px;
-      line-height: 1.9;
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
-    }
-
-    .technique {
-      padding: 20px 0;
-      border-bottom: 1px solid var(--section-line);
-    }
-
-    .technique:last-child {
-      border-bottom: 0;
-    }
-
-    .technique > summary {
-      cursor: pointer;
-      color: var(--accent);
-      font-size: 19px;
-      font-weight: 650;
-    }
-
-    .technique[open] > summary {
-      margin-bottom: 18px;
-    }
-
-    .technique p:last-child {
-      margin-bottom: 0;
-    }
-
-    .table-wrap {
-      margin: 24px 0;
-      overflow-x: auto;
-      border: 1px solid var(--section-line);
-      border-radius: 12px;
-    }
-
-    table {
-      width: 100%;
-      min-width: 590px;
-      border-collapse: collapse;
-      font-size: 15px;
-    }
-
-    th,
-    td {
-      padding: 16px;
-      text-align: left;
-      vertical-align: top;
-      border-bottom: 1px solid var(--section-line);
-    }
-
-    th {
-      background: rgba(0, 0, 0, .18);
-      color: var(--accent);
-    }
-
-    td {
-      color: var(--muted);
-    }
-
-    td:first-child {
-      color: var(--text);
-      font-weight: 600;
-    }
-
-    tr:last-child td {
-      border-bottom: 0;
-    }
-
-    .two-columns {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-      margin: 24px 0;
-    }
-
-    .method-box {
-      padding: 22px;
-      background: rgba(0, 0, 0, .15);
-      border: 1px solid var(--section-line);
-      border-radius: 12px;
-    }
-
-    .method-box p:last-child {
-      margin-bottom: 0;
-    }
-
-    .method-note {
-      margin: 24px 0;
-      padding: 18px 22px;
-      border-left: 3px solid var(--accent);
-      background: rgba(0, 0, 0, .13);
-    }
-
-    .method-note p:last-child {
-      margin-bottom: 0;
-    }
-
-    .workflow {
-      padding-left: 24px;
-      color: var(--muted);
-    }
-
-    .workflow li {
-      padding: 0 0 14px 8px;
-    }
-
-    .workflow li::marker {
-      color: var(--accent);
-      font-weight: 700;
-    }
-
-    .tags {
+    .topics {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 25px;
+      margin-bottom: 28px;
     }
 
-    .tags span {
-      padding: 5px 11px;
-      border: 1px solid var(--section-line);
+    .topics span {
+      padding: 5px 10px;
+      border: 1px solid var(--card-border);
       border-radius: 20px;
       color: var(--accent);
       font-size: 12px;
     }
 
+    .card-link {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      margin-top: auto;
+      padding-top: 19px;
+      border-top: 1px solid var(--card-border);
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    .card-link .arrow {
+      font-size: 25px;
+      line-height: 1;
+    }
+
+    .physics-content {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 36px;
+      align-items: start;
+    }
+
+    .physics .topics {
+      align-content: start;
+      margin-top: 4px;
+    }
+
     .back-link {
       display: inline-block;
-      margin: 20px 0;
+      margin: 38px 0 12px;
       font-weight: 650;
     }
 
     footer {
-      margin-top: 25px;
+      margin-top: 28px;
       border-top: 1px solid var(--line);
       color: var(--muted);
       font-size: 14px;
     }
 
-    @media (max-width: 650px) {
+    @media (max-width: 700px) {
       header,
       main,
       footer {
@@ -424,42 +269,36 @@
         padding-top: 42px;
       }
 
-      .lead {
+      .hero p {
         font-size: 18px;
       }
 
-      .section-heading {
-        padding: 24px 62px 24px 20px;
-      }
-
-      .section-heading::after {
-        right: 17px;
-        top: 29px;
-        width: 30px;
-        height: 30px;
-      }
-
-      .section-content {
-        padding: 0 20px 24px;
-      }
-
-      .two-columns {
+      .model-grid {
         grid-template-columns: 1fr;
+        gap: 20px;
       }
 
-      .equation {
-        padding: 15px;
-        font-size: 12px;
+      .model-card {
+        padding: 25px;
       }
 
-      nav {
-        gap: 18px;
+      .physics {
+        grid-column: auto;
+      }
+
+      .physics-content {
+        grid-template-columns: 1fr;
+        gap: 0;
       }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
+      .model-card {
+        transition: none;
+      }
+
+      .model-card:hover {
+        transform: none;
       }
     }
   </style>
@@ -467,806 +306,234 @@
 
 <body>
 
-<header>
-  <a class="brand" href="index.html">Rupesh Lal Karn</a>
+  <header>
+    <a class="brand" href="index.html">
+      Rupesh Lal Karn
+    </a>
 
-  <nav aria-label="Main navigation">
-    <a href="research.html">Research</a>
-    <a href="projects.html">Projects</a>
-  </nav>
-</header>
+    <nav aria-label="Main navigation">
+      <a href="research.html">Research</a>
+      <a href="projects.html">Projects</a>
+    </nav>
+  </header>
 
-<main>
+  <main>
 
-  <div class="hero">
-    <div class="eyebrow">
-      MATLAB · Material characterization · Physical models
-    </div>
+    <div class="hero">
+      <div class="eyebrow">
+        MATLAB · Characterization · Physical models
+      </div>
 
-    <h1>
-      Modelling &amp;<br>
-      <span>Descriptor Development</span>
-    </h1>
+      <h1>
+        Modelling &amp;<br>
+        <span>Descriptor Development</span>
+      </h1>
 
-    <p class="lead">
-      I develop mathematical descriptions of material structure,
-      thermal conversion, light-induced heating, and electrochemical
-      response. My work combines characterization-derived descriptors
-      with physical equations, numerical simulation, and MATLAB-based
-      analysis.
-    </p>
-
-    <p>
-      The modelling framework follows Ti₃AlCN MAX, acid-etched
-      Ti₃CNTₓ, and DMSO-treated Ti₃CNTₓ through measurements of
-      structure, surface chemistry, porosity, dispersion, and
-      time-dependent behavior.
-    </p>
-  </div>
-
-  <nav class="quick-links" aria-label="Modelling sections">
-    <a href="#descriptor-extraction">Descriptor extraction</a>
-    <a href="#thermal-modelling">Thermal modelling</a>
-    <a href="#photothermal-modelling">Photothermal modelling</a>
-    <a href="#electrochemical-modelling">Electrochemical modelling</a>
-    <a href="#physics-guided">Physics-guided modelling</a>
-  </nav>
-
-  <!-- 01: DESCRIPTOR EXTRACTION -->
-
-  <details
-    class="model-section descriptor"
-    id="descriptor-extraction"
-    open
-  >
-    <summary class="section-heading">
-      <span class="section-number">01 / Characterization to variables</span>
-      <h2>Descriptor Extraction</h2>
-      <span class="section-intro">
-        Modelling experimental signals to obtain structural,
-        chemical, interfacial, and dispersion descriptors.
-      </span>
-    </summary>
-
-    <div class="section-content">
-      <p class="opening">
-        Descriptor extraction begins with the measurement. I use
-        baseline correction, spectral fitting, band integration,
-        and physically defined transformations to convert
-        characterization data into traceable quantitative variables.
+      <p>
+        My modelling work connects material characterization with
+        thermal, photothermal, and electrochemical behavior through
+        interpretable descriptors, physical equations, and numerical
+        analysis.
       </p>
 
-      <details class="technique" open>
-        <summary>XRD: diffraction-profile modelling</summary>
+      <p>
+        Explore the methods below, from extracting variables from
+        experimental signals to constructing physics-guided
+        relationships between material properties and response.
+      </p>
+    </div>
 
-        <p>
-          Baseline-corrected diffraction profiles are fitted with
-          suitable peak functions, including pseudo-Voigt profiles.
-          Peak centers, widths, and areas describe selected
-          reflections. Residual inspection and information criteria
-          support comparisons between alternative peak descriptions.
-        </p>
+    <div class="section-label">
+      Explore modelling methods
+    </div>
 
-        <div class="equation">Icorrected(2θ) = Iraw(2θ) − Ibaseline(2θ)
+    <div class="model-grid">
 
-d = λ / (2 sin θ)
+      <!-- DESCRIPTOR EXTRACTION -->
 
-Lc = Kλ / (β cos θ)</div>
-
-        <p>
-          <strong>Descriptors:</strong> basal spacing, peak position,
-          full width at half maximum, integrated peak area,
-          apparent coherent stacking length, and normalized
-          parent-region intensity.
-        </p>
-
-        <p>
-          The coherence estimate uses β in radians. Without
-          instrumental-broadening correction, Lc remains an apparent
-          stacking descriptor. The parent-region index is a
-          comparative diffraction measure rather than a quantitative
-          residual-phase fraction.
-        </p>
-      </details>
-
-      <details class="technique">
-        <summary>Raman: vibrational-feature modelling</summary>
-
-        <p>
-          Peak-profile fitting extracts center frequencies,
-          linewidths, and integrated areas. Comparisons use
-          corresponding spectral features, with attention to
-          overlapping bands and mode identity across materials.
-        </p>
-
-        <div class="equation">Δω = ωsample − ωreference
-
-Apeak = ∫ I(ω) dω
-
-Relative broadening = Γsample / Γreference</div>
-
-        <p>
-          <strong>Descriptors:</strong> selected Raman shifts,
-          fitted linewidths, relative broadening, and spectral
-          area ratios. The selected normalized Raman shift supplies
-          the vibrational variable in the composite descriptor
-          framework.
-        </p>
-      </details>
-
-      <details class="technique">
-        <summary>FTIR: integrated spectral descriptors</summary>
-
-        <p>
-          Polynomial baseline correction and Savitzky–Golay
-          smoothing support integration over defined spectral
-          windows. Band areas provide comparative measures of
-          broad, overlapping absorption features.
-        </p>
-
-        <div class="equation">Bi = ∫[ν1 to ν2] Acorrected(ν) dν
-
-Rsurface = B2 / B1
-
-Rdefect = B3 / B1
-
-ROH = B4 / B1</div>
-
-        <div class="table-wrap">
-          <table>
-            <thead>
-              <tr>
-                <th>Band</th>
-                <th>Window</th>
-                <th>Operational interpretation</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>B1</td>
-                <td>500–850 cm⁻¹</td>
-                <td>Lattice-related region</td>
-              </tr>
-              <tr>
-                <td>B2</td>
-                <td>850–1200 cm⁻¹</td>
-                <td>Termination-related region</td>
-              </tr>
-              <tr>
-                <td>B3</td>
-                <td>1350–1700 cm⁻¹</td>
-                <td>Defect- and adsorbate-sensitive region</td>
-              </tr>
-              <tr>
-                <td>B4</td>
-                <td>3000–3600 cm⁻¹</td>
-                <td>Hydroxyl- and interface-sensitive region</td>
-              </tr>
-            </tbody>
-          </table>
+      <a
+        class="model-card descriptor"
+        href="descriptor-extraction.html"
+      >
+        <div class="card-number">
+          01 / Characterization to variables
         </div>
 
-        <p>
-          <strong>Descriptors:</strong> integrated areas,
-          band-area fractions, and lattice-normalized ratios.
-          These operational windows support comparison without
-          treating each area as a unique chemical-species count.
-        </p>
-      </details>
-
-      <details class="technique">
-        <summary>XPS: chemical-envelope fitting</summary>
+        <h2>Descriptor Extraction</h2>
 
         <p>
-          Survey quantification and high-resolution envelope fitting
-          provide complementary chemical information. Background
-          alternatives, constrained components, and linked
-          spin–orbit partners guide the modelling of overlapping
-          contributions.
+          Processing diffraction, spectroscopy, gas-sorption,
+          and dispersion measurements to obtain structural,
+          chemical, interfacial, and hydrodynamic descriptors.
+          Methods include baseline correction, peak fitting,
+          band integration, and physically defined transformations.
         </p>
+
+        <div class="topics">
+          <span>XRD</span>
+          <span>Raman</span>
+          <span>FTIR</span>
+          <span>XPS</span>
+          <span>Gas sorption</span>
+          <span>Zeta potential</span>
+          <span>DLS</span>
+        </div>
+
+        <div class="card-link">
+          <span>Explore descriptor extraction</span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
+
+      <!-- THERMAL MODELLING -->
+
+      <a
+        class="model-card thermal"
+        href="thermal-modelling.html"
+      >
+        <div class="card-number">
+          02 / Conversion and transport
+        </div>
+
+        <h2>Thermal Modelling</h2>
 
         <p>
-          <strong>Descriptors:</strong> quantifiable elemental
-          ratios such as F/Ti, normalized chemical-envelope
-          component fractions, and TiOₓ-like contributions.
-          Candidate sulfur assignments are assessed using
-          background-only descriptions and control samples.
+          Event-specific analysis of thermogravimetric data,
+          conversion-dependent kinetics, and thermal-event
+          reconstruction. Effective-medium models examine
+          the roles of porosity and interfacial resistance
+          in heat transport.
         </p>
+
+        <div class="topics">
+          <span>TGA / DTG</span>
+          <span>Activation energy</span>
+          <span>Conversion kinetics</span>
+          <span>Effective transport</span>
+        </div>
+
+        <div class="card-link">
+          <span>Explore thermal modelling</span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
+
+      <!-- PHOTOTHERMAL MODELLING -->
+
+      <a
+        class="model-card photothermal"
+        href="photothermal-modelling.html"
+      >
+        <div class="card-number">
+          03 / Light-to-heat response
+        </div>
+
+        <h2>Photothermal Modelling</h2>
 
         <p>
-          Survey atomic percentages remain distinct from component
-          fractions within a fitted envelope. Values below a
-          reporting threshold are retained as censored information
-          rather than automatically replaced with zero.
+          Mathematical treatment of laser-induced heating
+          and cooling using transient energy balances.
+          Curve fitting, reference calibration, and time-constant
+          analysis connect temperature measurements with
+          heat-input estimates.
         </p>
-      </details>
 
-      <details class="technique">
-        <summary>Gas sorption: accessible area and porosity</summary>
+        <div class="topics">
+          <span>Energy balance</span>
+          <span>Heating / cooling</span>
+          <span>Time constants</span>
+          <span>Reference calibration</span>
+        </div>
+
+        <div class="card-link">
+          <span>Explore photothermal modelling</span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
+
+      <!-- ELECTROCHEMICAL MODELLING -->
+
+      <a
+        class="model-card electrochemical"
+        href="electrochemical-modelling.html"
+      >
+        <div class="card-number">
+          04 / Charge storage and relaxation
+        </div>
+
+        <h2>Electrochemical Modelling</h2>
 
         <p>
-          Surface area and pore-volume measurements supply geometric
-          descriptors for the interface and effective-medium
-          modelling framework.
+          Complementary modelling of cyclic voltammetry,
+          impedance spectroscopy, and galvanostatic
+          charge–discharge. The framework combines scan-rate
+          analysis, equivalent circuits, relaxation descriptions,
+          and state-space simulation.
         </p>
 
-        <div class="equation">Dp ≈ 4Vp / SBET
+        <div class="topics">
+          <span>CV</span>
+          <span>EIS</span>
+          <span>GCD</span>
+          <span>Equivalent circuits</span>
+          <span>State-space models</span>
+        </div>
 
-φ = Vp ρbulk
+        <div class="card-link">
+          <span>Explore electrochemical modelling</span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
 
-av = SBET ρbulk</div>
+      <!-- PHYSICS-GUIDED DESCRIPTOR MODELLING -->
 
-        <p>
-          <strong>Descriptors:</strong> specific surface area,
-          pore volume, operational pore diameter, assumed-density
-          pore fraction, and volumetric interface area.
-          Density-dependent quantities are identified separately
-          from measured inputs.
-        </p>
-      </details>
+      <a
+        class="model-card physics"
+        href="physics-guided-modelling.html"
+      >
+        <div class="card-number">
+          05 / Connecting descriptors to response
+        </div>
 
-      <details class="technique">
-        <summary>Zeta potential and DLS: dispersion variables</summary>
+        <h2>Physics-Guided Descriptor Modelling</h2>
 
-        <p>
-          Zeta-potential magnitude describes an electrokinetic
-          aspect of dispersion. DLS supplies an operational
-          hydrodynamic size that can include aggregate behavior.
-        </p>
-
-        <div class="equation">Electrokinetic variable = |ζ|
-
-Size variable = log10(Dh)
-
-Provisional combined index = |ζ| / Dh</div>
-
-        <p>
-          <strong>Descriptors:</strong> zeta-potential magnitude,
-          hydrodynamic diameter, transformed size, and combined
-          dispersion measures. Hydrodynamic diameter is not
-          interpreted as a direct lateral sheet dimension.
-        </p>
-      </details>
-
-      <div class="tags">
-        <span>Baseline correction</span>
-        <span>Peak fitting</span>
-        <span>Band integration</span>
-        <span>Descriptor tables</span>
-      </div>
-    </div>
-  </details>
-
-  <!-- 02: THERMAL MODELLING -->
-
-  <details class="model-section thermal" id="thermal-modelling">
-    <summary class="section-heading">
-      <span class="section-number">02 / Conversion and transport</span>
-      <h2>Thermal Modelling</h2>
-      <span class="section-intro">
-        Event-specific thermal kinetics and effective-medium
-        descriptions of heat transport.
-      </span>
-    </summary>
-
-    <div class="section-content">
-      <h3>Non-isothermal conversion kinetics</h3>
-
-      <p>
-        TGA and DTG signals define event boundaries, conversion
-        intervals, and characteristic temperatures. Each selected
-        event is normalized independently before kinetic analysis.
-      </p>
-
-      <div class="equation">α(T) = [m0 − m(T)] / (m0 − mf)
-
-dα/dT = (A / β) exp[−Ea / (RT)] f(α)
-
-β = dT/dt</div>
-
-      <p>
-        Here α is event-specific conversion, β is heating rate,
-        Ea is apparent activation energy, and A is an apparent
-        pre-exponential factor.
-      </p>
-
-      <div class="two-columns">
-        <article class="method-box">
-          <h4>Kinetic treatments</h4>
+        <div class="physics-content">
           <p>
-            Kissinger, Flynn–Wall–Ozawa,
-            Kissinger–Akahira–Sunose, Starink, and Friedman
-            formulations examine peak-temperature and
-            conversion-dependent behavior.
+            Building interpretable relationships from
+            characterization-derived variables. Descriptor
+            screening, normalization, and composite-score
+            construction connect structural, interfacial,
+            vibrational, and dispersion information with
+            physically motivated response functions.
           </p>
-        </article>
 
-        <article class="method-box">
-          <h4>Event reconstruction</h4>
-          <p>
-            Effective reaction-order descriptions reconstruct
-            selected conversion intervals. Event overlap,
-            derivative sensitivity, and heating-rate coverage
-            guide interpretation.
-          </p>
-        </article>
-      </div>
+          <div class="topics">
+            <span>Descriptor screening</span>
+            <span>Normalization</span>
+            <span>Composite scores</span>
+            <span>Concentration dependence</span>
+            <span>Sensitivity analysis</span>
+            <span>Uncertainty assessment</span>
+          </div>
+        </div>
 
-      <h3>Porosity and interface-controlled transport</h3>
+        <div class="card-link">
+          <span>Explore physics-guided modelling</span>
+          <span class="arrow" aria-hidden="true">→</span>
+        </div>
+      </a>
 
-      <p>
-        Effective-medium calculations connect pore fraction,
-        solid and pore-phase conductivity, and interfacial
-        resistance. A Maxwell–Eucken treatment supplies the
-        porous-medium conductivity term.
-      </p>
-
-      <div class="equation">kporous = ks [2ks + kf − 2φ(ks − kf)]
-          / [2ks + kf + φ(ks − kf)]
-
-keff = kporous / (1 + Rint av kporous)
-
-aeff = keff / (ρeff cp,eff)
-
-eeff = √(keff ρeff cp,eff)</div>
-
-      <p>
-        ks and kf represent solid- and pore-phase conductivity.
-        Rint is interface resistance, av is volumetric interface
-        area, aeff is thermal diffusivity, and eeff is thermal
-        effusivity.
-      </p>
-
-      <div class="method-note">
-        <p>
-          Conductivity, diffusivity, and effusivity generated by
-          this framework depend on specified physical assumptions.
-          They remain identifiable as model outputs rather than
-          direct conductivity measurements.
-        </p>
-      </div>
-
-      <h3>MATLAB implementation</h3>
-
-      <p>
-        The computational workflow combines event segmentation,
-        conversion interpolation, derivative processing, kinetic
-        regression, and reconstruction of thermal-conversion curves.
-        Transport calculations retain consistent units and explicit
-        material assumptions.
-      </p>
     </div>
-  </details>
 
-  <!-- 03: PHOTOTHERMAL MODELLING -->
+    <a class="back-link" href="research.html">
+      ← Back to research interests
+    </a>
 
-  <details
-    class="model-section photothermal"
-    id="photothermal-modelling"
-  >
-    <summary class="section-heading">
-      <span class="section-number">03 / Light-to-heat response</span>
-      <h2>Photothermal Modelling</h2>
-      <span class="section-intro">
-        Energy balances, transient curve fitting, reference
-        calibration, and heat-input estimation.
-      </span>
-    </summary>
+  </main>
 
-    <div class="section-content">
-      <h3>A transient energy-balance framework</h3>
-
-      <p>
-        Laser-induced heating is represented through a lumped
-        thermal model. Effective heat capacity, heat input,
-        and environmental heat loss determine the temperature
-        evolution of the measurement system.
-      </p>
-
-      <div class="equation">Cth dΔT/dt = Qin − hA ΔT</div>
-
-      <p>
-        Cth represents effective thermal capacity and hA represents
-        an effective heat-loss conductance. The temperature rise
-        ΔT is defined relative to the ambient baseline.
-      </p>
-
-      <h3>Heating and cooling curve fitting</h3>
-
-      <div class="equation">ΔTheating(t) = ΔT∞ [1 − exp(−t / τH)]
-
-ΔTcooling(t) = ΔToff exp[−(t − toff) / τC]</div>
-
-      <p>
-        Separate heating and cooling fits provide temperature-rise
-        amplitudes and characteristic time constants. The
-        laser-switch-off temperature is kept distinct from an
-        extrapolated asymptotic temperature.
-      </p>
-
-      <h3>Water-reference calibration</h3>
-
-      <div class="equation">hAwater = Cth,water / τC,water
-
-Qnet,off = hAwater
-           × (ΔTsample,off − ΔTwater,off)</div>
-
-      <p>
-        A water reference provides a consistent calibration for
-        reference-corrected net heat-input estimates under the
-        measurement conditions.
-      </p>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Model quantity</th>
-              <th>Role</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Temperature-rise amplitude</td>
-              <td>Describes the fitted transient magnitude</td>
-            </tr>
-            <tr>
-              <td>τH and τC</td>
-              <td>Describe heating and cooling timescales</td>
-            </tr>
-            <tr>
-              <td>Transient area</td>
-              <td>Integrates temperature rise over a defined interval</td>
-            </tr>
-            <tr>
-              <td>Net heat input</td>
-              <td>Connects reference correction with the heat balance</td>
-            </tr>
-            <tr>
-              <td>Mass-specific heat input</td>
-              <td>Normalizes the estimated heat input by material mass</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h3>Fitting and uncertainty</h3>
-
-      <p>
-        MATLAB-based nonlinear fitting is accompanied by residual
-        inspection and assessment of temporal autocorrelation.
-        Heat-balance estimates are distinguished from intrinsic
-        photothermal conversion efficiency, which requires an
-        absorbed-power measurement.
-      </p>
-    </div>
-  </details>
-
-  <!-- 04: ELECTROCHEMICAL MODELLING -->
-
-  <details
-    class="model-section electrochemical"
-    id="electrochemical-modelling"
-  >
-    <summary class="section-heading">
-      <span class="section-number">04 / Charge storage and relaxation</span>
-      <h2>Electrochemical Modelling</h2>
-      <span class="section-intro">
-        CV rate analysis, EIS equivalent circuits, GCD
-        reconstruction, and state-space simulation.
-      </span>
-    </summary>
-
-    <div class="section-content">
-      <h3>Cyclic voltammetry: branch and rate analysis</h3>
-
-      <p>
-        Anodic and cathodic branches support separation of
-        background and symmetric current contributions.
-        Scan-rate scaling examines operational current dependence
-        at corresponding potentials.
-      </p>
-
-      <div class="equation">ibg(V) = [ia(V) + ic(V)] / 2
-
-is(V) = [ia(V) − ic(V)] / 2
-
-is(V, ν) = a(V) ν^b(V)
-
-is(V, ν) = k1(V) ν + k2(V) ν^(1/2)</div>
-
-      <p>
-        Loop-integrated capacitance, scan-rate exponents, and
-        two-term decomposition coefficients are assessed within
-        consistent potential windows and acquisition conditions.
-      </p>
-
-      <h3>EIS: equivalent-circuit descriptions</h3>
-
-      <p>
-        Candidate circuits represent series resistance,
-        capacitive branches, distributed relaxation, and
-        conductive pathways. Constant-phase elements describe
-        non-ideal frequency dependence.
-      </p>
-
-      <div class="equation">ZCPE(ω) = 1 / [Q (jω)^n]
-
-τRC = RC
-
-τR–CPE = (RQ)^(1/n)
-
-C*(ω) = 1 / [jω Z(ω)]</div>
-
-      <p>
-        Resistance parameters, CPE coefficients, exponents,
-        effective capacitance, and relaxation times provide
-        complementary model quantities. The CPE coefficient Q
-        is not directly equated with capacitance when n differs
-        from one.
-      </p>
-
-      <h3>GCD: time-domain charge-storage modelling</h3>
-
-      <div class="equation">Ccharge = I Δtcharge / ΔV
-
-Cdischarge = I Δtdischarge / ΔV
-
-q = ∫ I dt
-
-E = ∫ V I dt</div>
-
-      <p>
-        Resolved charge and discharge segments support
-        capacitance, charge-balance, and energy calculations.
-        Rate-law comparisons examine current dependence with
-        explicit potential-window and resistive-drop treatment.
-      </p>
-
-      <h3>State-space simulation</h3>
-
-      <div class="equation">dx/dt = Ax + bI
-
-V = cᵀx + DI</div>
-
-      <p>
-        Finite RC networks are represented in state-space form
-        to simulate piecewise voltage ramps and constant-current
-        segments. A CPE remains distinct from an exact finite
-        RC realization.
-      </p>
-
-      <div class="method-note">
-        <p>
-          Linear Kramers–Kronig checks, residual analysis,
-          parameter identifiability, bootstrap uncertainty,
-          and withheld scan rates, currents, or frequencies
-          support model assessment across techniques.
-        </p>
-      </div>
-    </div>
-  </details>
-
-  <!-- 05: PHYSICS-GUIDED DESCRIPTOR MODELLING -->
-
-  <details class="model-section physics" id="physics-guided">
-    <summary class="section-heading">
-      <span class="section-number">05 / Connecting descriptors to response</span>
-      <h2>Physics-Guided Descriptor Modelling</h2>
-      <span class="section-intro">
-        Screening, normalization, composite descriptors,
-        physically motivated response functions, and model assessment.
-      </span>
-    </summary>
-
-    <div class="section-content">
-      <p class="opening">
-        This framework connects characterization-derived
-        variables with response models while retaining their
-        physical interpretation. Descriptor construction is
-        separated from parameter fitting so that the origin
-        and role of each variable remain traceable.
-      </p>
-
-      <h3>Normalization and directional alignment</h3>
-
-      <div class="equation">N(x) = (x − xmin) / (xmax − xmin)
-
-Ninverse(x) = 1 − N(x)</div>
-
-      <p>
-        Normalization places selected inputs on a common scale.
-        Directional inversion is specified where required by
-        the descriptor definition. Constant-valued inputs
-        require separate treatment because their normalization
-        denominator is zero.
-      </p>
-
-      <h3>Composite descriptor families</h3>
-
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Family</th>
-              <th>Inputs</th>
-              <th>Purpose</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Interfacial / structural score I</td>
-              <td>
-                Apparent Lc, FTIR B2 band-area fraction,
-                F/Ti, and pore diameter
-              </td>
-              <td>
-                Combines selected structural and
-                interface-sensitive variables
-              </td>
-            </tr>
-            <tr>
-              <td>Vibrational score D</td>
-              <td>Selected Raman shift</td>
-              <td>
-                Represents a defined vibrational-change variable
-              </td>
-            </tr>
-            <tr>
-              <td>Dispersion score S</td>
-              <td>
-                Log-transformed hydrodynamic diameter
-                and zeta-potential magnitude
-              </td>
-              <td>
-                Combines operational size and electrokinetic information
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="equation">I = [1 − N(Lc)
-     + N(B2 band-area fraction)
-     + N(F/Ti)
-     + N(Dp)] / 4
-
-D = N(selected Raman-shift variable)
-
-S = [1 − N(log10(Dh)) + N(|ζ|)] / 2</div>
-
-      <p>
-        These scores are study-specific comparative coordinates.
-        Their definitions preserve the distinction between
-        measured inputs, fitted characterization parameters,
-        derived transformations, and composite variables.
-      </p>
-
-      <h3>Physically motivated response functions</h3>
-
-      <p>
-        Concentration enters explicitly rather than being
-        absorbed into a material score. Linear, logarithmic,
-        power-law, and saturation functions provide candidate
-        descriptions of concentration-dependent response.
-      </p>
-
-      <div class="equation">Example descriptor-based structure:
-
-Qnet = β0 + βC ln(C / C0) + βS S
-
-Alternative concentration structure:
-
-Qnet = Qmax C / (KC + C)</div>
-
-      <p>
-        C0 is a reference concentration used to make the
-        logarithm dimensionless. These symbolic forms describe
-        model structure without presenting fitted coefficients.
-      </p>
-
-      <h3>Screening and sensitivity analysis</h3>
-
-      <p>
-        Screening examines missing or censored measurements,
-        non-equivalent spectral features, redundant variables,
-        acquisition-sensitive quantities, and dependence on
-        assumed physical parameters.
-      </p>
-
-      <p>
-        Alternative FTIR descriptors, pore measures, and
-        linear-versus-logarithmic size transformations test
-        sensitivity to descriptor construction. Assumption-dependent
-        thermal outputs are kept separate from predictor inputs
-        when their use would create circular relationships.
-      </p>
-
-      <h3>MATLAB modelling workflow</h3>
-
-      <ol class="workflow">
-        <li>
-          <strong>Build a traceable input table.</strong>
-          Retain material identity, units, measurement origin,
-          and processing history.
-        </li>
-        <li>
-          <strong>Define the descriptors.</strong>
-          Document normalization, direction, weighting,
-          and treatment of incomplete measurements.
-        </li>
-        <li>
-          <strong>Specify candidate models.</strong>
-          Match mathematical forms to the physical question
-          and available observations.
-        </li>
-        <li>
-          <strong>Estimate parameters.</strong>
-          Fit the chosen expressions and examine residual
-          behavior and parameter stability.
-        </li>
-        <li>
-          <strong>Assess model dependence.</strong>
-          Compare information criteria, descriptor alternatives,
-          uncertainty, and appropriate withheld observations.
-        </li>
-        <li>
-          <strong>Verify the calculations.</strong>
-          Check units, limiting behavior, reconstructed signals,
-          and analytical–numerical consistency.
-        </li>
-      </ol>
-
-      <div class="tags">
-        <span>Descriptor screening</span>
-        <span>Normalization</span>
-        <span>Physical interpretation</span>
-        <span>Regression</span>
-        <span>Sensitivity analysis</span>
-        <span>Uncertainty</span>
-      </div>
-    </div>
-  </details>
-
-  <a class="back-link" href="research.html">
-    ← Back to research interests
-  </a>
-
-</main>
-
-<footer>
-  Rupesh Lal Karn · Modelling &amp; Descriptor Development
-</footer>
-
-<script>
-  /*
-    Navigation links open their corresponding section.
-    Direct links such as modelling.html#thermal-modelling
-    also open the requested section.
-  */
-
-  function openLinkedSection(hash) {
-    if (!hash) return;
-
-    const section = document.getElementById(hash.slice(1));
-
-    if (section && section.matches("details.model-section")) {
-      section.open = true;
-    }
-  }
-
-  document.querySelectorAll(".quick-links a").forEach(function (link) {
-    link.addEventListener("click", function () {
-      openLinkedSection(link.hash);
-    });
-  });
-
-  window.addEventListener("hashchange", function () {
-    openLinkedSection(window.location.hash);
-  });
-
-  openLinkedSection(window.location.hash);
-</script>
+  <footer>
+    Rupesh Lal Karn · Modelling &amp; Descriptor Development
+  </footer>
 
 </body>
 </html>
