@@ -1,1 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>Magnetic Materials | Rupesh Lal Karn</title>
+
+  <meta name="description"
+        content="Research by Rupesh Lal Karn on complex magnetic
+        oxides, crystal structure, Rietveld refinement,
+        Raman spectroscopy, and magnetic measurements.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #0b192a;
+      color: #eef4ff;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    .container {
+      width: min(1240px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    .site-header {
+      padding: 20px 0;
+      background: #0e1d2e;
+      border-bottom: 1px solid #29425e;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand {
+      color: #eef4ff;
+      font-size: 20px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .brand span {
+      color: #68b8ff;
+    }
+
+    .research-link {
+      color: #8fcaff;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .research-link:hover {
+      color: #c6e6ff;
+    }
+
+    .hero {
+      max-width: 950px;
+      padding: 60px 0 40px;
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: #bda5ff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+    }
+
+    h2,
+    h3 {
+      line-height: 1.35;
+    }
+
+    .intro {
+      max-width: 880px;
+      margin: 24px 0 0;
+      color: #c5d3e6;
+      font-size: 19px;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      align-items: stretch;
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+
+    .detail-box {
+      min-width: 0;
+      padding: 28px;
+      border: 1px solid;
+      border-top-width: 4px;
+      border-radius: 18px;
+    }
+
+    /* Blue: material systems */
+    .materials-box {
+      --accent: #91cfff;
+      --box-text: #d0e2f3;
+      --pill-bg: #173e60;
+      --pill-border: #416c91;
+      background: #102d47;
+      border-color: #416c91;
+    }
+
+    /* Green: structural characterization */
+    .structure-box {
+      --accent: #9ee0bc;
+      --box-text: #d0e9dc;
+      --pill-bg: #1b4838;
+      --pill-border: #477f65;
+      background: #12382c;
+      border-color: #477f65;
+    }
+
+    /* Purple: magnetic measurements */
+    .magnetism-box {
+      --accent: #d3b6ff;
+      --box-text: #e3d8f2;
+      --pill-bg: #42305e;
+      --pill-border: #78608f;
+      background: #30223f;
+      border-color: #78608f;
+    }
+
+    .detail-label {
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    .detail-box h2 {
+      margin: 16px 0 20px;
+      color: #ffffff;
+      font-size: 26px;
+    }
+
+    .detail-box h3 {
+      margin: 24px 0 10px;
+      color: var(--accent);
+      font-size: 18px;
+    }
+
+    .detail-box p,
+    .detail-box li {
+      color: var(--box-text);
+      font-size: 15px;
+    }
+
+    .detail-box p {
+      margin: 0 0 16px;
+    }
+
+    .detail-box ul:not(.keyword-list) {
+      padding-left: 20px;
+      margin: 12px 0 20px;
+    }
+
+    .detail-box li {
+      margin-bottom: 10px;
+    }
+
+    .detail-box strong {
+      color: #ffffff;
+    }
+
+    .keyword-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding: 0;
+      margin: 24px 0 0;
+      list-style: none;
+    }
+
+    .keyword-list li {
+      margin: 0;
+      padding: 6px 12px;
+      border: 1px solid var(--pill-border);
+      border-radius: 999px;
+      background: var(--pill-bg);
+      color: var(--box-text);
+      font-size: 13px;
+    }
+
+    .focus-panel {
+      margin-bottom: 28px;
+      padding: 30px;
+      border: 1px solid #29425e;
+      border-radius: 18px;
+      background: #102236;
+    }
+
+    .focus-panel h2 {
+      margin: 0 0 16px;
+      font-size: 28px;
+    }
+
+    .focus-panel p {
+      max-width: 1000px;
+      margin-bottom: 0;
+      color: #bdcde0;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 28px 0 44px;
+    }
+
+    .tag {
+      padding: 7px 13px;
+      border: 1px solid #365676;
+      border-radius: 999px;
+      background: #183149;
+      color: #d7eaff;
+      font-size: 14px;
+    }
+
+    footer {
+      padding: 24px 0;
+      border-top: 1px solid #29425e;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      color: #a4b8ce;
+      font-size: 14px;
+    }
+
+    a:focus-visible {
+      outline: 2px solid #8fcaff;
+      outline-offset: 5px;
+    }
+
+    @media (max-width: 1050px) {
+      .detail-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        width: calc(100% - 32px);
+      }
+
+      .hero {
+        padding-top: 36px;
+      }
+
+      .detail-box,
+      .focus-panel {
+        padding: 24px;
+      }
+
+      .intro {
+        font-size: 17px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      Rupesh Lal <span>Karn.</span>
+    </a>
+
+    <a class="research-link" href="research.html">
+      ← Back to Research
+    </a>
+  </div>
+</header>
+
+<main class="container">
+
+  <header class="hero">
+    <p class="eyebrow">04 / Magnetic Materials</p>
+
+    <h1>Complex Magnetic Oxides</h1>
+
+    <p class="intro">
+      My research examines the relationships between crystal
+      structure and magnetic behaviour in complex oxide
+      materials. I combine X-ray diffraction, Rietveld
+      refinement, Raman spectroscopy, and magnetic
+      measurements to investigate structural features
+      and their connection with the measured magnetic response.
+    </p>
+  </header>
+
+  <div class="detail-grid">
+
+    <!-- BLUE BOX -->
+    <section class="detail-box materials-box"
+             aria-labelledby="materials-title">
+
+      <span class="detail-label">01 / MATERIAL SYSTEMS</span>
+
+      <h2 id="materials-title">
+        Complex oxides and magnetic interactions
+      </h2>
+
+      <p>
+        Complex magnetic oxides provide a platform for
+        investigating how atomic arrangement, composition,
+        and local bonding influence magnetic behaviour.
+        Their properties reflect interactions between
+        magnetic ions within the crystal lattice.
+      </p>
+
+      <h3>Why crystal structure matters</h3>
+
+      <p>
+        The positions of metal and oxygen atoms determine
+        the pathways through which magnetic ions interact.
+        Changes in bond lengths, bond angles, and structural
+        symmetry can therefore influence the magnetic response.
+      </p>
+
+      <h3>Features considered in interpretation</h3>
+
+      <ul>
+        <li>
+          <strong>Composition:</strong>
+          the elements present and their roles
+          within the oxide structure.
+        </li>
+        <li>
+          <strong>Crystal symmetry:</strong>
+          the arrangement and repeating pattern
+          of atoms in the lattice.
+        </li>
+        <li>
+          <strong>Local coordination:</strong>
+          the oxygen environment surrounding
+          the metal ions.
+        </li>
+        <li>
+          <strong>Additional phases:</strong>
+          secondary phases that may contribute
+          to the measured response.
+        </li>
+      </ul>
+
+      <h3>Central question</h3>
+
+      <p>
+        How do structural features help explain
+        the magnetic behaviour observed under
+        different measurement conditions?
+      </p>
+
+      <ul class="keyword-list" aria-label="Material concepts">
+        <li>Complex oxides</li>
+        <li>Crystal structure</li>
+        <li>Magnetic interactions</li>
+        <li>Local bonding</li>
+      </ul>
+    </section>
+
+    <!-- GREEN BOX -->
+    <section class="detail-box structure-box"
+             aria-labelledby="structure-title">
+
+      <span class="detail-label">02 / STRUCTURAL CHARACTERIZATION</span>
+
+      <h2 id="structure-title">
+        Diffraction, refinement, and spectroscopy
+      </h2>
+
+      <p>
+        Structural characterization provides the foundation
+        for interpreting magnetic measurements. I use
+        complementary techniques to examine the crystalline
+        phases, lattice structure, and vibrational
+        features of the materials.
+      </p>
+
+      <h3>X-ray diffraction</h3>
+
+      <p>
+        X-ray diffraction (XRD) examines the crystalline
+        structure through its diffraction pattern.
+        Peak positions and intensities support phase
+        identification and comparison of structural
+        features between samples.
+      </p>
+
+      <h3>Rietveld refinement</h3>
+
+      <p>
+        Rietveld refinement compares a calculated
+        diffraction pattern with the measured data.
+        A suitable structural model can be refined
+        to estimate lattice parameters and other
+        crystallographic quantities supported by
+        the quality of the measurements.
+      </p>
+
+      <h3>Raman spectroscopy</h3>
+
+      <p>
+        Raman spectroscopy probes vibrational modes
+        associated with the material's bonding and
+        symmetry. It complements diffraction by
+        providing information about the local
+        structural environment.
+      </p>
+
+      <p>
+        Assessing these results together helps establish
+        the structural context needed for a meaningful
+        discussion of magnetism.
+      </p>
+
+      <ul class="keyword-list" aria-label="Structural techniques">
+        <li>XRD</li>
+        <li>Rietveld refinement</li>
+        <li>Raman spectroscopy</li>
+        <li>Lattice parameters</li>
+      </ul>
+    </section>
+
+    <!-- PURPLE BOX -->
+    <section class="detail-box magnetism-box"
+             aria-labelledby="magnetism-title">
+
+      <span class="detail-label">03 / MAGNETIC MEASUREMENTS</span>
+
+      <h2 id="magnetism-title">
+        Magnetic response and interpretation
+      </h2>
+
+      <p>
+        Magnetic measurements examine how a material
+        responds to applied magnetic field and temperature.
+        They provide information that can be interpreted
+        alongside structural characterization to
+        investigate magnetic behaviour.
+      </p>
+
+      <h3>Temperature-dependent behaviour</h3>
+
+      <p>
+        Measurements as a function of temperature can
+        reveal changes in magnetic response and features
+        associated with magnetic transitions. Their
+        interpretation depends on the applied field,
+        measurement history, and sample characteristics.
+      </p>
+
+      <h3>Field-dependent behaviour</h3>
+
+      <p>
+        Magnetization measured as a function of field
+        can reveal reversible and hysteretic responses.
+        Where a hysteresis loop is present, quantities
+        such as coercivity and remanence help
+        describe its behaviour.
+      </p>
+
+      <h3>Careful comparison of measurements</h3>
+
+      <ul>
+        <li>
+          <strong>Normalization:</strong>
+          clearly state whether magnetization is
+          reported per unit mass, volume, or mole.
+        </li>
+        <li>
+          <strong>Measurement conditions:</strong>
+          consider temperature, applied field,
+          and sample history.
+        </li>
+        <li>
+          <strong>Background contributions:</strong>
+          account for the sample holder and
+          other relevant contributions.
+        </li>
+        <li>
+          <strong>Structural evidence:</strong>
+          consider phase composition before assigning
+          magnetic features to the main material.
+        </li>
+      </ul>
+
+      <ul class="keyword-list" aria-label="Magnetic analysis concepts">
+        <li>Magnetization</li>
+        <li>Temperature dependence</li>
+        <li>Field dependence</li>
+        <li>Hysteresis</li>
+      </ul>
+    </section>
+
+  </div>
+
+  <section class="focus-panel">
+    <p class="eyebrow">CENTRAL RESEARCH FOCUS</p>
+
+    <h2>Connecting crystal structure with magnetic behaviour</h2>
+
+    <p>
+      By combining diffraction, structural refinement,
+      vibrational spectroscopy, and magnetic measurements,
+      I investigate the relationships between the atomic
+      structure of complex oxides and their magnetic
+      response. The emphasis is on developing an
+      interpretation supported by complementary
+      experimental evidence.
+    </p>
+  </section>
+
+  <div class="tags" aria-label="Research keywords">
+    <span class="tag">Magnetic Materials</span>
+    <span class="tag">Complex Oxides</span>
+    <span class="tag">X-ray Diffraction</span>
+    <span class="tag">Rietveld Refinement</span>
+    <span class="tag">Raman Spectroscopy</span>
+    <span class="tag">Magnetic Measurements</span>
+  </div>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>Rupesh Lal Karn · Magnetic Materials</span>
+
+    <a class="research-link" href="research.html">
+      Back to Research
+    </a>
+  </div>
+</footer>
+
+</body>
+</html>
