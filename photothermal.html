@@ -3,544 +3,134 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Laser-Induced Heating | Rupesh Lal Karn</title>
-
-  <meta name="description"
-        content="Research by Rupesh Lal Karn on laser-induced
-        heating in MAX phases and MXenes, temperature evolution,
-        and photothermal heat generation.">
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      background: #0b192a;
-      color: #eef4ff;
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.8;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .container {
-      width: min(1240px, calc(100% - 40px));
-      margin: auto;
-    }
-
-    .site-header {
-      padding: 20px 0;
-      background: #0e1d2e;
-      border-bottom: 1px solid #29425e;
-    }
-
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .brand {
-      color: #eef4ff;
-      font-size: 20px;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .brand span {
-      color: #68b8ff;
-    }
-
-    .research-link {
-      color: #8fcaff;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .research-link:hover {
-      color: #c6e6ff;
-    }
-
-    .hero {
-      max-width: 950px;
-      padding: 60px 0 40px;
-    }
-
-    .eyebrow {
-      margin: 0 0 16px;
-      color: #bda5ff;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(34px, 5vw, 58px);
-      line-height: 1.12;
-      letter-spacing: -0.04em;
-    }
-
-    h2,
-    h3 {
-      line-height: 1.35;
-    }
-
-    .intro {
-      max-width: 880px;
-      margin: 24px 0 0;
-      color: #c5d3e6;
-      font-size: 19px;
-    }
-
-    .detail-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      align-items: stretch;
-      gap: 24px;
-      margin-bottom: 36px;
-    }
-
-    .detail-box {
-      min-width: 0;
-      padding: 28px;
-      border: 1px solid;
-      border-top-width: 4px;
-      border-radius: 18px;
-    }
-
-    /* Blue: materials */
-    .materials-box {
-      --accent: #91cfff;
-      --box-text: #d0e2f3;
-      --pill-bg: #173e60;
-      --pill-border: #416c91;
-      background: #102d47;
-      border-color: #416c91;
-    }
-
-    /* Orange: laser heating */
-    .heating-box {
-      --accent: #ffc591;
-      --box-text: #f0ddcf;
-      --pill-bg: #583720;
-      --pill-border: #946342;
-      background: #3d291e;
-      border-color: #946342;
-    }
-
-    /* Purple: analysis */
-    .analysis-box {
-      --accent: #d3b6ff;
-      --box-text: #e3d8f2;
-      --pill-bg: #42305e;
-      --pill-border: #78608f;
-      background: #30223f;
-      border-color: #78608f;
-    }
-
-    .detail-label {
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-    }
-
-    .detail-box h2 {
-      margin: 16px 0 20px;
-      color: #ffffff;
-      font-size: 26px;
-    }
-
-    .detail-box h3 {
-      margin: 24px 0 10px;
-      color: var(--accent);
-      font-size: 18px;
-    }
-
-    .detail-box p,
-    .detail-box li {
-      color: var(--box-text);
-      font-size: 15px;
-    }
-
-    .detail-box p {
-      margin: 0 0 16px;
-    }
-
-    .detail-box ul:not(.keyword-list) {
-      padding-left: 20px;
-      margin: 12px 0 20px;
-    }
-
-    .detail-box li {
-      margin-bottom: 10px;
-    }
-
-    .detail-box strong {
-      color: #ffffff;
-    }
-
-    .keyword-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      padding: 0;
-      margin: 24px 0 0;
-      list-style: none;
-    }
-
-    .keyword-list li {
-      margin: 0;
-      padding: 6px 12px;
-      border: 1px solid var(--pill-border);
-      border-radius: 999px;
-      background: var(--pill-bg);
-      color: var(--box-text);
-      font-size: 13px;
-    }
-
-    .focus-panel {
-      margin-bottom: 28px;
-      padding: 30px;
-      border: 1px solid #29425e;
-      border-radius: 18px;
-      background: #102236;
-    }
-
-    .focus-panel h2 {
-      margin: 0 0 16px;
-      font-size: 28px;
-    }
-
-    .focus-panel p {
-      max-width: 1000px;
-      margin-bottom: 0;
-      color: #bdcde0;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin: 28px 0 44px;
-    }
-
-    .tag {
-      padding: 7px 13px;
-      border: 1px solid #365676;
-      border-radius: 999px;
-      background: #183149;
-      color: #d7eaff;
-      font-size: 14px;
-    }
-
-    footer {
-      padding: 24px 0;
-      border-top: 1px solid #29425e;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-      color: #a4b8ce;
-      font-size: 14px;
-    }
-
-    a:focus-visible {
-      outline: 2px solid #8fcaff;
-      outline-offset: 5px;
-    }
-
-    @media (max-width: 1050px) {
-      .detail-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .container {
-        width: calc(100% - 32px);
-      }
-
-      .hero {
-        padding-top: 36px;
-      }
-
-      .detail-box,
-      .focus-panel {
-        padding: 24px;
-      }
-
-      .intro {
-        font-size: 17px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="research-design.css">
 </head>
 
-<body>
+<body class="thermal">
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="index.html">
-      Rupesh Lal <span>Karn.</span>
-    </a>
+<nav aria-label="Main navigation">
+  <a class="brand" href="index.html">Rupesh Lal Karn.</a>
+  <a href="research.html">← Research</a>
+</nav>
 
-    <a class="research-link" href="research.html">
-      ← Back to Research
-    </a>
-  </div>
-</header>
+<main>
 
-<main class="container">
+  <header class="thermal-hero">
+    <p class="eyebrow">02 / Photothermal conversion</p>
 
-  <header class="hero">
-    <p class="eyebrow">02 / Photothermal Conversion</p>
-
-    <h1>Laser-Induced Heating</h1>
+    <h1>Light in.<br><span>Heat out.</span></h1>
 
     <p class="intro">
-      My research investigates photothermal heating in MAX
-      phases, acid-etched MXenes, and intercalated MXenes
-      under near-infrared irradiation. I examine temperature
-      evolution and net photothermal heat generation to
-      understand how material processing relates to the
-      observed thermal response.
+      Laser-induced heating in MAX phases and MXenes.
+    </p>
+
+    <p>
+      I investigate temperature evolution and net
+      photothermal heat generation under near-infrared
+      irradiation, comparing materials at different
+      processing stages.
     </p>
   </header>
 
-  <div class="detail-grid">
+  <section class="section experiment">
 
-    <!-- BLUE BOX -->
-    <section class="detail-box materials-box"
-             aria-labelledby="materials-title">
-
-      <span class="detail-label">01 / MATERIAL SYSTEMS</span>
-
-      <h2 id="materials-title">
-        Comparing MAX phases and MXenes
-      </h2>
+    <aside>
+      <p class="eyebrow">Following an experiment</p>
 
       <p>
-        My work compares materials at different stages of
-        processing, including the MAX precursor,
-        acid-etched MXene, and intercalated MXene.
-        This comparison connects material preparation
-        with laser-induced temperature changes.
+        The sequence connects material selection,
+        irradiation, and quantitative interpretation.
       </p>
 
-      <h3>Processing-dependent behaviour</h3>
+      <div class="chips">
+        <span>MAX phases</span>
+        <span>Etched MXenes</span>
+        <span>Intercalated MXenes</span>
+      </div>
+    </aside>
 
-      <p>
-        Selective etching and intercalation can change
-        layer arrangement, surface chemistry, and
-        morphology. These changes provide a basis for
-        investigating differences in photothermal behaviour.
-      </p>
+    <div>
 
-      <h3>Materials considered</h3>
+      <article>
+        <span class="step-number">01</span>
+        <div>
+          <h2>Begin with the material.</h2>
+          <p>
+            The MAX precursor, acid-etched MXene, and
+            intercalated MXene provide a basis for
+            investigating how preparation relates to
+            thermal response. Structural and surface
+            changes give context to the comparison.
+          </p>
+        </div>
+      </article>
 
-      <ul>
-        <li>
-          <strong>MAX phase:</strong>
-          the layered precursor used as a reference
-          for comparison.
-        </li>
-        <li>
-          <strong>Acid-etched MXene:</strong>
-          the material obtained following selective
-          removal of the aluminium layer.
-        </li>
-        <li>
-          <strong>Intercalated MXene:</strong>
-          material treated to modify the arrangement
-          and spacing of its layers.
-        </li>
-      </ul>
+      <article>
+        <span class="step-number">02</span>
+        <div>
+          <h2>Apply near-infrared irradiation.</h2>
+          <p>
+            Absorbed optical energy can be converted
+            into heat. Laser power, illuminated area,
+            exposure time, sample quantity, and geometry
+            influence the measured response.
+          </p>
+        </div>
+      </article>
 
-      <h3>Central question</h3>
+      <article>
+        <span class="step-number">03</span>
+        <div>
+          <h2>Follow temperature through time.</h2>
+          <p>
+            Temperature–time curves describe the initial
+            response, subsequent heating, and any approach
+            towards a steady temperature. Consistent
+            conditions and reference measurements support
+            comparisons between samples.
+          </p>
+        </div>
+      </article>
 
-      <p>
-        How does each processing stage affect the
-        temperature response observed under comparable
-        irradiation conditions?
-      </p>
+      <article>
+        <span class="step-number">04</span>
+        <div>
+          <h2>Interpret the energy balance.</h2>
+          <p>
+            I use MATLAB to process measurements and
+            investigate temperature rise, heating rate,
+            and net heat generation. Interpretation must
+            consider both the energy entering the system
+            and heat exchange with its surroundings.
+          </p>
+        </div>
+      </article>
 
-      <ul class="keyword-list" aria-label="Materials studied">
-        <li>MAX phases</li>
-        <li>Etched MXenes</li>
-        <li>Intercalated MXenes</li>
-      </ul>
-    </section>
-
-    <!-- ORANGE BOX -->
-    <section class="detail-box heating-box"
-             aria-labelledby="heating-title">
-
-      <span class="detail-label">02 / LASER HEATING EXPERIMENTS</span>
-
-      <h2 id="heating-title">
-        Tracking the thermal response
-      </h2>
-
-      <p>
-        Near-infrared irradiation supplies optical energy
-        to the sample. Absorbed energy can be converted
-        into heat, producing a measurable temperature
-        rise that changes with exposure time.
-      </p>
-
-      <h3>Temperature evolution</h3>
-
-      <p>
-        Temperature–time measurements describe how the
-        sample responds during irradiation. The curve
-        can reveal the initial heating behaviour,
-        the subsequent rate of temperature increase,
-        and any approach towards a steady temperature.
-      </p>
-
-      <h3>Conditions that influence heating</h3>
-
-      <ul>
-        <li>
-          <strong>Irradiation:</strong>
-          laser power, illuminated area, and exposure time.
-        </li>
-        <li>
-          <strong>Sample:</strong>
-          material quantity, preparation, and geometry.
-        </li>
-        <li>
-          <strong>Surroundings:</strong>
-          ambient temperature and heat exchange
-          with the environment.
-        </li>
-      </ul>
-
-      <p>
-        Consistent conditions and appropriate reference
-        measurements are important for interpreting
-        differences between samples.
-      </p>
-
-      <ul class="keyword-list" aria-label="Experimental focus">
-        <li>Near-infrared irradiation</li>
-        <li>Temperature evolution</li>
-        <li>Heating response</li>
-      </ul>
-    </section>
-
-    <!-- PURPLE BOX -->
-    <section class="detail-box analysis-box"
-             aria-labelledby="analysis-title">
-
-      <span class="detail-label">03 / QUANTITATIVE ANALYSIS</span>
-
-      <h2 id="analysis-title">
-        Temperature rise and heat generation
-      </h2>
-
-      <p>
-        I use quantitative analysis to interpret
-        temperature evolution and evaluate net
-        photothermal heat generation. MATLAB supports
-        the processing, comparison, and visualization
-        of experimental measurements.
-      </p>
-
-      <h3>Reading the heating curves</h3>
-
-      <ul>
-        <li>
-          <strong>Temperature rise:</strong>
-          the change relative to the initial
-          sample temperature.
-        </li>
-        <li>
-          <strong>Heating rate:</strong>
-          how quickly temperature changes
-          during irradiation.
-        </li>
-        <li>
-          <strong>Thermal response:</strong>
-          the overall shape and time dependence
-          of the temperature curve.
-        </li>
-      </ul>
-
-      <h3>Interpreting heat generation</h3>
-
-      <p>
-        Temperature rise reflects both heat generation
-        and heat loss. Evaluating net photothermal
-        heating therefore requires consideration of
-        the sample, experimental background, and
-        heat exchange with the surroundings.
-      </p>
-
-      <p>
-        A higher measured temperature alone does not
-        establish a higher conversion efficiency;
-        the experimental conditions and energy
-        balance also matter.
-      </p>
-
-      <ul class="keyword-list" aria-label="Analysis methods">
-        <li>MATLAB</li>
-        <li>Temperature–time analysis</li>
-        <li>Heat generation</li>
-      </ul>
-    </section>
-
-  </div>
-
-  <section class="focus-panel">
-    <p class="eyebrow">CENTRAL RESEARCH FOCUS</p>
-
-    <h2>Connecting material processing with laser heating</h2>
-
-    <p>
-      By comparing MAX phases, etched MXenes, and
-      intercalated MXenes, I investigate how processing
-      relates to photothermal behaviour. The emphasis
-      is on interpreting temperature evolution and
-      heat generation alongside the structural and
-      surface-chemical changes introduced during
-      material preparation.
-    </p>
+    </div>
   </section>
 
-  <div class="tags" aria-label="Research keywords">
-    <span class="tag">Laser-Induced Heating</span>
-    <span class="tag">Photothermal Conversion</span>
-    <span class="tag">Near-Infrared Irradiation</span>
-    <span class="tag">MXenes</span>
-    <span class="tag">Heat Generation</span>
-    <span class="tag">MATLAB</span>
-  </div>
+  <section class="thermal-note">
+    <p class="eyebrow">An important distinction</p>
+
+    <h2>
+      Temperature rise is a response,
+      not an efficiency measurement.
+    </h2>
+
+    <p>
+      A higher temperature alone does not establish
+      higher photothermal conversion efficiency.
+      Material quantity, experimental background,
+      and heat losses must also be considered.
+    </p>
+  </section>
 
 </main>
 
 <footer>
-  <div class="container footer-inner">
-    <span>Rupesh Lal Karn · Laser-Induced Heating</span>
-
-    <a class="research-link" href="research.html">
-      Back to Research
-    </a>
-  </div>
+  <span>Rupesh Lal Karn · Laser-Induced Heating</span>
+  <a href="research.html">Back to Research</a>
 </footer>
 
 </body>
