@@ -1,151 +1,961 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Electrochemistry | Rupesh Lal Karn</title>
-  <link rel="stylesheet" href="research-design.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Electrochemical Modelling | Rupesh Lal Karn</title>
+
+<meta
+  name="description"
+  content="CV, EIS, GCD, equivalent-circuit modelling,
+  state-space simulation, and electrochemical descriptor analysis."
+>
+
+<style>
+  :root {
+    --bg: #0c1727;
+    --panel: #14263b;
+    --text: #edf4fc;
+    --muted: #b9cadd;
+    --line: #2d425b;
+    --mint: #a2e5c8;
+    --purple: #d5baff;
+    --orange: #ffd09b;
+    --blue: #a4d5ff;
+  }
+
+  * { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 24px;
+  }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font: 16px/1.8 system-ui, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  a {
+    color: var(--blue);
+    text-underline-offset: 5px;
+  }
+
+  a:focus-visible,
+  summary:focus-visible {
+    outline: 3px solid var(--orange);
+    outline-offset: 5px;
+  }
+
+  header, main, footer {
+    width: min(1280px, 100%);
+    margin: auto;
+    padding: 26px;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  header a { text-decoration: none; }
+
+  .brand {
+    color: var(--text);
+    font-weight: 750;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .hero {
+    max-width: 1000px;
+    padding: 58px 0 30px;
+  }
+
+  .eyebrow {
+    color: var(--accent, var(--mint));
+    font-size: 12px;
+    font-weight: 750;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 22px 0;
+    font-size: clamp(39px, 6vw, 74px);
+    line-height: 1.1;
+    letter-spacing: -.045em;
+  }
+
+  h1 span { color: var(--purple); }
+
+  h2 {
+    margin: 12px 0 22px;
+    font-size: clamp(27px, 3.3vw, 39px);
+    line-height: 1.2;
+    letter-spacing: -.025em;
+  }
+
+  h3 {
+    margin: 0 0 12px;
+    font-size: 21px;
+    line-height: 1.4;
+  }
+
+  p {
+    margin: 0 0 18px;
+    color: var(--muted);
+  }
+
+  strong { color: var(--text); }
+
+  .lead { font-size: 20px; }
+
+  .jump-links {
+    gap: 10px;
+    margin: 5px 0 35px;
+  }
+
+  .jump-links a {
+    padding: 8px 15px;
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    background: var(--panel);
+    font-size: 14px;
+    text-decoration: none;
+  }
+
+  figure {
+    margin: 24px 0;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    border-radius: 17px;
+    background: #f5f6f5;
+  }
+
+  figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  figcaption {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 12px 17px;
+    background: var(--panel);
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  section {
+    padding: 36px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  .model-row {
+    display: grid;
+    grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr);
+    gap: 30px;
+    align-items: start;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .model-row:last-child { border-bottom: 0; }
+
+  .model-label {
+    margin-bottom: 10px;
+    color: var(--accent);
+    font: 12px/1.6 ui-monospace, monospace;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+  }
+
+  .equation-box {
+    min-width: 0;
+    padding: 22px;
+    background: #101f32;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent, var(--purple));
+    border-radius: 12px;
+  }
+
+  .equation {
+    padding: 8px 0;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(18px, 2.2vw, 24px);
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+  }
+
+  .equation-box p {
+    margin: 12px 0 0;
+    font-size: 14px;
+  }
+
+  .why {
+    color: var(--accent);
+    font-size: 14px;
+  }
+
+  .table-wrap {
+    overflow-x: auto;
+    margin: 24px 0;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+  }
+
+  table {
+    width: 100%;
+    min-width: 650px;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+
+  th, td {
+    padding: 17px;
+    border-bottom: 1px solid var(--line);
+    text-align: left;
+    vertical-align: top;
+  }
+
+  th {
+    color: var(--purple);
+    background: var(--panel);
+  }
+
+  td { color: var(--muted); }
+
+  td:first-child {
+    color: var(--text);
+    font-weight: 650;
+  }
+
+  tr:last-child td { border-bottom: 0; }
+
+  .note {
+    margin: 24px 0;
+    padding: 18px 22px;
+    border-left: 3px solid var(--accent, var(--orange));
+    background: var(--panel);
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  details {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  summary {
+    cursor: pointer;
+    color: var(--blue);
+    font-size: 19px;
+    font-weight: 650;
+  }
+
+  details[open] summary { margin-bottom: 18px; }
+
+  .steps {
+    margin: 28px 0;
+    padding: 0;
+    list-style: none;
+    counter-reset: stage;
+  }
+
+  .steps li {
+    position: relative;
+    padding: 0 0 27px 54px;
+    color: var(--muted);
+    counter-increment: stage;
+  }
+
+  .steps li::before {
+    content: counter(stage, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 2px;
+    color: var(--mint);
+    font-family: monospace;
+  }
+
+  .steps strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 18px;
+  }
+
+  .back {
+    display: inline-block;
+    margin-top: 25px;
+    font-weight: 650;
+  }
+
+  footer {
+    margin-top: 28px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  @media(max-width: 850px) {
+    .model-row {
+      grid-template-columns: 1fr;
+      gap: 15px;
+    }
+  }
+
+  @media(max-width: 540px) {
+    header, main, footer { padding: 20px; }
+    .hero { padding-top: 38px; }
+    .lead { font-size: 18px; }
+    .equation-box { padding: 17px; }
+  }
+
+  @media(prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
 </head>
 
-<body class="electro">
+<body>
 
-<nav aria-label="Main navigation">
-  <a class="brand" href="index.html">Rupesh Lal Karn.</a>
-  <a href="research.html">← Research</a>
-</nav>
+<header>
+  <a class="brand" href="index.html">Rupesh Lal Karn</a>
+
+  <nav aria-label="Main navigation">
+    <a href="modelling.html">Modelling</a>
+    <a href="research.html">Research</a>
+  </nav>
+</header>
 
 <main>
 
-  <header class="electro-hero">
-    <p class="eyebrow">03 / Electrochemistry</p>
+  <div class="hero">
+    <div class="eyebrow">
+      CV · EIS · GCD · Circuit simulation
+    </div>
 
-    <h1>At the interface<br>of materials and charge.</h1>
+    <h1>
+      Electrochemical<br>
+      <span>Modelling</span>
+    </h1>
 
-    <p class="intro">
-      Electrochemical characterization of functional
-      materials for energy-related applications,
-      including the oxygen evolution reaction.
+    <p class="lead">
+      I model electrochemical charge storage through
+      complementary analyses of cyclic voltammetry,
+      impedance spectroscopy, and galvanostatic
+      charge–discharge.
     </p>
 
-    <p class="electro-mark">
-      My work combines voltammetry, impedance spectroscopy,
-      and Tafel analysis to examine electrode activity,
-      charge transfer, and kinetic behaviour.
+    <p>
+      The framework separates directly extracted descriptors,
+      empirical rate relationships, and physical circuit models.
+      MATLAB simulations connect resistance, storage,
+      leakage, and relaxation times with complete measured curves.
     </p>
-  </header>
+  </div>
 
-  <section>
-    <p class="eyebrow">Methods reference</p>
-    <h2>Different measurements. Complementary questions.</h2>
+  <nav class="jump-links" aria-label="Page sections">
+    <a href="#cv">CV models</a>
+    <a href="#eis">EIS models</a>
+    <a href="#gcd">GCD models</a>
+    <a href="#circuits">Circuit simulation</a>
+    <a href="#selection">Model assessment</a>
+    <a href="#workflow">MATLAB workflow</a>
+  </nav>
 
-    <div class="table-scroll">
+  <figure>
+    <a href="electrochemical-response.png">
+      <img
+        src="electrochemical-response.png"
+        alt="Schematic CV loop, EIS Nyquist response,
+        and galvanostatic charge-discharge curves."
+      >
+    </a>
+
+    <figcaption>
+      <span>Complementary electrochemical measurements · Schematic</span>
+      <a href="electrochemical-response.png">Enlarge</a>
+    </figcaption>
+  </figure>
+
+  <!-- CV -->
+
+  <section id="cv" style="--accent:#a2e5c8">
+    <div class="eyebrow">01 / Potential-controlled response</div>
+    <h2>Cyclic voltammetry</h2>
+
+    <article class="model-row">
+      <div>
+        <div class="model-label">Descriptor / Loop capacitance</div>
+        <h3>Integrate the complete response</h3>
+
+        <p>
+          Anodic and cathodic branches are interpolated
+          onto a common potential grid before integration.
+          The potential window and scan rate remain explicit.
+        </p>
+
+        <div class="why">
+          Why use it? It summarizes stored-charge response
+          across the selected potential interval.
+        </div>
+      </div>
+
+      <div class="equation-box">
+        <div class="equation">
+          C(ν) = [1/(2νΔV)]
+          ∫<sub>Vlow</sub><sup>Vhigh</sup>
+          [i<sub>a</sub>(V) − i<sub>c</sub>(V)] dV
+        </div>
+
+        <div class="equation">
+          ΔV = V<sub>high</sub> − V<sub>low</sub>
+        </div>
+
+        <p>
+          ν: scan rate. ia and ic: corresponding branch currents.
+          Specific or areal capacitance requires the corresponding
+          mass or area normalization.
+        </p>
+      </div>
+    </article>
+
+    <article class="model-row">
+      <div>
+        <div class="model-label">Processing / Branch separation</div>
+        <h3>Separate common background current</h3>
+
+        <p>
+          The branch average describes common-direction
+          background, while the half-difference isolates
+          the symmetric response used for rate analysis.
+        </p>
+
+        <div class="why">
+          Why use it? A shared background can bias
+          power-law fits performed on one branch alone.
+        </div>
+      </div>
+
+      <div class="equation-box">
+        <div class="equation">
+          i<sub>bg</sub>(V) =
+          [i<sub>a</sub>(V) + i<sub>c</sub>(V)]/2
+        </div>
+
+        <div class="equation">
+          i<sub>s</sub>(V) =
+          [i<sub>a</sub>(V) − i<sub>c</sub>(V)]/2
+        </div>
+
+        <p>
+          Cancellation applies to a contribution shared
+          by both branches; it is not a universal separation
+          of all electrochemical processes.
+        </p>
+      </div>
+    </article>
+
+    <article class="model-row">
+      <div>
+        <div class="model-label">Models / Scan-rate dependence</div>
+        <h3>Power-law and two-term analysis</h3>
+
+        <p>
+          The power law describes current scaling.
+          The Dunn-type decomposition represents terms
+          proportional to scan rate and its square root.
+        </p>
+
+        <div class="why">
+          Why use them? They provide operational rate
+          descriptors for comparable potentials and sessions.
+        </div>
+      </div>
+
+      <div class="equation-box">
+        <div class="equation">
+          i<sub>s</sub>(V,ν) = a(V)ν<sup>b(V)</sup>
+        </div>
+
+        <div class="equation">
+          i<sub>s</sub>(V,ν) =
+          k<sub>1</sub>(V)ν +
+          k<sub>2</sub>(V)ν<sup>1/2</sup>
+        </div>
+
+        <p>
+          b describes rate scaling. k1 and k2 are
+          operational decomposition coefficients.
+          Conventional surface-like or diffusion-like
+          interpretations do not prove a mechanism.
+        </p>
+      </div>
+    </article>
+
+    <details>
+      <summary>Trasatti charge-accessibility analysis</summary>
+
+      <p>
+        Slow- and fast-rate extrapolations provide operational
+        outer and total charge estimates within appropriate
+        fitting ranges.
+      </p>
+
+      <div class="equation-box">
+        <div class="equation">
+          q(ν) = q<sub>out</sub> + c<sub>1</sub>ν<sup>−1/2</sup>
+        </div>
+
+        <div class="equation">
+          1/q(ν) = 1/q<sub>tot</sub> + c<sub>2</sub>ν<sup>1/2</sup>
+        </div>
+
+        <p>
+          The ratio qout/qtot is an accessibility descriptor.
+          The validity of the extrapolation depends on
+          the selected rate domain.
+        </p>
+      </div>
+    </details>
+  </section>
+
+  <!-- EIS -->
+
+  <section id="eis" style="--accent:#d5baff">
+    <div class="eyebrow">02 / Frequency-dependent response</div>
+    <h2>Electrochemical impedance spectroscopy</h2>
+
+    <article class="model-row">
+      <div>
+        <div class="model-label">Model / Equivalent circuits</div>
+        <h3>Describe resistance and relaxation</h3>
+
+        <p>
+          Candidate networks combine series resistance,
+          storage branches, and non-ideal capacitive elements.
+          Circuit labels identify mathematical branches
+          rather than predetermined mechanisms.
+        </p>
+
+        <div class="why">
+          Why use them? They connect frequency dependence
+          with interpretable resistance and timescale parameters.
+        </div>
+      </div>
+
+      <div class="equation-box">
+        <div class="equation">
+          Z<sub>CPE</sub>(ω) = 1/[Q(jω)<sup>n</sup>]
+        </div>
+
+        <div class="equation">
+          τ<sub>RC</sub> = RC
+        </div>
+
+        <div class="equation">
+          τ<sub>R‖CPE</sub> = (RQ)<sup>1/n</sup>
+        </div>
+
+        <p>
+          Q and n define the constant-phase element.
+          Q is not directly a capacitance when n differs from one.
+        </p>
+      </div>
+    </article>
+
+    <article class="model-row">
+      <div>
+        <div class="model-label">Descriptor / Complex capacitance</div>
+        <h3>Re-express the measured impedance</h3>
+
+        <p>
+          Complex capacitance supplies a complementary
+          representation of storage and loss across frequency.
+          Its interpretation remains tied to the impedance
+          definition and any resistance correction.
+        </p>
+      </div>
+
+      <div class="equation-box">
+        <div class="equation">
+          C*(ω) = 1/[jωZ(ω)]
+        </div>
+
+        <div class="equation">
+          C*(ω) = C′(ω) − jC″(ω)
+        </div>
+
+        <p>
+          Additional descriptors include the high-frequency
+          real-axis intercept, low-frequency impedance,
+          phase, and characteristic relaxation measures.
+        </p>
+      </div>
+    </article>
+
+    <div class="note">
+      Linear Kramers–Kronig checks and residual inspection
+      support assessment of spectral consistency.
+      A visually plausible circuit fit alone does not
+      establish parameter identifiability.
+    </div>
+  </section>
+
+  <!-- GCD -->
+
+  <section id="gcd" style="--accent:#ffd09b">
+    <div class="eyebrow">03 / Current-controlled response</div>
+    <h2>Galvanostatic charge–discharge</h2>
+
+    <article class="model-row">
+      <div>
+        <div class="model-label">Descriptors / Time, charge, and energy</div>
+        <h3>Quantify resolved charge–discharge segments</h3>
+
+        <p>
+          Segment duration, potential window, and applied
+          current define apparent capacitance.
+          Charge and energy integration provide complementary
+          efficiency measures.
+        </p>
+
+        <div class="why">
+          Why use them? They distinguish charge recovery
+          from voltage-dependent energy recovery.
+        </div>
+      </div>
+
+      <div class="equation-box">
+        <div class="equation">
+          C<sub>chg</sub> = |I<sub>chg</sub>|Δt<sub>chg</sub>/ΔV
+        </div>
+
+        <div class="equation">
+          C<sub>dis</sub> = |I<sub>dis</sub>|Δt<sub>dis</sub>/ΔV
+        </div>
+
+        <div class="equation">
+          η<sub>Q</sub> = |q<sub>dis</sub>|/|q<sub>chg</sub>|
+        </div>
+
+        <div class="equation">
+          E = ∫VI dt
+        </div>
+
+        <p>
+          Potential windows, resistive jumps, current signs,
+          and normalization conventions are defined explicitly.
+        </p>
+      </div>
+    </article>
+  </section>
+
+  <!-- CIRCUITS -->
+
+  <section id="circuits" style="--accent:#a4d5ff">
+    <div class="eyebrow">04 / Physical curve reconstruction</div>
+    <h2>From circuit topology to simulated response</h2>
+
+    <figure>
+      <a href="electrochemical-circuit.png">
+        <img
+          src="electrochemical-circuit.png"
+          alt="Candidate storage circuit connected to
+          a state-space representation and electrochemical excitations."
+          loading="lazy"
+        >
+      </a>
+
+      <figcaption>
+        <span>Circuit-to-response workflow · Schematic</span>
+        <a href="electrochemical-circuit.png">Enlarge</a>
+      </figcaption>
+    </figure>
+
+    <p>
+      Within each multi-rate CV or GCD fit, one parameter
+      set describes the complete family of curves.
+      Rate dependence therefore emerges from circuit
+      time constants rather than independent parameters
+      assigned to every scan rate or current.
+    </p>
+
+    <div class="table-wrap">
       <table>
-        <caption class="muted">
-          Methods used to examine electrode behaviour
-        </caption>
-
         <thead>
           <tr>
-            <th scope="col">Method</th>
-            <th scope="col">What it examines</th>
-            <th scope="col">Interpretation</th>
+            <th>Element</th>
+            <th>Representation</th>
+            <th>Purpose</th>
           </tr>
         </thead>
 
         <tbody>
           <tr>
-            <th scope="row">LSV</th>
+            <td>Rs</td>
+            <td>Series resistance</td>
             <td>
-              Current as applied potential is swept
-              through a selected range.
-            </td>
-            <td>
-              Polarization behaviour and the potential
-              needed to reach a stated current density.
+              Ohmic contribution; constrained using EIS
+              from the corresponding electrode.
             </td>
           </tr>
 
           <tr>
-            <th scope="row">EIS</th>
+            <td>Ri ‖ Ci</td>
+            <td>Relaxation branch</td>
+            <td>Access-limited response with τi = RiCi.</td>
+          </tr>
+
+          <tr>
+            <td>C3</td>
+            <td>Fully accessed storage capacitance</td>
+            <td>Low-rate storage contribution.</td>
+          </tr>
+
+          <tr>
+            <td>Rp</td>
+            <td>Leakage path across the storage network</td>
             <td>
-              Frequency-dependent response to a small
-              alternating perturbation.
-            </td>
-            <td>
-              Solution resistance, interfacial processes,
-              and transport contributions within
-              a suitable model.
+              Tests whether a conductive parasitic path
+              is needed by the observations.
             </td>
           </tr>
 
           <tr>
-            <th scope="row">Tafel analysis</th>
+            <td>CPE</td>
+            <td>Distributed capacitive response</td>
             <td>
-              Overpotential against the logarithm of
-              current density in a suitable kinetic region.
-            </td>
-            <td>
-              Kinetic trends; the fitted slope alone
-              does not establish a reaction mechanism.
+              Describes non-ideal relaxation over
+              a range of timescales.
             </td>
           </tr>
         </tbody>
       </table>
     </div>
+
+    <article class="model-row">
+      <div>
+        <div class="model-label">Numerical model / State space</div>
+        <h3>Use capacitor voltages as states</h3>
+
+        <p>
+          Finite RC networks are expressed as linear
+          dynamical systems. The excitation changes
+          between CV and GCD while the circuit equations
+          retain their physical structure.
+        </p>
+
+        <div class="why">
+          Why use it? It supports direct simulation
+          of complete waveforms rather than only summary descriptors.
+        </div>
+      </div>
+
+      <div class="equation-box">
+        <div class="equation">
+          dx/dt = Ax + bI
+        </div>
+
+        <div class="equation">
+          V = cᵀx + DI
+        </div>
+
+        <p>
+          x contains internal capacitor voltages.
+          Matrices and vectors follow from the candidate topology.
+        </p>
+      </div>
+    </article>
+
+    <details>
+      <summary>CV simulation: piecewise linear potential ramps</summary>
+
+      <p>
+        Potential control eliminates current from the
+        state equations. Each linear sweep is propagated
+        using the analytical linear-system solution.
+      </p>
+
+      <div class="equation-box">
+        <div class="equation">
+          V(t) = V<sub>0</sub> + st,
+          &nbsp; s = ±ν
+        </div>
+
+        <div class="equation">
+          I = (V − cᵀx)/D
+        </div>
+      </div>
+
+      <p style="margin-top:18px">
+        Initial state, cycle count, and sampling follow
+        the experimental protocol. Analytical propagation
+        avoids an arbitrary time-step approximation
+        for the finite linear network.
+      </p>
+    </details>
+
+    <details>
+      <summary>GCD simulation: constant-current segments</summary>
+
+      <p>
+        Constant applied current drives the state equations.
+        Charge and discharge segments are propagated
+        to the defined potential boundaries, with switching
+        and initial conditions retained explicitly.
+      </p>
+    </details>
+
+    <details>
+      <summary>CPE realization: distributed timescales</summary>
+
+      <p>
+        A CPE has no exact finite-dimensional state-space
+        realization. The thesis uses a discretized
+        relaxation-time distribution to construct a finite
+        approximation over the experimental window.
+      </p>
+
+      <p>
+        The numerical realization is checked against the
+        analytical impedance before being used for
+        time-domain simulation.
+      </p>
+    </details>
   </section>
 
-  <div class="electro-bottom">
+  <!-- MODEL ASSESSMENT -->
 
-    <article>
-      <p class="eyebrow">The reaction</p>
-      <h2>Oxygen evolution</h2>
-
-      <p>
-        The oxygen evolution reaction is an anodic
-        process in water electrolysis. Studying the
-        additional potential required to drive it helps
-        describe electrode behaviour under defined conditions.
-      </p>
-
-      <p>
-        Surface chemistry, electrical connectivity,
-        morphology, and electrode preparation all
-        influence the response.
-      </p>
-    </article>
-
-    <article>
-      <p class="eyebrow">The comparison</p>
-      <h2>Conditions belong with the result.</h2>
-
-      <ul>
-        <li>Electrolyte composition and temperature</li>
-        <li>Reference-electrode scale</li>
-        <li>Material loading and electrode area</li>
-        <li>Scan rate and measurement potential</li>
-        <li>Resistance correction and normalization</li>
-      </ul>
-    </article>
-
-  </div>
-
-  <section class="section">
-    <h2>From a curve to a defensible interpretation.</h2>
+  <section id="selection" style="--accent:#d5baff">
+    <div class="eyebrow">05 / Model choice and interpretation</div>
+    <h2>Separate empirical rate laws from circuit models.</h2>
 
     <p>
-      My analysis connects current–potential relationships
-      with impedance measurements and material characteristics.
-      A larger current alone does not demonstrate higher
-      intrinsic catalytic activity; the electrode and
-      measurement context matter.
+      Empirical functions summarize capacitance versus
+      scan rate or current. Circuit models instead aim
+      to explain the complete curve family through
+      shared physical parameters.
+    </p>
+
+    <div class="equation-box">
+      <div class="model-label">Representative candidate rate laws</div>
+
+      <div class="equation">C(x) = C<sub>0</sub></div>
+
+      <div class="equation">
+        C(x) = Ax<sup>−β</sup>
+      </div>
+
+      <div class="equation">
+        C(x) = C<sub>∞</sub> + Ax<sup>−β</sup>
+      </div>
+
+      <p>
+        x denotes the relevant measurement rate.
+        Here β is a fitted rate exponent, unrelated
+        to TGA heating-rate notation.
+      </p>
+    </div>
+
+    <div class="note">
+      Model assessment considers parameter identifiability,
+      bounds, residual structure, information criteria,
+      bootstrap uncertainty, and withheld scan rates,
+      currents, or frequencies. Extra circuit branches
+      require support beyond improved visual agreement.
+    </div>
+
+    <p>
+      Cross-technique comparison examines compatible
+      resistance and relaxation scales. It does not assume
+      that every technique must return identical apparent
+      capacitance or share one independently untested fit.
     </p>
   </section>
+
+  <!-- WORKFLOW -->
+
+  <section id="workflow">
+    <div class="eyebrow">06 / MATLAB implementation</div>
+    <h2>The modelling sequence.</h2>
+
+    <ol class="steps">
+      <li>
+        <strong>Import and check the measurements</strong>
+        Preserve electrode identity, acquisition session,
+        cycle selection, potential windows, scan rates,
+        currents, and frequencies.
+      </li>
+
+      <li>
+        <strong>Extract model-independent descriptors</strong>
+        Calculate CV loop measures, branch-separated
+        currents, impedance descriptors, and resolved
+        charge–discharge quantities.
+      </li>
+
+      <li>
+        <strong>Fit rate relationships</strong>
+        Compare candidate functions using consistent
+        observation windows and normalization.
+      </li>
+
+      <li>
+        <strong>Construct candidate storage networks</strong>
+        Compare blocking, relaxing, distributed,
+        and leakage-containing topologies.
+      </li>
+
+      <li>
+        <strong>Simulate the experimental excitation</strong>
+        Apply piecewise potential ramps or current steps
+        with the stated initial conditions and switching rules.
+      </li>
+
+      <li>
+        <strong>Fit shared parameters within each curve family</strong>
+        Let rate dependence emerge from the model
+        rather than fitting independent parameters at every rate.
+      </li>
+
+      <li>
+        <strong>Assess identifiability and predictive checks</strong>
+        Examine residuals, parameter stability,
+        bootstrap intervals, and appropriate withheld observations.
+      </li>
+
+      <li>
+        <strong>Verify the numerical implementation</strong>
+        Compare limiting cases with analytical RC and
+        leaky-capacitor expressions, and check CPE
+        approximations against analytical impedance.
+      </li>
+    </ol>
+  </section>
+
+  <a class="back" href="modelling.html">← Back to modelling</a>
 
 </main>
 
 <footer>
-  <span>Rupesh Lal Karn · Electrochemistry</span>
-  <a href="research.html">Back to Research</a>
+  Rupesh Lal Karn · Electrochemical Modelling &amp; Simulation
 </footer>
 
 </body>
