@@ -8,8 +8,8 @@
 
   <meta name="description"
         content="Research interests of Rupesh Lal Karn in
-        two-dimensional materials, photothermal conversion,
-        electrochemistry, magnetic materials, alternative fuels,
+        two-dimensional materials, photothermal and electrochemical
+        studies, modelling, magnetic materials, alternative fuels,
         and scientific data analysis.">
 
   <link rel="stylesheet" href="style.css">
@@ -35,7 +35,9 @@
       font-size: 14px;
       font-weight: 600;
       text-decoration: none;
-      transition: background 0.2s ease, border-color 0.2s ease;
+      transition:
+        background 0.2s ease,
+        border-color 0.2s ease;
     }
 
     .research-tabs a:hover,
@@ -57,11 +59,12 @@
       line-height: 1.8;
     }
 
-    /* All six cards are links */
+    /* Clickable research cards */
     .research-card {
       display: flex;
       flex-direction: column;
       height: 100%;
+      min-width: 0;
       color: #edf5ff;
       text-decoration: none;
       transition:
@@ -124,6 +127,10 @@
       .research-card {
         transition: none;
       }
+
+      .research-card:hover {
+        transform: none;
+      }
     }
   </style>
 </head>
@@ -170,13 +177,14 @@
       <h1>Materials, Energy &amp; Engineering Research</h1>
 
       <p>
-        Experimental investigations of material processing,
-        structure, surface chemistry, and functional performance.
+        Experimental investigations and quantitative modelling
+        connecting material processing, structure,
+        surface chemistry, and functional performance.
       </p>
     </div>
   </section>
 
-  <!-- RESEARCH AREAS -->
+  <!-- RESEARCH INTERESTS -->
   <section class="section">
     <div class="container">
 
@@ -196,12 +204,10 @@
       <p class="research-intro">
         My research focuses on understanding the relationships
         between material processing, structure, surface chemistry,
-        and functional performance.
-
-        My work integrates experimental characterization,
-        quantitative analysis, and physics-guided approaches,
-        with applications in sustainable energy, functional
-        materials, and engineering.
+        and functional performance. My work integrates experimental
+        characterization, quantitative analysis, and physics-guided
+        modelling, with applications in sustainable energy,
+        functional materials, and engineering.
       </p>
 
       <div class="card-grid">
@@ -218,13 +224,15 @@
 
           <p>
             Synthesis, processing, and characterization of
-            titanium-based MXenes, including acid etching,
-            DMSO intercalation, and transition-metal
-            chalcogenide composites.
+            titanium-based MXenes, including selective
+            etching, DMSO intercalation, and transition-metal
+            sulfide composites.
+          </p>
 
-            Investigation of processing-induced structural
-            changes and surface chemistry using complementary
-            characterization techniques.
+          <p>
+            Investigation of processing-induced changes
+            in structure, surface chemistry, morphology,
+            and elemental composition.
           </p>
 
           <div class="research-tags">
@@ -235,74 +243,81 @@
           </div>
 
           <span class="research-card-link">
-            Explore research
+            Explore materials
             <span aria-hidden="true">→</span>
           </span>
+
         </a>
 
-        <!-- 02: PHOTOTHERMAL CONVERSION -->
+        <!-- 02: COMBINED EXPERIMENTAL STUDIES -->
         <a class="card research-card"
-           href="photothermal.html">
+           href="photothermal-electrochemistry.html">
 
           <span class="card-number">
-            02 / PHOTOTHERMAL CONVERSION
+            02 / FUNCTIONAL MATERIAL STUDIES
           </span>
 
-          <h3>Laser-Induced Heating</h3>
+          <h3>Photothermal &amp; Electrochemical Studies</h3>
 
           <p>
-            Experimental investigation of photothermal heating
-            in MAX phases, acid-etched MXenes, and intercalated
-            MXenes under near-infrared irradiation.
+            Experimental investigations of laser-induced
+            heating and electrochemical behaviour
+            in functional materials.
+          </p>
 
-            Quantitative evaluation of temperature evolution
-            and net photothermal heat generation.
+          <p>
+            Explore two study areas covering temperature
+            evolution, heat generation, electrode activity,
+            charge transfer, and reaction kinetics.
           </p>
 
           <div class="research-tags">
             <span class="tag">Photothermal</span>
-            <span class="tag">Heat Generation</span>
-            <span class="tag">MATLAB</span>
+            <span class="tag">Electrochemistry</span>
+            <span class="tag">MXenes</span>
           </div>
 
           <span class="research-card-link">
-            Explore research
+            Choose a study area
             <span aria-hidden="true">→</span>
           </span>
+
         </a>
 
-        <!-- 03: ELECTROCHEMISTRY -->
+        <!-- 03: MODELLING AND DESCRIPTORS -->
         <a class="card research-card"
-           href="electrochemistry.html">
+           href="modelling.html">
 
           <span class="card-number">
-            03 / ELECTROCHEMISTRY
+            03 / MODELLING AND DESCRIPTORS
           </span>
 
-          <h3>Electrocatalytic Materials</h3>
+          <h3>Modelling &amp; Descriptor Development</h3>
 
           <p>
-            Electrochemical characterization of functional
-            materials for energy-related applications,
-            including oxygen evolution reaction activity,
-            charge-transfer resistance, and electrochemical
-            kinetics.
+            Development of MATLAB models and physics-guided
+            descriptors to investigate relationships between
+            material properties and measured behaviour.
+          </p>
 
-            Analysis using voltammetry, impedance spectroscopy,
-            and Tafel relationships.
+          <p>
+            Model formulation, physical interpretation,
+            and comparison with experimental measurements
+            provide the basis for evaluating these relationships.
           </p>
 
           <div class="research-tags">
-            <span class="tag">LSV</span>
-            <span class="tag">EIS</span>
-            <span class="tag">Tafel</span>
-            <span class="tag">OER</span>
+            <span class="tag">MATLAB</span>
+            <span class="tag">Physical Models</span>
+            <span class="tag">Descriptors</span>
+            <span class="tag">Validation</span>
           </div>
 
           <span class="research-card-link">
-            Explore research
+            Explore modelling
             <span aria-hidden="true">→</span>
           </span>
+
         </a>
 
         <!-- 04: MAGNETIC MATERIALS -->
@@ -316,13 +331,15 @@
           <h3>Complex Magnetic Oxides</h3>
 
           <p>
-            Structural and magnetic investigations of complex
-            oxide materials using X-ray diffraction,
-            Rietveld refinement, Raman spectroscopy, and
-            magnetic measurements.
+            Structural and magnetic investigations of
+            complex oxide materials using X-ray diffraction,
+            Rietveld refinement, Raman spectroscopy,
+            and magnetic measurements.
+          </p>
 
+          <p>
             Exploration of relationships between crystal
-            structure and magnetic behavior.
+            structure and magnetic behaviour.
           </p>
 
           <div class="research-tags">
@@ -333,9 +350,10 @@
           </div>
 
           <span class="research-card-link">
-            Explore research
+            Explore magnetic materials
             <span aria-hidden="true">→</span>
           </span>
+
         </a>
 
         <!-- 05: SUSTAINABLE ENERGY -->
@@ -352,10 +370,12 @@
             Experimental investigations of biodiesel,
             waste plastic pyrolysis oil, and
             nanoparticle-enhanced fuel blends.
+          </p>
 
+          <p>
             Evaluation of combustion characteristics,
-            engine performance, and emissions in
-            internal combustion engines.
+            engine performance, and emissions
+            in internal combustion engines.
           </p>
 
           <div class="research-tags">
@@ -366,9 +386,10 @@
           </div>
 
           <span class="research-card-link">
-            Explore research
+            Explore fuel research
             <span aria-hidden="true">→</span>
           </span>
+
         </a>
 
         <!-- 06: QUANTITATIVE ANALYSIS -->
@@ -382,27 +403,29 @@
           <h3>Scientific Data Analysis</h3>
 
           <p>
-            Computational analysis and interpretation of
-            experimental measurements using MATLAB,
+            Computational processing and interpretation
+            of experimental measurements using MATLAB,
             spectral fitting, statistical methods,
             and kinetic analysis.
+          </p>
 
-            Development and evaluation of physics-guided
-            descriptors to investigate relationships
-            between material properties and functional
-            performance.
+          <p>
+            Comparison of experimental datasets,
+            interpretation of fitted parameters,
+            and clear visualization of scientific measurements.
           </p>
 
           <div class="research-tags">
             <span class="tag">MATLAB</span>
-            <span class="tag">Modeling</span>
+            <span class="tag">Spectral Fitting</span>
             <span class="tag">Statistics</span>
           </div>
 
           <span class="research-card-link">
-            Explore research
+            Explore data analysis
             <span aria-hidden="true">→</span>
           </span>
+
         </a>
 
       </div>
