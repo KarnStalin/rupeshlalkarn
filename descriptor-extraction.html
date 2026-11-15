@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Descriptor Extraction | Rupesh Lal Karn</title>
+
+<meta
+  name="description"
+  content="Characterization descriptors from XRD, XPS, Raman,
+  FTIR, gas sorption, SEM/EDX, and zeta potential."
+>
+
+<style>
+  :root {
+    --background: #0b1525;
+    --panel: #122238;
+    --text: #edf4ff;
+    --muted: #b9c9dc;
+    --line: #2b4058;
+    --accent: #9fe5cf;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 24px;
+  }
+
+  body {
+    margin: 0;
+    background: var(--background);
+    color: var(--text);
+    font: 16px/1.75 system-ui, -apple-system,
+      BlinkMacSystemFont, "Segoe UI", sans-serif;
+  }
+
+  a {
+    color: #a8d6ff;
+    text-underline-offset: 5px;
+  }
+
+  a:focus-visible {
+    outline: 3px solid #ffdc9c;
+    outline-offset: 5px;
+  }
+
+  header,
+  main,
+  footer {
+    width: min(1320px, 100%);
+    margin: auto;
+    padding: 26px;
+  }
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 18px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  header a {
+    text-decoration: none;
+  }
+
+  .brand {
+    color: var(--text);
+    font-weight: 750;
+  }
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .hero {
+    max-width: 950px;
+    padding: 56px 0 30px;
+  }
+
+  .eyebrow {
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 750;
+    letter-spacing: .15em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    margin: 20px 0;
+    font-size: clamp(40px, 6vw, 72px);
+    line-height: 1.08;
+    letter-spacing: -.045em;
+  }
+
+  h1 span {
+    color: var(--accent);
+  }
+
+  p {
+    margin: 0 0 18px;
+    color: var(--muted);
+  }
+
+  .lead {
+    max-width: 850px;
+    font-size: 20px;
+  }
+
+  .jump-links {
+    gap: 10px;
+    margin: 10px 0 36px;
+  }
+
+  .jump-links a {
+    padding: 8px 16px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 24px;
+    text-decoration: none;
+    font-size: 14px;
+  }
+
+  .jump-links a:hover {
+    border-color: var(--accent);
+  }
+
+  .method {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    align-items: center;
+    gap: 32px;
+    padding: 32px 0;
+    border-top: 1px solid var(--line);
+  }
+
+  figure {
+    margin: 0;
+    min-width: 0;
+    overflow: hidden;
+    background: #080f24;
+    border: 1px solid var(--line);
+    border-radius: 16px;
+  }
+
+  figure a {
+    display: block;
+  }
+
+  figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  figcaption {
+    padding: 11px 15px;
+    color: var(--muted);
+    font-size: 12px;
+    border-top: 1px solid var(--line);
+  }
+
+  .description {
+    min-width: 0;
+  }
+
+  .index {
+    margin-bottom: 8px;
+    color: var(--color, var(--accent));
+    font: 12px/1.6 ui-monospace, monospace;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  h2 {
+    margin: 0 0 12px;
+    font-size: clamp(27px, 3vw, 36px);
+    line-height: 1.2;
+    letter-spacing: -.025em;
+  }
+
+  dl {
+    margin: 20px 0;
+  }
+
+  .descriptor {
+    display: grid;
+    grid-template-columns: 145px minmax(0, 1fr);
+    gap: 16px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .descriptor:last-child {
+    border-bottom: 0;
+  }
+
+  dt {
+    color: var(--color, var(--accent));
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  dd {
+    margin: 0;
+    color: var(--muted);
+    font-size: 14px;
+  }
+
+  .processing {
+    margin-top: 18px;
+    padding: 12px 15px;
+    background: var(--panel);
+    border-left: 2px solid var(--color, var(--accent));
+    border-radius: 0 8px 8px 0;
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  strong {
+    color: var(--text);
+  }
+
+  .workflow {
+    margin-top: 20px;
+    padding: 30px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+  }
+
+  .workflow h2 {
+    font-size: 26px;
+  }
+
+  .workflow p:last-child {
+    margin-bottom: 0;
+  }
+
+  .back {
+    display: inline-block;
+    margin-top: 30px;
+    font-weight: 650;
+  }
+
+  footer {
+    margin-top: 30px;
+    border-top: 1px solid var(--line);
+    color: var(--muted);
+    font-size: 13px;
+  }
+
+  @media (max-width: 900px) {
+    .method {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    figure {
+      width: 100%;
+      max-width: 740px;
+    }
+  }
+
+  @media (max-width: 520px) {
+    header,
+    main,
+    footer {
+      padding: 20px;
+    }
+
+    .hero {
+      padding-top: 36px;
+    }
+
+    .lead {
+      font-size: 18px;
+    }
+
+    .descriptor {
+      grid-template-columns: 1fr;
+      gap: 4px;
+    }
+
+    .workflow {
+      padding: 22px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<header>
+  <a class="brand" href="index.html">Rupesh Lal Karn</a>
+
+  <nav aria-label="Main navigation">
+    <a href="modelling.html">Modelling</a>
+    <a href="research.html">Research</a>
+  </nav>
+</header>
+
+<main>
+
+  <div class="hero">
+    <div class="eyebrow">
+      Characterization · MATLAB · Physical interpretation
+    </div>
+
+    <h1>
+      Descriptor<br>
+      <span>Extraction</span>
+    </h1>
+
+    <p class="lead">
+      Turning characterization signals into interpretable
+      variables describing structure, surface chemistry,
+      accessible interfaces, and dispersion.
+    </p>
+
+    <p>
+      Each method contributes a different view of the material.
+      The illustrations below explain the extraction process;
+      they do not display experimental results.
+    </p>
+  </div>
+
+  <nav class="jump-links" aria-label="Characterization methods">
+    <a href="#xrd">XRD</a>
+    <a href="#xps">XPS</a>
+    <a href="#raman">Raman</a>
+    <a href="#ftir">FTIR</a>
+    <a href="#bet">BET</a>
+    <a href="#sem-edx">SEM / EDX</a>
+    <a href="#zeta">Zeta</a>
+  </nav>
+
+  <!-- XRD -->
+
+  <section class="method" id="xrd" style="--color:#a5d8ff">
+    <figure>
+      <a href="descriptor-images/xrd.png">
+        <img
+          src="descriptor-images/xrd.png"
+          alt="Schematic XRD profile showing peak position,
+          peak width, integrated area, and stacked layers."
+        >
+      </a>
+      <figcaption>
+        Schematic diffraction profile · Click to enlarge.
+      </figcaption>
+    </figure>
+
+    <div class="description">
+      <div class="index">01 / Structural descriptors</div>
+      <h2>X-ray Diffraction</h2>
+
+      <p>
+        Profile fitting separates peak position, broadening,
+        and area to describe basal spacing and apparent
+        stacking coherence.
+      </p>
+
+      <dl>
+        <div class="descriptor">
+          <dt>Basal spacing, d</dt>
+          <dd>
+            Interplanar distance from Bragg's law;
+            tracks spacing changes between corresponding reflections.
+          </dd>
+        </div>
+
+        <div class="descriptor">
+          <dt>FWHM, β</dt>
+          <dd>
+            Fitted peak width; describes broadening associated
+            with coherence, strain, and instrumental contributions.
+          </dd>
+        </div>
+
+        <div class="descriptor">
+          <dt>Apparent Lc</dt>
+          <dd>
+            A Scherrer-type coherence estimate;
+            describes coherent stacking rather than direct flake thickness.
+          </dd>
+        </div>
+
+        <div class="descriptor">
+          <dt>Area / parent index</dt>
+          <dd>
+            Integrated diffraction measures;
+            track selected features without directly quantifying phase fraction.
+          </dd>
+        </div>
+      </dl>
+
+      <div class="processing">
+        <strong>MATLAB:</strong> baseline correction →
+        peak-profile fitting → residual checks → descriptor extraction.
+      </div>
+    </div>
+  </section>
+
+  <!-- XPS -->
+
+  <section class="method" id="xps" style="--color:#d1baff">
+    <figure>
+      <a href="descriptor-images/xps.png">
+        <img
+          src="descriptor-images/xps.png"
+          alt="Schematic XPS envelope with fitted components
+          and background."
+          loading="lazy"
+        >
+      </a>
+      <figcaption>
+        Schematic chemical-envelope model · Click to enlarge.
+      </figcaption>
+    </figure>
+
+    <div class="description">
+      <div class="index">02 / Surface-chemical descriptors</div>
+      <h2>XPS</h2>
+
+      <p>
+        Survey quantification and constrained envelope fitting
+        provide complementary descriptions of surface
+        composition and chemical environments.
+      </p>
+
+      <dl>
+        <div class="descriptor">
+          <dt>Elemental ratios</dt>
+          <dd>
+            Quantified atomic-fraction ratios such as F/Ti;
+            describe relative surface composition.
+          </dd>
+        </div>
+
+        <div class="descriptor">
+          <dt>Component fraction</dt>
+          <dd>
+            A component's share of its fitted envelope;
+            compares modelled chemical contributions.
+          </dd>
+        </div>
+
+        <div class="descriptor">
+          <dt>Binding energy</dt>
+          <dd>
+            Fitted component position;
+            supports chemical-environment interpretation with calibration
+            and assignment controls.
+          </dd>
+        </div>
+
+        <div class="descriptor">
+          <dt>TiOₓ-like fraction</dt>
+          <dd>
+            A model-dependent envelope contribution;
+            tracks selected oxidized titanium environments.
+          </dd>
+        </div>
+      </dl>
+
+      <div class="processing">
+        <strong>Fitting:</strong> background comparison,
+        constrained components, linked spin–orbit partners,
+        and residual assessment. Survey composition remains
+        distinct from envelope fractions.
+      </div>
+    </div>
+  </section>
+
+  <!-- RAMAN -->
+
+  <section class="method" id="raman" style="--color:#a1e8c7">
+    <figure>
+      <a href="descriptor-images/raman.png">
+        <img
+          src="descriptor-images/raman.png"
+          alt="Schematic Raman spectrum illustrating
+          peak displacement and linewidth."
+          loading="lazy"
+        >
+      </a>
+      <figcaption>
+        Schematic vibrational features · Click to enlarge.
+      </figcaption>
+    </figure>
+
+    <div class="description">
+      <div class="index">03 / Vibrational descriptors</div>
+      <h2>Raman Spectroscopy</h2>
+
+      <p>
+        Corresponding vibrational features are fitted to
+        quantify frequency changes, broadening, and
+        relative spectral contributions.
+      </p>
+
+      <dl>
+        <div class="descriptor">
+          <dt>Peak shift, Δω</dt>
+          <dd>
+            Frequency change relative to a reference;
+            tracks changes in the selected vibrational environment.
+          </dd>
+        </div>
+
+        <div class="descriptor">
+          <dt>Linewidth, Γ</dt>
+          <dd>
+            Width of a fitted feature;
+            describes broadening that may reflect disorder
+            and other mode-dependent effects.
+          </dd>
+        </div>
+
+        <div class="descriptor">
+          <dt>Integrated area</dt>
+          <dd>
+            Signal beneath the fitted peak;
+            supports controlled comparisons of spectral contributions.
+          </dd>
+        </div>
+
+        <div class="descriptor">
+          <dt>Normalized shift</dt>
+          <dd>
+            A rescaled selected shift;
+            supplies the vibrational variable in the composite framework.
+          </dd>
+        </div>
+      </dl>
+
+      <div class="processing">
+        <strong>MATLAB:</strong> spectral treatment →
+        corresponding-feature selection → profile fitting.
+        Absolute intensity requires consistent acquisition conditions.
+      </div>
+    </div>
+  </section>
+
+  <!-- FTIR -->
+
+  <section class="method" id="ftir" style="--color:#ffbfd1">
+    <figure>
+      <a href="descriptor-images/ftir.png">
+        <img
+          src="descriptor-images/ftir.png"
+          alt="Schematic FTIR absorbance spectrum
+          illustrating integrated bands and baseline."
+          loading="lazy"
+        >
+      </a>
+      <figcaption>
+        Schematic absorbance-band integration · Click to enlarge.
+      </figcaption>
+    </figure>
+
+    <div class="description">
+      <div class="index">04 / Integrated spectral descriptors</div>
+      <h2>FTIR</h2>
+
+      <p>
+        Defined spectral windows convert broad, overlapping
+        absorption features into reproducible comparative
+        band descriptors.
+      </p>
+
+      <dl>
+        <div class="descriptor">
+          <dt>Band areas, B1–B4</dt>
+          <dd>
+            Integrated corrected absorbance;
+            measures the contribution within each defined spectral window.
+          </dd>
+        </div>
+
+        <div class="descriptor">
+          <dt>B2 area fraction</dt>
+          <dd>
+            Relative contribution of the termination-sensitive region;
+            supplies an interface-sensitive descriptor.
+          </dd>
+        </div>
+
+        <div class="descriptor">
+          <dt>B2/B1 and B3/B1</dt>
+          <dd>
+            Lattice-normalized ratios;
+            compare termination- and adsorbate-sensitive regions.
+          </dd>
+        </div>
+
+        <div class="descriptor">
+          <dt>B4/B1</dt>
+          <dd>
+            Hydroxyl-region-to-lattice ratio;
+            tracks relative hydroxyl/interface-sensitive absorption.
+          </dd>
+        </div>
+      </dl>
+
+      <div class="processing">
+        <strong>Windows:</strong> B1: 500–850;
+        B2: 850–1200; B3: 1350–1700;
+        B4: 3000–3600 cm⁻¹.
+        These are operational regions, not unique species counts.
+      </div>
+    </div>
+  </section>
+
+  <!-- BET -->
+
+  <section class="method" id="bet" style="--color:#ffd39a">
+    <figure>
+      <a href="descriptor-images/bet.png">
+        <img
+          src="descriptor-images/bet.png"
+          alt="Schematic adsorption-desorption isotherm
+          with a hysteresis loop and porous-solid inset."
+          loading="lazy"
+        >
+      </a>
+      <figcaption>
+        Schematic gas-sorption response · Click to enlarge.
+      </figcaption>
+    </figure>
+
+    <div class="description">
+      <div class="index">05 / Accessible interface descriptors</div>
+      <h2>BET &amp; Gas Sorption</h2>
+
+      <p>
+        Gas-sorption analysis describes accessible area and
+        pore structure. Derived geometry provides additional
+        inputs for interface and transport models.
+      </p>
+
+      <dl>
+        <div class="descriptor">
+          <dt>Surface area, S<sub>BET</sub></dt>
+          <dd>
+            Gas-accessible area per unit mass;
+            describes the area available to the adsorptive probe.
+          </dd>
+        </div>
+
+        <div class="descriptor">
+          <dt>Pore volume, Vp</dt>
+          <dd>
+            Sorption-derived pore-space measure;
+            describes accessible pore capacity under the analysis assumptions.
+          </dd>
+        </div>
+
+        <div class="descriptor">
+          <dt>Pore diameter, Dp</dt>
+          <dd>
+            An operational pore-size descriptor;
+            approximately 4Vp/S<sub>BET</sub> for the stated geometric treatment.
+          </dd>
+        </div>
+
+        <div class="descriptor">
+          <dt>Interface area, av</dt>
+          <dd>
+            Surface area multiplied by assumed bulk density;
+            supplies a volumetric interface term for transport modelling.
+          </dd>
+        </div>
+      </dl>
+
+      <div class="processing">
+        <strong>Interpretation:</strong> BET area and
+        pore-distribution analysis have distinct assumptions.
+        Gas-accessible area does not directly establish
+        thermally active interface area.
+      </div>
+    </div>
+  </section>
+
+  <!-- SEM / EDX -->
+
+  <section class="method" id="sem-edx" style="--color:#d4dce8">
+    <figure>
+      <a href="descriptor-images/sem-edx.png">
+        <img
+          src="descriptor-images/sem-edx.png"
+          alt="Simulated layered-flake morphology with
+          schematic elemental mapping and EDX spectrum."
+          loading="lazy"
+        >
+      </a>
+      <figcaption>
+        Simulated morphology and schematic EDX · Not microscopy data.
+      </figcaption>
+    </figure>
+
+    <div class="description">
+      <div class="index">06 / Complementary morphology and composition</div>
+      <h2>SEM / EDX</h2>
+
+      <p>
+        SEM and EDX provide spatial context for structural
+        and chemical descriptors. Quantitative image measures
+        require calibrated images and a defined sampling method.
+      </p>
+
+      <dl>
+        <div class="descriptor">
+          <dt>Morphology</dt>
+          <dd>
+            Visible flake, aggregate, and surface features;
+            contextualizes structural changes and particle assembly.
+          </dd>
+        </div>
+
+        <div class="descriptor">
+          <dt>Image-based size</dt>
+          <dd>
+            Dimensions measured from calibrated images;
+            describe the sampled projected features.
+          </dd>
+        </div>
+
+        <div class="descriptor">
+          <dt>Elemental composition</dt>
+          <dd>
+            Quantified EDX atomic or mass fractions;
+            supports composition comparisons within instrumental limits.
+          </dd>
+        </div>
+
+        <div class="descriptor">
+          <dt>Spatial distribution</dt>
+          <dd>
+            Elemental-map patterns;
+            support assessment of co-location and heterogeneity.
+          </dd>
+        </div>
+      </dl>
+
+      <div class="processing">
+        <strong>Role:</strong> complementary characterization.
+        These measures are not automatically included in the
+        composite scores. EDX does not directly establish
+        chemical bonding or oxidation state.
+      </div>
+    </div>
+  </section>
+
+  <!-- ZETA -->
+
+  <section class="method" id="zeta" style="--color:#a1e7eb">
+    <figure>
+      <a href="descriptor-images/zeta.png">
+        <img
+          src="descriptor-images/zeta.png"
+          alt="Schematic zeta-potential distribution
+          and charged-particle interface."
+          loading="lazy"
+        >
+      </a>
+      <figcaption>
+        Schematic electrokinetic distribution · Click to enlarge.
+      </figcaption>
+    </figure>
+
+    <div class="description">
+      <div class="index">07 / Dispersion descriptors</div>
+      <h2>Zeta Potential &amp; DLS</h2>
+
+      <p>
+        Electrokinetic magnitude and hydrodynamic size
+        provide complementary operational descriptions
+        of the dispersion.
+      </p>
+
+      <dl>
+        <div class="descriptor">
+          <dt>Zeta potential, ζ</dt>
+          <dd>
+            Electrokinetic potential associated with the slipping plane;
+            describes the interface under the measurement conditions.
+          </dd>
+        </div>
+
+        <div class="descriptor">
+          <dt>Magnitude, |ζ|</dt>
+          <dd>
+            Charge-related descriptor;
+            supports comparisons of electrostatic contributions
+            to dispersion behavior.
+          </dd>
+        </div>
+
+        <div class="descriptor">
+          <dt>DLS size, Dh</dt>
+          <dd>
+            Operational hydrodynamic diameter;
+            can include aggregates and is not direct sheet width.
+          </dd>
+        </div>
+
+        <div class="descriptor">
+          <dt>Dispersion score, S</dt>
+          <dd>
+            Combines normalized |ζ| with inverted normalized
+            log₁₀(Dh); compares dispersion variables across the study.
+          </dd>
+        </div>
+      </dl>
+
+      <div class="processing">
+        <strong>Conditions matter:</strong> dispersion medium,
+        pH, ionic strength, and preparation affect interpretation.
+        PDI-based corrections require available PDI measurements.
+      </div>
+    </div>
+  </section>
+
+  <div class="workflow">
+    <h2>From characterization to modelling</h2>
+
+    <p>
+      <strong>
+        Raw signal → processing → parameter extraction
+        → descriptor screening → response modelling
+      </strong>
+    </p>
+
+    <p>
+      The descriptor table distinguishes measured inputs,
+      fitted parameters, derived quantities, and composite
+      scores before their use in physics-guided models.
+    </p>
+
+    <p>
+      <a href="physics-guided-modelling.html">
+        Explore physics-guided descriptor modelling →
+      </a>
+    </p>
+  </div>
+
+  <a class="back" href="modelling.html">
+    ← Back to modelling
+  </a>
+
+</main>
+
+<footer>
+  Rupesh Lal Karn · Characterization &amp; Descriptor Extraction
+</footer>
+
+</body>
+</html>
