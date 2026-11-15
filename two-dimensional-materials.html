@@ -1,1 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <title>MXenes &amp; Functional Composites | Rupesh Lal Karn</title>
+
+  <meta name="description"
+        content="Research by Rupesh Lal Karn on Ti₃CNTₓ MXenes,
+        transition-metal sulfide composites, materials processing,
+        characterization, photothermal heating, and electrochemistry.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #0b192a;
+      color: #eef4ff;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.8;
+    }
+
+    .container {
+      width: min(1100px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    .site-header {
+      padding: 20px 0;
+      background: #0e1d2e;
+      border-bottom: 1px solid #29425e;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .brand {
+      color: #eef4ff;
+      font-size: 20px;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .brand span {
+      color: #68b8ff;
+    }
+
+    .research-link {
+      color: #68b8ff;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    .research-link:hover {
+      color: #a1d5ff;
+    }
+
+    .hero {
+      max-width: 950px;
+      padding: 60px 0 36px;
+    }
+
+    .eyebrow {
+      margin: 0 0 16px;
+      color: #b89aff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(34px, 5vw, 58px);
+      line-height: 1.12;
+      letter-spacing: -0.04em;
+    }
+
+    h2,
+    h3 {
+      line-height: 1.3;
+    }
+
+    .intro {
+      max-width: 850px;
+      margin: 24px 0 0;
+      color: #c5d3e6;
+      font-size: 19px;
+      line-height: 1.8;
+    }
+
+    .detail-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .detail-box {
+      padding: 28px;
+      border: 1px solid #2d4966;
+      border-radius: 18px;
+      background: linear-gradient(145deg, #14283d, #0e1d2e);
+    }
+
+    .detail-box h2 {
+      margin: 16px 0;
+      font-size: 25px;
+    }
+
+    .detail-box p {
+      margin: 0;
+      color: #b7c8de;
+    }
+
+    .detail-label {
+      color: #8fc8ff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+    }
+
+    .material-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      padding: 0;
+      margin: 20px 0 0;
+      list-style: none;
+    }
+
+    .material-list li,
+    .tag {
+      padding: 7px 13px;
+      border: 1px solid #365676;
+      border-radius: 999px;
+      background: #183149;
+      color: #d7eaff;
+      font-size: 14px;
+    }
+
+    .focus-panel {
+      margin-top: 28px;
+      padding: 30px;
+      border: 1px solid #29425e;
+      border-radius: 18px;
+      background: #102236;
+    }
+
+    .focus-panel h2 {
+      margin-top: 0;
+      font-size: 27px;
+    }
+
+    .focus-panel p {
+      margin-bottom: 0;
+      color: #b7c8de;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin: 28px 0;
+    }
+
+    .related-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 28px;
+      padding: 24px 0 44px;
+    }
+
+    footer {
+      padding: 24px 0;
+      border-top: 1px solid #29425e;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+      color: #91a7c0;
+      font-size: 14px;
+    }
+
+    a:focus-visible {
+      outline: 2px solid #68b8ff;
+      outline-offset: 5px;
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        width: calc(100% - 32px);
+      }
+
+      .hero {
+        padding-top: 36px;
+      }
+
+      .detail-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .detail-box,
+      .focus-panel {
+        padding: 24px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      Rupesh Lal <span>Karn.</span>
+    </a>
+
+    <a class="research-link" href="research.html">
+      ← Back to Research
+    </a>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- INTRODUCTION -->
+  <header class="hero">
+    <p class="eyebrow">01 / Two-Dimensional Materials</p>
+
+    <h1>MXenes &amp; Functional Composites</h1>
+
+    <p class="intro">
+      My research examines how processing changes the structure
+      and surface chemistry of MXenes, and how these changes
+      relate to their functional behaviour. I focus on
+      Ti₃AlCN-derived Ti₃CNTₓ and composites formed with
+      transition-metal sulfides.
+    </p>
+  </header>
+
+  <!-- RESEARCH DETAILS -->
+  <div class="detail-grid">
+
+    <section class="detail-box" aria-labelledby="materials-title">
+      <span class="detail-label">01 / MATERIAL SYSTEMS</span>
+
+      <h2 id="materials-title">MXenes and sulfide composites</h2>
+
+      <p>
+        My work involves the Ti₃AlCN MAX phase and its
+        MXene derivative, Ti₃CNTₓ, together with MXene-based
+        composites containing transition-metal sulfides
+        such as NiS₂, CuS₂, ZnS, and MoS₂.
+      </p>
+
+      <ul class="material-list" aria-label="Materials studied">
+        <li>Ti₃AlCN</li>
+        <li>Ti₃CNTₓ</li>
+        <li>NiS₂</li>
+        <li>CuS₂</li>
+        <li>ZnS</li>
+        <li>MoS₂</li>
+      </ul>
+    </section>
+
+    <section class="detail-box" aria-labelledby="processing-title">
+      <span class="detail-label">02 / SYNTHESIS AND PROCESSING</span>
+
+      <h2 id="processing-title">Etching and intercalation</h2>
+
+      <p>
+        Selective LiF/HCl etching is used to remove the
+        aluminium layer from the MAX phase. The resulting
+        MXene is washed and treated with dimethyl sulfoxide
+        (DMSO) to promote intercalation and modify the
+        spacing between its layers.
+      </p>
+
+      <ul class="material-list" aria-label="Processing methods">
+        <li>LiF/HCl etching</li>
+        <li>Washing</li>
+        <li>DMSO intercalation</li>
+      </ul>
+    </section>
+
+    <section class="detail-box" aria-labelledby="characterization-title">
+      <span class="detail-label">03 / MATERIALS CHARACTERIZATION</span>
+
+      <h2 id="characterization-title">
+        Structure, chemistry, and morphology
+      </h2>
+
+      <p>
+        I use X-ray diffraction, Raman spectroscopy,
+        Fourier-transform infrared spectroscopy,
+        X-ray photoelectron spectroscopy, and SEM/EDS
+        to examine changes in crystal structure, bonding,
+        surface chemistry, morphology, and elemental
+        composition during processing and composite formation.
+      </p>
+
+      <ul class="material-list" aria-label="Characterization techniques">
+        <li>XRD</li>
+        <li>Raman</li>
+        <li>FTIR</li>
+        <li>XPS</li>
+        <li>SEM/EDS</li>
+      </ul>
+    </section>
+
+    <section class="detail-box" aria-labelledby="functional-title">
+      <span class="detail-label">04 / FUNCTIONAL STUDIES</span>
+
+      <h2 id="functional-title">
+        Photothermal and electrochemical behaviour
+      </h2>
+
+      <p>
+        I investigate photothermal heating under
+        near-infrared irradiation and electrochemical
+        behaviour using voltammetry, impedance spectroscopy,
+        and Tafel analysis. These studies connect material
+        processing and characterization with functional
+        performance.
+      </p>
+
+      <ul class="material-list" aria-label="Functional studies">
+        <li>NIR heating</li>
+        <li>Voltammetry</li>
+        <li>Impedance spectroscopy</li>
+        <li>Tafel analysis</li>
+      </ul>
+    </section>
+
+  </div>
+
+  <!-- CENTRAL RESEARCH QUESTION -->
+  <section class="focus-panel">
+    <p class="eyebrow">CONNECTING PROCESSING WITH PERFORMANCE</p>
+
+    <h2>Understanding how material changes affect function</h2>
+
+    <p>
+      The central aim of this work is to understand the
+      relationships between processing, structure, surface
+      chemistry, and functional behaviour. By examining
+      the MAX phase, etched MXene, intercalated material,
+      and sulfide-containing composites, I study how
+      material modification relates to photothermal
+      and electrochemical responses.
+    </p>
+  </section>
+
+  <div class="tags" aria-label="Research keywords">
+    <span class="tag">MXenes</span>
+    <span class="tag">Functional Composites</span>
+    <span class="tag">Photothermal Materials</span>
+    <span class="tag">Electrochemistry</span>
+    <span class="tag">Materials Characterization</span>
+  </div>
+
+  <nav class="related-links" aria-label="Related research">
+    <a class="research-link" href="photothermal.html">
+      Explore photothermal research →
+    </a>
+
+    <a class="research-link" href="electrochemistry.html">
+      Explore electrochemistry research →
+    </a>
+  </nav>
+
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <span>Rupesh Lal Karn · MXenes &amp; Functional Composites</span>
+
+    <a class="research-link" href="research.html">
+      Back to Research
+    </a>
+  </div>
+</footer>
+
+</body>
+</html>
