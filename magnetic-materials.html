@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Magnetic Materials & Single Crystals | Rupesh Lal Karn</title>
+<title>Magnetic Materials & Crystal Growth | Rupesh Lal Karn</title>
 
 <meta
   name="description"
-  content="Research on magnetic materials, structural refinement,
-  Lorentz TEM, and quantum oscillations, including visiting
-  research at Argonne and Los Alamos national laboratories."
+  content="Magnetic-powder synthesis, cobalt-doped
+  MnGeTeO6, Mn3Al2Ge3O12 single-crystal growth,
+  structural refinement, and national-laboratory research."
 >
 
 <style>
@@ -80,7 +80,7 @@ nav {
 }
 
 .hero {
-  padding: 60px 0 100px;
+  padding: 60px 0 105px;
   background:
     radial-gradient(circle at 88% 20%, #473b68, transparent 42%),
     var(--navy);
@@ -99,7 +99,7 @@ nav {
 h1 {
   max-width: 1000px;
   margin: 0 0 25px;
-  font-size: clamp(39px, 5.8vw, 72px);
+  font-size: clamp(38px, 5.8vw, 72px);
   line-height: 1.08;
   letter-spacing: -.045em;
 }
@@ -107,7 +107,7 @@ h1 {
 h1 span { color: #d5c2ff; }
 
 .hero p {
-  max-width: 850px;
+  max-width: 900px;
   color: #c6d6e6;
   font-size: 19px;
 }
@@ -131,7 +131,7 @@ h1 span { color: #d5c2ff; }
 
 .highlights small {
   display: block;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   color: var(--accent);
   font-size: 11px;
   font-weight: 750;
@@ -140,6 +140,7 @@ h1 span { color: #d5c2ff; }
 }
 
 .highlights strong {
+  display: block;
   font-size: 18px;
   line-height: 1.4;
 }
@@ -195,6 +196,51 @@ strong { color: var(--ink); }
   margin-bottom: 25px;
 }
 
+.material {
+  display: grid;
+  grid-template-columns: .85fr 1.15fr;
+  gap: 32px;
+  align-items: center;
+  padding: 32px;
+  margin: 24px 0;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  background: var(--surface);
+}
+
+.formula {
+  padding: 25px 0;
+  color: var(--accent);
+  font: clamp(27px, 3.3vw, 42px)/1.5 Georgia, serif;
+  overflow-wrap: anywhere;
+}
+
+.material-label {
+  color: var(--accent);
+  font-size: 11px;
+  font-weight: 750;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+.material h3 { color: var(--accent); }
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.tags span {
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: #ffffff80;
+  color: var(--accent);
+  font-size: 12px;
+}
+
 .cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -202,13 +248,13 @@ strong { color: var(--ink); }
 }
 
 .card {
-  padding: 26px;
-  border: 1px solid var(--border);
-  border-radius: 15px;
-  background: var(--surface);
+  padding: 25px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: white;
 }
 
-.card h3 { color: var(--accent); }
+.card h3 { color: var(--purple); }
 
 .card p {
   margin-bottom: 0;
@@ -222,13 +268,8 @@ strong { color: var(--ink); }
   padding: 32px;
   margin: 24px 0;
   border: 1px solid var(--border);
-  border-radius: 19px;
+  border-radius: 18px;
   background: var(--surface);
-}
-
-.lab-name {
-  color: var(--accent);
-  font-size: 25px;
 }
 
 .date {
@@ -237,26 +278,11 @@ strong { color: var(--ink); }
   color: var(--accent);
   font-size: 12px;
   font-weight: 700;
-  letter-spacing: .05em;
 }
 
-.role {
-  display: inline-block;
-  padding: 5px 11px;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  background: white;
-  color: var(--accent);
-  font-size: 12px;
-}
+.lab h3 { color: var(--accent); }
 
-.lab ul {
-  padding-left: 20px;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.lab li { margin-bottom: 10px; }
+.lab p:last-child { margin-bottom: 0; }
 
 .table-wrap {
   overflow-x: auto;
@@ -293,35 +319,6 @@ td:first-child {
 
 tr:last-child td { border-bottom: 0; }
 
-.steps {
-  margin: 25px 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: step;
-}
-
-.steps li {
-  position: relative;
-  padding: 0 0 25px 52px;
-  color: var(--muted);
-  counter-increment: step;
-}
-
-.steps li::before {
-  content: counter(step, decimal-leading-zero);
-  position: absolute;
-  left: 0;
-  top: 2px;
-  color: var(--green);
-  font-family: monospace;
-}
-
-.steps strong {
-  display: block;
-  margin-bottom: 4px;
-  font-size: 17px;
-}
-
 .context {
   padding: 30px;
   margin: 25px 0;
@@ -330,9 +327,7 @@ tr:last-child td { border-bottom: 0; }
 }
 
 .context h2 { color: white; }
-
 .context p { color: #c5d6e6; }
-
 .context a { color: #acd9ff; }
 
 .back {
@@ -349,6 +344,7 @@ footer {
 
 @media(max-width: 850px) {
   .section-top,
+  .material,
   .lab {
     grid-template-columns: 1fr;
   }
@@ -360,7 +356,7 @@ footer {
   .container { width: calc(100% - 36px); }
   .hero { padding-top: 35px; }
   .highlights { grid-template-columns: 1fr; }
-  .lab { padding: 23px; }
+  .material, .lab { padding: 23px; }
 }
 
 @media(prefers-reduced-motion: reduce) {
@@ -386,26 +382,25 @@ footer {
 <div class="hero">
   <div class="container">
     <div class="eyebrow">
-      Magnetic oxides · Single crystals · National-laboratory research
+      Synthesis · Doping · Crystal growth · Advanced measurements
     </div>
 
     <h1>
       Magnetic Materials<br>
-      <span>&amp; Single-Crystal Studies</span>
+      <span>&amp; Crystal Growth</span>
     </h1>
 
     <p>
-      My research experience spans synthesis and structural
-      refinement of magnetic materials, magnetic-domain
-      investigation, and quantum-oscillation measurements
-      on single crystals.
+      My research includes magnetic-powder synthesis,
+      compositional doping, single-crystal growth,
+      structural refinement, and magnetic characterization.
     </p>
 
     <p>
-      Research at Prairie View A&amp;M University and visiting
-      appointments at Argonne and Los Alamos national
-      laboratories connect structural characterization
-      with advanced experimental measurements.
+      Material systems include cobalt-substituted
+      MnGeTeO₆ and Mn₃Al₂Ge₃O₁₂ single crystals,
+      alongside national-laboratory experience in
+      magnetic-domain imaging and quantum-oscillation measurements.
     </p>
   </div>
 </div>
@@ -414,184 +409,185 @@ footer {
 
   <div class="highlights">
     <article style="--accent:#17695c">
-      <small>Structure</small>
-      <strong>Magnetic oxides &amp; refinement</strong>
+      <small>Synthesis</small>
+      <strong>Magnetic powders &amp; compositional doping</strong>
     </article>
 
     <article style="--accent:#714298">
-      <small>Argonne</small>
-      <strong>Magnetic domains through LTEM</strong>
+      <small>Crystal growth</small>
+      <strong>Mn₃Al₂Ge₃O₁₂ single crystals</strong>
     </article>
 
     <article style="--accent:#165ca6">
-      <small>Los Alamos</small>
-      <strong>Quantum oscillations in HfSn₂</strong>
+      <small>Advanced characterization</small>
+      <strong>SQUID · LTEM · dHvA</strong>
     </article>
   </div>
 
   <nav class="jump-links" aria-label="Page sections">
-    <a href="#materials">Materials research</a>
+    <a href="#materials">Material systems</a>
+    <a href="#preparation">Synthesis &amp; growth</a>
+    <a href="#characterization">Characterization</a>
     <a href="#national-labs">National laboratories</a>
-    <a href="#techniques">Techniques</a>
-    <a href="#approach">Research approach</a>
   </nav>
+
+  <!-- MATERIAL SYSTEMS -->
 
   <section id="materials">
     <div class="section-top">
       <div>
-        <div class="number">01 / MATERIALS RESEARCH</div>
-        <h2>Begin with structure and composition.</h2>
+        <div class="number">01 / MATERIAL SYSTEMS</div>
+        <h2>Composition and crystal structure as research variables.</h2>
+      </div>
+
+      <p>
+        My work combines preparation and characterization
+        to investigate how material composition and
+        structure relate to magnetic behaviour.
+        Powder synthesis, doping, and single-crystal growth
+        provide complementary routes to these questions.
+      </p>
+    </div>
+
+    <article class="material" style="
+      --surface:#eaf5ef;
+      --border:#c4dfd0;
+      --accent:#17695c;
+    ">
+      <div>
+        <div class="material-label">Cobalt-substituted magnetic oxide</div>
+
+        <div class="formula">
+          Mn<sub>1−x</sub>Co<sub>x</sub>GeTeO<sub>6</sub>
+        </div>
+
+        <div class="tags">
+          <span>MnGeTeO₆ host</span>
+          <span>Co substitution</span>
+          <span>Composition-dependent study</span>
+        </div>
       </div>
 
       <div>
+        <h3>Co-doped MnGeTeO₆</h3>
+
         <p>
-          My NSF-supported research at Prairie View A&amp;M
-          University included synthesis and structural refinement
-          of non-centrosymmetric magnetic materials and crystals,
-          under the supervision of Dr. Sunil Karna.
+          I worked on cobalt substitution in MnGeTeO₆,
+          expressed through the composition
+          Mn₁₋ₓCoₓGeTeO₆.
         </p>
 
         <p>
-          This work provided a foundation for examining
-          how crystallographic structure, local bonding,
-          and material preparation inform the interpretation
-          of magnetic behaviour.
+          The substitution level x defines the nominal
+          replacement of Mn by Co. The research combines
+          material preparation with structural and
+          magnetic characterization.
+        </p>
+
+        <p>
+          Comparing compositions provides a route to
+          investigate changes in phase formation,
+          crystallographic parameters, and magnetic response.
         </p>
       </div>
-    </div>
+    </article>
 
-    <div class="cards">
-      <article class="card" style="
-        --surface:#eaf5ef;
-        --border:#c4dfd0;
-        --accent:#17695c;
-      ">
-        <h3>Synthesis &amp; preparation</h3>
-        <p>
-          Preparation of magnetic materials and crystals,
-          with attention to composition, sample history,
-          and suitability for characterization.
-        </p>
-      </article>
-
-      <article class="card" style="
-        --surface:#f2ecf8;
-        --border:#dacbea;
-        --accent:#714298;
-      ">
-        <h3>Structural refinement</h3>
-        <p>
-          XRD and Rietveld refinement establish
-          crystallographic context through comparison
-          of structural models with diffraction measurements.
-        </p>
-      </article>
-
-      <article class="card" style="
-        --surface:#eaf3fd;
-        --border:#bdd4eb;
-        --accent:#165ca6;
-      ">
-        <h3>Complementary characterization</h3>
-        <p>
-          Raman spectroscopy and magnetic characterization
-          complement diffraction when interpreting
-          structure–property relationships.
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <section id="national-labs">
-    <div class="number">02 / VISITING RESEARCH EXPERIENCE</div>
-    <h2>Advanced measurements at U.S. national laboratories.</h2>
-
-    <article class="lab" style="
+    <article class="material" style="
       --surface:#f2ecf8;
       --border:#dacbea;
       --accent:#714298;
     ">
       <div>
-        <span class="date">23 JUNE – 4 JULY 2025</span>
-        <h3 class="lab-name">Argonne National Laboratory</h3>
-        <span class="role">Visiting Research Student</span>
+        <div class="material-label">Single-crystal material</div>
+
+        <div class="formula">
+          Mn<sub>3</sub>Al<sub>2</sub>Ge<sub>3</sub>O<sub>12</sub>
+        </div>
+
+        <div class="tags">
+          <span>Single-crystal growth</span>
+          <span>Magnetic oxide</span>
+          <span>Structural characterization</span>
+        </div>
       </div>
 
       <div>
-        <h3>Magnetic-domain investigation using LTEM</h3>
+        <h3>Mn₃Al₂Ge₃O₁₂ single crystals</h3>
 
         <p>
-          Performed advanced Lorentz transmission electron
-          microscopy analysis to investigate magnetic
-          domain structures.
+          My experience includes growing
+          Mn₃Al₂Ge₃O₁₂ single crystals and preparing
+          samples for subsequent characterization.
         </p>
-
-        <ul>
-          <li>
-            LTEM provides spatial information through
-            magnetic deflection of the electron beam.
-          </li>
-          <li>
-            Domain contrast complements measurements
-            that average over a larger sample volume.
-          </li>
-          <li>
-            Interpretation considers imaging conditions,
-            specimen geometry, and non-magnetic contrast.
-          </li>
-        </ul>
-      </div>
-    </article>
-
-    <article class="lab" style="
-      --surface:#eaf3fd;
-      --border:#bdd4eb;
-      --accent:#165ca6;
-    ">
-      <div>
-        <span class="date">4–15 AUGUST 2025</span>
-        <h3 class="lab-name">Los Alamos National Laboratory</h3>
-        <span class="role">Visiting Research Student</span>
-      </div>
-
-      <div>
-        <h3>Quantum-oscillation measurements on HfSn₂</h3>
 
         <p>
-          Performed angle- and temperature-dependent
-          de Haas–van Alphen measurements on HfSn₂ crystals.
+          Single-crystal specimens complement powder
+          studies by providing well-defined samples
+          for structural and physical-property investigations.
         </p>
 
-        <ul>
-          <li>
-            The dHvA effect probes oscillatory magnetic
-            response associated with electronic states
-            in an applied magnetic field.
-          </li>
-          <li>
-            Angular dependence provides information
-            relevant to Fermi-surface geometry.
-          </li>
-          <li>
-            Temperature-dependent oscillation amplitudes
-            support effective-mass analysis when the
-            appropriate model and measurement conditions apply.
-          </li>
-        </ul>
+        <p>
+          Sample identity, preparation history, and
+          measurement geometry remain important when
+          connecting crystal preparation with measured behaviour.
+        </p>
       </div>
     </article>
-
-    <p>
-      The national-laboratory studies address complementary
-      questions: LTEM examines magnetic-domain structure,
-      while dHvA measurements probe electronic structure
-      through quantum oscillations.
-    </p>
   </section>
 
-  <section id="techniques">
-    <div class="number">03 / COMPLEMENTARY EVIDENCE</div>
-    <h2>Different techniques reveal different aspects of the material.</h2>
+  <!-- PREPARATION -->
+
+  <section id="preparation">
+    <div class="number">02 / EXPERIMENTAL PREPARATION</div>
+    <h2>From magnetic powders to single crystals.</h2>
+
+    <div class="cards">
+      <article class="card">
+        <h3>Magnetic-powder synthesis</h3>
+        <p>
+          Experience with magnetic-powder preparation
+          and solid-state synthesis, connecting
+          precursor composition and processing history
+          with subsequent phase characterization.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Compositional doping</h3>
+        <p>
+          Preparation of cobalt-substituted MnGeTeO₆
+          compositions, with nominal substitution
+          recorded explicitly for comparison across samples.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Single-crystal growth</h3>
+        <p>
+          Growth of Mn₃Al₂Ge₃O₁₂ single crystals,
+          alongside sample preparation and characterization
+          for materials research.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <!-- CHARACTERIZATION -->
+
+  <section id="characterization">
+    <div class="section-top">
+      <div>
+        <div class="number">03 / STRUCTURE–PROPERTY INVESTIGATION</div>
+        <h2>Connect preparation with complementary evidence.</h2>
+      </div>
+
+      <p>
+        My research at Prairie View A&amp;M University,
+        including NSF-supported work supervised by
+        Dr. Sunil Karna, involved synthesis and structural
+        refinement of magnetic materials and crystals.
+      </p>
+    </div>
 
     <div class="table-wrap">
       <table>
@@ -607,87 +603,145 @@ footer {
           <tr>
             <td>X-ray diffraction</td>
             <td>Crystalline phases and diffraction profiles</td>
-            <td>Establish structural context</td>
+            <td>
+              Evaluate phase formation and structural
+              differences between prepared samples
+            </td>
           </tr>
 
           <tr>
             <td>Rietveld refinement</td>
-            <td>Structural parameters supported by the diffraction data</td>
-            <td>Evaluate crystallographic models</td>
+            <td>
+              Crystallographic parameters supported
+              by the diffraction data
+            </td>
+            <td>
+              Compare structural models and
+              composition-dependent structural changes
+            </td>
           </tr>
 
           <tr>
             <td>Raman spectroscopy</td>
-            <td>Vibrational features associated with bonding and symmetry</td>
+            <td>
+              Vibrational features associated
+              with bonding and symmetry
+            </td>
             <td>Complement diffraction-based interpretation</td>
           </tr>
 
           <tr>
-            <td>Magnetic characterization</td>
-            <td>Response under defined field and temperature conditions</td>
-            <td>Investigate magnetic behaviour</td>
+            <td>SQUID magnetometry</td>
+            <td>
+              Magnetic response under defined
+              temperature and field conditions
+            </td>
+            <td>
+              Investigate magnetic behaviour
+              with explicit measurement protocols
+            </td>
           </tr>
 
           <tr>
             <td>Lorentz TEM</td>
             <td>Magnetic-domain-related electron contrast</td>
-            <td>Examine spatial magnetic structure</td>
+            <td>Examine spatial magnetic structures</td>
           </tr>
 
           <tr>
-            <td>de Haas–van Alphen measurements</td>
-            <td>Angle- and temperature-dependent quantum oscillations</td>
-            <td>Investigate single-crystal electronic structure</td>
+            <td>dHvA measurements</td>
+            <td>
+              Angle- and temperature-dependent
+              quantum oscillations
+            </td>
+            <td>
+              Investigate electronic structure
+              in single-crystal HfSn₂
+            </td>
           </tr>
         </tbody>
       </table>
     </div>
   </section>
 
-  <section id="approach">
-    <div class="number">04 / RESEARCH APPROACH</div>
-    <h2>Connect the sample, measurement, and interpretation.</h2>
+  <!-- NATIONAL LABORATORIES -->
 
-    <ol class="steps">
-      <li>
-        <strong>Establish material identity</strong>
-        Retain composition, preparation conditions,
-        crystal or sample identity, and processing history.
-      </li>
+  <section id="national-labs">
+    <div class="number">04 / VISITING RESEARCH EXPERIENCE</div>
+    <h2>Advanced measurements at national laboratories.</h2>
 
-      <li>
-        <strong>Build the structural picture</strong>
-        Combine diffraction, refinement, and
-        complementary vibrational characterization.
-      </li>
+    <article class="lab" style="
+      --surface:#f2ecf8;
+      --border:#dacbea;
+      --accent:#714298;
+    ">
+      <div>
+        <span class="date">23 JUNE – 4 JULY 2025</span>
+        <h3>Argonne National Laboratory</h3>
+        <p>Visiting Research Student</p>
+      </div>
 
-      <li>
-        <strong>Select the appropriate measurement</strong>
-        Distinguish questions about magnetic domains,
-        bulk magnetic response, and electronic structure.
-      </li>
+      <div>
+        <h3>Magnetic-domain investigation using LTEM</h3>
 
-      <li>
-        <strong>Preserve experimental conditions</strong>
-        Record orientation, temperature, applied field,
-        measurement geometry, and acquisition settings.
-      </li>
+        <p>
+          Performed advanced Lorentz transmission electron
+          microscopy analysis to investigate magnetic
+          domain structures.
+        </p>
 
-      <li>
-        <strong>Interpret complementary evidence</strong>
-        Connect observations while retaining the distinct
-        scope and assumptions of each technique.
-      </li>
-    </ol>
+        <p>
+          LTEM provides spatial information that complements
+          bulk magnetic measurements. Interpretation considers
+          imaging conditions, specimen geometry,
+          and non-magnetic contrast contributions.
+        </p>
+      </div>
+    </article>
+
+    <article class="lab" style="
+      --surface:#eaf3fd;
+      --border:#bdd4eb;
+      --accent:#165ca6;
+    ">
+      <div>
+        <span class="date">4–15 AUGUST 2025</span>
+        <h3>Los Alamos National Laboratory</h3>
+        <p>Visiting Research Student</p>
+      </div>
+
+      <div>
+        <h3>Quantum oscillations in HfSn₂</h3>
+
+        <p>
+          Performed angle- and temperature-dependent
+          de Haas–van Alphen measurements on HfSn₂ crystals.
+        </p>
+
+        <p>
+          Angular dependence provides information relevant
+          to Fermi-surface geometry, while temperature-dependent
+          amplitudes support effective-mass analysis
+          under the appropriate measurement and modelling conditions.
+        </p>
+
+        <p>
+          This work concerns quantum-oscillation measurements
+          on HfSn₂, distinct from my oxide synthesis
+          and Mn₃Al₂Ge₃O₁₂ crystal-growth activities.
+        </p>
+      </div>
+    </article>
   </section>
 
   <aside class="context">
-    <h2>Experimental research across institutions.</h2>
+    <h2>Preparation, structure, and physical response.</h2>
 
     <p>
-      My experience connects university-based materials
-      preparation and characterization with advanced
-      measurements at national-laboratory facilities.
+      My experience connects magnetic-powder synthesis,
+      cobalt substitution, and single-crystal growth
+      with structural refinement and advanced
+      magnetic and electronic measurements.
     </p>
 
     <a href="experience.html">Explore research experience →</a>
@@ -695,13 +749,15 @@ footer {
     <a href="Rupesh_Lal_Karn_CV.pdf">View CV →</a>
   </aside>
 
-  <a class="back" href="research.html">← Back to research interests</a>
+  <a class="back" href="research.html">
+    ← Back to research interests
+  </a>
 
 </main>
 
 <footer>
   <div class="container">
-    Rupesh Lal Karn · Magnetic Materials &amp; Single-Crystal Studies
+    Rupesh Lal Karn · Magnetic Materials &amp; Crystal Growth
   </div>
 </footer>
 
