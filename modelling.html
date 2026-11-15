@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Modelling &amp; Descriptor Development | Rupesh Lal Karn</title>
+
+  <meta name="description"
+        content="Physics-guided descriptor modelling of MXenes:
+        MATLAB workflows, photothermal prediction, thermal
+        modelling, and electrochemical circuit analysis
+        by Rupesh Lal Karn.">
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #101a22;
+      color: #e9f0f4;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+      text-underline-offset: 5px;
+    }
+
+    .wrap {
+      width: min(1160px, calc(100% - 40px));
+      margin: auto;
+    }
+
+    .top {
+      padding: 20px 0;
+      border-bottom: 1px solid #34454f;
+    }
+
+    .top .wrap {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .brand {
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .back {
+      color: #a7e4c3;
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.15;
+    }
+
+    h1 {
+      margin: 18px 0 26px;
+      font-size: clamp(38px, 6vw, 70px);
+      letter-spacing: -0.045em;
+    }
+
+    h2 {
+      font-size: clamp(28px, 4vw, 40px);
+      letter-spacing: -0.025em;
+    }
+
+    h3 {
+      font-size: 22px;
+    }
+
+    p,
+    li {
+      color: #bdcdd5;
+    }
+
+    .eyebrow {
+      color: #a7e4c3;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      max-width: 920px;
+      padding: 56px 0 36px;
+    }
+
+    .lead {
+      max-width: 850px;
+      color: #bdcdd5;
+      font-size: 19px;
+    }
+
+    .jump {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+
+    .jump a {
+      padding: 8px 14px;
+      border: 1px solid #466153;
+      border-radius: 24px;
+      font-size: 13px;
+      text-decoration: none;
+    }
+
+    .jump a:hover {
+      background: #234534;
+    }
+
+    .section {
+      padding: 36px 0;
+      border-top: 1px solid #34454f;
+      scroll-margin-top: 20px;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      gap: 40px;
+    }
+
+    .equation {
+      padding: 28px;
+      border: 1px solid #567b65;
+      border-radius: 16px;
+      background: #172f25;
+    }
+
+    .equation p {
+      color: #d5e9dc;
+    }
+
+    .formula {
+      color: #ecfff3;
+      font-size: clamp(19px, 2.5vw, 28px);
+      line-height: 1.7;
+      overflow-wrap: anywhere;
+    }
+
+    .small {
+      font-size: 13px;
+    }
+
+    .metrics {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      margin: 28px 0;
+      border: 1px solid #34454f;
+      background: #34454f;
+    }
+
+    .metrics div {
+      padding: 24px;
+      background: #14232c;
+    }
+
+    .metrics strong {
+      display: block;
+      color: #a7e4c3;
+      font-size: 32px;
+    }
+
+    .metrics span {
+      color: #bdcdd5;
+      font-size: 13px;
+    }
+
+    .table-scroll {
+      overflow-x: auto;
+    }
+
+    table {
+      width: 100%;
+      min-width: 540px;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 14px 12px;
+      border-bottom: 1px solid #34454f;
+      vertical-align: top;
+    }
+
+    th {
+      color: #e9f0f4;
+    }
+
+    td {
+      color: #bdcdd5;
+    }
+
+    caption {
+      padding-bottom: 12px;
+      color: #bdcdd5;
+      text-align: left;
+    }
+
+    .highlight {
+      background: #1c3529;
+    }
+
+    .workflow {
+      counter-reset: step;
+      padding: 0;
+      list-style: none;
+    }
+
+    .workflow li {
+      counter-increment: step;
+      padding: 18px 0;
+      border-bottom: 1px solid #34454f;
+    }
+
+    .workflow li::before {
+      content: counter(step, decimal-leading-zero) " / ";
+      color: #a7e4c3;
+      font-weight: 700;
+    }
+
+    .note {
+      padding: 22px 26px;
+      margin: 24px 0;
+      border-left: 4px solid #9cc4df;
+      background: #23313b;
+    }
+
+    .explorer {
+      padding: 28px;
+      margin: 28px 0;
+      border-radius: 16px;
+      background: #edf6ef;
+      color: #193c2b;
+    }
+
+    .explorer p {
+      color: #426351;
+    }
+
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .controls label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #8aa696;
+      border-radius: 8px;
+      background: #ffffff;
+      color: #193c2b;
+      font: inherit;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: #28623b;
+    }
+
+    output {
+      display: block;
+      margin: 20px 0 0;
+      font-size: 38px;
+      font-weight: 700;
+    }
+
+    .model-block {
+      padding: 24px 0;
+      border-bottom: 1px solid #34454f;
+    }
+
+    .model-block:last-child {
+      border-bottom: 0;
+    }
+
+    .model-block h3 {
+      margin-top: 0;
+    }
+
+    details {
+      padding: 20px;
+      margin: 20px 0;
+      border: 1px solid #34454f;
+    }
+
+    summary {
+      color: #e9f0f4;
+      cursor: pointer;
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 26px 0;
+      margin-top: 32px;
+      border-top: 1px solid #34454f;
+      font-size: 13px;
+    }
+
+    footer .wrap {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    a:focus-visible,
+    select:focus-visible,
+    input:focus-visible,
+    summary:focus-visible {
+      outline: 3px solid #76b8ef;
+      outline-offset: 5px;
+    }
+
+    @media (max-width: 760px) {
+      .wrap {
+        width: calc(100% - 32px);
+      }
+
+      .split,
+      .controls,
+      .metrics {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .metrics {
+        border: 0;
+        background: none;
+      }
+
+      .metrics div {
+        border: 1px solid #34454f;
+      }
+
+      .hero {
+        padding-top: 36px;
+      }
+
+      .equation,
+      .explorer {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      Rupesh Lal Karn.
+    </a>
+
+    <a class="back" href="research.html">
+      ← Back to Research
+    </a>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <header class="hero">
+    <p class="eyebrow">
+      03 / Modelling &amp; Descriptor Development
+    </p>
+
+    <h1>From measured properties<br>to predictive models.</h1>
+
+    <p class="lead">
+      My thesis develops physics-guided descriptors and
+      MATLAB workflows to connect MXene processing with
+      thermal, photothermal, and electrochemical behaviour.
+    </p>
+
+    <p>
+      Three material states form the core comparison:
+      Ti₃AlCN MAX phase, acid-etched Ti₃CNTₓ,
+      and DMSO-treated Ti₃CNTₓ.
+    </p>
+  </header>
+
+  <nav class="jump" aria-label="Modelling sections">
+    <a href="#prediction">Photothermal prediction</a>
+    <a href="#descriptors">Descriptor design</a>
+    <a href="#thermal">Thermal models</a>
+    <a href="#circuits">Electrochemical models</a>
+    <a href="#validation">Validation</a>
+  </nav>
+
+  <!-- PHOTOTHERMAL MODEL -->
+  <section id="prediction" class="section">
+
+    <p class="eyebrow">
+      Selected photothermal model / Thesis Section IV.12
+    </p>
+
+    <div class="split">
+
+      <div>
+        <h2>
+          Dispersion state helps explain the heating response.
+        </h2>
+
+        <p>
+          I compared seven candidate models using nine
+          material–concentration conditions: three materials
+          at 1, 2, and 4 mg/mL. The selected model combines
+          concentration with a dispersion score derived
+          from zeta potential and hydrodynamic size.
+        </p>
+
+        <p>
+          The dispersion model performed better in
+          withheld-material prediction than concentration
+          alone or the interfacial/accessibility score.
+        </p>
+      </div>
+
+      <div class="equation">
+        <p class="eyebrow">Model M4</p>
+
+        <div class="formula">
+          Q<sub>net,off</sub> = 0.161<br>
+          + 0.121 ln(C / C₀)<br>
+          + 0.237 S
+        </div>
+
+        <p class="small">
+          Q<sub>net,off</sub>: net heat generation at
+          laser switch-off, in W.<br>
+          C: concentration; C₀ = 1 mg/mL.<br>
+          S: the dimensionless dispersion score used
+          in the final predictive analysis.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="metrics">
+      <div>
+        <strong>0.969</strong>
+        <span>R² across the nine fitted conditions</span>
+      </div>
+
+      <div>
+        <strong>0.031 W</strong>
+        <span>Withheld-concentration RMSE</span>
+      </div>
+
+      <div>
+        <strong>0.046 W</strong>
+        <span>Withheld-material RMSE</span>
+      </div>
+    </div>
+
+    <p class="small">
+      These are results for this thesis dataset,
+      not an established prediction accuracy
+      for other MXenes.
+    </p>
+
+    <div class="table-scroll">
+      <table>
+        <caption>
+          Selected model comparison — thesis Table 42
+        </caption>
+
+        <thead>
+          <tr>
+            <th scope="col">Predictors</th>
+            <th scope="col">R²</th>
+            <th scope="col">Fit RMSE</th>
+            <th scope="col">Withheld-material RMSE</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <th scope="row">Concentration only</th>
+            <td>0.319</td>
+            <td>0.100 W</td>
+            <td>0.149 W</td>
+          </tr>
+
+          <tr>
+            <th scope="row">
+              Concentration + interfacial score
+            </th>
+            <td>0.856</td>
+            <td>0.046 W</td>
+            <td>0.378 W</td>
+          </tr>
+
+          <tr class="highlight">
+            <th scope="row">
+              Concentration + dispersion score
+            </th>
+            <td>0.969</td>
+            <td>0.022 W</td>
+            <td>0.046 W</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- INTERACTIVE MODEL EXPLORER -->
+    <div class="explorer">
+      <h3>Explore the fitted equation</h3>
+
+      <p>
+        Change the material and concentration to inspect
+        the selected model. This is a fitted estimate,
+        not a new measurement or an independently
+        validated prediction.
+      </p>
+
+      <div class="controls">
+
+        <div>
+          <label for="material">Material</label>
+
+          <select id="material">
+            <option value="0">
+              Ti₃AlCN MAX phase
+            </option>
+            <option value="1">
+              Acid-etched Ti₃CNTₓ
+            </option>
+            <option value="0.363">
+              DMSO-treated Ti₃CNTₓ
+            </option>
+          </select>
+        </div>
+
+        <div>
+          <label for="concentration">
+            Concentration:
+            <span id="concentration-label">2.0</span>
+            mg/mL
+          </label>
+
+          <input id="concentration"
+                 type="range"
+                 min="1"
+                 max="4"
+                 step="0.1"
+                 value="2"
+                 aria-describedby="explorer-scope">
+        </div>
+
+      </div>
+
+      <output id="prediction-result"
+              for="material concentration"
+              aria-live="polite">
+        0.245 W
+      </output>
+
+      <p id="explorer-scope" class="small">
+        The experiments used 1, 2, and 4 mg/mL.
+        Intermediate slider values interpolate the fitted
+        equation. Coefficients and scores are rounded.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- DESCRIPTOR DEVELOPMENT -->
+  <section id="descriptors" class="section">
+    <p class="eyebrow">Descriptor development</p>
+
+    <h2>Make the inputs physically interpretable.</h2>
+
+    <p>
+      Of 51 inventoried descriptors, 16 were retained
+      for screening after physical and data-quality
+      checks. Seven core quantities formed three
+      material scores. Scores used fixed equal weights
+      and did not use the primary photothermal response
+      in their calculation.
+    </p>
+
+    <div class="table-scroll">
+      <table>
+        <caption>
+          Scores used in the final predictive model
+          comparison — thesis Table 41
+        </caption>
+
+        <thead>
+          <tr>
+            <th scope="col">Score</th>
+            <th scope="col">Inputs</th>
+            <th scope="col">MAX</th>
+            <th scope="col">Acid</th>
+            <th scope="col">DMSO</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr>
+            <th scope="row">
+              Interfacial / accessibility, I
+            </th>
+            <td>
+              Stacking length, FTIR B2 fraction,
+              F/Ti, pore diameter
+            </td>
+            <td>0.000</td>
+            <td>0.974</td>
+            <td>0.827</td>
+          </tr>
+
+          <tr>
+            <th scope="row">
+              Vibrational perturbation, D
+            </th>
+            <td>Normalized Raman shift</td>
+            <td>0.000</td>
+            <td>0.320</td>
+            <td>1.000</td>
+          </tr>
+
+          <tr>
+            <th scope="row">Dispersion, S</th>
+            <td>
+              Inverse normalized log₁₀ hydrodynamic size
+              and normalized |ζ|
+            </td>
+            <td>0.000</td>
+            <td>1.000</td>
+            <td>0.363</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <details>
+      <summary>
+        How the final dispersion score is constructed
+      </summary>
+
+      <p>
+        Each input is min–max normalized across the
+        three materials. Hydrodynamic diameter
+        D<sub>h</sub> is log₁₀-transformed before
+        normalization, and its normalized direction
+        is inverted so smaller aggregates receive
+        a higher score.
+      </p>
+
+      <p class="formula">
+        S = ½ [(1 − u) + v]
+      </p>
+
+      <p>
+        u = normalized log₁₀(D<sub>h</sub>);<br>
+        v = normalized |ζ|.
+      </p>
+
+      <p>
+        These are relative coordinates within the
+        measured material set. They are not universal
+        colloidal-stability scales.
+      </p>
+    </details>
+
+    <div class="note">
+      <strong>Distinguishing descriptor definitions</strong>
+
+      <p>
+        The final predictor uses the logarithmic-size
+        score from Section IV.12. It is distinct from
+        the earlier provisional |ζ|/D<sub>h</sub>
+        ratio and the linear-size dispersion score.
+        PDI-dependent descriptors could not be evaluated
+        because PDI values were unavailable.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- THERMAL MODELLING -->
+  <section id="thermal" class="section">
+    <p class="eyebrow">Thermal modelling</p>
+
+    <h2>
+      Separate structural estimates from kinetic evidence.
+    </h2>
+
+    <div class="model-block">
+      <h3>BET-informed thermal transport</h3>
+
+      <p>
+        Surface area, pore volume, and assumed density
+        support derived porosity and interfacial-area
+        descriptors. A Maxwell–Eucken treatment and
+        an interfacial-resistance correction are used
+        to examine effective thermal transport.
+      </p>
+
+      <p class="formula">
+        k<sub>eff</sub> =
+        k<sub>porous</sub> /
+        (1 + R<sub>int</sub> a<sub>v</sub>
+        k<sub>porous</sub>)
+      </p>
+
+      <p class="small">
+        R<sub>int</sub>: interfacial thermal resistance;
+        a<sub>v</sub>: interfacial area per unit volume.
+        These conductivity and diffusivity values are
+        model estimates dependent on assumed parameters,
+        not direct thermal-transport measurements.
+        They were excluded as predictors of the thermal
+        response to avoid circularity.
+      </p>
+    </div>
+
+    <div class="model-block">
+      <h3>Event-specific TGA kinetics</h3>
+
+      <p>
+        Multirate thermal analysis uses Kissinger
+        and isoconversional methods, including FWO,
+        KAS, and Starink, to examine apparent activation
+        energies. Accepted events are reconstructed
+        with an effective kinetic model.
+      </p>
+
+      <p>
+        DMSO event 2 gave reconstruction R² values
+        of approximately 0.967–0.979 across the three
+        heating rates. Several earlier events were
+        poorly represented by a single first-order
+        model; DMSO event 3 received no robust
+        activation-energy recommendation.
+      </p>
+
+      <p class="small">
+        Activation energies are event-level descriptors,
+        not unique mechanistic constants. A successful
+        reconstruction does not prove a first-order
+        mechanism.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- ELECTROCHEMICAL MODELLING -->
+  <section id="circuits" class="section">
+    <p class="eyebrow">Electrochemical modelling</p>
+
+    <h2>
+      Three techniques. A shared test of the representation.
+    </h2>
+
+    <p>
+      The thesis examines charge storage in acid-etched
+      and DMSO-treated MXene electrodes before and after
+      cycling using CV, EIS, and GCD. Model-independent
+      descriptors, empirical rate laws, and
+      equivalent-circuit representations are compared.
+    </p>
+
+    <ol class="workflow">
+      <li>
+        <strong>Check data validity.</strong>
+        Cycle stability, Kramers–Kronig consistency,
+        acquisition sessions, and time resolution
+        guide the usable measurement range.
+      </li>
+
+      <li>
+        <strong>Compare representations.</strong>
+        Models are assessed using effective-sample-size
+        information criteria, identifiability checks,
+        and withheld-data prediction.
+      </li>
+
+      <li>
+        <strong>Quantify uncertainty.</strong>
+        Bootstrap intervals and robustness tests assess
+        which parameter changes are supported.
+      </li>
+
+      <li>
+        <strong>Compare across techniques.</strong>
+        CV and GCD select two relaxation time scales
+        with a parallel conductive path; EIS resolves
+        an additional time scale.
+      </li>
+    </ol>
+
+    <p>
+      Slow-process capacitance agreed within 15%
+      across techniques. The DMSO-treated electrode
+      showed about 10% greater slow-timescale charge
+      storage, while the most robust cycling change
+      was a 54–72% increase in the acid-etched
+      electrode’s slow-branch resistance.
+    </p>
+
+    <div class="note">
+      <strong>Interpretation within the measurement regime</strong>
+
+      <p>
+        Each material was represented by one electrode,
+        and capacitances were not mass-normalized.
+        Circuit elements are effective representations
+        rather than unique microscopic assignments.
+        Small-signal EIS and large-signal CV/GCD
+        probe different regimes.
+      </p>
+    </div>
+
+  </section>
+
+  <!-- WORKFLOW AND VALIDATION -->
+  <section id="validation" class="section">
+    <p class="eyebrow">MATLAB workflow and validation</p>
+
+    <h2>Prediction has to survive being tested.</h2>
+
+    <div class="split">
+
+      <div>
+        <h3>Photothermal workflow</h3>
+
+        <ol class="workflow">
+          <li>
+            Prepare the nine measured response conditions.
+          </li>
+          <li>
+            Screen descriptors and fix score definitions.
+          </li>
+          <li>
+            Fit the pre-stated candidate models.
+          </li>
+          <li>
+            Compare AICc and withheld-concentration /
+            withheld-material errors.
+          </li>
+          <li>
+            Evaluate coefficient intervals, residuals,
+            sensitivity, and prediction intervals.
+          </li>
+        </ol>
+      </div>
+
+      <div>
+        <h3>Uncertainty and scope</h3>
+
+        <p>
+          The photothermal analysis includes 20,000
+          Monte Carlo draws and an autocorrelation-aware
+          uncertainty assessment. Descriptor scores
+          remain fixed in the propagation because
+          independent uncertainties are not available
+          for every input.
+        </p>
+
+        <p>
+          The final model is a physics-guided calibration
+          across three measured material states.
+          Its applicability to other MXenes
+          remains unestablished.
+        </p>
+
+        <p>
+          Although scores were computed without the
+          primary response, the thesis notes that
+          the qualitative material ranking was already
+          known when the dispersion data were added.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- THESIS REFERENCE -->
+  <section class="section">
+    <p class="eyebrow">Thesis basis</p>
+
+    <p>
+      <em>
+        Physics-Guided Descriptor Modeling of MXene
+        for Thermal, Photothermal, and Electrochemical
+        Applications
+      </em>
+      — Rupesh Lal Karn.
+    </p>
+
+    <p class="small">
+      Key sources: predictive modelling, Section IV.12
+      and Tables 41–44; TGA kinetics, Table 23;
+      electrochemical comparison, Table 36.
+    </p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>
+      Rupesh Lal Karn · Modelling &amp; Descriptor Development
+    </span>
+
+    <a class="back" href="research.html">
+      Back to Research
+    </a>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const material = document.getElementById("material");
+  const concentration = document.getElementById("concentration");
+  const label = document.getElementById("concentration-label");
+  const result = document.getElementById("prediction-result");
+
+  function update() {
+    const c = Number(concentration.value);
+    const score = Number(material.value);
+
+    const predictedHeat =
+      0.161 +
+      0.121 * Math.log(c) +
+      0.237 * score;
+
+    label.textContent = c.toFixed(1);
+    result.value = predictedHeat.toFixed(3) + " W";
+  }
+
+  material.addEventListener("change", update);
+  concentration.addEventListener("input", update);
+
+  update();
+})();
+</script>
+
+</body>
+</html>
