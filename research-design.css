@@ -1,0 +1,482 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  line-height: 1.75;
+}
+
+h1,
+h2,
+h3 {
+  font-family: "Space Grotesk", sans-serif;
+  line-height: 1.15;
+}
+
+h1 {
+  margin: 20px 0;
+  font-size: clamp(38px, 6vw, 76px);
+  letter-spacing: -0.055em;
+}
+
+h2 {
+  font-size: clamp(26px, 3.5vw, 40px);
+  letter-spacing: -0.03em;
+}
+
+h3 {
+  font-size: 21px;
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 5px;
+}
+
+p {
+  max-width: 760px;
+}
+
+nav,
+main,
+footer {
+  width: min(1140px, calc(100% - 40px));
+  margin: auto;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 24px 0;
+  border-bottom: 1px solid currentColor;
+}
+
+nav a {
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.brand {
+  font-weight: 700;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+.intro {
+  max-width: 760px;
+  font-size: 20px;
+}
+
+.muted {
+  opacity: 0.75;
+}
+
+.section {
+  padding: 48px 0;
+}
+
+.rule {
+  border-top: 1px solid currentColor;
+}
+
+.split {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  align-items: center;
+  gap: 56px;
+}
+
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin: 24px 0;
+}
+
+.chips span {
+  padding: 5px 13px;
+  border: 1px solid currentColor;
+  border-radius: 30px;
+  font-size: 12px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 28px 0;
+  margin-top: 48px;
+  border-top: 1px solid currentColor;
+  font-size: 13px;
+}
+
+a:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 5px;
+}
+
+li {
+  margin: 10px 0;
+}
+
+/* MXENES: DARK EDITORIAL LAYOUT */
+
+.materials {
+  background: #0b192a;
+  color: #e9f2ff;
+}
+
+.materials .accent {
+  color: #86dfd0;
+}
+
+.materials .formula {
+  padding: 48px 20px;
+  border: 1px solid #3d7970;
+  border-radius: 50% 50% 20px 20px;
+  background: #123835;
+  text-align: center;
+}
+
+.formula strong {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(42px, 6vw, 78px);
+}
+
+.formula small {
+  display: block;
+  margin-top: 18px;
+  color: #abe5da;
+}
+
+.material-path {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  border: 1px solid #33516b;
+  background: #33516b;
+}
+
+.material-path article {
+  padding: 28px;
+  background: #102236;
+}
+
+.method-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0 40px;
+}
+
+.method-list p {
+  padding-top: 18px;
+  border-top: 1px solid #33516b;
+}
+
+/* LASER HEATING: WARM EXPERIMENT FLOW */
+
+.thermal {
+  background: #fff3e5;
+  color: #452b20;
+}
+
+.thermal-hero {
+  padding: 52px;
+  border-radius: 0 0 48px 48px;
+  background: #301f1c;
+  color: #fff3e5;
+}
+
+.thermal-hero .eyebrow {
+  color: #ffbc78;
+}
+
+.thermal-hero h1 span {
+  color: #ffae65;
+}
+
+.experiment {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 64px;
+}
+
+.experiment aside {
+  font-size: 14px;
+}
+
+.experiment article {
+  display: grid;
+  grid-template-columns: 50px 1fr;
+  gap: 20px;
+  padding: 28px 0;
+  border-bottom: 1px solid #d8bda6;
+}
+
+.experiment article:first-child {
+  padding-top: 0;
+}
+
+.step-number {
+  color: #b65822;
+  font-size: 32px;
+}
+
+.experiment h2 {
+  margin: 0 0 16px;
+  font-size: 28px;
+}
+
+.thermal-note {
+  padding: 30px;
+  margin-top: 40px;
+  border-left: 5px solid #b65822;
+  background: #ffe0bb;
+}
+
+/* ELECTROCHEMISTRY: LIGHT TECHNICAL REFERENCE */
+
+.electro {
+  background: #edf4f7;
+  color: #163746;
+}
+
+.electro-hero {
+  padding: 60px 0 40px;
+}
+
+.electro-hero h1 {
+  max-width: 900px;
+}
+
+.electro-mark {
+  padding-left: 18px;
+  border-left: 3px solid #286a7c;
+  color: #286a7c;
+  font-size: 14px;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+th,
+td {
+  padding: 20px 16px;
+  border-bottom: 1px solid currentColor;
+  vertical-align: top;
+}
+
+th {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.electro table {
+  background: #ffffff;
+}
+
+.electro thead {
+  background: #163746;
+  color: #ffffff;
+}
+
+.electro td {
+  border-color: #bfd0d8;
+}
+
+.electro-bottom {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-top: 44px;
+}
+
+.electro-bottom article {
+  padding: 28px;
+  background: #dbeaf0;
+}
+
+.electro-bottom h2 {
+  margin-top: 0;
+  font-size: 26px;
+}
+
+/* MAGNETISM: PLUM ESSAY LAYOUT */
+
+.magnetic {
+  background: #201d2b;
+  color: #f0eaf6;
+}
+
+.magnetic .eyebrow {
+  color: #d9b5ff;
+}
+
+.magnetic-hero {
+  max-width: 920px;
+  padding: 64px 0 48px;
+}
+
+.magnetic-hero h1 {
+  font-size: clamp(42px, 7vw, 88px);
+}
+
+.magnetic-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 48px;
+  padding: 40px 0;
+  border-top: 1px solid #675775;
+}
+
+.magnetic-symbol {
+  color: #d9b5ff;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: clamp(36px, 5vw, 64px);
+}
+
+.magnetic-row h2 {
+  margin-top: 0;
+}
+
+.magnetic blockquote {
+  padding: 28px;
+  margin: 32px 0;
+  border-left: 4px solid #d9b5ff;
+  background: #30283d;
+  font-size: 22px;
+}
+
+/* QUANTITATIVE ANALYSIS: RESEARCH NOTEBOOK */
+
+.analysis {
+  background: #f3f0e7;
+  color: #2e3530;
+}
+
+.notebook-head {
+  padding: 52px 0 36px;
+}
+
+.notebook-head .eyebrow {
+  color: #536b52;
+}
+
+.notebook {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  border: 1px solid #c3c7b9;
+}
+
+.notebook aside {
+  padding: 28px;
+  background: #263d32;
+  color: #e9f0e8;
+}
+
+.notebook aside p {
+  font-size: 14px;
+}
+
+.notebook-content {
+  padding: 0 36px;
+  background: #fffdf7;
+}
+
+.notebook-content article {
+  padding: 30px 0;
+  border-bottom: 1px solid #d3d6c9;
+}
+
+.notebook-content article:last-child {
+  border-bottom: 0;
+}
+
+.notebook-content h2 {
+  margin: 8px 0 20px;
+  font-size: 28px;
+}
+
+.notebook-content .eyebrow {
+  color: #536b52;
+}
+
+.analysis-note {
+  padding: 24px 0;
+  font-size: 19px;
+}
+
+/* MOBILE LAYOUTS */
+
+@media (max-width: 760px) {
+  nav,
+  main,
+  footer {
+    width: calc(100% - 32px);
+  }
+
+  .split,
+  .experiment,
+  .electro-bottom,
+  .notebook,
+  .magnetic-row {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .material-path,
+  .method-list {
+    grid-template-columns: 1fr;
+  }
+
+  .thermal-hero {
+    padding: 32px 24px;
+    border-radius: 0 0 28px 28px;
+  }
+
+  .section {
+    padding: 32px 0;
+  }
+
+  .magnetic-hero,
+  .electro-hero {
+    padding-top: 36px;
+  }
+
+  .magnetic-row {
+    gap: 8px;
+  }
+
+  .notebook-content {
+    padding: 0 24px;
+  }
+
+  .intro {
+    font-size: 18px;
+  }
+
+  .formula strong {
+    font-size: 48px;
+  }
+}
