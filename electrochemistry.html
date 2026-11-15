@@ -3,562 +3,149 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <title>Electrochemistry | Rupesh Lal Karn</title>
-
-  <meta name="description"
-        content="Electrochemical characterization of functional
-        materials by Rupesh Lal Karn, including oxygen evolution,
-        voltammetry, impedance spectroscopy, and Tafel analysis.">
-
-  <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      background: #0b192a;
-      color: #eef4ff;
-      font-family: Arial, Helvetica, sans-serif;
-      line-height: 1.8;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    .container {
-      width: min(1240px, calc(100% - 40px));
-      margin: auto;
-    }
-
-    .site-header {
-      padding: 20px 0;
-      background: #0e1d2e;
-      border-bottom: 1px solid #29425e;
-    }
-
-    .header-inner {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .brand {
-      color: #eef4ff;
-      font-size: 20px;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .brand span {
-      color: #68b8ff;
-    }
-
-    .research-link {
-      color: #8fcaff;
-      font-weight: 700;
-      text-decoration: none;
-    }
-
-    .research-link:hover {
-      color: #c6e6ff;
-    }
-
-    .hero {
-      max-width: 950px;
-      padding: 60px 0 40px;
-    }
-
-    .eyebrow {
-      margin: 0 0 16px;
-      color: #bda5ff;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.13em;
-      text-transform: uppercase;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(34px, 5vw, 58px);
-      line-height: 1.12;
-      letter-spacing: -0.04em;
-    }
-
-    h2,
-    h3 {
-      line-height: 1.35;
-    }
-
-    .intro {
-      max-width: 880px;
-      margin: 24px 0 0;
-      color: #c5d3e6;
-      font-size: 19px;
-    }
-
-    .detail-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      align-items: stretch;
-      gap: 24px;
-      margin-bottom: 36px;
-    }
-
-    .detail-box {
-      min-width: 0;
-      padding: 28px;
-      border: 1px solid;
-      border-top-width: 4px;
-      border-radius: 18px;
-    }
-
-    /* Blue: materials and interfaces */
-    .materials-box {
-      --accent: #91cfff;
-      --box-text: #d0e2f3;
-      --pill-bg: #173e60;
-      --pill-border: #416c91;
-      background: #102d47;
-      border-color: #416c91;
-    }
-
-    /* Green: experimental measurements */
-    .measurements-box {
-      --accent: #9ee0bc;
-      --box-text: #d0e9dc;
-      --pill-bg: #1b4838;
-      --pill-border: #477f65;
-      background: #12382c;
-      border-color: #477f65;
-    }
-
-    /* Purple: analysis and interpretation */
-    .analysis-box {
-      --accent: #d3b6ff;
-      --box-text: #e3d8f2;
-      --pill-bg: #42305e;
-      --pill-border: #78608f;
-      background: #30223f;
-      border-color: #78608f;
-    }
-
-    .detail-label {
-      color: var(--accent);
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-    }
-
-    .detail-box h2 {
-      margin: 16px 0 20px;
-      color: #ffffff;
-      font-size: 26px;
-    }
-
-    .detail-box h3 {
-      margin: 24px 0 10px;
-      color: var(--accent);
-      font-size: 18px;
-    }
-
-    .detail-box p,
-    .detail-box li {
-      color: var(--box-text);
-      font-size: 15px;
-    }
-
-    .detail-box p {
-      margin: 0 0 16px;
-    }
-
-    .detail-box ul:not(.keyword-list) {
-      padding-left: 20px;
-      margin: 12px 0 20px;
-    }
-
-    .detail-box li {
-      margin-bottom: 10px;
-    }
-
-    .detail-box strong {
-      color: #ffffff;
-    }
-
-    .keyword-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      padding: 0;
-      margin: 24px 0 0;
-      list-style: none;
-    }
-
-    .keyword-list li {
-      margin: 0;
-      padding: 6px 12px;
-      border: 1px solid var(--pill-border);
-      border-radius: 999px;
-      background: var(--pill-bg);
-      color: var(--box-text);
-      font-size: 13px;
-    }
-
-    .focus-panel {
-      margin-bottom: 28px;
-      padding: 30px;
-      border: 1px solid #29425e;
-      border-radius: 18px;
-      background: #102236;
-    }
-
-    .focus-panel h2 {
-      margin: 0 0 16px;
-      font-size: 28px;
-    }
-
-    .focus-panel p {
-      max-width: 1000px;
-      margin-bottom: 0;
-      color: #bdcde0;
-    }
-
-    .tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-      margin: 28px 0 44px;
-    }
-
-    .tag {
-      padding: 7px 13px;
-      border: 1px solid #365676;
-      border-radius: 999px;
-      background: #183149;
-      color: #d7eaff;
-      font-size: 14px;
-    }
-
-    footer {
-      padding: 24px 0;
-      border-top: 1px solid #29425e;
-    }
-
-    .footer-inner {
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-      color: #a4b8ce;
-      font-size: 14px;
-    }
-
-    a:focus-visible {
-      outline: 2px solid #8fcaff;
-      outline-offset: 5px;
-    }
-
-    @media (max-width: 1050px) {
-      .detail-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 700px) {
-      .container {
-        width: calc(100% - 32px);
-      }
-
-      .hero {
-        padding-top: 36px;
-      }
-
-      .detail-box,
-      .focus-panel {
-        padding: 24px;
-      }
-
-      .intro {
-        font-size: 17px;
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="research-design.css">
 </head>
 
-<body>
+<body class="electro">
 
-<header class="site-header">
-  <div class="container header-inner">
-    <a class="brand" href="index.html">
-      Rupesh Lal <span>Karn.</span>
-    </a>
+<nav aria-label="Main navigation">
+  <a class="brand" href="index.html">Rupesh Lal Karn.</a>
+  <a href="research.html">← Research</a>
+</nav>
 
-    <a class="research-link" href="research.html">
-      ← Back to Research
-    </a>
-  </div>
-</header>
+<main>
 
-<main class="container">
-
-  <header class="hero">
+  <header class="electro-hero">
     <p class="eyebrow">03 / Electrochemistry</p>
 
-    <h1>Electrocatalytic Materials</h1>
+    <h1>At the interface<br>of materials and charge.</h1>
 
     <p class="intro">
-      My research involves the electrochemical characterization
-      of functional materials for energy-related applications,
-      including the oxygen evolution reaction. I use voltammetry,
-      impedance spectroscopy, and Tafel analysis to examine
-      electrochemical activity, charge-transfer behaviour,
-      and reaction kinetics.
+      Electrochemical characterization of functional
+      materials for energy-related applications,
+      including the oxygen evolution reaction.
+    </p>
+
+    <p class="electro-mark">
+      My work combines voltammetry, impedance spectroscopy,
+      and Tafel analysis to examine electrode activity,
+      charge transfer, and kinetic behaviour.
     </p>
   </header>
 
-  <div class="detail-grid">
+  <section>
+    <p class="eyebrow">Methods reference</p>
+    <h2>Different measurements. Complementary questions.</h2>
 
-    <!-- BLUE BOX -->
-    <section class="detail-box materials-box"
-             aria-labelledby="materials-title">
+    <div class="table-scroll">
+      <table>
+        <caption class="muted">
+          Methods used to examine electrode behaviour
+        </caption>
 
-      <span class="detail-label">01 / MATERIALS AND INTERFACES</span>
+        <thead>
+          <tr>
+            <th scope="col">Method</th>
+            <th scope="col">What it examines</th>
+            <th scope="col">Interpretation</th>
+          </tr>
+        </thead>
 
-      <h2 id="materials-title">
-        Functional materials for electrocatalysis
-      </h2>
+        <tbody>
+          <tr>
+            <th scope="row">LSV</th>
+            <td>
+              Current as applied potential is swept
+              through a selected range.
+            </td>
+            <td>
+              Polarization behaviour and the potential
+              needed to reach a stated current density.
+            </td>
+          </tr>
 
-      <p>
-        Electrochemical behaviour depends on both the material
-        and its interaction with the electrolyte. My work
-        examines these responses within the broader study
-        of functional materials and energy conversion.
-      </p>
+          <tr>
+            <th scope="row">EIS</th>
+            <td>
+              Frequency-dependent response to a small
+              alternating perturbation.
+            </td>
+            <td>
+              Solution resistance, interfacial processes,
+              and transport contributions within
+              a suitable model.
+            </td>
+          </tr>
 
-      <h3>Oxygen evolution reaction</h3>
-
-      <p>
-        The oxygen evolution reaction (OER) is an important
-        anodic reaction in water electrolysis. Studying
-        the potential required to drive a given current
-        helps assess the behaviour of an electrode
-        under defined experimental conditions.
-      </p>
-
-      <h3>Factors influencing electrode behaviour</h3>
-
-      <ul>
-        <li>
-          <strong>Surface chemistry:</strong>
-          the chemical environment at the
-          electrode–electrolyte interface.
-        </li>
-        <li>
-          <strong>Electrical connectivity:</strong>
-          pathways for charge transport through
-          the electrode.
-        </li>
-        <li>
-          <strong>Morphology:</strong>
-          surface features and the accessibility
-          of the material to the electrolyte.
-        </li>
-        <li>
-          <strong>Electrode preparation:</strong>
-          material loading, substrate, and
-          the consistency of the deposited layer.
-        </li>
-      </ul>
-
-      <p>
-        Considering these factors supports interpretation
-        of the measured response without attributing
-        every change to catalytic activity alone.
-      </p>
-
-      <ul class="keyword-list" aria-label="Research focus">
-        <li>Electrocatalysis</li>
-        <li>OER</li>
-        <li>Surface chemistry</li>
-        <li>Electrode interfaces</li>
-      </ul>
-    </section>
-
-    <!-- GREEN BOX -->
-    <section class="detail-box measurements-box"
-             aria-labelledby="measurements-title">
-
-      <span class="detail-label">02 / EXPERIMENTAL MEASUREMENTS</span>
-
-      <h2 id="measurements-title">
-        Voltammetry and impedance spectroscopy
-      </h2>
-
-      <p>
-        Complementary electrochemical measurements provide
-        information about current–potential behaviour
-        and the electrical response of the
-        electrode–electrolyte system.
-      </p>
-
-      <h3>Linear sweep voltammetry</h3>
-
-      <p>
-        Linear sweep voltammetry (LSV) records current
-        while the applied potential is swept through
-        a selected range. The resulting polarization
-        curve supports comparison of electrode
-        responses under matched conditions.
-      </p>
-
-      <h3>Electrochemical impedance spectroscopy</h3>
-
-      <p>
-        Electrochemical impedance spectroscopy (EIS)
-        measures the response to a small alternating
-        perturbation over a range of frequencies.
-        It can help distinguish contributions
-        associated with solution resistance,
-        interfacial processes, and transport.
-      </p>
-
-      <h3>Experimental context</h3>
-
-      <ul>
-        <li>
-          Electrolyte composition and measurement temperature.
-        </li>
-        <li>
-          Reference-electrode scale and potential conversion.
-        </li>
-        <li>
-          Electrode area, material loading, and substrate.
-        </li>
-        <li>
-          Scan rate and the potential used for
-          impedance measurements.
-        </li>
-      </ul>
-
-      <p>
-        These details are essential for meaningful
-        comparisons between measurements.
-      </p>
-
-      <ul class="keyword-list" aria-label="Measurement techniques">
-        <li>LSV</li>
-        <li>EIS</li>
-        <li>Polarization curves</li>
-        <li>Frequency response</li>
-      </ul>
-    </section>
-
-    <!-- PURPLE BOX -->
-    <section class="detail-box analysis-box"
-             aria-labelledby="analysis-title">
-
-      <span class="detail-label">03 / ANALYSIS AND INTERPRETATION</span>
-
-      <h2 id="analysis-title">
-        Activity and electrochemical kinetics
-      </h2>
-
-      <p>
-        I analyse electrochemical measurements using
-        current–potential relationships, impedance
-        interpretation, and Tafel analysis to investigate
-        electrode behaviour and reaction kinetics.
-      </p>
-
-      <h3>Current density and overpotential</h3>
-
-      <p>
-        Current can be normalized to electrode area
-        to obtain current density. Overpotential
-        describes the additional potential beyond
-        the equilibrium value required to drive
-        a reaction under the stated conditions.
-      </p>
-
-      <h3>Tafel analysis</h3>
-
-      <p>
-        Tafel analysis examines the relationship between
-        overpotential and the logarithm of current density
-        within a suitable kinetic region. The fitted
-        slope provides a basis for discussing kinetic
-        behaviour, but does not establish a reaction
-        mechanism on its own.
-      </p>
-
-      <h3>Charge-transfer resistance</h3>
-
-      <p>
-        Suitable equivalent-circuit models can be used
-        to interpret impedance spectra and estimate
-        charge-transfer resistance. The fitted value
-        depends on the model, measurement potential,
-        and physical processes represented.
-      </p>
-
-      <h3>Interpreting comparisons</h3>
-
-      <p>
-        Resistance correction, current normalization,
-        electrode preparation, and measurement conditions
-        must be considered when comparing materials.
-        A larger current alone does not demonstrate
-        higher intrinsic catalytic activity.
-      </p>
-
-      <ul class="keyword-list" aria-label="Analysis methods">
-        <li>Tafel analysis</li>
-        <li>Overpotential</li>
-        <li>Current density</li>
-        <li>Charge transfer</li>
-      </ul>
-    </section>
-
-  </div>
-
-  <section class="focus-panel">
-    <p class="eyebrow">CENTRAL RESEARCH FOCUS</p>
-
-    <h2>Connecting material properties with electrode behaviour</h2>
-
-    <p>
-      By combining voltammetry, impedance spectroscopy,
-      and kinetic analysis, I investigate how functional
-      materials behave at electrochemical interfaces.
-      The emphasis is on relating material characteristics
-      to the measured response while accounting for
-      electrode preparation and experimental conditions.
-    </p>
+          <tr>
+            <th scope="row">Tafel analysis</th>
+            <td>
+              Overpotential against the logarithm of
+              current density in a suitable kinetic region.
+            </td>
+            <td>
+              Kinetic trends; the fitted slope alone
+              does not establish a reaction mechanism.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 
-  <div class="tags" aria-label="Research keywords">
-    <span class="tag">Electrochemistry</span>
-    <span class="tag">Electrocatalytic Materials</span>
-    <span class="tag">Oxygen Evolution Reaction</span>
-    <span class="tag">LSV</span>
-    <span class="tag">EIS</span>
-    <span class="tag">Tafel Analysis</span>
+  <div class="electro-bottom">
+
+    <article>
+      <p class="eyebrow">The reaction</p>
+      <h2>Oxygen evolution</h2>
+
+      <p>
+        The oxygen evolution reaction is an anodic
+        process in water electrolysis. Studying the
+        additional potential required to drive it helps
+        describe electrode behaviour under defined conditions.
+      </p>
+
+      <p>
+        Surface chemistry, electrical connectivity,
+        morphology, and electrode preparation all
+        influence the response.
+      </p>
+    </article>
+
+    <article>
+      <p class="eyebrow">The comparison</p>
+      <h2>Conditions belong with the result.</h2>
+
+      <ul>
+        <li>Electrolyte composition and temperature</li>
+        <li>Reference-electrode scale</li>
+        <li>Material loading and electrode area</li>
+        <li>Scan rate and measurement potential</li>
+        <li>Resistance correction and normalization</li>
+      </ul>
+    </article>
+
   </div>
+
+  <section class="section">
+    <h2>From a curve to a defensible interpretation.</h2>
+
+    <p>
+      My analysis connects current–potential relationships
+      with impedance measurements and material characteristics.
+      A larger current alone does not demonstrate higher
+      intrinsic catalytic activity; the electrode and
+      measurement context matter.
+    </p>
+  </section>
 
 </main>
 
 <footer>
-  <div class="container footer-inner">
-    <span>Rupesh Lal Karn · Electrochemistry</span>
-
-    <a class="research-link" href="research.html">
-      Back to Research
-    </a>
-  </div>
+  <span>Rupesh Lal Karn · Electrochemistry</span>
+  <a href="research.html">Back to Research</a>
 </footer>
 
 </body>
