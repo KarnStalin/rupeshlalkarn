@@ -8,9 +8,9 @@
 
 <meta
   name="description"
-  content="Photothermal heat-balance modelling,
-  transient descriptor extraction, and physics-guided
-  descriptor models by Rupesh Lal Karn."
+  content="Photothermal energy-balance modelling, heating-cooling
+  curve fitting, water-reference calibration, and transient
+  descriptor extraction by Rupesh Lal Karn."
 >
 
 <style>
@@ -103,7 +103,7 @@
 
   h2 {
     margin: 12px 0 22px;
-    font-size: clamp(28px, 3.4vw, 40px);
+    font-size: clamp(27px, 3.3vw, 39px);
     line-height: 1.2;
     letter-spacing: -.025em;
   }
@@ -140,17 +140,11 @@
     text-decoration: none;
   }
 
-  section {
-    padding: 36px 0;
-    border-top: 1px solid var(--line);
-  }
-
   figure {
-    min-width: 0;
-    margin: 24px 0;
+    margin: 24px 0 35px;
+    overflow: hidden;
     border: 1px solid var(--line);
     border-radius: 17px;
-    overflow: hidden;
     background: #f7f5ef;
   }
 
@@ -163,11 +157,17 @@
   figcaption {
     display: flex;
     justify-content: space-between;
-    gap: 15px;
+    flex-wrap: wrap;
+    gap: 12px;
     padding: 12px 17px;
     background: var(--panel);
     color: var(--muted);
     font-size: 12px;
+  }
+
+  section {
+    padding: 36px 0;
+    border-top: 1px solid var(--line);
   }
 
   .model {
@@ -175,7 +175,7 @@
     grid-template-columns: minmax(0, .85fr) minmax(0, 1.15fr);
     gap: 30px;
     align-items: start;
-    padding: 28px 0;
+    padding: 27px 0;
     border-bottom: 1px solid var(--line);
   }
 
@@ -211,7 +211,7 @@
     font-size: 14px;
   }
 
-  .why {
+  .purpose {
     color: var(--accent, var(--blue));
     font-size: 14px;
   }
@@ -254,30 +254,9 @@
   .note {
     margin: 24px 0;
     padding: 18px 22px;
-    background: var(--panel);
     border-left: 3px solid var(--gold);
-    color: var(--muted);
-    font-size: 14px;
-  }
-
-  .descriptor-grid {
-    display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 18px;
-    margin: 25px 0;
-  }
-
-  .descriptor-card {
-    padding: 23px;
-    border: 1px solid var(--line);
-    border-top: 3px solid var(--accent);
-    border-radius: 12px;
     background: var(--panel);
-  }
-
-  .descriptor-card h3 { color: var(--accent); }
-
-  .descriptor-card p {
+    color: var(--muted);
     font-size: 14px;
   }
 
@@ -290,9 +269,9 @@
 
   .steps li {
     position: relative;
-    padding: 0 0 26px 55px;
-    counter-increment: stage;
+    padding: 0 0 27px 54px;
     color: var(--muted);
+    counter-increment: stage;
   }
 
   .steps li::before {
@@ -310,9 +289,19 @@
     font-size: 18px;
   }
 
+  .related {
+    padding: 28px;
+    margin-top: 25px;
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    background: var(--panel);
+  }
+
+  .related h2 { font-size: 26px; }
+
   .back {
     display: inline-block;
-    margin-top: 25px;
+    margin-top: 28px;
     font-weight: 650;
   }
 
@@ -323,25 +312,21 @@
     font-size: 13px;
   }
 
-  @media(max-width: 850px) {
+  @media (max-width: 850px) {
     .model {
       grid-template-columns: 1fr;
       gap: 15px;
     }
-
-    .descriptor-grid {
-      grid-template-columns: 1fr;
-    }
   }
 
-  @media(max-width: 540px) {
+  @media (max-width: 540px) {
     header, main, footer { padding: 20px; }
     .hero { padding-top: 38px; }
     .lead { font-size: 18px; }
-    .equation-box { padding: 17px; }
+    .equation-box, .related { padding: 18px; }
   }
 
-  @media(prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
   }
 </style>
@@ -362,7 +347,7 @@
 
   <div class="hero">
     <div class="eyebrow">
-      Heat balance · Transient fitting · Descriptor modelling
+      Energy balance · Heating–cooling fitting · Calibration
     </div>
 
     <h1>
@@ -371,64 +356,64 @@
     </h1>
 
     <p class="lead">
-      I connect laser-induced temperature transients with
-      effective heat input, thermal response times, and
-      characterization-derived material descriptors.
+      I use a transient energy balance to analyse measured
+      laser-induced heating and cooling, extract thermal
+      response times, and estimate reference-corrected heat input.
     </p>
 
     <p>
-      The framework has two connected levels: a physical
-      energy balance describes the temperature response,
-      while interpretable descriptor models examine how
-      material characteristics and concentration relate
-      to the estimated heat input.
+      MATLAB connects temperature measurements with
+      curve fitting, water-reference calibration,
+      uncertainty assessment, and physically defined
+      transient descriptors.
     </p>
   </div>
 
   <nav class="jump-links" aria-label="Page sections">
-    <a href="#physical-model">Physical model</a>
-    <a href="#thermal-descriptors">Transient descriptors</a>
-    <a href="#material-descriptors">Material descriptors</a>
-    <a href="#response-models">Response models</a>
+    <a href="#balance">Energy balance</a>
+    <a href="#transients">Heating &amp; cooling</a>
+    <a href="#calibration">Reference calibration</a>
+    <a href="#quantities">Extracted quantities</a>
     <a href="#workflow">MATLAB workflow</a>
   </nav>
 
-  <!-- PHYSICAL MODEL -->
+  <figure>
+    <a href="photothermal-transient.png">
+      <img
+        src="photothermal-transient.png"
+        alt="Photothermal schematic showing heating,
+        laser switch-off, cooling, thermal storage,
+        heat input, and heat loss."
+        fetchpriority="high"
+      >
+    </a>
 
-  <section id="physical-model">
+    <figcaption>
+      <span>Photothermal transient model · Schematic</span>
+      <a href="photothermal-transient.png">Enlarge image</a>
+    </figcaption>
+  </figure>
+
+  <!-- ENERGY BALANCE -->
+
+  <section id="balance">
     <div class="eyebrow">01 / Conservation of energy</div>
-    <h2>Describe the transient before building the relationship.</h2>
-
-    <figure>
-      <a href="photothermal-transient.png">
-        <img
-          src="photothermal-transient.png"
-          alt="Schematic photothermal heating and cooling
-          with heat input, thermal storage, and heat loss."
-        >
-      </a>
-
-      <figcaption>
-        <span>Photothermal transient model · Schematic</span>
-        <a href="photothermal-transient.png">Enlarge</a>
-      </figcaption>
-    </figure>
+    <h2>Account for input, storage, and heat loss.</h2>
 
     <article class="model" style="--accent:#a5d6ff">
       <div>
-        <div class="model-label">Model A / Lumped heat balance</div>
-        <h3>Heat input, storage, and loss</h3>
+        <div class="model-label">Lumped thermal model</div>
+        <h3>A representative system temperature</h3>
 
         <p>
-          A representative bulk temperature reduces the
-          measurement system to a first-order energy balance.
-          The combined conductance H represents effective
-          heat loss to the surroundings.
+          The suspension is represented by a bulk temperature.
+          Effective thermal capacity describes energy storage,
+          while a combined conductance describes environmental loss.
         </p>
 
-        <div class="why">
-          Why use it? It separates transient thermal storage
-          from heat input and environmental losses.
+        <div class="purpose">
+          Purpose: relate the measured temperature transient
+          to physically defined thermal terms.
         </div>
       </div>
 
@@ -438,7 +423,8 @@
         </div>
 
         <div class="equation">
-          C<sub>sys</sub> dΔT/dt = Q<sub>in</sub> − HΔT
+          C<sub>sys</sub> dΔT/dt =
+          Q<sub>in</sub> − HΔT
         </div>
 
         <div class="equation">
@@ -448,55 +434,78 @@
         <p>
           Csys: effective thermal capacity, J K⁻¹.
           Qin: effective heat-input rate, W.
-          H: heat-loss conductance, W K⁻¹.
+          H: effective heat-loss conductance, W K⁻¹.
         </p>
       </div>
     </article>
 
+    <div class="note">
+      The model assumes a representative bulk temperature,
+      approximately constant thermal properties and laser input,
+      effective linear heat loss, and negligible evaporation.
+      Heat input from irradiation ceases after laser switch-off.
+    </div>
+  </section>
+
+  <!-- HEATING AND COOLING -->
+
+  <section id="transients">
+    <div class="eyebrow">02 / Transient curve fitting</div>
+    <h2>Fit heating and cooling separately.</h2>
+
     <article class="model" style="--accent:#ffd49b">
       <div>
-        <div class="model-label">Model B / Heating transient</div>
-        <h3>Fit the approach to an asymptote</h3>
+        <div class="model-label">Heating segment</div>
+        <h3>Extract amplitude and response time</h3>
 
         <p>
-          The exponential heating function extracts a
-          characteristic response time and an extrapolated
-          asymptotic temperature rise.
+          The heating function describes the approach
+          toward an asymptotic temperature under constant
+          effective input and heat-loss conditions.
         </p>
 
-        <div class="why">
-          Why use it? It describes both the curve shape
-          and its timescale using a compact physical model.
+        <div class="purpose">
+          Purpose: obtain the heating time constant
+          and model-extrapolated temperature rise.
         </div>
       </div>
 
       <div class="equation-box">
         <div class="equation">
           ΔT(t) = ΔT<sub>∞</sub>
+          + [ΔT<sub>0</sub> − ΔT<sub>∞</sub>]
+          exp(−t/τ<sub>H</sub>)
+        </div>
+
+        <p>When the initial rise is zero:</p>
+
+        <div class="equation">
+          ΔT(t) = ΔT<sub>∞</sub>
           [1 − exp(−t/τ<sub>H</sub>)]
         </div>
 
         <p>
-          This form assumes the initial temperature equals
-          the fitted ambient baseline. ΔT∞ is extrapolated;
-          it is not automatically the measured switch-off rise.
+          ΔT∞ is a model-extrapolated asymptotic rise.
+          It is distinguished from the temperature actually
+          reached at laser switch-off.
         </p>
       </div>
     </article>
 
     <article class="model" style="--accent:#9fe4cd">
       <div>
-        <div class="model-label">Model C / Cooling transient</div>
-        <h3>Estimate the loss-controlled timescale</h3>
+        <div class="model-label">Cooling segment</div>
+        <h3>Characterize the loss-controlled decay</h3>
 
         <p>
-          After laser switch-off, the input term is set
-          to zero and the temperature decays toward ambient.
+          After irradiation ends, the temperature decays
+          toward ambient. The cooling fit supplies a
+          characteristic time for the effective heat-loss process.
         </p>
 
-        <div class="why">
-          Why use it? Cooling supports heat-loss calibration
-          without an active laser-input term.
+        <div class="purpose">
+          Purpose: estimate cooling response time
+          and support reference heat-loss calibration.
         </div>
       </div>
 
@@ -511,28 +520,35 @@
         </div>
 
         <p>
-          Heating and cooling time constants are fitted
-          separately. Equality follows only under the
-          ideal constant-property model.
+          τH and τC are fitted separately. Their equality
+          follows only under the ideal constant-property
+          model and is not imposed automatically.
         </p>
       </div>
     </article>
+  </section>
+
+  <!-- CALIBRATION -->
+
+  <section id="calibration">
+    <div class="eyebrow">03 / Water-reference calibration</div>
+    <h2>Define the calorimetric scale explicitly.</h2>
 
     <article class="model" style="--accent:#d6bcff">
       <div>
-        <div class="model-label">Calibration / Water reference</div>
-        <h3>Define a consistent heat-input scale</h3>
+        <div class="model-label">Thermal capacity</div>
+        <h3>State what is included in the system</h3>
 
         <p>
-          The water cooling fit supplies a reference
-          heat-loss conductance. The same reference scale
-          is used for comparative sample calculations.
+          The general expression includes the liquid
+          and the thermally coupled container.
         </p>
 
-        <div class="why">
-          Why use it? It makes the reference correction
-          and calorimetric assumptions explicit.
-        </div>
+        <p>
+          In the thesis analysis, the independently unavailable
+          container contribution is set to zero. The calculation
+          therefore uses nominal liquid thermal capacity.
+        </p>
       </div>
 
       <div class="equation-box">
@@ -543,39 +559,66 @@
         </div>
 
         <div class="equation">
+          m<sub>liq</sub> = ρV
+        </div>
+
+        <p>
+          Absolute heat-input estimates depend on this
+          thermal-capacity approximation.
+        </p>
+      </div>
+    </article>
+
+    <article class="model" style="--accent:#a5d6ff">
+      <div>
+        <div class="model-label">Reference correction</div>
+        <h3>Use water cooling to estimate conductance</h3>
+
+        <p>
+          The water cooling time constant establishes
+          a reference heat-loss conductance for comparative
+          calculations.
+        </p>
+
+        <div class="purpose">
+          Purpose: express sample–water differences on
+          a consistent reference-calibrated scale.
+        </div>
+      </div>
+
+      <div class="equation-box">
+        <div class="equation">
           H<sub>water</sub> =
           C<sub>sys,water</sub>/τ<sub>C,water</sub>
         </div>
 
         <div class="equation">
-          Q<sub>net,off</sub> = H<sub>water</sub>
+          Q<sub>net,off</sub> =
+          H<sub>water</sub>
           [ΔT<sub>sample,off</sub> − ΔT<sub>water,off</sub>]
         </div>
 
         <p>
-          The thesis uses nominal liquid thermal capacity,
-          setting the independently unavailable container term
-          to zero. Absolute heat-input estimates therefore
-          depend on this approximation.
+          This is a switch-off-based comparative estimator,
+          assuming compatible geometry and effective
+          heat-loss behavior.
         </p>
       </div>
     </article>
 
     <div class="note">
-      Assumptions include a representative system temperature,
-      approximately constant thermal properties and laser input,
-      effective linear heat loss, negligible evaporation,
-      and cessation of laser-induced input after switch-off.
-      Reference-based calculations also assume compatible
-      geometry and heat-loss behavior.
+      The finite-time switch-off estimator is kept distinct
+      from equilibrium heat input. Intrinsic photothermal
+      conversion efficiency additionally requires absorbed
+      optical power and appropriate background corrections.
     </div>
   </section>
 
-  <!-- TRANSIENT DESCRIPTORS -->
+  <!-- EXTRACTED QUANTITIES -->
 
-  <section id="thermal-descriptors">
-    <div class="eyebrow">02 / Quantities extracted from the response</div>
-    <h2>Keep measured and model-derived quantities distinct.</h2>
+  <section id="quantities">
+    <div class="eyebrow">04 / Thermal response descriptors</div>
+    <h2>Keep measured, fitted, and derived quantities identifiable.</h2>
 
     <div class="table-wrap">
       <table>
@@ -589,347 +632,151 @@
 
         <tbody>
           <tr>
-            <td>ΔT at switch-off</td>
-            <td>Temperature rise at the defined irradiation endpoint</td>
-            <td>Finite-time comparison</td>
+            <td>ΔToff</td>
+            <td>Temperature rise at laser switch-off</td>
+            <td>Finite-time response measure</td>
           </tr>
 
           <tr>
             <td>ΔT∞</td>
             <td>Fitted asymptotic temperature rise</td>
-            <td>Model extrapolation</td>
+            <td>Model-extrapolated quantity</td>
           </tr>
 
           <tr>
-            <td>τH and τC</td>
-            <td>Heating and cooling response times</td>
-            <td>Transient-shape descriptors</td>
+            <td>τH</td>
+            <td>Heating time constant</td>
+            <td>Heating-response timescale</td>
+          </tr>
+
+          <tr>
+            <td>τC</td>
+            <td>Cooling time constant</td>
+            <td>Cooling-response timescale</td>
           </tr>
 
           <tr>
             <td>1/τH and 1/τC</td>
-            <td>Reciprocal response times</td>
-            <td>Operational rate measures</td>
+            <td>Reciprocal time constants</td>
+            <td>Operational rate descriptors</td>
           </tr>
 
           <tr>
-            <td>∫ΔT dt</td>
+            <td>∫ΔT(t) dt</td>
             <td>Temperature-rise area over a stated interval</td>
-            <td>Integrated transient descriptor</td>
+            <td>Integrated transient measure</td>
           </tr>
 
           <tr>
             <td>Qnet,off</td>
-            <td>Water-calibrated switch-off estimator</td>
-            <td>Primary comparative heat-input quantity</td>
+            <td>Reference-calibrated switch-off estimator</td>
+            <td>Comparative heat-input quantity</td>
           </tr>
 
           <tr>
-            <td>Qnet,∞</td>
-            <td>Reference-corrected asymptotic estimate</td>
-            <td>Secondary extrapolated quantity</td>
+            <td>Qnet,off / mp</td>
+            <td>Heat-input estimator per material mass</td>
+            <td>Mass-normalized response quantity</td>
           </tr>
         </tbody>
       </table>
     </div>
 
-    <div class="note">
-      A switch-off estimator is not a direct measurement of
-      equilibrium laser absorption. Intrinsic photothermal
-      conversion efficiency requires absorbed optical power
-      and appropriate background corrections.
-    </div>
-  </section>
-
-  <!-- MATERIAL DESCRIPTORS -->
-
-  <section id="material-descriptors">
-    <div class="eyebrow">03 / Physics-guided descriptor architecture</div>
-    <h2>Connect the material to the response.</h2>
-
-    <figure>
-      <a href="photothermal-descriptors.png">
-        <img
-          src="photothermal-descriptors.png"
-          alt="Physics-guided workflow connecting
-          characterization descriptors and concentration
-          to heat-input and temperature-response models."
-          loading="lazy"
-        >
-      </a>
-
-      <figcaption>
-        <span>Descriptor-model architecture · Schematic</span>
-        <a href="photothermal-descriptors.png">Enlarge</a>
-      </figcaption>
-    </figure>
-
     <p>
-      Characterization-derived variables are screened and
-      organized before fitting response models. Composite
-      scores provide compact, interpretable coordinates
-      for structural, vibrational, and dispersion information.
+      Integration intervals, material mass, units,
+      reference conditions, and fitting windows are
+      retained alongside the extracted quantities.
     </p>
-
-    <div class="descriptor-grid">
-      <article class="descriptor-card" style="--accent:#9fe4cd">
-        <h3>Structure &amp; interface · I</h3>
-        <p>
-          Combines apparent stacking coherence, FTIR B2
-          band-area fraction, F/Ti, and pore diameter.
-        </p>
-        <p>
-          <strong>Purpose:</strong> summarize selected
-          structural and interface-sensitive variables.
-        </p>
-      </article>
-
-      <article class="descriptor-card" style="--accent:#d6bcff">
-        <h3>Vibrational features · D</h3>
-        <p>
-          Uses the selected normalized Raman-shift variable.
-        </p>
-        <p>
-          <strong>Purpose:</strong> retain a defined
-          vibrational-change descriptor.
-        </p>
-      </article>
-
-      <article class="descriptor-card" style="--accent:#ffd49b">
-        <h3>Dispersion · S</h3>
-        <p>
-          Combines zeta-potential magnitude and
-          log-transformed hydrodynamic diameter.
-        </p>
-        <p>
-          <strong>Purpose:</strong> represent electrokinetic
-          and operational size information together.
-        </p>
-      </article>
-    </div>
-
-    <div class="equation-box" style="--accent:#9fe4cd">
-      <div class="model-label">Normalization and score definitions</div>
-
-      <div class="equation">
-        N(x) = (x − x<sub>min</sub>) /
-        (x<sub>max</sub> − x<sub>min</sub>)
-      </div>
-
-      <div class="equation">
-        I = [1 − N(Lc) + N(B2 fraction)
-        + N(F/Ti) + N(Dp)] / 4
-      </div>
-
-      <div class="equation">
-        D = N(selected Raman-shift variable)
-      </div>
-
-      <div class="equation">
-        S = [1 − N(log<sub>10</sub>Dh)
-        + N(|ζ|)] / 2
-      </div>
-
-      <p>
-        Scores are comparative within the study's material set.
-        Constant features require separate treatment.
-        Equal weights define the composite scores rather
-        than being fitted to the response.
-      </p>
-    </div>
-
-    <p style="margin-top:22px">
-      Screening considers missing or censored values,
-      redundant transformations, non-equivalent spectral features,
-      acquisition sensitivity, and assumed-parameter outputs.
-      Thermal quantities derived from the response are kept
-      separate from predictors where their reuse would create
-      circular relationships.
-    </p>
-  </section>
-
-  <!-- RESPONSE MODELS -->
-
-  <section id="response-models">
-    <div class="eyebrow">04 / Model choices and their purpose</div>
-    <h2>Model heat input, then reconstruct temperature.</h2>
-
-    <article class="model" style="--accent:#a5d6ff">
-      <div>
-        <div class="model-label">Descriptor regression</div>
-        <h3>Separate concentration from material descriptors</h3>
-
-        <p>
-          Concentration enters explicitly, while a screened
-          material score represents characterization information.
-          Candidate descriptor families are compared rather
-          than automatically included together.
-        </p>
-
-        <div class="why">
-          Why use it? It provides an interpretable relationship
-          with a controlled number of adjustable parameters.
-        </div>
-      </div>
-
-      <div class="equation-box">
-        <div class="equation">
-          Q<sub>net</sub> = β<sub>0</sub>
-          + β<sub>C</sub> ln(C/C<sub>0</sub>)
-          + β<sub>S</sub>S
-        </div>
-
-        <p>
-          C0 is a reference concentration, making the
-          logarithm dimensionless. This is a model structure,
-          without fitted coefficients.
-        </p>
-      </div>
-    </article>
-
-    <article class="model" style="--accent:#ffd49b">
-      <div>
-        <div class="model-label">Concentration dependence</div>
-        <h3>Compare alternative response shapes</h3>
-
-        <p>
-          Linear, logarithmic, power-law, and saturation
-          functions offer different descriptions of
-          concentration-dependent heat input.
-        </p>
-
-        <div class="why">
-          Why compare them? A physically motivated candidate
-          still requires support from the available observations.
-        </div>
-      </div>
-
-      <div class="equation-box">
-        <div class="equation">
-          Q(C) = Q<sub>max</sub>C/(K<sub>C</sub> + C)
-        </div>
-
-        <p>
-          This saturation candidate permits diminishing
-          increments with concentration. Its use does not
-          by itself establish a specific optical mechanism.
-        </p>
-      </div>
-    </article>
-
-    <article class="model" style="--accent:#9fe4cd">
-      <div>
-        <div class="model-label">Physical response reconstruction</div>
-        <h3>Return to the heat balance</h3>
-
-        <p>
-          A modelled net input can be combined with a
-          compatible water-background input and specified
-          heat-loss conductance to reconstruct a temperature rise.
-        </p>
-
-        <div class="why">
-          Why use it? It preserves the connection between
-          descriptor regression and energy conservation.
-        </div>
-      </div>
-
-      <div class="equation-box">
-        <div class="equation">
-          Q<sub>in,pred</sub> =
-          Q<sub>background</sub> + Q<sub>net,pred</sub>
-        </div>
-
-        <div class="equation">
-          ΔT<sub>∞,pred</sub> = Q<sub>in,pred</sub>/H
-        </div>
-
-        <div class="equation">
-          ΔT<sub>pred</sub>(t) =
-          ΔT<sub>∞,pred</sub>[1 − exp(−t/τ)]
-        </div>
-
-        <p>
-          These expressions require a constant-input
-          interpretation consistent with the model target.
-          A finite-time switch-off estimator is not silently
-          treated as an equilibrium input.
-        </p>
-      </div>
-    </article>
   </section>
 
   <!-- WORKFLOW -->
 
   <section id="workflow">
     <div class="eyebrow">05 / MATLAB implementation</div>
-    <h2>The modelling sequence.</h2>
+    <h2>The analysis workflow.</h2>
 
     <ol class="steps">
       <li>
-        <strong>Prepare the temperature measurements</strong>
-        Align time, laser switching, concentration, material mass,
-        and water-reference records.
+        <strong>Import and align the measurements</strong>
+        Preserve time, temperature, sample identity,
+        concentration, material mass, laser switching,
+        and water-reference metadata.
       </li>
 
       <li>
-        <strong>Fit heating and cooling</strong>
-        Estimate ambient baseline, transient amplitudes,
-        and separate time constants. Positive parameters
+        <strong>Define the ambient baseline</strong>
+        Establish Tamb from the appropriate baseline
+        interval and calculate temperature rise.
+      </li>
+
+      <li>
+        <strong>Separate heating and cooling</strong>
+        Identify irradiation boundaries and define
+        consistent fitting intervals.
+      </li>
+
+      <li>
+        <strong>Fit the transient functions</strong>
+        Estimate amplitudes and separate heating and
+        cooling time constants. Positive parameters
         can be optimized in logarithmic coordinates.
       </li>
 
       <li>
-        <strong>Apply the reference calibration</strong>
-        Calculate the water heat-loss conductance using
-        the stated nominal thermal-capacity assumption.
+        <strong>Calibrate using the water reference</strong>
+        Combine the water cooling time constant with
+        the stated nominal thermal capacity.
       </li>
 
       <li>
-        <strong>Extract response descriptors</strong>
-        Keep switch-off quantities, asymptotic estimates,
-        time constants, and integrated transients identifiable.
+        <strong>Extract the response quantities</strong>
+        Calculate switch-off rise, time constants,
+        transient area, and reference-corrected heat-input measures.
       </li>
 
       <li>
-        <strong>Build and screen material descriptors</strong>
-        Document measurement origin, normalization,
-        score direction, weighting, and excluded variables.
+        <strong>Assess uncertainty and residual structure</strong>
+        Examine temporal autocorrelation, systematic
+        deviations, parameter stability, and sensitivity
+        to fitting-window choices.
       </li>
 
       <li>
-        <strong>Fit and compare candidate relationships</strong>
-        Compare descriptor choices and concentration functions
-        while keeping model complexity appropriate to the dataset.
-      </li>
-
-      <li>
-        <strong>Assess sensitivity and uncertainty</strong>
-        Inspect residual autocorrelation, parameter stability,
-        fitting-window dependence, and alternative descriptor definitions.
-      </li>
-
-      <li>
-        <strong>Check physical consistency</strong>
-        Verify units, initial conditions, heat-loss assumptions,
-        limiting behavior, and the distinction between fitted
-        responses and extrapolated quantities.
+        <strong>Verify physical consistency</strong>
+        Check units, initial conditions, ambient recovery,
+        heat-loss assumptions, and the distinction between
+        measured and extrapolated quantities.
       </li>
     </ol>
-
-    <div class="note">
-      The available material set limits claims of generalization.
-      Composite scores and response relationships are interpreted
-      within the study's experimental domain.
-    </div>
   </section>
 
-  <a class="back" href="modelling.html">← Back to modelling</a>
+  <!-- LINK TO SEPARATE MODELLING PAGE -->
+
+  <aside class="related">
+    <div class="eyebrow">Related modelling</div>
+
+    <h2>Connecting response to material properties</h2>
+
+    <p>
+      The quantities extracted here provide response targets
+      for physics-guided descriptor modelling. Explore how
+      characterization-derived descriptors and concentration
+      enter those models.
+    </p>
+
+    <a href="physics-guided-modelling.html">
+      Explore physics-guided descriptor modelling →
+    </a>
+  </aside>
+
+  <a class="back" href="modelling.html">
+    ← Back to modelling
+  </a>
 
 </main>
 
 <footer>
-  Rupesh Lal Karn · Photothermal &amp; Physics-Guided Modelling
+  Rupesh Lal Karn · Photothermal Modelling &amp; Transient Analysis
 </footer>
 
 </body>
