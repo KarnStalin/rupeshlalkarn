@@ -4,28 +4,29 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Thermal Modelling | Rupesh Lal Karn</title>
+<title>TGA Modelling | Rupesh Lal Karn</title>
 
 <meta
   name="description"
-  content="Thermal kinetics, effective heat transport,
-  and photothermal energy-balance modelling by Rupesh Lal Karn."
+  content="Multi-rate TGA analysis, isoconversional kinetics,
+  activation-energy extraction, and numerical reconstruction
+  of thermal events."
 >
 
 <style>
   :root {
-    --background: #0c1727;
-    --panel: #14253a;
-    --text: #eef4fc;
-    --muted: #bac9db;
-    --line: #2b415a;
+    --bg: #0c1727;
+    --panel: #14263b;
+    --text: #edf4fc;
+    --muted: #b9cadd;
+    --line: #2c425b;
     --orange: #ffd09b;
-    --blue: #a5d6ff;
+    --blue: #a5d5ff;
+    --green: #9fe3ca;
+    --purple: #d2baff;
   }
 
-  * {
-    box-sizing: border-box;
-  }
+  * { box-sizing: border-box; }
 
   html {
     scroll-behavior: smooth;
@@ -34,7 +35,7 @@
 
   body {
     margin: 0;
-    background: var(--background);
+    background: var(--bg);
     color: var(--text);
     font: 16px/1.8 system-ui, -apple-system,
       BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -50,10 +51,8 @@
     outline-offset: 5px;
   }
 
-  header,
-  main,
-  footer {
-    width: min(1320px, 100%);
+  header, main, footer {
+    max-width: 1260px;
     margin: auto;
     padding: 26px;
   }
@@ -67,9 +66,7 @@
     border-bottom: 1px solid var(--line);
   }
 
-  header a {
-    text-decoration: none;
-  }
+  header a { text-decoration: none; }
 
   .brand {
     color: var(--text);
@@ -79,45 +76,42 @@
   nav {
     display: flex;
     flex-wrap: wrap;
-    gap: 22px;
+    gap: 20px;
   }
 
   .hero {
-    max-width: 980px;
-    padding: 60px 0 35px;
+    padding: 58px 0 30px;
+    max-width: 960px;
   }
 
   .eyebrow {
     color: var(--orange);
     font-size: 12px;
     font-weight: 750;
-    letter-spacing: .15em;
+    letter-spacing: .14em;
     text-transform: uppercase;
   }
 
   h1 {
-    margin: 22px 0;
-    font-size: clamp(42px, 6.5vw, 76px);
+    margin: 20px 0;
+    font-size: clamp(40px, 6vw, 74px);
     line-height: 1.08;
     letter-spacing: -.045em;
   }
 
-  h1 span {
-    color: var(--orange);
-  }
+  h1 span { color: var(--orange); }
 
   h2 {
-    margin: 12px 0 20px;
-    font-size: clamp(28px, 3.4vw, 39px);
+    margin: 12px 0 22px;
+    font-size: clamp(27px, 3.3vw, 39px);
     line-height: 1.2;
     letter-spacing: -.025em;
   }
 
   h3 {
-    margin: 26px 0 12px;
-    color: var(--accent, var(--orange));
-    font-size: 20px;
-    line-height: 1.4;
+    margin: 0 0 12px;
+    font-size: 21px;
+    line-height: 1.35;
   }
 
   p {
@@ -125,48 +119,43 @@
     color: var(--muted);
   }
 
-  .lead {
-    font-size: 20px;
-  }
+  strong { color: var(--text); }
 
-  strong {
-    color: var(--text);
-  }
+  .lead { font-size: 20px; }
 
   .jump-links {
     gap: 10px;
-    margin-bottom: 35px;
+    margin: 5px 0 35px;
   }
 
   .jump-links a {
-    padding: 8px 16px;
-    background: var(--panel);
+    padding: 8px 15px;
     border: 1px solid var(--line);
     border-radius: 24px;
+    background: var(--panel);
     font-size: 14px;
     text-decoration: none;
   }
 
   section {
-    padding: 36px 0;
+    padding: 35px 0;
     border-top: 1px solid var(--line);
   }
 
   .visual-row {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 32px;
     align-items: center;
-    gap: 34px;
-    margin-bottom: 25px;
   }
 
   figure {
-    min-width: 0;
     margin: 0;
+    min-width: 0;
     overflow: hidden;
     border: 1px solid var(--line);
-    border-radius: 17px;
-    background: #f7f7f5;
+    border-radius: 16px;
+    background: #f6f5f1;
   }
 
   figure img {
@@ -185,133 +174,187 @@
     font-size: 12px;
   }
 
-  .equation {
-    margin: 20px 0;
-    padding: 20px;
+  .equation-card {
+    padding: 23px;
+    margin: 22px 0;
+    border: 1px solid var(--line);
     border-left: 3px solid var(--accent, var(--orange));
-    border-radius: 0 10px 10px 0;
-    background: #091321;
+    border-radius: 12px;
+    background: #101f32;
+  }
+
+  .equation-label {
+    margin-bottom: 12px;
     color: var(--accent, var(--orange));
-    font: 14px/1.9 ui-monospace, SFMono-Regular,
-      Consolas, monospace;
-    white-space: pre-wrap;
+    font-size: 11px;
+    font-weight: 750;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+  }
+
+  .equation {
+    padding: 8px 0;
+    color: var(--text);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: clamp(19px, 2.3vw, 25px);
+    line-height: 1.8;
     overflow-wrap: anywhere;
   }
 
-  .two-columns {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 22px;
-    margin: 25px 0;
+  .equation-explanation {
+    margin-top: 12px;
+    color: var(--muted);
+    font-size: 14px;
   }
 
-  .panel {
-    padding: 24px;
+  .symbols {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 20px 0;
+  }
+
+  .symbols span {
+    padding: 6px 11px;
     border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .method-list {
+    display: grid;
+    gap: 18px;
+    margin-top: 28px;
+  }
+
+  .kinetic-method {
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr);
+    gap: 26px;
+    padding: 25px;
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
     border-radius: 13px;
     background: var(--panel);
   }
 
-  .panel h3 {
-    margin-top: 0;
+  .method-name {
+    color: var(--accent);
   }
 
-  .panel p:last-child {
+  .method-type {
+    display: block;
+    margin-top: 8px;
+    color: var(--muted);
+    font-size: 12px;
+  }
+
+  .kinetic-method .equation {
+    font-size: 20px;
+  }
+
+  .kinetic-method p:last-child {
     margin-bottom: 0;
   }
 
-  .steps {
-    margin: 25px 0;
-    padding: 0;
-    list-style: none;
-    counter-reset: steps;
-  }
-
-  .steps li {
-    position: relative;
-    padding: 0 0 23px 48px;
-    color: var(--muted);
-    counter-increment: steps;
-  }
-
-  .steps li::before {
-    content: counter(steps, decimal-leading-zero);
-    position: absolute;
-    left: 0;
-    top: 2px;
-    color: var(--accent, var(--orange));
-    font-family: monospace;
-    font-weight: 700;
-  }
-
-  .steps strong {
-    display: block;
-    margin-bottom: 3px;
-  }
-
   .note {
-    padding: 18px 22px;
     margin: 24px 0;
-    border-left: 3px solid var(--accent, var(--orange));
+    padding: 18px 22px;
+    border-left: 3px solid var(--green);
     background: var(--panel);
     color: var(--muted);
     font-size: 14px;
   }
 
-  .variables {
-    margin: 18px 0;
-    color: var(--muted);
-    font-size: 14px;
+  .steps {
+    list-style: none;
+    counter-reset: stage;
+    margin: 28px 0;
+    padding: 0;
   }
 
-  .back-link {
+  .steps li {
+    position: relative;
+    padding: 0 0 28px 58px;
+    counter-increment: stage;
+  }
+
+  .steps li::before {
+    content: counter(stage, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: grid;
+    place-items: center;
+    width: 37px;
+    height: 37px;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    background: var(--panel);
+    color: var(--green);
+    font-family: monospace;
+  }
+
+  .steps strong {
+    display: block;
+    margin-bottom: 4px;
+    font-size: 18px;
+  }
+
+  .steps p {
+    margin-bottom: 0;
+  }
+
+  .outputs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 25px 0;
+  }
+
+  .outputs span {
+    padding: 8px 14px;
+    border: 1px solid #36566a;
+    border-radius: 24px;
+    background: var(--panel);
+    color: var(--green);
+    font-size: 13px;
+  }
+
+  .back {
     display: inline-block;
     margin-top: 25px;
     font-weight: 650;
   }
 
   footer {
-    margin-top: 30px;
+    margin-top: 25px;
     border-top: 1px solid var(--line);
     color: var(--muted);
     font-size: 13px;
   }
 
-  @media (max-width: 900px) {
+  @media (max-width: 850px) {
     .visual-row {
       grid-template-columns: 1fr;
     }
+
+    .kinetic-method {
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
   }
 
-  @media (max-width: 580px) {
-    header,
-    main,
-    footer {
-      padding: 20px;
-    }
-
-    .hero {
-      padding-top: 38px;
-    }
-
-    .lead {
-      font-size: 18px;
-    }
-
-    .two-columns {
-      grid-template-columns: 1fr;
-    }
-
-    .equation {
-      padding: 16px;
-      font-size: 12px;
-    }
+  @media (max-width: 540px) {
+    header, main, footer { padding: 20px; }
+    .hero { padding-top: 38px; }
+    .lead { font-size: 18px; }
+    .equation-card, .kinetic-method { padding: 18px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
-    }
+    html { scroll-behavior: auto; }
   }
 </style>
 </head>
@@ -331,359 +374,490 @@
 
   <div class="hero">
     <div class="eyebrow">
-      MATLAB · Thermal kinetics · Energy balances
+      TGA · Multi-rate kinetics · MATLAB simulation
     </div>
 
     <h1>
-      Thermal<br>
-      <span>Modelling</span>
+      Thermal Kinetics<br>
+      <span>&amp; TGA Simulation</span>
     </h1>
 
     <p class="lead">
-      My thermal modelling connects mass-loss measurements,
-      material descriptors, and temperature transients with
-      physically defined kinetic and heat-transfer equations.
+      I use multi-rate thermogravimetric measurements to
+      identify thermal events, extract apparent activation
+      energies, and reconstruct event-specific mass-loss behavior.
     </p>
 
     <p>
-      The framework covers event-specific conversion kinetics,
-      effective thermal transport, and the energy-balance
-      description of photothermal heating and cooling.
+      The framework combines peak-based analysis,
+      isoconversional methods, and numerical integration.
+      It follows the thermal response of MAX, acid-etched
+      MXene, and DMSO-treated MXene.
     </p>
   </div>
 
   <nav class="jump-links" aria-label="Page sections">
-    <a href="#kinetics">Thermal kinetics</a>
-    <a href="#transport">Thermal transport</a>
-    <a href="#photothermal">Photothermal equations</a>
-    <a href="#workflow">Major steps</a>
+    <a href="#measurement">TGA &amp; DTG</a>
+    <a href="#conversion">Conversion</a>
+    <a href="#techniques">Kinetic techniques</a>
+    <a href="#simulation">Simulation</a>
+    <a href="#steps">Major steps</a>
   </nav>
 
-  <!-- THERMAL KINETICS -->
+  <!-- MEASUREMENT -->
 
-  <section id="kinetics">
-
+  <section id="measurement">
     <div class="visual-row">
       <figure>
-        <a href="thermal-kinetics.png">
+        <a href="TGA.png">
           <img
-            src="thermal-kinetics.png"
-            alt="Schematic TGA mass-loss curve,
-            derivative peaks, and kinetic-analysis workflow."
+            src="TGA.png"
+            alt="Schematic multi-rate TGA curves and
+            corresponding DTG peak shifts."
           >
         </a>
 
         <figcaption>
-          <span>Thermal kinetics · Schematic</span>
-          <a href="thermal-kinetics.png">Enlarge</a>
+          <span>Multi-rate TGA · Schematic</span>
+          <a href="TGA.png">Enlarge</a>
         </figcaption>
       </figure>
 
       <div>
-        <div class="eyebrow">01 / Event-specific conversion</div>
-        <h2>Modelling thermal transformations</h2>
+        <div class="eyebrow">01 / Identify the thermal event</div>
+        <h2>Start with mass loss and its rate.</h2>
 
         <p>
-          TGA records mass evolution with temperature.
-          Derivative analysis helps locate thermal events,
-          define conversion intervals, and separate processes
-          before kinetic modelling.
+          TGA measures remaining mass as temperature increases.
+          DTG highlights where mass loss occurs most rapidly,
+          helping locate event boundaries and peak temperatures.
         </p>
 
         <p>
-          Each selected event receives its own initial and
-          final mass reference. This keeps distinct mass-loss
-          processes from being treated automatically as one reaction.
-        </p>
-
-        <h3>Principal model quantities</h3>
-
-        <p>
-          Event mass fraction, onset temperature, DTG peak
-          temperature, conversion-dependent apparent activation
-          energy, and apparent kinetic parameters.
+          Measurements at different heating rates allow the
+          same event to be compared across temperature shifts.
+          Corresponding events must be identified before
+          estimating kinetic parameters.
         </p>
       </div>
     </div>
 
-    <h3>Conversion and non-isothermal rate law</h3>
+    <div class="equation-card">
+      <div class="equation-label">Derivative thermogravimetry</div>
 
-    <div class="equation">α(T) = [m0 − m(T)] / (m0 − mf)
+      <div class="equation">
+        DTG = −dm / dT
+      </div>
 
-dα/dT = (A / β) exp[−Ea / (RT)] f(α)
-
-β = dT/dt</div>
-
-    <p class="variables">
-      α: event conversion · m0 and mf: event boundary masses ·
-      β: heating rate · A: apparent pre-exponential factor ·
-      Ea: apparent activation energy · R: gas constant ·
-      T: absolute temperature.
-    </p>
-
-    <div class="two-columns">
-      <article class="panel">
-        <h3>Kinetic treatments</h3>
-        <p>
-          Kissinger, Flynn–Wall–Ozawa,
-          Kissinger–Akahira–Sunose, Starink, and Friedman
-          formulations examine peak-temperature and
-          conversion-dependent kinetics.
-        </p>
-      </article>
-
-      <article class="panel">
-        <h3>Event reconstruction</h3>
-        <p>
-          Effective reaction-order descriptions reconstruct
-          selected conversion intervals. Fitted reaction order
-          provides an operational description rather than
-          uniquely establishing a reaction mechanism.
-        </p>
-      </article>
-    </div>
-
-    <div class="note">
-      Kinetic comparisons require compatible events,
-      multiple heating rates, and consistent conversion windows.
-      Overlapping transformations and numerical differentiation
-      affect interpretation.
+      <div class="equation-explanation">
+        With this sign convention, mass-loss events appear
+        as positive peaks. T<sub>p</sub> is the temperature
+        of the selected DTG maximum.
+      </div>
     </div>
   </section>
 
-  <!-- TRANSPORT -->
+  <!-- CONVERSION -->
 
-  <section id="transport">
-    <div class="eyebrow">02 / Porosity and interfaces</div>
-    <h2>Effective thermal transport</h2>
+  <section id="conversion">
+    <div class="eyebrow">02 / Normalize each selected event</div>
+    <h2>Express mass loss as conversion.</h2>
 
     <p>
-      Gas-sorption descriptors supply geometric inputs to
-      effective-medium calculations. Pore fraction and
-      interface resistance connect accessible structure
-      with an assumed thermal transport description.
+      Each selected thermal event receives its own initial
+      and final mass references. Conversion then describes
+      progress through that event rather than through the
+      entire thermogram.
     </p>
 
-    <div class="equation">φ = Vp ρbulk
+    <div class="equation-card">
+      <div class="equation-label">Event-specific conversion</div>
 
-av = SBET ρbulk
+      <div class="equation">
+        α(T) = [m<sub>0</sub> − m(T)]
+        / [m<sub>0</sub> − m<sub>f</sub>]
+      </div>
 
-kporous = ks [2ks + kf − 2φ(ks − kf)]
-          / [2ks + kf + φ(ks − kf)]
+      <div class="equation-explanation">
+        α = 0 at the event start and α = 1 at its selected end.
+        m<sub>0</sub> and m<sub>f</sub> refer to that event's boundaries.
+      </div>
+    </div>
 
-keff = kporous / (1 + Rint av kporous)
+    <div class="equation-card" style="--accent:#9fe3ca">
+      <div class="equation-label">Non-isothermal kinetic equation</div>
 
-aeff = keff / (ρeff cp,eff)
+      <div class="equation">
+        dα/dT = (A/β) exp[−E<sub>a</sub>/(RT)] f(α)
+      </div>
 
-eeff = √(keff ρeff cp,eff)</div>
+      <div class="equation">
+        β = dT/dt
+      </div>
 
-    <p class="variables">
-      φ: assumed-density pore fraction · av: volumetric interface area ·
-      ks and kf: solid- and pore-phase conductivity ·
-      Rint: interface resistance · aeff: thermal diffusivity ·
-      eeff: thermal effusivity.
-    </p>
+      <div class="equation-explanation">
+        The Arrhenius term describes temperature dependence.
+        f(α) represents the assumed conversion dependence.
+      </div>
+    </div>
 
-    <div class="note">
-      Conductivity, diffusivity, and effusivity calculated through
-      these equations are assumption-dependent model outputs.
-      They are kept separate from directly measured conductivity.
-      All area, volume, and density inputs require consistent units.
+    <div class="symbols">
+      <span>α: conversion</span>
+      <span>β: heating rate</span>
+      <span>T: absolute temperature</span>
+      <span>Ea: apparent activation energy</span>
+      <span>A: apparent pre-exponential factor</span>
+      <span>R: gas constant</span>
     </div>
   </section>
 
-  <!-- PHOTOTHERMAL -->
+  <!-- TECHNIQUES -->
 
-  <section id="photothermal" style="--accent:#a5d6ff">
-    <div class="visual-row">
-      <figure>
-        <a href="photothermal-balance.png">
-          <img
-            src="photothermal-balance.png"
-            alt="Schematic photothermal heating and cooling
-            curves with heat-input and heat-loss pathways."
-            loading="lazy"
-          >
-        </a>
+  <section id="techniques">
+    <div class="eyebrow">03 / Complementary kinetic analyses</div>
+    <h2>Five techniques, two comparison strategies.</h2>
 
-        <figcaption>
-          <span>Photothermal heat balance · Schematic</span>
-          <a href="photothermal-balance.png">Enlarge</a>
-        </figcaption>
-      </figure>
+    <p>
+      Kissinger tracks the DTG peak. FWO, KAS, Starink,
+      and Friedman compare measurements at a fixed conversion
+      α, using the temperature T<sub>α</sub> reached at
+      each heating rate.
+    </p>
 
-      <div>
-        <div class="eyebrow" style="color:#a5d6ff">
-          03 / Transient temperature response
+    <figure>
+      <a href="TGA-methods.png">
+        <img
+          src="TGA-methods.png"
+          alt="Schematic regression plots for Kissinger,
+          FWO, KAS, Starink, and Friedman methods."
+          loading="lazy"
+        >
+      </a>
+
+      <figcaption>
+        <span>Kinetic techniques · Schematic</span>
+        <a href="TGA-methods.png">Enlarge</a>
+      </figcaption>
+    </figure>
+
+    <div class="method-list">
+
+      <article class="kinetic-method" style="--accent:#ffd09b">
+        <div>
+          <h3 class="method-name">Kissinger</h3>
+          <span class="method-type">DTG peak-based analysis</span>
         </div>
 
-        <h2>Photothermal modelling</h2>
+        <div>
+          <p>
+            Tracks how the selected peak temperature changes
+            with heating rate. Provides an apparent event-level
+            activation-energy estimate.
+          </p>
 
-        <p>
-          The temperature transient is represented through
-          an effective heat capacity and heat-loss conductance.
-          Heating and cooling fits provide characteristic
-          response times and support reference-corrected
-          heat-input estimates.
-        </p>
+          <div class="equation">
+            ln(β/T<sub>p</sub><sup>2</sup>)
+            = C − E<sub>a</sub>/(RT<sub>p</sub>)
+          </div>
 
-        <p>
-          The model assumes a representative system temperature,
-          approximately constant effective properties,
-          and an effective linear heat-loss term over
-          the fitted interval.
-        </p>
-      </div>
+          <p>
+            <strong>Plot:</strong>
+            ln(β/T<sub>p</sub><sup>2</sup>) against 1/T<sub>p</sub>.
+            <strong>From slope s:</strong> E<sub>a</sub> = −Rs.
+          </p>
+        </div>
+      </article>
+
+      <article class="kinetic-method" style="--accent:#a5d5ff">
+        <div>
+          <h3 class="method-name">FWO</h3>
+          <span class="method-type">
+            Flynn–Wall–Ozawa · Integral isoconversional
+          </span>
+        </div>
+
+        <div>
+          <p>
+            Compares heating rates at the same conversion
+            without selecting a reaction-order function.
+            Repeating the calculation across α gives
+            an apparent activation-energy profile.
+          </p>
+
+          <div class="equation">
+            log<sub>10</sub>β = C<sub>α</sub>
+            − 0.4567 E<sub>a,α</sub>/(RT<sub>α</sub>)
+          </div>
+
+          <p>
+            <strong>Plot:</strong>
+            log<sub>10</sub>β against 1/T<sub>α</sub>.
+            <strong>From slope:</strong>
+            E<sub>a,α</sub> = −Rs/0.4567.
+          </p>
+        </div>
+      </article>
+
+      <article class="kinetic-method" style="--accent:#9fe3ca">
+        <div>
+          <h3 class="method-name">KAS</h3>
+          <span class="method-type">
+            Kissinger–Akahira–Sunose · Integral isoconversional
+          </span>
+        </div>
+
+        <div>
+          <p>
+            Uses a temperature-corrected heating-rate
+            transformation at fixed conversion. Complements
+            FWO through a different integral approximation.
+          </p>
+
+          <div class="equation">
+            ln(β/T<sub>α</sub><sup>2</sup>)
+            = C<sub>α</sub>
+            − E<sub>a,α</sub>/(RT<sub>α</sub>)
+          </div>
+
+          <p>
+            <strong>Plot:</strong>
+            ln(β/T<sub>α</sub><sup>2</sup>) against 1/T<sub>α</sub>.
+            <strong>From slope:</strong> E<sub>a,α</sub> = −Rs.
+          </p>
+        </div>
+      </article>
+
+      <article class="kinetic-method" style="--accent:#d2baff">
+        <div>
+          <h3 class="method-name">Starink</h3>
+          <span class="method-type">Integral isoconversional</span>
+        </div>
+
+        <div>
+          <p>
+            Applies an alternative temperature-integral
+            approximation. Provides another comparison of
+            conversion-dependent apparent activation energies.
+          </p>
+
+          <div class="equation">
+            ln(β/T<sub>α</sub><sup>1.92</sup>)
+            = C<sub>α</sub>
+            − 1.0008 E<sub>a,α</sub>/(RT<sub>α</sub>)
+          </div>
+
+          <p>
+            <strong>Plot:</strong>
+            ln(β/T<sub>α</sub><sup>1.92</sup>) against 1/T<sub>α</sub>.
+            <strong>From slope:</strong>
+            E<sub>a,α</sub> = −Rs/1.0008.
+          </p>
+        </div>
+      </article>
+
+      <article class="kinetic-method" style="--accent:#f2b7d6">
+        <div>
+          <h3 class="method-name">Friedman</h3>
+          <span class="method-type">Differential isoconversional</span>
+        </div>
+
+        <div>
+          <p>
+            Uses the conversion rate directly at fixed α.
+            Supplies a differential comparison with the
+            integral methods and requires careful derivative treatment.
+          </p>
+
+          <div class="equation">
+            ln(dα/dt) = ln[A f(α)]
+            − E<sub>a,α</sub>/(RT<sub>α</sub>)
+          </div>
+
+          <div class="equation">
+            dα/dt = β(dα/dT)
+          </div>
+
+          <p>
+            <strong>Plot:</strong>
+            ln(dα/dt) against 1/T<sub>α</sub>.
+            <strong>From slope:</strong> E<sub>a,α</sub> = −Rs.
+          </p>
+        </div>
+      </article>
+
     </div>
 
-    <h3>1. Governing energy balance</h3>
-
-    <div class="equation">ΔT = T − Tamb
-
-Cth dΔT/dt = Qin − H ΔT
-
-H = hA</div>
-
-    <p>
-      Cth is the effective thermal capacity of the modelled
-      system. H is the effective heat-loss conductance,
-      and Qin is the heat-input rate.
-    </p>
-
-    <h3>2. Heating response</h3>
-
-    <div class="equation">ΔT(t) = ΔT∞ + [ΔT0 − ΔT∞] exp(−t/τH)
-
-For ΔT0 = 0:
-
-ΔT(t) = ΔT∞ [1 − exp(−t/τH)]</div>
-
-    <p>
-      The fitted amplitude ΔT∞ represents an extrapolated
-      asymptotic rise. It is distinguished from the temperature
-      actually reached at laser switch-off.
-    </p>
-
-    <h3>3. Cooling response</h3>
-
-    <div class="equation">ΔT(t) = ΔToff exp[−(t − toff)/τC]
-
-For the ideal constant-property lumped model:
-
-τ = Cth / H</div>
-
-    <p>
-      Experimental heating and cooling are fitted with separate
-      time constants. Their agreement is assessed rather than
-      imposed automatically.
-    </p>
-
-    <h3>4. Water-reference calibration</h3>
-
-    <div class="equation">Hwater = Cth,water / τC,water
-
-Qnet,off = Hwater
-           × (ΔTsample,off − ΔTwater,off)</div>
-
-    <p>
-      This switch-off-based comparative estimator uses
-      the water-calibrated heat-loss conductance and assumes
-      compatible measurement geometry and heat-loss behavior.
-      It is kept distinct from an equilibrium input estimate.
-    </p>
-
-    <h3>5. Additional transient descriptors</h3>
-
-    <div class="equation">Heating rate constant = 1 / τH
-
-Cooling rate constant = 1 / τC
-
-Transient area = ∫ ΔT(t) dt
-
-Mass-specific heat input = Qnet / mp</div>
-
-    <p>
-      Integration uses a stated time interval, and mp denotes
-      the dispersed material mass. These quantities describe
-      different aspects of the transient response.
-    </p>
-
     <div class="note">
-      Heat-input estimates do not directly establish intrinsic
-      photothermal conversion efficiency. That calculation
-      requires absorbed optical power and appropriate background
-      corrections.
+      C and C<sub>α</sub> denote intercept terms.
+      Temperature is expressed in kelvin and heating-rate units
+      remain consistent. These methods estimate apparent
+      kinetic quantities; agreement does not establish a unique mechanism.
     </div>
   </section>
 
-  <!-- MAJOR STEPS -->
+  <!-- SIMULATION -->
 
-  <section id="workflow" style="--accent:#a5d6ff">
-    <div class="eyebrow" style="color:#a5d6ff">
-      04 / MATLAB implementation
+  <section id="simulation">
+    <div class="eyebrow">04 / Numerical reconstruction</div>
+    <h2>From activation energy to a simulated event.</h2>
+
+    <p>
+      In the thesis reconstruction, selected event-level
+      activation-energy descriptors enter an effective
+      first-order kinetic equation. The order is fixed
+      at n = 1, while A is fitted separately for each
+      experimental heating rate.
+    </p>
+
+    <div class="equation-card" style="--accent:#9fe3ca">
+      <div class="equation-label">General apparent event model</div>
+
+      <div class="equation">
+        dα/dT = (A/β) exp[−E<sub>a</sub>/(RT)]
+        (1 − α)<sup>n</sup>
+      </div>
     </div>
 
-    <h2>Major photothermal modelling steps</h2>
+    <div class="equation-card" style="--accent:#a5d5ff">
+      <div class="equation-label">Thesis reconstruction: n = 1</div>
+
+      <div class="equation">
+        dα/dT = (A/β) exp[−E<sub>a</sub>/(RT)](1 − α)
+      </div>
+
+      <div class="equation-explanation">
+        Numerically integrate over the selected temperature
+        interval using the event boundary as the initial condition.
+      </div>
+    </div>
+
+    <div class="equation-card">
+      <div class="equation-label">Convert simulated conversion back to mass</div>
+
+      <div class="equation">
+        m<sub>sim</sub>(T) = m<sub>0</sub>
+        − α<sub>sim</sub>(T)(m<sub>0</sub> − m<sub>f</sub>)
+      </div>
+
+      <div class="equation-explanation">
+        This reconstructs the mass change within the selected event.
+        Multiple-event models require separately defined event
+        contributions and mass-loss weights.
+      </div>
+    </div>
+
+    <div class="note">
+      Because A is fitted separately at each heating rate,
+      this is an event-reconstruction test. It does not by itself
+      demonstrate prediction at an unseen heating rate.
+      The first-order form is an effective representation,
+      rather than proof of first-order reaction chemistry.
+    </div>
+  </section>
+
+  <!-- WORKFLOW -->
+
+  <section id="steps">
+    <div class="eyebrow">05 / MATLAB workflow</div>
+    <h2>The modelling sequence, step by step.</h2>
 
     <ol class="steps">
       <li>
-        <strong>Import and align the measurements</strong>
-        Preserve time, temperature, concentration, material mass,
-        laser timing, and water-reference metadata.
+        <strong>Import the multi-rate measurements</strong>
+        <p>
+          Preserve mass, temperature, heating rate, sample identity,
+          and acquisition conditions. Convert temperature to kelvin
+          for kinetic calculations.
+        </p>
       </li>
 
       <li>
-        <strong>Define the ambient baseline</strong>
-        Estimate Tamb from the appropriate pre-heating interval
-        and calculate ΔT for each measurement.
+        <strong>Process the thermograms and calculate DTG</strong>
+        <p>
+          Check the mass baseline and derivative sensitivity.
+          Identify peak temperatures and candidate event boundaries.
+        </p>
       </li>
 
       <li>
-        <strong>Separate heating and cooling</strong>
-        Identify laser-on and laser-off times and define
-        consistent fitting windows.
+        <strong>Match corresponding events</strong>
+        <p>
+          Compare compatible transformations across heating rates.
+          Screen events with unresolved overlap or inconsistent boundaries.
+        </p>
       </li>
 
       <li>
-        <strong>Fit the transient models</strong>
-        Estimate temperature-rise amplitudes and separate
-        heating and cooling time constants using nonlinear fitting.
+        <strong>Calculate event-specific conversion</strong>
+        <p>
+          Normalize each event using its boundary masses.
+          Interpolate Tα and conversion rates on a common conversion grid.
+        </p>
       </li>
 
       <li>
-        <strong>Calibrate heat loss</strong>
-        Combine the water cooling time constant with
-        an explicitly defined effective thermal capacity.
+        <strong>Apply the five kinetic methods</strong>
+        <p>
+          Use DTG peak temperatures for Kissinger.
+          Use matched conversion levels for FWO, KAS,
+          Starink, and Friedman.
+        </p>
       </li>
 
       <li>
-        <strong>Calculate comparative heat-input descriptors</strong>
-        Apply the stated reference correction and distinguish
-        switch-off estimates from extrapolated asymptotic quantities.
+        <strong>Assess the kinetic descriptors</strong>
+        <p>
+          Examine regression quality, conversion-window stability,
+          derivative sensitivity, and agreement between methods.
+          Retain event-level descriptors only after screening.
+        </p>
       </li>
 
       <li>
-        <strong>Assess residuals and uncertainty</strong>
-        Examine systematic deviations, temporal autocorrelation,
-        fitting-window sensitivity, and parameter stability.
+        <strong>Integrate the event model</strong>
+        <p>
+          Use the selected apparent activation energy,
+          fix n = 1, and fit A for each heating rate.
+          Reconstruct conversion and then mass.
+        </p>
       </li>
 
       <li>
-        <strong>Prepare model outputs for descriptor analysis</strong>
-        Retain units, assumptions, and uncertainty alongside
-        each fitted or derived quantity.
+        <strong>Inspect reconstruction quality</strong>
+        <p>
+          Compare simulated and measured conversion profiles,
+          inspect residuals, and assess systematic deviations.
+          Retain the model assumptions alongside the descriptors.
+        </p>
       </li>
     </ol>
+
+    <h3>Quantities carried into interpretation</h3>
+
+    <div class="outputs">
+      <span>Event mass fraction</span>
+      <span>Onset / offset temperatures</span>
+      <span>DTG peak temperature</span>
+      <span>Ea versus conversion</span>
+      <span>Event-level apparent Ea</span>
+      <span>Fitted apparent A</span>
+      <span>Reconstruction diagnostics</span>
+    </div>
+
+    <p>
+      These quantities describe thermal events at different
+      levels of detail. They are kept distinct from unique
+      mechanistic constants or a single kinetic description
+      of the entire thermogram.
+    </p>
   </section>
 
-  <a class="back-link" href="modelling.html">
-    ← Back to modelling
-  </a>
+  <a class="back" href="modelling.html">← Back to modelling</a>
 
 </main>
 
 <footer>
-  Rupesh Lal Karn · Thermal &amp; Photothermal Modelling
+  Rupesh Lal Karn · TGA Kinetics &amp; Numerical Simulation
 </footer>
 
 </body>
