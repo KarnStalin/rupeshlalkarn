@@ -9,8 +9,8 @@
 <meta
   name="description"
   content="Materials synthesis, crystal growth, characterization,
-  magnetic and electrochemical measurements, MATLAB modelling,
-  and engineering research skills."
+  magnetic measurements, electrochemistry, thermal analysis,
+  engineering, and scientific computing."
 >
 
 <style>
@@ -25,11 +25,6 @@
 
 * { box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 24px;
-}
-
 body {
   margin: 0;
   background: var(--paper);
@@ -43,7 +38,9 @@ a {
   text-underline-offset: 5px;
 }
 
-a:focus-visible {
+a:focus-visible,
+button:focus-visible,
+[role="tabpanel"]:focus-visible {
   outline: 3px solid #c87923;
   outline-offset: 5px;
 }
@@ -80,18 +77,11 @@ nav {
 nav a[aria-current="page"] { color: #a5dfd0; }
 
 .hero {
-  padding: 60px 0 100px;
+  padding: 55px 0 85px;
   background:
     radial-gradient(circle at 85% 20%, #2b526d, transparent 42%),
     var(--navy);
   color: white;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.35fr .65fr;
-  gap: 45px;
-  align-items: center;
 }
 
 .eyebrow {
@@ -105,7 +95,7 @@ nav a[aria-current="page"] { color: #a5dfd0; }
 
 h1 {
   margin: 0 0 25px;
-  font-size: clamp(38px, 5.8vw, 72px);
+  font-size: clamp(38px, 5.8vw, 70px);
   line-height: 1.08;
   letter-spacing: -.045em;
 }
@@ -113,79 +103,80 @@ h1 {
 h1 span { color: #acd9ff; }
 
 .hero p {
+  max-width: 850px;
+  margin: 0;
   color: #c6d6e6;
   font-size: 18px;
 }
 
-.workflow {
-  padding: 25px;
-  border: 1px solid #49657d;
-  border-radius: 18px;
-  background: #ffffff06;
-}
-
-.workflow div {
-  padding: 12px 0;
-  border-bottom: 1px solid #40566d;
-  color: #e3eef9;
-  font-size: 18px;
-}
-
-.workflow div:last-child { border-bottom: 0; }
-
-.workflow span {
-  display: inline-block;
-  width: 40px;
-  color: #9ce0cb;
-  font: 13px monospace;
-}
-
-.jump-links {
+.tabs {
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  padding: 18px;
-  margin: -35px 0 35px;
+  gap: 8px;
+  padding: 12px;
+  margin: -32px 0 30px;
   border: 1px solid var(--line);
-  border-radius: 15px;
+  border-radius: 16px;
   background: white;
   box-shadow: 0 12px 30px #1022370c;
 }
 
-.jump-links a {
-  flex: 1;
-  padding: 9px 12px;
-  border-radius: 8px;
+.tab {
+  flex: 1 1 125px;
+  min-height: 52px;
+  padding: 12px 15px;
+  border: 1px solid transparent;
+  border-radius: 9px;
   background: #edf2f7;
   color: var(--ink);
-  text-align: center;
-  text-decoration: none;
-  font-size: 13px;
-  white-space: nowrap;
+  font: 650 14px/1.4 system-ui, sans-serif;
+  cursor: pointer;
 }
 
-.jump-links a:hover { background: #dfebf6; }
+.tab:hover { background: #dfeaf5; }
 
-.intro {
+.tab[aria-selected="true"] {
+  background: var(--navy);
+  color: white;
+}
+
+[hidden] { display: none !important; }
+
+.panel {
+  --accent: #17695c;
+  --surface: #eaf5ef;
+  --border: #c4dfd0;
+  padding-bottom: 25px;
+}
+
+.panel-intro {
   display: grid;
-  grid-template-columns: .8fr 1.2fr;
+  grid-template-columns: .9fr 1.1fr;
   gap: 35px;
-  margin: 35px 0;
+  align-items: start;
+  padding: 25px 0;
+}
+
+.panel-label {
+  margin-bottom: 10px;
+  color: var(--accent);
+  font: 12px/1.6 ui-monospace, monospace;
+  letter-spacing: .1em;
+  text-transform: uppercase;
 }
 
 h2 {
   margin: 0 0 16px;
-  font-size: clamp(27px, 3.1vw, 36px);
+  font-size: clamp(28px, 3.3vw, 39px);
   line-height: 1.2;
   letter-spacing: -.035em;
 }
 
 h3 {
-  margin: 0 0 14px;
-  font-size: 25px;
-  line-height: 1.3;
-  letter-spacing: -.02em;
+  margin: 0 0 12px;
+  font-size: 21px;
+  line-height: 1.4;
 }
 
 p {
@@ -195,119 +186,73 @@ p {
 
 strong { color: var(--ink); }
 
-.skills-grid {
+.cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
 }
 
-.skill-card {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  padding: 30px;
+.card {
+  padding: 28px;
   border: 1px solid var(--border);
   border-top: 4px solid var(--accent);
-  border-radius: 17px;
+  border-radius: 15px;
   background: var(--surface);
 }
 
-.card-index {
-  margin-bottom: 17px;
-  color: var(--accent);
-  font: 12px/1.6 ui-monospace, monospace;
-  letter-spacing: .1em;
-  text-transform: uppercase;
+.card h3 { color: var(--accent); }
+
+.card p {
+  font-size: 15px;
 }
 
-.skill-card h3 { color: var(--accent); }
+.card p:last-child { margin-bottom: 0; }
 
-.skill-card > p { font-size: 15px; }
-
-.skill-list {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.skill-list li {
-  padding: 12px 0;
-  border-bottom: 1px solid var(--border);
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.skill-list li:last-child { border-bottom: 0; }
-
-.skill-list strong {
-  display: block;
-  margin-bottom: 3px;
-}
-
-.card-link {
-  display: block;
-  margin-top: auto;
-  padding-top: 22px;
-  color: var(--accent);
-  font-size: 14px;
-  font-weight: 750;
-}
-
-.software {
-  padding: 35px;
-  margin: 35px 0;
-  border-radius: 20px;
-  background: var(--navy);
-  color: white;
-}
-
-.software h2 { color: white; }
-
-.software > p {
-  max-width: 850px;
-  color: #c5d6e6;
-}
-
-.tools {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-  margin-top: 25px;
-}
-
-.tool {
-  padding: 21px;
-  border: 1px solid #405970;
-  border-radius: 12px;
-  background: #ffffff05;
-}
-
-.tool h3 {
-  color: #b5e7d8;
-  font-size: 18px;
-}
-
-.tool p {
-  margin: 0;
-  color: #c5d6e6;
-  font-size: 13px;
-}
-
-.links {
+.tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin: 25px 0 40px;
+  gap: 8px;
+  margin-top: 20px;
 }
 
-.links a {
-  padding: 11px 16px;
-  border: 1px solid var(--line);
+.tags span {
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  background: #ffffff90;
+  color: var(--accent);
+  font-size: 12px;
+}
+
+.panel-link {
+  display: inline-block;
+  padding: 12px 17px;
+  margin: 25px 0 10px;
+  border: 1px solid var(--border);
   border-radius: 10px;
   background: white;
+  color: var(--accent);
   font-size: 14px;
+  font-weight: 700;
   text-decoration: none;
 }
+
+.cv-strip {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 25px;
+  margin: 15px 0 40px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: white;
+}
+
+.cv-strip p { margin: 0; }
+
+.cv-strip a { font-weight: 700; }
 
 footer {
   padding: 25px 0;
@@ -316,24 +261,16 @@ footer {
   font-size: 13px;
 }
 
-@media(max-width: 900px) {
-  .hero-grid,
-  .intro {
-    grid-template-columns: 1fr;
-  }
-
-  .tools { grid-template-columns: 1fr; }
+@media(max-width: 800px) {
+  .panel-intro { grid-template-columns: 1fr; gap: 5px; }
 }
 
-@media(max-width: 650px) {
+@media(max-width: 600px) {
   .container { width: calc(100% - 36px); }
   .hero { padding-top: 35px; }
-  .skills-grid { grid-template-columns: 1fr; }
-  .skill-card, .software { padding: 23px; }
-}
-
-@media(prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
+  .cards { grid-template-columns: 1fr; }
+  .card { padding: 23px; }
+  .tab { flex-basis: 110px; }
 }
 </style>
 </head>
@@ -354,387 +291,486 @@ footer {
 </header>
 
 <div class="hero">
-  <div class="container hero-grid">
-    <div>
-      <div class="eyebrow">Laboratory practice · Quantitative research</div>
-
-      <h1>
-        Experimental &amp;<br>
-        <span>Analytical Skills</span>
-      </h1>
-
-      <p>
-        From magnetic-powder synthesis and crystal growth
-        to advanced characterization, physical measurements,
-        and MATLAB-supported analysis.
-      </p>
-
-      <p>
-        My experience connects materials research
-        with energy systems, scientific computing,
-        and experimental engineering.
-      </p>
+  <div class="container">
+    <div class="eyebrow">
+      Laboratory practice · Measurements · Scientific computing
     </div>
 
-    <aside class="workflow" aria-label="Research capabilities">
-      <div><span>01</span>Prepare the material</div>
-      <div><span>02</span>Measure its properties</div>
-      <div><span>03</span>Analyse the evidence</div>
-      <div><span>04</span>Interpret the response</div>
-    </aside>
+    <h1>
+      Experimental &amp;<br>
+      <span>Analytical Skills</span>
+    </h1>
+
+    <p>
+      Explore my capabilities in materials preparation,
+      characterization, physical measurements,
+      quantitative analysis, and engineering research.
+    </p>
   </div>
 </div>
 
 <main class="container">
 
-  <nav class="jump-links" aria-label="Skill categories">
-    <a href="#synthesis">Synthesis</a>
-    <a href="#characterization">Characterization</a>
-    <a href="#magnetism">Magnetism</a>
-    <a href="#electrochemistry">Electrochemistry</a>
-    <a href="#thermal">Thermal analysis</a>
-    <a href="#engineering">Engineering</a>
-  </nav>
+  <div class="tabs" role="tablist" aria-label="Skill categories">
+    <button class="tab" id="tab-synthesis" type="button"
+      role="tab" aria-selected="true"
+      aria-controls="synthesis" tabindex="0">Synthesis</button>
 
-  <div class="intro">
-    <h2>Capabilities connected to research tasks.</h2>
+    <button class="tab" id="tab-characterization" type="button"
+      role="tab" aria-selected="false"
+      aria-controls="characterization" tabindex="-1">
+      Characterization
+    </button>
 
-    <p>
-      My work spans sample preparation, instrument-based
-      measurements, quantitative interpretation, and numerical
-      modelling. The sections below describe the role of
-      each technique within that workflow.
-    </p>
+    <button class="tab" id="tab-magnetism" type="button"
+      role="tab" aria-selected="false"
+      aria-controls="magnetism" tabindex="-1">Magnetism</button>
+
+    <button class="tab" id="tab-electrochemistry" type="button"
+      role="tab" aria-selected="false"
+      aria-controls="electrochemistry" tabindex="-1">
+      Electrochemistry
+    </button>
+
+    <button class="tab" id="tab-thermal" type="button"
+      role="tab" aria-selected="false"
+      aria-controls="thermal" tabindex="-1">Thermal &amp; Optical</button>
+
+    <button class="tab" id="tab-engineering" type="button"
+      role="tab" aria-selected="false"
+      aria-controls="engineering" tabindex="-1">Engineering</button>
+
+    <button class="tab" id="tab-computing" type="button"
+      role="tab" aria-selected="false"
+      aria-controls="computing" tabindex="-1">Computing</button>
   </div>
 
-  <div class="skills-grid">
+  <!-- SYNTHESIS -->
 
-    <section class="skill-card" id="synthesis" style="
-      --surface:#eaf5ef;
-      --border:#c4dfd0;
-      --accent:#17695c;
-    ">
-      <div class="card-index">01 / Materials preparation</div>
-      <h3>Synthesis, Doping &amp; Crystal Growth</h3>
+  <section class="panel" id="synthesis" role="tabpanel"
+    aria-labelledby="tab-synthesis" tabindex="0">
 
+    <div class="panel-intro">
+      <div>
+        <div class="panel-label">01 / Materials preparation</div>
+        <h2>Synthesis, Doping &amp; Crystal Growth</h2>
+      </div>
       <p>
-        Preparing materials for structural
-        and physical-property investigations.
+        Preparation experience spanning magnetic powders,
+        substituted oxides, single crystals, nanoparticles,
+        and MXene-based materials.
       </p>
+    </div>
 
-      <ul class="skill-list">
-        <li>
-          <strong>Magnetic powders</strong>
-          Solid-state synthesis and magnetic-material preparation.
-        </li>
+    <div class="cards">
+      <article class="card">
+        <h3>Magnetic-powder synthesis</h3>
+        <p>
+          Solid-state synthesis and preparation of magnetic
+          materials for structural and physical-property studies.
+        </p>
+        <div class="tags">
+          <span>Solid-state synthesis</span>
+          <span>Magnetic powders</span>
+        </div>
+      </article>
 
-        <li>
-          <strong>Compositional substitution</strong>
-          Co-doped MnGeTeO₆:
-          Mn₁₋ₓCoₓGeTeO₆.
-        </li>
+      <article class="card">
+        <h3>Compositional doping</h3>
+        <p>
+          Cobalt substitution in MnGeTeO₆,
+          expressed as Mn₁₋ₓCoₓGeTeO₆.
+        </p>
+        <div class="tags">
+          <span>Co substitution</span>
+          <span>Composition series</span>
+        </div>
+      </article>
 
-        <li>
-          <strong>Single-crystal growth</strong>
-          Growth of Mn₃Al₂Ge₃O₁₂ single crystals.
-        </li>
+      <article class="card">
+        <h3>Single-crystal growth</h3>
+        <p>
+          Growth of Mn₃Al₂Ge₃O₁₂ single crystals
+          and preparation of samples for characterization.
+        </p>
+        <div class="tags">
+          <span>Mn₃Al₂Ge₃O₁₂</span>
+          <span>Crystal growth</span>
+        </div>
+      </article>
 
-        <li>
-          <strong>Functional nanomaterials</strong>
+      <article class="card">
+        <h3>Functional nanomaterials</h3>
+        <p>
           MXene processing, acid etching, intercalation,
           nanoparticle synthesis, and composite preparation.
-        </li>
-      </ul>
+        </p>
+        <div class="tags">
+          <span>MXenes</span>
+          <span>Nanoparticles</span>
+          <span>Composites</span>
+        </div>
+      </article>
+    </div>
 
-      <a class="card-link" href="magnetic-materials.html">
-        Explore materials research →
-      </a>
-    </section>
+    <a class="panel-link" href="magnetic-materials.html">
+      Explore materials research →
+    </a>
+  </section>
 
-    <section class="skill-card" id="characterization" style="
-      --surface:#eaf3fd;
-      --border:#bdd4eb;
-      --accent:#165ca6;
-    ">
-      <div class="card-index">02 / Structure &amp; interfaces</div>
-      <h3>Materials Characterization</h3>
+  <!-- CHARACTERIZATION -->
 
+  <section class="panel" id="characterization" role="tabpanel"
+    aria-labelledby="tab-characterization" tabindex="0" hidden
+    style="--accent:#165ca6;--surface:#eaf3fd;--border:#bdd4eb">
+
+    <div class="panel-intro">
+      <div>
+        <div class="panel-label">02 / Structure &amp; interfaces</div>
+        <h2>Materials Characterization</h2>
+      </div>
       <p>
-        Connecting experimental signals with
-        phase, chemical, and interface information.
+        Connecting instrument measurements with structural,
+        chemical, morphological, and interface information.
       </p>
+    </div>
 
-      <ul class="skill-list">
-        <li>
-          <strong>XRD &amp; Rietveld refinement</strong>
-          Phase identification, profile analysis,
-          and structural-model assessment.
-        </li>
+    <div class="cards">
+      <article class="card">
+        <h3>XRD &amp; Rietveld Refinement</h3>
+        <p>
+          Phase identification, diffraction-profile analysis,
+          structural refinement, and assessment of
+          crystallographic models.
+        </p>
+      </article>
 
-        <li>
-          <strong>Raman &amp; FTIR</strong>
-          Vibrational features, peak fitting,
-          and integrated spectral descriptors.
-        </li>
+      <article class="card">
+        <h3>Raman &amp; FTIR</h3>
+        <p>
+          Vibrational-feature analysis, spectral fitting,
+          band integration, and comparative descriptors.
+        </p>
+      </article>
 
-        <li>
-          <strong>XPS &amp; SEM/EDS</strong>
+      <article class="card">
+        <h3>XPS &amp; SEM/EDS</h3>
+        <p>
           Surface composition, chemical-envelope interpretation,
-          morphology, and elemental analysis.
-        </li>
-
-        <li>
-          <strong>BET, zeta potential &amp; DLS</strong>
-          Accessible area, pore descriptors,
-          electrokinetic response, and hydrodynamic size.
-        </li>
-      </ul>
-
-      <a class="card-link" href="descriptor-extraction.html">
-        Explore descriptor extraction →
-      </a>
-    </section>
-
-    <section class="skill-card" id="magnetism" style="
-      --surface:#f2ecf8;
-      --border:#dacbea;
-      --accent:#714298;
-    ">
-      <div class="card-index">03 / Advanced physical measurements</div>
-      <h3>Magnetism &amp; Single Crystals</h3>
-
-      <p>
-        Magnetic characterization and visiting research
-        at U.S. national laboratories.
-      </p>
-
-      <ul class="skill-list">
-        <li>
-          <strong>SQUID measurements</strong>
-          Magnetic response under defined field
-          and temperature conditions.
-        </li>
-
-        <li>
-          <strong>Lorentz TEM</strong>
-          Analysis of magnetic-domain structures
-          during visiting research at Argonne.
-        </li>
-
-        <li>
-          <strong>de Haas–van Alphen measurements</strong>
-          Angle- and temperature-dependent
-          measurements on HfSn₂ crystals at Los Alamos.
-        </li>
-      </ul>
-
-      <a class="card-link" href="experience.html#national-laboratories">
-        National laboratory appointments →
-      </a>
-    </section>
-
-    <section class="skill-card" id="electrochemistry" style="
-      --surface:#edf2fc;
-      --border:#c9d5ed;
-      --accent:#355b9a;
-    ">
-      <div class="card-index">04 / Charge storage &amp; kinetics</div>
-      <h3>Electrochemical Methods</h3>
-
-      <p>
-        Measurements and analysis across potential,
-        time, and frequency domains.
-      </p>
-
-      <ul class="skill-list">
-        <li>
-          <strong>CV &amp; GCD</strong>
-          Loop integration, branch processing,
-          charge balance, and capacitance calculations.
-        </li>
-
-        <li>
-          <strong>EIS</strong>
-          Impedance interpretation, equivalent circuits,
-          and relaxation descriptors.
-        </li>
-
-        <li>
-          <strong>Electrocatalytic assessment</strong>
-          LSV, Tafel analysis, OER testing,
-          and double-layer-capacitance assessment.
-        </li>
-
-        <li>
-          <strong>Numerical interpretation</strong>
-          Rate relationships and circuit-based
-          response simulation.
-        </li>
-      </ul>
-
-      <a class="card-link" href="electrochemical-modelling.html">
-        Explore electrochemical modelling →
-      </a>
-    </section>
-
-    <section class="skill-card" id="thermal" style="
-      --surface:#fff3e8;
-      --border:#ebcdb2;
-      --accent:#a34e1b;
-    ">
-      <div class="card-index">05 / Temperature-dependent response</div>
-      <h3>Thermal &amp; Optical Analysis</h3>
-
-      <p>
-        Thermal-event interpretation and
-        irradiation-induced temperature measurements.
-      </p>
-
-      <ul class="skill-list">
-        <li>
-          <strong>TGA / DSC</strong>
-          Thermal-event assessment, DTG processing,
-          and event-specific conversion.
-        </li>
-
-        <li>
-          <strong>Thermal kinetics</strong>
-          Multi-rate activation-energy analysis
-          and numerical event reconstruction.
-        </li>
-
-        <li>
-          <strong>Photothermal response</strong>
-          Heating–cooling fitting, reference calibration,
-          and heat-balance interpretation.
-        </li>
-
-        <li>
-          <strong>UV–Vis &amp; photoluminescence</strong>
-          Optical-response characterization
-          and interpretation.
-        </li>
-      </ul>
-
-      <a class="card-link" href="modelling.html">
-        Explore thermal modelling methods →
-      </a>
-    </section>
-
-    <section class="skill-card" id="engineering" style="
-      --surface:#fff6df;
-      --border:#e8d5a6;
-      --accent:#886016;
-    ">
-      <div class="card-index">06 / Energy &amp; engineering</div>
-      <h3>Fuels, Engines &amp; Testing</h3>
-
-      <p>
-        Experimental capabilities developed through
-        alternative-fuel and engineering research.
-      </p>
-
-      <ul class="skill-list">
-        <li>
-          <strong>Fuel preparation</strong>
-          Esterification, transesterification,
-          lipid extraction, pyrolysis, and fractional distillation.
-        </li>
-
-        <li>
-          <strong>Fuel characterization</strong>
-          GC–MS, bomb calorimetry, viscosity,
-          density, and relevant ASTM procedures.
-        </li>
-
-        <li>
-          <strong>Engine investigations</strong>
-          Performance, combustion, emissions,
-          and thermal-balance analysis.
-        </li>
-
-        <li>
-          <strong>Engineering practice</strong>
-          Heat transfer, instrumentation,
-          engineering drawing, and mechanical project work.
-        </li>
-      </ul>
-
-      <a class="card-link" href="alternative-fuels.html">
-        Explore alternative-fuel research →
-      </a>
-    </section>
-
-  </div>
-
-  <section class="software" id="computing">
-    <div class="eyebrow">Computational &amp; analytical tools</div>
-    <h2>Software with a defined research purpose.</h2>
-
-    <p>
-      I use computational tools to process measurements,
-      refine structural models, simulate responses,
-      and communicate quantitative comparisons.
-    </p>
-
-    <div class="tools">
-      <article class="tool">
-        <h3>MATLAB</h3>
-        <p>
-          Signal processing, fitting, numerical integration,
-          circuit simulation, descriptor construction,
-          and model assessment.
+          morphology, and elemental distribution.
         </p>
       </article>
 
-      <article class="tool">
-        <h3>FullProf · HighScore · MATCH!</h3>
+      <article class="card">
+        <h3>BET, Zeta Potential &amp; DLS</h3>
         <p>
-          Diffraction analysis, phase identification,
-          and structural-refinement workflows.
-        </p>
-      </article>
-
-      <article class="tool">
-        <h3>OriginPro · SigmaPlot</h3>
-        <p>
-          Quantitative comparisons, scientific plotting,
-          and research visualization.
-        </p>
-      </article>
-
-      <article class="tool">
-        <h3>Ricardo WAVE</h3>
-        <p>
-          Engine-related simulation and interpretation
-          alongside experimental engineering work.
-        </p>
-      </article>
-
-      <article class="tool">
-        <h3>Scientific data analysis</h3>
-        <p>
-          Residual inspection, sensitivity,
-          uncertainty assessment, and numerical verification.
-        </p>
-      </article>
-
-      <article class="tool">
-        <h3>Research communication</h3>
-        <p>
-          Technical writing, figure preparation,
-          presentations, documentation, and student mentorship.
+          Gas-accessible area, pore descriptors,
+          electrokinetic response, and operational
+          hydrodynamic size.
         </p>
       </article>
     </div>
+
+    <a class="panel-link" href="descriptor-extraction.html">
+      Explore descriptor extraction →
+    </a>
   </section>
 
-  <div class="links">
-    <a href="data-analysis.html">Scientific data analysis →</a>
-    <a href="modelling.html">Modelling methods →</a>
-    <a href="experience.html">Research experience →</a>
-    <a href="Rupesh_Lal_Karn_CV.pdf">Complete CV →</a>
-  </div>
+  <!-- MAGNETISM -->
+
+  <section class="panel" id="magnetism" role="tabpanel"
+    aria-labelledby="tab-magnetism" tabindex="0" hidden
+    style="--accent:#714298;--surface:#f2ecf8;--border:#dacbea">
+
+    <div class="panel-intro">
+      <div>
+        <div class="panel-label">03 / Physical measurements</div>
+        <h2>Magnetism &amp; Single Crystals</h2>
+      </div>
+      <p>
+        Magnetic characterization complemented by
+        visiting research at Argonne and
+        Los Alamos National Laboratories.
+      </p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <h3>SQUID Measurements</h3>
+        <p>
+          Investigation of magnetic response under
+          defined temperature and applied-field conditions.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Lorentz TEM</h3>
+        <p>
+          LTEM analysis of magnetic-domain structures
+          during visiting research at Argonne National Laboratory.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Quantum Oscillations</h3>
+        <p>
+          Angle- and temperature-dependent dHvA measurements
+          on HfSn₂ crystals at Los Alamos National Laboratory.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Structure–Property Interpretation</h3>
+        <p>
+          Connecting magnetic measurements with
+          diffraction, refinement, composition,
+          and sample-preparation history.
+        </p>
+      </article>
+    </div>
+
+    <a class="panel-link" href="experience.html#national-laboratories">
+      National laboratory appointments →
+    </a>
+  </section>
+
+  <!-- ELECTROCHEMISTRY -->
+
+  <section class="panel" id="electrochemistry" role="tabpanel"
+    aria-labelledby="tab-electrochemistry" tabindex="0" hidden
+    style="--accent:#355b9a;--surface:#edf2fc;--border:#c9d5ed">
+
+    <div class="panel-intro">
+      <div>
+        <div class="panel-label">04 / Current, potential &amp; frequency</div>
+        <h2>Electrochemical Methods</h2>
+      </div>
+      <p>
+        Complementary measurements and analysis
+        of charge storage, rate dependence,
+        impedance, and electrocatalytic response.
+      </p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <h3>CV &amp; GCD</h3>
+        <p>
+          Branch processing, loop integration,
+          charge–discharge segmentation,
+          capacitance, and charge balance.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>EIS</h3>
+        <p>
+          Impedance interpretation, equivalent circuits,
+          non-ideal capacitive response,
+          and relaxation descriptors.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Electrocatalytic Assessment</h3>
+        <p>
+          LSV, Tafel analysis, OER testing,
+          and double-layer-capacitance assessment.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Numerical Interpretation</h3>
+        <p>
+          Rate relationships, circuit simulation,
+          shared-parameter fitting, and model assessment.
+        </p>
+      </article>
+    </div>
+
+    <a class="panel-link" href="electrochemical-modelling.html">
+      Electrochemical modelling →
+    </a>
+  </section>
+
+  <!-- THERMAL -->
+
+  <section class="panel" id="thermal" role="tabpanel"
+    aria-labelledby="tab-thermal" tabindex="0" hidden
+    style="--accent:#a34e1b;--surface:#fff3e8;--border:#ebcdb2">
+
+    <div class="panel-intro">
+      <div>
+        <div class="panel-label">05 / Temperature &amp; light</div>
+        <h2>Thermal &amp; Optical Analysis</h2>
+      </div>
+      <p>
+        Thermal-event analysis, optical characterization,
+        and irradiation-induced heating–cooling measurements.
+      </p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <h3>TGA / DSC</h3>
+        <p>
+          Thermal-event assessment, derivative processing,
+          mass-loss analysis, and event-specific conversion.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Thermal Kinetics</h3>
+        <p>
+          Multi-rate activation-energy analysis and
+          numerical reconstruction of selected thermal events.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Photothermal Response</h3>
+        <p>
+          Heating–cooling fitting, water-reference calibration,
+          time constants, and energy-balance interpretation.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>UV–Vis &amp; Photoluminescence</h3>
+        <p>
+          Optical-response characterization and interpretation
+          alongside complementary material measurements.
+        </p>
+      </article>
+    </div>
+
+    <a class="panel-link" href="modelling.html">
+      Explore thermal modelling methods →
+    </a>
+  </section>
+
+  <!-- ENGINEERING -->
+
+  <section class="panel" id="engineering" role="tabpanel"
+    aria-labelledby="tab-engineering" tabindex="0" hidden
+    style="--accent:#886016;--surface:#fff6df;--border:#e8d5a6">
+
+    <div class="panel-intro">
+      <div>
+        <div class="panel-label">06 / Energy systems</div>
+        <h2>Fuels, Engines &amp; Engineering</h2>
+      </div>
+      <p>
+        Experimental preparation, testing, and analysis
+        developed through alternative-fuel
+        and mechanical-engineering research.
+      </p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <h3>Fuel Preparation</h3>
+        <p>
+          Esterification, transesterification,
+          lipid extraction, pyrolysis,
+          and fractional distillation.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Fuel Characterization</h3>
+        <p>
+          GC–MS, bomb calorimetry, viscosity,
+          density, and relevant ASTM fuel-analysis procedures.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Engine Testing</h3>
+        <p>
+          Performance, fuel consumption, combustion,
+          emissions, and thermal-balance analysis.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Mechanical Engineering</h3>
+        <p>
+          Heat transfer, instrumentation, engineering drawing,
+          and mechanical design and fabrication projects.
+        </p>
+      </article>
+    </div>
+
+    <a class="panel-link" href="alternative-fuels.html">
+      Explore alternative-fuel research →
+    </a>
+  </section>
+
+  <!-- COMPUTING -->
+
+  <section class="panel" id="computing" role="tabpanel"
+    aria-labelledby="tab-computing" tabindex="0" hidden
+    style="--accent:#17646e;--surface:#eaf5f7;--border:#bfdde2">
+
+    <div class="panel-intro">
+      <div>
+        <div class="panel-label">07 / Analysis &amp; simulation</div>
+        <h2>Scientific Computing &amp; Software</h2>
+      </div>
+      <p>
+        Computational tools support data processing,
+        physical calculations, model assessment,
+        and scientific communication.
+      </p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <h3>MATLAB</h3>
+        <p>
+          Signal processing, nonlinear fitting,
+          numerical integration, circuit simulation,
+          and descriptor-based analysis.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Structural Software</h3>
+        <p>
+          FullProf Suite, X’Pert HighScore, and MATCH!
+          for diffraction and structural-analysis workflows.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Analysis &amp; Visualization</h3>
+        <p>
+          OriginPro, SigmaPlot, and Excel for
+          quantitative comparisons, plotting,
+          and research presentation.
+        </p>
+      </article>
+
+      <article class="card">
+        <h3>Engineering &amp; Communication</h3>
+        <p>
+          Ricardo WAVE, technical writing,
+          figure preparation, research documentation,
+          and scientific presentations.
+        </p>
+      </article>
+    </div>
+
+    <a class="panel-link" href="data-analysis.html">
+      Scientific data analysis →
+    </a>
+  </section>
+
+  <aside class="cv-strip">
+    <p>Explore the research experience behind these capabilities.</p>
+    <a href="Rupesh_Lal_Karn_CV.pdf">View complete CV →</a>
+  </aside>
 
 </main>
 
@@ -743,6 +779,69 @@ footer {
     Rupesh Lal Karn · Experimental &amp; Analytical Skills
   </div>
 </footer>
+
+<script>
+const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
+const panels = Array.from(
+  document.querySelectorAll('[role="tabpanel"]')
+);
+
+function activateTab(tab, updateHash = true) {
+  const panelId = tab.getAttribute("aria-controls");
+
+  tabs.forEach(function (item) {
+    const active = item === tab;
+    item.setAttribute("aria-selected", String(active));
+    item.tabIndex = active ? 0 : -1;
+  });
+
+  panels.forEach(function (panel) {
+    panel.hidden = panel.id !== panelId;
+  });
+
+  if (updateHash) {
+    history.replaceState(null, "", "#" + panelId);
+  }
+}
+
+tabs.forEach(function (tab, index) {
+  tab.addEventListener("click", function () {
+    activateTab(tab);
+  });
+
+  tab.addEventListener("keydown", function (event) {
+    let next;
+
+    if (event.key === "ArrowRight") {
+      next = (index + 1) % tabs.length;
+    } else if (event.key === "ArrowLeft") {
+      next = (index - 1 + tabs.length) % tabs.length;
+    } else if (event.key === "Home") {
+      next = 0;
+    } else if (event.key === "End") {
+      next = tabs.length - 1;
+    } else {
+      return;
+    }
+
+    event.preventDefault();
+    tabs[next].focus();
+    activateTab(tabs[next]);
+  });
+});
+
+function activateFromHash() {
+  const id = location.hash.slice(1);
+  const tab = tabs.find(function (item) {
+    return item.getAttribute("aria-controls") === id;
+  });
+
+  if (tab) activateTab(tab, false);
+}
+
+window.addEventListener("hashchange", activateFromHash);
+activateFromHash();
+</script>
 
 </body>
 </html>
