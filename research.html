@@ -2,133 +2,486 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
 
   <title>Research | Rupesh Lal Karn</title>
 
-  <meta name="description"
-        content="Research interests of Rupesh Lal Karn in
-        two-dimensional materials, photothermal and electrochemical
-        studies, modelling, magnetic materials, alternative fuels,
-        and scientific data analysis.">
+  <meta
+    name="description"
+    content="Research interests of Rupesh Lal Karn in two-dimensional materials, photothermal and electrochemical studies, modelling, magnetic materials, alternative fuels, and scientific data analysis."
+  >
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="canonical" href="https://rlk.com.np/research.html">
 
   <style>
-    /* Research section navigation */
-    .research-tabs {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin: 0 0 38px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #29425b;
+    :root {
+      color-scheme: light;
+
+      --paper: #faf9f6;
+      --ink: #272e2a;
+      --muted: #606961;
+      --line: #d8dcd4;
+      --green: #285946;
+
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Arial, sans-serif;
     }
 
-    .research-tabs a {
-      display: inline-block;
-      padding: 12px 20px;
-      background: #142940;
-      border: 1px solid #29425b;
-      border-radius: 10px;
-      color: #ffffff;
-      font-size: 14px;
-      font-weight: 600;
-      text-decoration: none;
-      transition:
-        background 0.2s ease,
-        border-color 0.2s ease;
+    * {
+      box-sizing: border-box;
     }
 
-    .research-tabs a:hover,
-    .research-tabs a.active {
-      background: #69b9ff;
-      border-color: #69b9ff;
-      color: #081727;
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
     }
 
-    .research-tabs a:focus-visible {
-      outline: 2px solid #69b9ff;
-      outline-offset: 3px;
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.8 var(--sans);
     }
 
-    /* Introduction */
-    .research-intro {
-      max-width: 850px;
-      margin-bottom: 34px;
-      line-height: 1.8;
+    a {
+      color: var(--green);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 5px;
     }
 
-    /* Clickable research cards */
-    .research-card {
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      min-width: 0;
-      color: #edf5ff;
-      text-decoration: none;
-      transition:
-        border-color 0.2s ease,
-        background 0.2s ease;
+    a:hover {
+      color: #123a29;
     }
 
-    .research-card:hover {
-      color: #edf5ff;
-      background: #172d45;
-      border-color: #69b9ff;
-    }
-
-    .research-card:focus-visible {
-      outline: 3px solid #69b9ff;
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--green);
       outline-offset: 5px;
     }
 
-    .research-card h3 {
-      margin-bottom: 14px;
-      color: #edf5ff;
+    .container {
+      width: min(1160px, calc(100% - 64px));
+      margin-inline: auto;
     }
 
-    .research-card p {
-      color: #a4b7cd;
-      line-height: 1.75;
+    .skip-link {
+      position: absolute;
+      top: -80px;
+      left: 20px;
+      z-index: 100;
+      padding: 12px 18px;
+      background: white;
     }
 
-    .research-tags {
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    /* Main navigation */
+
+    .site-header {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      min-height: 98px;
+    }
+
+    .name {
+      color: var(--ink);
+      font: 22px/1.3 var(--serif);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .site-nav {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin: 18px 0 24px;
+      gap: 23px;
     }
 
-    .research-card-link {
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      border-bottom: 1px solid transparent;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .site-nav a:hover,
+    .site-nav a[aria-current="page"] {
+      border-color: var(--green);
+      color: var(--ink);
+    }
+
+    .menu-button {
+      display: none;
+      min-height: 44px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    /* Page introduction */
+
+    .page-intro {
+      padding: 55px 0 38px;
+    }
+
+    .breadcrumb {
+      margin: 0 0 26px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .breadcrumb a {
+      color: inherit;
+    }
+
+    h1,
+    h2 {
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+
+    h1 {
+      max-width: 940px;
+      margin: 0 0 25px;
+      font-size: clamp(38px, 4.7vw, 62px);
+      line-height: 1.15;
+      letter-spacing: -.035em;
+    }
+
+    .lead {
+      max-width: 790px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.85;
+    }
+
+    /* Research navigation */
+
+    .research-tabs {
       display: flex;
-      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px 28px;
+      padding: 8px 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .research-tabs a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      border-bottom: 1px solid transparent;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .research-tabs a:hover,
+    .research-tabs a[aria-current="page"] {
+      color: var(--green);
+      border-bottom-color: var(--green);
+    }
+
+    /* Research overview */
+
+    .research-introduction {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 70px;
+      padding: 40px 0;
+    }
+
+    .research-introduction h2 {
+      margin: 0;
+      font-size: 32px;
+      line-height: 1.3;
+      letter-spacing: -.025em;
+    }
+
+    .research-introduction p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    /* Individual research areas */
+
+    .research-directory {
+      padding-bottom: 55px;
+    }
+
+    .research-entry {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 70px;
+      padding: 35px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .research-title,
+    .research-description {
+      min-width: 0;
+    }
+
+    .category {
+      margin: 0 0 12px;
+      color: var(--green);
+      font-size: 13px;
+    }
+
+    .research-title h2 {
+      max-width: 400px;
+      margin: 0;
+      font-size: 30px;
+      line-height: 1.3;
+      letter-spacing: -.02em;
+    }
+
+    .research-title h2 a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .research-title h2 a:hover {
+      text-decoration: underline;
+    }
+
+    .research-description p {
+      margin: 0 0 16px;
+      color: var(--muted);
+    }
+
+    .topics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 16px;
+      margin: 22px 0 18px;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .topics li:not(:last-child)::after {
+      content: "·";
+      padding-left: 16px;
+      color: #8b938c;
+    }
+
+    .research-link {
+      display: inline-flex;
       align-items: center;
       gap: 12px;
-      margin-top: auto;
-      padding-top: 18px;
-      border-top: 1px solid #29425b;
-      color: #69b9ff;
-      font-weight: 600;
+      min-height: 44px;
+      font-size: 14px;
     }
 
-    @media (max-width: 700px) {
+    .research-link span {
+      display: inline-block;
+      font: 21px Arial, sans-serif;
+      transition: transform .2s ease;
+    }
+
+    .research-link:hover span {
+      transform: translateX(4px);
+    }
+
+    /* Glowing text */
+
+    main h1,
+    main h2 {
+      color: #20543f;
+      animation: headingGlow 3.6s ease-in-out infinite alternate;
+    }
+
+    .research-entry h2 {
+      animation-duration: 4.2s;
+      animation-delay: -1.2s;
+    }
+
+    @keyframes headingGlow {
+      from {
+        text-shadow:
+          0 0 3px rgba(26, 170, 116, .12);
+      }
+
+      to {
+        text-shadow:
+          0 0 5px rgba(26, 170, 116, .65),
+          0 0 17px rgba(39, 190, 139, .32),
+          0 0 34px rgba(39, 190, 139, .23);
+      }
+    }
+
+    /* Footer */
+
+    .footer {
+      padding: 35px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .footer-name {
+      margin: 0 0 10px;
+      font: 23px var(--serif);
+    }
+
+    .footer p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: flex-end;
+      align-content: start;
+      flex-wrap: wrap;
+      gap: 10px 25px;
+    }
+
+    .footer-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+    }
+
+    .copyright {
+      grid-column: 1 / -1;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Tablet */
+
+    @media (max-width: 1050px) {
+      .header-inner {
+        flex-wrap: wrap;
+        padding: 20px 0;
+        gap: 12px;
+      }
+
+      .research-introduction,
+      .research-entry {
+        gap: 40px;
+      }
+    }
+
+    /* Mobile */
+
+    @media (max-width: 760px) {
+      .container {
+        width: calc(100% - 40px);
+      }
+
+      .header-inner {
+        min-height: 85px;
+        justify-content: space-between;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .site-nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        padding-top: 10px;
+      }
+
+      .site-nav.is-open {
+        display: flex;
+      }
+
+      .site-nav a {
+        min-height: 48px;
+      }
+
+      .page-intro {
+        padding: 35px 0 25px;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+
+      .lead {
+        font-size: 17px;
+      }
+
       .research-tabs {
-        gap: 8px;
+        gap: 6px 22px;
       }
 
-      .research-tabs a {
-        padding: 10px 13px;
-        font-size: 12px;
+      .research-introduction,
+      .research-entry {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 28px 0;
+      }
+
+      .research-title h2 {
+        max-width: none;
+        font-size: 27px;
+      }
+
+      .research-introduction h2 {
+        font-size: 29px;
+      }
+
+      .research-directory {
+        padding-bottom: 30px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
       }
     }
+
+    /* Accessibility */
 
     @media (prefers-reduced-motion: reduce) {
-      .research-card {
+      html {
+        scroll-behavior: auto;
+      }
+
+      main h1,
+      main h2 {
+        animation: none;
+        text-shadow: 0 0 10px rgba(26, 170, 116, .2);
+      }
+
+      .research-link span {
         transition: none;
       }
 
-      .research-card:hover {
+      .research-link:hover span {
         transform: none;
       }
     }
@@ -136,72 +489,71 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- MAIN NAVIGATION -->
-<header class="navbar">
-  <a class="logo" href="index.html">
-    Rupesh Lal <span>Karn.</span>
-  </a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="name" href="index.html">Rupesh Lal Karn</a>
 
-  <button class="menu-toggle"
-          type="button"
-          aria-label="Toggle navigation"
-          aria-expanded="false">
-    ☰
-  </button>
+      <button
+        class="menu-button"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-navigation"
+      >
+        Menu
+      </button>
 
-  <nav class="nav-links" aria-label="Main navigation">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
+      <nav
+        class="site-nav"
+        id="site-navigation"
+        aria-label="Main navigation"
+      >
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="research.html" aria-current="page">Research</a>
+        <a href="publications.html">Publications</a>
+        <a href="experience.html">Experience</a>
+        <a href="skills.html">Skills</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-    <a href="research.html"
-       class="active"
-       aria-current="page">
-      Research
-    </a>
+  <main class="container" id="main">
 
-    <a href="experience.html">Experience</a>
-    <a href="projects.html">Projects</a>
-    <a href="skills.html">Skills</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
+    <!-- Page introduction -->
 
-<main>
-
-  <!-- PAGE INTRODUCTION -->
-  <section class="page-hero">
-    <div class="container">
-      <p class="eyebrow">RESEARCH AREAS</p>
+    <div class="page-intro">
+      <p class="breadcrumb">
+        <a href="index.html">Home</a> / Research
+      </p>
 
       <h1>Materials, Energy &amp; Engineering Research</h1>
 
-      <p>
+      <p class="lead">
         Experimental investigations and quantitative modelling
         connecting material processing, structure,
         surface chemistry, and functional performance.
       </p>
     </div>
-  </section>
 
-  <!-- RESEARCH INTERESTS -->
-  <section class="section">
-    <div class="container">
+    <!-- Research navigation -->
 
-      <nav class="research-tabs" aria-label="Research sections">
-        <a href="research.html"
-           class="active"
-           aria-current="page">
-          Research Interests
-        </a>
+    <nav class="research-tabs" aria-label="Research sections">
+      <a href="research.html" aria-current="page">
+        Research interests
+      </a>
+      <a href="publications.html">Publications</a>
+      <a href="conferences.html">Conferences</a>
+    </nav>
 
-        <a href="publications.html">Publications</a>
-        <a href="conferences.html">Conferences</a>
-      </nav>
+    <!-- Research overview -->
 
-      <h2 class="section-title">Research Interests</h2>
+    <div class="research-introduction">
+      <h2 id="interests-heading">Research interests</h2>
 
-      <p class="research-intro">
+      <p>
         My research focuses on understanding the relationships
         between material processing, structure, surface chemistry,
         and functional performance. My work integrates experimental
@@ -209,19 +561,27 @@
         modelling, with applications in sustainable energy,
         functional materials, and engineering.
       </p>
+    </div>
 
-      <div class="card-grid">
+    <section
+      class="research-directory"
+      aria-labelledby="interests-heading"
+    >
 
-        <!-- 01: TWO-DIMENSIONAL MATERIALS -->
-        <a class="card research-card"
-           href="two-dimensional-materials.html">
+      <!-- MXenes -->
 
-          <span class="card-number">
-            01 / TWO-DIMENSIONAL MATERIALS
-          </span>
+      <article class="research-entry">
+        <div class="research-title">
+          <p class="category">Two-dimensional materials</p>
 
-          <h3>MXenes &amp; Functional Composites</h3>
+          <h2>
+            <a href="two-dimensional-materials.html">
+              MXenes &amp; Functional Composites
+            </a>
+          </h2>
+        </div>
 
+        <div class="research-description">
           <p>
             Synthesis, processing, and characterization of
             titanium-based MXenes, including selective
@@ -235,30 +595,37 @@
             and elemental composition.
           </p>
 
-          <div class="research-tags">
-            <span class="tag">MXenes</span>
-            <span class="tag">XRD</span>
-            <span class="tag">Raman</span>
-            <span class="tag">XPS</span>
-          </div>
+          <ul class="topics" aria-label="Methods and topics">
+            <li>MXenes</li>
+            <li>XRD</li>
+            <li>Raman</li>
+            <li>XPS</li>
+          </ul>
 
-          <span class="research-card-link">
+          <a
+            class="research-link"
+            href="two-dimensional-materials.html"
+          >
             Explore materials
-            <span aria-hidden="true">→</span>
-          </span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </article>
 
-        </a>
+      <!-- Photothermal and electrochemical studies -->
 
-        <!-- 02: COMBINED EXPERIMENTAL STUDIES -->
-        <a class="card research-card"
-           href="photothermal-electrochemistry.html">
+      <article class="research-entry">
+        <div class="research-title">
+          <p class="category">Functional measurements</p>
 
-          <span class="card-number">
-            02 / FUNCTIONAL MATERIAL STUDIES
-          </span>
+          <h2>
+            <a href="photothermal-electrochemistry.html">
+              Photothermal &amp; Electrochemical Studies
+            </a>
+          </h2>
+        </div>
 
-          <h3>Photothermal &amp; Electrochemical Studies</h3>
-
+        <div class="research-description">
           <p>
             Experimental investigations of laser-induced
             heating and electrochemical behaviour
@@ -271,29 +638,36 @@
             charge transfer, and reaction kinetics.
           </p>
 
-          <div class="research-tags">
-            <span class="tag">Photothermal</span>
-            <span class="tag">Electrochemistry</span>
-            <span class="tag">MXenes</span>
-          </div>
+          <ul class="topics" aria-label="Methods and topics">
+            <li>Photothermal</li>
+            <li>Electrochemistry</li>
+            <li>MXenes</li>
+          </ul>
 
-          <span class="research-card-link">
+          <a
+            class="research-link"
+            href="photothermal-electrochemistry.html"
+          >
             Choose a study area
-            <span aria-hidden="true">→</span>
-          </span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </article>
 
-        </a>
+      <!-- Modelling -->
 
-        <!-- 03: MODELLING AND DESCRIPTORS -->
-        <a class="card research-card"
-           href="modelling.html">
+      <article class="research-entry">
+        <div class="research-title">
+          <p class="category">Modelling &amp; descriptors</p>
 
-          <span class="card-number">
-            03 / MODELLING AND DESCRIPTORS
-          </span>
+          <h2>
+            <a href="modelling.html">
+              Modelling &amp; Descriptor Development
+            </a>
+          </h2>
+        </div>
 
-          <h3>Modelling &amp; Descriptor Development</h3>
-
+        <div class="research-description">
           <p>
             Development of MATLAB models and physics-guided
             descriptors to investigate relationships between
@@ -306,30 +680,34 @@
             provide the basis for evaluating these relationships.
           </p>
 
-          <div class="research-tags">
-            <span class="tag">MATLAB</span>
-            <span class="tag">Physical Models</span>
-            <span class="tag">Descriptors</span>
-            <span class="tag">Validation</span>
-          </div>
+          <ul class="topics" aria-label="Methods and topics">
+            <li>MATLAB</li>
+            <li>Physical Models</li>
+            <li>Descriptors</li>
+            <li>Validation</li>
+          </ul>
 
-          <span class="research-card-link">
+          <a class="research-link" href="modelling.html">
             Explore modelling
-            <span aria-hidden="true">→</span>
-          </span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </article>
 
-        </a>
+      <!-- Magnetic materials -->
 
-        <!-- 04: MAGNETIC MATERIALS -->
-        <a class="card research-card"
-           href="magnetic-materials.html">
+      <article class="research-entry">
+        <div class="research-title">
+          <p class="category">Magnetic materials</p>
 
-          <span class="card-number">
-            04 / MAGNETIC MATERIALS
-          </span>
+          <h2>
+            <a href="magnetic-materials.html">
+              Complex Magnetic Oxides
+            </a>
+          </h2>
+        </div>
 
-          <h3>Complex Magnetic Oxides</h3>
-
+        <div class="research-description">
           <p>
             Structural and magnetic investigations of
             complex oxide materials using X-ray diffraction,
@@ -342,30 +720,34 @@
             structure and magnetic behaviour.
           </p>
 
-          <div class="research-tags">
-            <span class="tag">Magnetism</span>
-            <span class="tag">Rietveld</span>
-            <span class="tag">Raman</span>
-            <span class="tag">PPMS</span>
-          </div>
+          <ul class="topics" aria-label="Methods and topics">
+            <li>Magnetism</li>
+            <li>Rietveld</li>
+            <li>Raman</li>
+            <li>PPMS</li>
+          </ul>
 
-          <span class="research-card-link">
+          <a class="research-link" href="magnetic-materials.html">
             Explore magnetic materials
-            <span aria-hidden="true">→</span>
-          </span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </article>
 
-        </a>
+      <!-- Alternative fuels -->
 
-        <!-- 05: SUSTAINABLE ENERGY -->
-        <a class="card research-card"
-           href="alternative-fuels.html">
+      <article class="research-entry">
+        <div class="research-title">
+          <p class="category">Sustainable energy</p>
 
-          <span class="card-number">
-            05 / SUSTAINABLE ENERGY
-          </span>
+          <h2>
+            <a href="alternative-fuels.html">
+              Alternative Fuels &amp; Nanoparticles
+            </a>
+          </h2>
+        </div>
 
-          <h3>Alternative Fuels &amp; Nanoparticles</h3>
-
+        <div class="research-description">
           <p>
             Experimental investigations of biodiesel,
             waste plastic pyrolysis oil, and
@@ -378,30 +760,34 @@
             in internal combustion engines.
           </p>
 
-          <div class="research-tags">
-            <span class="tag">Biodiesel</span>
-            <span class="tag">Plastic Fuel</span>
-            <span class="tag">Combustion and Emission</span>
-            <span class="tag">Nanoparticles</span>
-          </div>
+          <ul class="topics" aria-label="Methods and topics">
+            <li>Biodiesel</li>
+            <li>Plastic Fuel</li>
+            <li>Combustion and Emission</li>
+            <li>Nanoparticles</li>
+          </ul>
 
-          <span class="research-card-link">
+          <a class="research-link" href="alternative-fuels.html">
             Explore fuel research
-            <span aria-hidden="true">→</span>
-          </span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </article>
 
-        </a>
+      <!-- Scientific data analysis -->
 
-        <!-- 06: QUANTITATIVE ANALYSIS -->
-        <a class="card research-card"
-           href="data-analysis.html">
+      <article class="research-entry">
+        <div class="research-title">
+          <p class="category">Quantitative analysis</p>
 
-          <span class="card-number">
-            06 / QUANTITATIVE ANALYSIS
-          </span>
+          <h2>
+            <a href="data-analysis.html">
+              Scientific Data Analysis
+            </a>
+          </h2>
+        </div>
 
-          <h3>Scientific Data Analysis</h3>
-
+        <div class="research-description">
           <p>
             Computational processing and interpretation
             of experimental measurements using MATLAB,
@@ -415,36 +801,83 @@
             and clear visualization of scientific measurements.
           </p>
 
-          <div class="research-tags">
-            <span class="tag">MATLAB</span>
-            <span class="tag">Spectral Fitting</span>
-            <span class="tag">Statistics</span>
-          </div>
+          <ul class="topics" aria-label="Methods and topics">
+            <li>MATLAB</li>
+            <li>Spectral Fitting</li>
+            <li>Statistics</li>
+          </ul>
 
-          <span class="research-card-link">
+          <a class="research-link" href="data-analysis.html">
             Explore data analysis
-            <span aria-hidden="true">→</span>
-          </span>
+            <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      </article>
+    </section>
+  </main>
 
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <p class="footer-name">Rupesh Lal Karn</p>
+        <p>Prairie View, Texas</p>
+        <a href="mailto:rkarn@pvamu.edu">rkarn@pvamu.edu</a>
+      </div>
+
+      <nav class="footer-links" aria-label="Academic profiles">
+        <a
+          href="https://scholar.google.com/citations?user=7RRtNOYAAAAJ&amp;hl=en"
+        >
+          Google Scholar
         </a>
 
-      </div>
+        <a href="https://orcid.org/0009-0008-9261-024X">
+          ORCID
+        </a>
+
+        <a href="Rupesh_Lal_Karn_CV.pdf">CV</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <small class="copyright">
+        © <span id="year">2026</span> Rupesh Lal Karn
+      </small>
     </div>
-  </section>
+  </footer>
 
-</main>
+  <script>
+    const menuButton = document.querySelector(".menu-button");
+    const navigation = document.getElementById("site-navigation");
 
-<footer>
-  <div class="container footer-inner">
-    <span>
-      © <span id="year"></span> Rupesh Lal Karn
-    </span>
+    function setMenu(open) {
+      menuButton.setAttribute("aria-expanded", String(open));
+      menuButton.textContent = open ? "Close" : "Menu";
+      navigation.classList.toggle("is-open", open);
+    }
 
-    <a href="contact.html">Contact</a>
-  </div>
-</footer>
+    menuButton.addEventListener("click", function () {
+      setMenu(menuButton.getAttribute("aria-expanded") !== "true");
+    });
 
-<script src="main.js"></script>
+    document.addEventListener("keydown", function (event) {
+      if (
+        event.key === "Escape" &&
+        menuButton.getAttribute("aria-expanded") === "true"
+      ) {
+        setMenu(false);
+        menuButton.focus();
+      }
+    });
 
+    navigation.addEventListener("click", function (event) {
+      if (event.target.closest("a")) {
+        setMenu(false);
+      }
+    });
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
 </body>
 </html>
