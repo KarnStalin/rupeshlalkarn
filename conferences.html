@@ -1,327 +1,728 @@
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
 
-  <title>
-    Conferences & Presentations | Rupesh Lal Karn
-  </title>
+  <title>Conferences &amp; Presentations | Rupesh Lal Karn</title>
 
-  <meta name="description"
-        content="Conference posters, oral presentations,
-        and academic research contributions
-        by Rupesh Lal Karn.">
+  <meta
+    name="description"
+    content="Conference posters, oral presentations, and academic research contributions by Rupesh Lal Karn."
+  >
 
-  <link rel="stylesheet" href="style.css">
+  <link rel="canonical" href="https://rlk.com.np/conferences.html">
 
   <style>
-    /* ==========================================
-       RESEARCH NAVIGATION
-       ========================================== */
+    :root {
+      color-scheme: light;
+
+      --paper: #faf9f6;
+      --ink: #272e2a;
+      --muted: #606961;
+      --line: #d8dcd4;
+      --nav-accent: #385975;
+
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.8 var(--sans);
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    a {
+      color: var(--nav-accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 5px;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--nav-accent);
+      outline-offset: 5px;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 64px));
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -80px;
+      left: 20px;
+      z-index: 100;
+      padding: 12px 18px;
+      background: white;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    /* MAIN NAVIGATION */
+
+    .site-header {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      min-height: 98px;
+    }
+
+    .name {
+      color: var(--ink);
+      font: 22px/1.3 var(--serif);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 23px;
+    }
+
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      border-bottom: 1px solid transparent;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .site-nav a:hover,
+    .site-nav a.active {
+      border-color: var(--nav-accent);
+      color: var(--ink);
+    }
+
+    .menu-button {
+      display: none;
+      min-height: 44px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    /* INTRODUCTION */
+
+    .page-intro {
+      padding: 50px 0 30px;
+    }
+
+    .breadcrumb {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .breadcrumb a {
+      color: inherit;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+
+    h1 {
+      margin: 0 0 22px;
+      color: #293b50;
+      font-size: clamp(38px, 4.7vw, 60px);
+      line-height: 1.15;
+      letter-spacing: -.035em;
+      animation: titleGlow 4s ease-in-out infinite alternate;
+    }
+
+    .lead {
+      max-width: 820px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.85;
+    }
+
+    /* RESEARCH NAVIGATION */
 
     .research-tabs {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
-      margin-bottom: 40px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid #29425b;
+      gap: 12px 28px;
+      padding: 8px 0 17px;
+      border-bottom: 1px solid var(--line);
     }
 
     .research-tabs a {
-      display: inline-block;
-      padding: 13px 20px;
-      border: 1px solid #29425b;
-      border-radius: 10px;
-      background: #142940;
-      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      border-bottom: 2px solid transparent;
+      color: var(--muted);
       font-size: 14px;
-      font-weight: 600;
       text-decoration: none;
-      transition: background 0.2s ease;
     }
 
     .research-tabs a:hover,
-    .research-tabs a.active {
-      background: #69b9ff;
-      border-color: #69b9ff;
-      color: #081727;
+    .research-tabs a[aria-current="page"] {
+      color: var(--nav-accent);
+      border-bottom-color: var(--nav-accent);
     }
 
-    /* ==========================================
-       POSTER / ORAL NAVIGATION
-       ========================================== */
+    /* PRESENTATION TABS */
 
-    .conference-tabs {
+    .presentation-tabs {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin: 30px 0 40px;
+      margin: 28px 0 34px;
     }
 
-    .conference-tab {
-      display: inline-block;
-      padding: 13px 24px;
-      background: #142940;
-      border: 1px solid #29425b;
-      border-radius: 10px;
-      color: #ffffff;
+    .category-tab {
+      display: inline-flex;
+      align-items: center;
+      min-height: 48px;
+      padding: 10px 17px;
+      border: 1px solid var(--line);
+      border-radius: 7px;
+      background: #ffffff;
+      color: var(--muted);
       font-size: 14px;
-      font-weight: 600;
       text-decoration: none;
-      transition: all 0.2s ease;
     }
 
-    .conference-tab:hover,
-    .conference-tab:focus-visible {
-      background: #69b9ff;
-      border-color: #69b9ff;
-      color: #081727;
+    .category-tab[data-panel="poster-panel"] {
+      --tab-colour: #285ca3;
+      --tab-tint: #eef4fd;
     }
 
-    /* ==========================================
-       PRESENTATION SECTIONS
-       ========================================== */
+    .category-tab[data-panel="oral-panel"] {
+      --tab-colour: #a64b2a;
+      --tab-tint: #fff3ec;
+    }
+
+    .category-tab[data-panel="additional-contributions"] {
+      --tab-colour: #7144a0;
+      --tab-tint: #f6f0fc;
+    }
+
+    .category-tab:hover,
+    .category-tab[aria-selected="true"] {
+      border-color: var(--tab-colour);
+      background: var(--tab-tint);
+      color: var(--tab-colour);
+    }
+
+    .category-tab:focus-visible {
+      outline-color: var(--tab-colour);
+    }
+
+    /* PRESENTATION SECTIONS */
 
     .conference-panel {
-      scroll-margin-top: 110px;
-      margin-bottom: 70px;
+      margin-bottom: 55px;
+      scroll-margin-top: 24px;
     }
 
-    .conference-panel h2 {
-      margin-bottom: 18px;
+    .conference-panel > h2 {
+      margin: 0 0 12px;
+      color: #293b50;
+      font-size: 32px;
+      line-height: 1.3;
+      letter-spacing: -.025em;
     }
 
     .presentation-note {
-      color: #a9bdd1;
-      line-height: 1.8;
-      margin-bottom: 26px;
+      max-width: 820px;
+      margin: 0 0 26px;
+      color: var(--muted);
+    }
+
+    .presentation-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
     }
 
     .presentation-card {
-      background: linear-gradient(
-        145deg,
-        #152a42,
-        #0c1b2c
-      );
-      border: 1px solid #29425b;
-      border-radius: 16px;
+      min-width: 0;
       padding: 28px;
-      margin: 22px 0;
+      border: 1px solid var(--card-border);
+      border-top: 4px solid var(--accent);
+      border-radius: 12px;
+      background: var(--tint);
+    }
+
+    .presentation-type {
+      display: inline-block;
+      margin-bottom: 16px;
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .035em;
     }
 
     .presentation-card h3 {
-      color: #ffffff;
-      line-height: 1.5;
-      margin: 16px 0;
+      margin: 0 0 20px;
+      color: var(--accent);
+      font-size: 25px;
+      line-height: 1.35;
+      letter-spacing: -.02em;
+      animation: cardGlow 4s ease-in-out infinite alternate;
     }
 
     .presentation-card p {
-      color: #c5d2e1;
+      margin: 0 0 16px;
+      color: #4e5963;
+      font-size: 15px;
       line-height: 1.8;
     }
 
-    .presentation-card strong {
-      color: #ffffff;
+    .presentation-card p:last-child {
+      margin-bottom: 0;
     }
 
-    .presentation-meta {
-      color: #a9bdd1;
+    .presentation-card strong {
+      color: #303b46;
+      font-weight: 600;
+    }
+
+    .presentation-card .presentation-meta {
+      color: #626d78;
       font-size: 14px;
     }
 
     .presentation-link {
-      display: inline-block;
-      margin-top: 18px;
-      padding: 12px 20px;
-      border-radius: 9px;
-      background: #69b9ff;
-      color: #081727;
-      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      min-height: 46px;
+      margin-top: 10px;
+      padding: 10px 16px;
+      border: 1px solid var(--accent);
+      border-radius: 6px;
+      background: var(--accent);
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
       text-decoration: none;
-      transition: background 0.2s ease;
     }
 
     .presentation-link:hover {
-      background: #a3d6ff;
+      text-decoration: underline;
+      text-underline-offset: 4px;
     }
 
-    .conference-subheading {
-      margin-top: 45px;
+    .presentation-link:focus-visible {
+      outline-color: var(--accent);
     }
 
-    /* Poster PDF preview */
+    /* FEATURED POSTER */
+
+    .poster-card {
+      display: grid;
+      grid-template-columns: 1fr 1.08fr;
+      gap: 32px;
+      align-items: start;
+    }
+
+    .poster-copy {
+      min-width: 0;
+    }
 
     .poster-preview {
-      margin-top: 24px;
-      border: 1px solid #29425b;
-      border-radius: 12px;
-      overflow: hidden;
-      background: #ffffff;
+      min-width: 0;
+      margin: 0;
     }
 
     .poster-preview iframe {
       display: block;
       width: 100%;
-      height: 480px;
-      border: none;
+      max-width: 100%;
+      height: 540px;
+      border: 1px solid var(--card-border);
+      border-radius: 7px;
+      background: #ffffff;
     }
 
-    /* ==========================================
-       MOBILE RESPONSIVENESS
-       ========================================== */
+    .poster-preview figcaption {
+      margin-top: 12px;
+      color: #626d78;
+      font-size: 13px;
+      line-height: 1.7;
+    }
 
-    @media (max-width: 700px) {
-      .research-tabs {
-        gap: 8px;
+    /* INDIVIDUAL COLOUR THEMES */
+
+    .blue {
+      --accent: #285ca3;
+      --tint: #f0f5fd;
+      --card-border: #cad8ef;
+      --glow: rgba(59, 116, 206, .27);
+    }
+
+    .terracotta {
+      --accent: #a64b2a;
+      --tint: #fff3ec;
+      --card-border: #edcdbd;
+      --glow: rgba(207, 109, 64, .26);
+    }
+
+    .purple {
+      --accent: #7144a0;
+      --tint: #f6f0fc;
+      --card-border: #dacbed;
+      --glow: rgba(145, 88, 199, .26);
+    }
+
+    .teal {
+      --accent: #176b61;
+      --tint: #edf8f4;
+      --card-border: #bfdfd4;
+      --glow: rgba(38, 153, 132, .25);
+    }
+
+    .burgundy {
+      --accent: #9a365b;
+      --tint: #fcf0f5;
+      --card-border: #e9c7d5;
+      --glow: rgba(192, 76, 122, .25);
+    }
+
+    .amber {
+      --accent: #855a13;
+      --tint: #fcf6e9;
+      --card-border: #e6d6ac;
+      --glow: rgba(181, 137, 45, .27);
+    }
+
+    .steel {
+      --accent: #3d647d;
+      --tint: #f0f5f8;
+      --card-border: #cbdce6;
+      --glow: rgba(67, 125, 158, .25);
+    }
+
+    /* SUBTLE COLOUR-MATCHED GLOW */
+
+    .purple h3,
+    .burgundy h3,
+    .steel h3 {
+      animation-delay: -2s;
+    }
+
+    @keyframes titleGlow {
+      from {
+        text-shadow: 0 0 2px rgba(69, 110, 161, .04);
       }
 
-      .research-tabs a {
-        padding: 10px 13px;
-        font-size: 12px;
+      to {
+        text-shadow:
+          0 0 9px rgba(69, 110, 161, .22),
+          0 0 22px rgba(69, 110, 161, .11);
+      }
+    }
+
+    @keyframes cardGlow {
+      from {
+        text-shadow: 0 0 2px transparent;
       }
 
-      .conference-tab {
-        padding: 11px 15px;
-        font-size: 13px;
+      to {
+        text-shadow:
+          0 0 7px var(--glow),
+          0 0 16px var(--glow);
+      }
+    }
+
+    /* FOOTER */
+
+    .footer {
+      padding: 35px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .footer p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer .footer-name {
+      margin: 0 0 10px;
+      color: var(--ink);
+      font: 23px var(--serif);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: flex-end;
+      align-content: start;
+      flex-wrap: wrap;
+      gap: 10px 25px;
+    }
+
+    .footer-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+    }
+
+    .copyright {
+      grid-column: 1 / -1;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* TABLET */
+
+    @media (max-width: 1050px) {
+      .header-inner {
+        flex-wrap: wrap;
+        padding: 20px 0;
+        gap: 12px;
       }
 
-      .presentation-card {
-        padding: 20px;
+      .poster-card {
+        grid-template-columns: 1fr;
       }
 
       .poster-preview iframe {
-        height: 300px;
+        height: 580px;
+      }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 760px) {
+      .container {
+        width: calc(100% - 40px);
+      }
+
+      .header-inner {
+        min-height: 85px;
+        justify-content: space-between;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .site-nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        padding-top: 10px;
+      }
+
+      .site-nav.is-open {
+        display: flex;
+      }
+
+      .site-nav a {
+        min-height: 48px;
+      }
+
+      .page-intro {
+        padding: 35px 0 25px;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+
+      .lead {
+        font-size: 17px;
+      }
+
+      .research-tabs {
+        gap: 6px 22px;
+      }
+
+      .presentation-tabs {
+        gap: 10px;
+        margin: 24px 0 28px;
+      }
+
+      .category-tab {
+        padding: 9px 12px;
+        font-size: 13px;
+      }
+
+      .presentation-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .presentation-card {
+        padding: 23px 21px;
+      }
+
+      .presentation-card h3 {
+        font-size: 24px;
+      }
+
+      .conference-panel > h2 {
+        font-size: 29px;
+      }
+
+      .poster-preview iframe {
+        height: 340px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      h1,
+      .presentation-card h3 {
+        animation: none;
       }
     }
   </style>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<!-- ==========================================
-     MAIN WEBSITE NAVIGATION
-     ========================================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="name" href="index.html">Rupesh Lal Karn</a>
 
-<header class="navbar">
+      <button
+        class="menu-button"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-navigation"
+      >
+        Menu
+      </button>
 
-  <a class="logo" href="index.html">
-    Rupesh Lal <span>Karn.</span>
-  </a>
+      <nav
+        class="site-nav"
+        id="site-navigation"
+        aria-label="Main navigation"
+      >
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="research.html" class="active">Research</a>
+        <a href="publications.html">Publications</a>
+        <a href="experience.html">Experience</a>
+        <a href="skills.html">Skills</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-  <button
-    class="menu-toggle"
-    type="button"
-    aria-label="Toggle navigation"
-    aria-expanded="false">
-    ☰
-  </button>
+  <main class="container" id="main">
 
-  <nav class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
+    <div class="page-intro">
+      <p class="breadcrumb">
+        <a href="research.html">Research</a> / Conferences
+      </p>
 
-    <a href="research.html" class="active">
-      Research
-    </a>
+      <h1>Conferences &amp; Presentations</h1>
 
-    <a href="experience.html">Experience</a>
-    <a href="publications.html">Publications</a>
-    <a href="teaching.html">Teaching</a>
-    <a href="projects.html">Projects</a>
-    <a href="skills.html">Skills</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+      <p class="lead">
+        Scientific research communicated through
+        national and international conferences,
+        research posters, oral presentations,
+        and academic seminars.
+      </p>
+    </div>
 
-</header>
-
-
-<main>
-
-<!-- ==========================================
-     PAGE INTRODUCTION
-     ========================================== -->
-
-<section class="page-hero">
-  <div class="container">
-
-    <p class="eyebrow">
-      RESEARCH / CONFERENCES
-    </p>
-
-    <h1>
-      Conferences &amp; Presentations
-    </h1>
-
-    <p>
-      Scientific research communicated through
-      national and international conferences,
-      research posters, oral presentations,
-      and academic seminars.
-    </p>
-
-  </div>
-</section>
-
-
-<!-- ==========================================
-     MAIN CONFERENCE CONTENT
-     ========================================== -->
-
-<section class="section">
-  <div class="container">
-
-    <!-- FIRST LEVEL: RESEARCH NAVIGATION -->
-
-    <nav class="research-tabs"
-         aria-label="Research sections">
-
-      <a href="research.html">
-        Research Interests
-      </a>
-
-      <a href="publications.html">
-        Publications
-      </a>
-
-      <a href="conferences.html"
-         class="active"
-         aria-current="page">
+    <nav class="research-tabs" aria-label="Research sections">
+      <a href="research.html">Research interests</a>
+      <a href="publications.html">Publications</a>
+      <a href="conferences.html" aria-current="page">
         Conferences
       </a>
-
     </nav>
 
+    <!-- PRESENTATION CATEGORY TABS -->
 
-    <!-- SECOND LEVEL: PRESENTATION NAVIGATION -->
-
-    <nav class="conference-tabs"
-         aria-label="Presentation categories">
-
-      <a href="#poster-panel"
-         class="conference-tab">
+    <nav
+      class="presentation-tabs"
+      aria-label="Presentation categories"
+    >
+      <a
+        class="category-tab"
+        id="poster-tab"
+        href="#poster-panel"
+        data-panel="poster-panel"
+      >
         Poster Presentations
       </a>
 
-      <a href="#oral-panel"
-         class="conference-tab">
+      <a
+        class="category-tab"
+        id="oral-tab"
+        href="#oral-panel"
+        data-panel="oral-panel"
+      >
         Oral Presentations
       </a>
 
+      <a
+        class="category-tab"
+        id="contributions-tab"
+        href="#additional-contributions"
+        data-panel="additional-contributions"
+      >
+        Additional Contributions
+      </a>
     </nav>
 
+    <!-- POSTER PRESENTATIONS -->
 
-    <!-- ======================================
-         POSTER PRESENTATIONS
-         ====================================== -->
-
-    <section id="poster-panel"
-             class="conference-panel">
-
+    <section id="poster-panel" class="conference-panel">
       <h2>Poster Presentations</h2>
 
       <p class="presentation-note">
@@ -329,352 +730,408 @@
         academic conferences and research symposia.
       </p>
 
+      <article class="presentation-card poster-card blue">
 
-      <!-- TEXAS A&M CONFERENCE POSTER -->
+        <div class="poster-copy">
+          <span class="presentation-type">Scientific Poster</span>
 
-      <article class="presentation-card">
+          <h3>
+            Processing-Induced Structural and
+            Surface-Chemical Evolution in
+            Ti₃AlCN-Derived Ti₃CNTₓ
+          </h3>
 
-        <span class="tag">
-          Scientific Poster
-        </span>
+          <p>
+            <strong>
+              10th Annual Texas A&amp;M Conference on Energy
+            </strong>
+          </p>
 
-        <h3>
-          Processing-Induced Structural and
-          Surface-Chemical Evolution in
-          Ti₃AlCN-Derived Ti₃CNTₓ
-        </h3>
+          <p class="presentation-meta">
+            College Station, Texas, USA
+          </p>
 
-        <p>
-          <strong>
-            10th Annual Texas A&amp;M
-            Conference on Energy
-          </strong>
-        </p>
+          <p>
+            <strong>Authors:</strong>
+            Rupesh Lal Karn,
+            Gururaj M. Neelgund,
+            and Raghava R. Kommalapati
+          </p>
 
-        <p class="presentation-meta">
-          College Station, Texas, USA
-        </p>
+          <p>
+            This research investigates processing-induced
+            structural and surface-chemical changes in
+            Ti₃AlCN-derived Ti₃CNTₓ MXenes.
+            The work combines X-ray diffraction,
+            Raman spectroscopy, FTIR, XPS,
+            BET analysis, and photothermal measurements
+            with physics-guided predictive modeling.
+          </p>
 
-        <p>
-          <strong>Authors:</strong>
-          Rupesh Lal Karn,
-          Gururaj M. Neelgund,
-          and Raghava R. Kommalapati
-        </p>
-
-        <p>
-          This research investigates
-          processing-induced structural and
-          surface-chemical changes in
-          Ti₃AlCN-derived Ti₃CNTₓ MXenes.
-
-          The work combines X-ray diffraction,
-          Raman spectroscopy, FTIR, XPS,
-          BET analysis, and photothermal
-          measurements with physics-guided
-          predictive modeling.
-        </p>
-
-        <!-- POSTER PDF LINK -->
-
-        <a href="Poster_RLK.pdf"
-           target="_blank"
-           rel="noopener noreferrer"
-           class="presentation-link">
-          View Full Research Poster (PDF)
-        </a>
-
-        <!-- POSTER PREVIEW -->
-
-        <div class="poster-preview">
-          <iframe
-            src="Poster_RLK.pdf#toolbar=0"
-            title="Texas A&M Energy Conference Research Poster"
-            loading="lazy">
-          </iframe>
+          <a
+            href="Poster_RLK.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="presentation-link"
+          >
+            View Full Research Poster (PDF)
+          </a>
         </div>
 
-        <p class="presentation-meta">
-          If the PDF preview does not display
-          on your device, use the button above
-          to open the complete poster.
-        </p>
+        <figure class="poster-preview">
+          <iframe
+            src="Poster_RLK.pdf#toolbar=0"
+            title="Texas A&amp;M Energy Conference Research Poster"
+            loading="lazy"
+          ></iframe>
 
+          <figcaption>
+            If the PDF preview does not display on your device,
+            use the button to open the complete poster.
+          </figcaption>
+        </figure>
       </article>
-
     </section>
 
+    <!-- ORAL PRESENTATIONS -->
 
-    <!-- ======================================
-         ORAL PRESENTATIONS
-         ====================================== -->
-
-    <section id="oral-panel"
-             class="conference-panel">
-
+    <section id="oral-panel" class="conference-panel">
       <h2>Oral Presentations</h2>
 
       <p class="presentation-note">
-        Research presentations delivered at
-        national and international conferences
-        and academic seminars.
+        Research presentations delivered at national
+        and international conferences and academic seminars.
       </p>
 
+      <div class="presentation-grid">
 
-      <!-- PRESENTATION 1 -->
+        <article class="presentation-card terracotta">
+          <span class="presentation-type">National Conference</span>
 
-      <article class="presentation-card">
+          <h3>
+            Performance and Combustion Characteristics
+            of Blends of Crude Plastic Fuel
+            in a Single-Cylinder DI Engine
+          </h3>
 
-        <span class="tag">
-          National Conference
-        </span>
+          <p>
+            <strong>
+              9th National Conference on Science and Technology
+            </strong>
+          </p>
 
-        <h3>
-          Performance and Combustion
-          Characteristics of Blends of
-          Crude Plastic Fuel in a
-          Single-Cylinder DI Engine
-        </h3>
+          <p class="presentation-meta">
+            June 26–28, 2022<br>
+            Kathmandu, Nepal
+          </p>
 
-        <p>
-          <strong>
-            9th National Conference
-            on Science and Technology
-          </strong>
-        </p>
+          <p>
+            Research presentation on the performance
+            and combustion characteristics of crude
+            plastic-derived fuel blends in a diesel engine.
+          </p>
+        </article>
 
-        <p class="presentation-meta">
-          June 26–28, 2022<br>
-          Kathmandu, Nepal
-        </p>
+        <article class="presentation-card purple">
+          <span class="presentation-type">
+            International Conference
+          </span>
 
-        <p>
-          Research presentation on the
-          performance and combustion
-          characteristics of crude
-          plastic-derived fuel blends
-          in a diesel engine.
-        </p>
+          <h3>
+            Quantitative and Qualitative Analysis
+            of Different Grades of Gasoline Fuel
+            from Waste Plastic
+          </h3>
 
-      </article>
+          <p>
+            <strong>
+              International Conference organized
+              by the Biotechnology Society of Nepal
+            </strong>
+          </p>
 
+          <p class="presentation-meta">
+            December 17–19, 2022<br>
+            Kathmandu, Nepal
+          </p>
 
-      <!-- PRESENTATION 2 -->
+          <p>
+            Research presentation concerning the analysis
+            and characterization of gasoline-range fuels
+            derived from waste plastic.
+          </p>
+        </article>
 
-      <article class="presentation-card">
+        <article class="presentation-card teal">
+          <span class="presentation-type">
+            International Conference
+          </span>
 
-        <span class="tag">
-          International Conference
-        </span>
+          <h3>
+            Feasibility of Blends of Biodiesel
+            from Waste Cooking Oil for a DI Engine
+          </h3>
 
-        <h3>
-          Quantitative and Qualitative
-          Analysis of Different Grades
-          of Gasoline Fuel from Waste Plastic
-        </h3>
+          <p>
+            <strong>
+              International Conference organized
+              by the Biotechnology Society of Nepal
+            </strong>
+          </p>
 
-        <p>
-          <strong>
-            International Conference organized
-            by the Biotechnology Society of Nepal
-          </strong>
-        </p>
+          <p class="presentation-meta">
+            December 17–19, 2022<br>
+            Kathmandu, Nepal
+          </p>
 
-        <p class="presentation-meta">
-          December 17–19, 2022<br>
-          Kathmandu, Nepal
-        </p>
+          <p>
+            Research presentation examining biodiesel
+            derived from waste cooking oil and its
+            potential application in diesel engines.
+          </p>
+        </article>
 
-        <p>
-          Research presentation concerning
-          the analysis and characterization
-          of gasoline-range fuels derived
-          from waste plastic.
-        </p>
+        <article class="presentation-card burgundy">
+          <span class="presentation-type">Regional Seminar</span>
 
-      </article>
+          <h3>
+            Feasibility of Jatropha Cultivation
+            for Biodiesel Production in Nepal
+          </h3>
 
+          <p>
+            <strong>
+              Regional Seminar organized
+              by Nepal Institute of Technology
+            </strong>
+          </p>
 
-      <!-- PRESENTATION 3 -->
+          <p class="presentation-meta">Nepal</p>
 
-      <article class="presentation-card">
+          <p>
+            Research presentation discussing the potential
+            of Jatropha cultivation for biodiesel
+            production in Nepal.
+          </p>
+        </article>
 
-        <span class="tag">
-          International Conference
-        </span>
-
-        <h3>
-          Feasibility of Blends of Biodiesel
-          from Waste Cooking Oil
-          for a DI Engine
-        </h3>
-
-        <p>
-          <strong>
-            International Conference organized
-            by the Biotechnology Society of Nepal
-          </strong>
-        </p>
-
-        <p class="presentation-meta">
-          December 17–19, 2022<br>
-          Kathmandu, Nepal
-        </p>
-
-        <p>
-          Research presentation examining
-          biodiesel derived from waste
-          cooking oil and its potential
-          application in diesel engines.
-        </p>
-
-      </article>
-
-
-      <!-- PRESENTATION 4 -->
-
-      <article class="presentation-card">
-
-        <span class="tag">
-          Regional Seminar
-        </span>
-
-        <h3>
-          Feasibility of Jatropha
-          Cultivation for Biodiesel
-          Production in Nepal
-        </h3>
-
-        <p>
-          <strong>
-            Regional Seminar organized
-            by Nepal Institute of Technology
-          </strong>
-        </p>
-
-        <p class="presentation-meta">
-          Nepal
-        </p>
-
-        <p>
-          Research presentation discussing
-          the potential of Jatropha
-          cultivation for biodiesel
-          production in Nepal.
-        </p>
-
-      </article>
-
+      </div>
     </section>
 
+    <!-- ADDITIONAL CONTRIBUTIONS -->
 
-    <!-- ======================================
-         ADDITIONAL CONFERENCE CONTRIBUTIONS
-         ====================================== -->
-
-    <section id="additional-contributions"
-             class="conference-panel">
-
-      <h2>
-        Additional Conference Contributions
-      </h2>
+    <section
+      id="additional-contributions"
+      class="conference-panel"
+    >
+      <h2>Additional Conference Contributions</h2>
 
       <p class="presentation-note">
-        Additional conference research
-        contributions for which the presentation
-        format has not yet been confirmed.
+        Additional conference research contributions
+        for which the presentation format
+        has not yet been confirmed.
       </p>
 
+      <div class="presentation-grid">
 
-      <!-- ADDITIONAL CONTRIBUTION 1 -->
+        <article class="presentation-card amber">
+          <span class="presentation-type">
+            Conference Contribution
+          </span>
 
-      <article class="presentation-card">
+          <h3>Factors Affecting the Production of Biodiesel</h3>
 
-        <span class="tag">
-          Conference Contribution
-        </span>
+          <p>
+            <strong>
+              9th National Conference on Science and Technology
+            </strong>
+          </p>
 
-        <h3>
-          Factors Affecting the
-          Production of Biodiesel
-        </h3>
+          <p class="presentation-meta">
+            June 26–28, 2022<br>
+            Kathmandu, Nepal
+          </p>
+        </article>
 
-        <p>
-          <strong>
-            9th National Conference
-            on Science and Technology
-          </strong>
-        </p>
+        <article class="presentation-card steel">
+          <span class="presentation-type">
+            Conference Contribution
+          </span>
 
-        <p class="presentation-meta">
-          June 26–28, 2022<br>
-          Kathmandu, Nepal
-        </p>
+          <h3>
+            Selective Recovery of Precious Metal Ions
+            from E-Waste Leachate Using
+            Polymer Ion Exchange Adsorbents
+          </h3>
 
-      </article>
+          <p>
+            <strong>
+              9th National Conference on Science and Technology
+            </strong>
+          </p>
 
+          <p class="presentation-meta">
+            June 26–28, 2022<br>
+            Kathmandu, Nepal
+          </p>
+        </article>
 
-      <!-- ADDITIONAL CONTRIBUTION 2 -->
-
-      <article class="presentation-card">
-
-        <span class="tag">
-          Conference Contribution
-        </span>
-
-        <h3>
-          Selective Recovery of Precious
-          Metal Ions from E-Waste Leachate
-          Using Polymer Ion Exchange Adsorbents
-        </h3>
-
-        <p>
-          <strong>
-            9th National Conference
-            on Science and Technology
-          </strong>
-        </p>
-
-        <p class="presentation-meta">
-          June 26–28, 2022<br>
-          Kathmandu, Nepal
-        </p>
-
-      </article>
-
+      </div>
     </section>
+  </main>
 
-  </div>
-</section>
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <p class="footer-name">Rupesh Lal Karn</p>
+        <p>Prairie View, Texas</p>
+        <a href="mailto:rkarn@pvamu.edu">rkarn@pvamu.edu</a>
+      </div>
 
-</main>
+      <nav class="footer-links" aria-label="Academic profiles">
+        <a
+          href="https://scholar.google.com/citations?user=7RRtNOYAAAAJ&amp;hl=en"
+        >
+          Google Scholar
+        </a>
 
+        <a href="https://orcid.org/0009-0008-9261-024X">
+          ORCID
+        </a>
 
-<!-- ==========================================
-     FOOTER
-     ========================================== -->
+        <a href="Rupesh_Lal_Karn_CV.pdf">CV</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
 
-<footer>
-  <div class="container footer-inner">
+      <small class="copyright">
+        © <span id="year">2026</span> Rupesh Lal Karn
+      </small>
+    </div>
+  </footer>
 
-    <span>
-      © <span id="year"></span>
-      Rupesh Lal Karn
-    </span>
+  <script>
+    /* MOBILE MENU */
 
-    <a href="contact.html">
-      Contact
-    </a>
+    const menuButton = document.querySelector(".menu-button");
+    const navigation = document.getElementById("site-navigation");
 
-  </div>
-</footer>
+    function setMenu(open) {
+      menuButton.setAttribute("aria-expanded", String(open));
+      menuButton.textContent = open ? "Close" : "Menu";
+      navigation.classList.toggle("is-open", open);
+    }
 
+    menuButton.addEventListener("click", function () {
+      setMenu(menuButton.getAttribute("aria-expanded") !== "true");
+    });
 
-<!-- ==========================================
-     SHARED WEBSITE JAVASCRIPT
-     ========================================== -->
+    document.addEventListener("keydown", function (event) {
+      if (
+        event.key === "Escape" &&
+        menuButton.getAttribute("aria-expanded") === "true"
+      ) {
+        setMenu(false);
+        menuButton.focus();
+      }
+    });
 
-<script src="main.js"></script>
+    navigation.addEventListener("click", function (event) {
+      if (event.target.closest("a")) {
+        setMenu(false);
+      }
+    });
 
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    /* PRESENTATION TABS */
+
+    (() => {
+      const list = document.querySelector(".presentation-tabs");
+      const tabs = [...list.querySelectorAll("[data-panel]")];
+
+      const aliases = {
+        "#poster": "#poster-panel",
+        "#oral": "#oral-panel",
+        "#additional": "#additional-contributions"
+      };
+
+      list.setAttribute("role", "tablist");
+
+      tabs.forEach(function (tab) {
+        tab.setAttribute("role", "tab");
+        tab.setAttribute("aria-controls", tab.dataset.panel);
+
+        const panel = document.getElementById(tab.dataset.panel);
+
+        panel.setAttribute("role", "tabpanel");
+        panel.setAttribute("aria-labelledby", tab.id);
+        panel.tabIndex = 0;
+      });
+
+      function activate(tab, updateURL = false) {
+        tabs.forEach(function (item) {
+          const selected = item === tab;
+
+          item.setAttribute("aria-selected", String(selected));
+          item.tabIndex = selected ? 0 : -1;
+
+          document.getElementById(item.dataset.panel).hidden =
+            !selected;
+        });
+
+        if (updateURL) {
+          history.replaceState(
+            null,
+            "",
+            "#" + tab.dataset.panel
+          );
+        }
+      }
+
+      function syncHash() {
+        const hash = aliases[location.hash] || location.hash;
+
+        const selectedTab = tabs.find(function (tab) {
+          return "#" + tab.dataset.panel === hash;
+        });
+
+        activate(selectedTab || tabs[0]);
+      }
+
+      tabs.forEach(function (tab, index) {
+        tab.addEventListener("click", function (event) {
+          event.preventDefault();
+          activate(tab, true);
+        });
+
+        tab.addEventListener("keydown", function (event) {
+          let next;
+
+          if (event.key === "ArrowRight") {
+            next = (index + 1) % tabs.length;
+          } else if (event.key === "ArrowLeft") {
+            next = (index - 1 + tabs.length) % tabs.length;
+          } else if (event.key === "Home") {
+            next = 0;
+          } else if (event.key === "End") {
+            next = tabs.length - 1;
+          } else {
+            return;
+          }
+
+          event.preventDefault();
+
+          tabs[next].focus();
+          activate(tabs[next], true);
+        });
+      });
+
+      window.addEventListener("hashchange", syncHash);
+
+      syncHash();
+    })();
+  </script>
 </body>
 </html>
