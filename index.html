@@ -1,897 +1,944 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="light">
-
-<title>Rupesh Lal Karn | Materials Research & Engineering</title>
-
-<meta
-  name="description"
-  content="Rupesh Lal Karn studies functional materials through
-  synthesis, characterization, and quantitative modelling.
-  Research includes MXenes, magnetic oxides, photothermal
-  response, and electrochemistry."
->
-
-<meta property="og:title" content="Rupesh Lal Karn">
-<meta
-  property="og:description"
-  content="Materials research, experimental engineering,
-  publications, and academic experience."
->
-<meta property="og:type" content="website">
-
-<style>
-:root {
-  color-scheme: light;
-  --paper: #faf9f6;
-  --ink: #272e2a;
-  --muted: #606961;
-  --line: #d8dcd4;
-  --green: #285946;
-  --serif: Georgia, "Times New Roman", serif;
-  --sans: -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Arial, sans-serif;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 24px;
-}
-
-body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font: 16px/1.8 var(--sans);
-}
-
-a {
-  color: var(--green);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 5px;
-}
-
-a:hover {
-  color: #123a29;
-}
-
-a:focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--green);
-  outline-offset: 5px;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-.container {
-  width: min(1160px, calc(100% - 64px));
-  margin: auto;
-}
-
-.skip-link {
-  position: absolute;
-  top: -80px;
-  left: 20px;
-  z-index: 100;
-  padding: 12px 18px;
-  background: white;
-}
-
-.skip-link:focus {
-  top: 12px;
-}
-
-.site-header {
-  border-bottom: 1px solid var(--line);
-}
-
-.header-inner {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 30px;
-  min-height: 98px;
-}
-
-.name {
-  color: var(--ink);
-  font: 22px/1.3 var(--serif);
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.site-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 23px;
-}
-
-.site-nav a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  border-bottom: 1px solid transparent;
-  color: var(--muted);
-  font-size: 14px;
-  text-decoration: none;
-}
-
-.site-nav a:hover,
-.site-nav a[aria-current="page"] {
-  border-color: var(--green);
-  color: var(--ink);
-}
-
-.menu-button {
-  display: none;
-  min-height: 44px;
-  padding: 9px 14px;
-  border: 1px solid var(--line);
-  background: transparent;
-  color: var(--ink);
-  font: inherit;
-  cursor: pointer;
-}
-
-.hero {
-  display: grid;
-  grid-template-columns: 1.2fr .8fr;
-  align-items: center;
-  gap: 85px;
-  padding: 75px 0 85px;
-}
-
-.affiliation {
-  margin: 0 0 23px;
-  color: var(--green);
-  font-size: 14px;
-}
-
-h1,
-h2,
-h3 {
-  font-family: var(--serif);
-  font-weight: 400;
-  color: var(--ink);
-}
-
-h1 {
-  margin: 0 0 18px;
-  font-size: clamp(43px, 5.3vw, 68px);
-  line-height: 1.12;
-  letter-spacing: -.035em;
-}
-
-.role {
-  margin: 0 0 26px;
-  font: 25px/1.45 var(--serif);
-}
-
-.introduction {
-  max-width: 560px;
-  margin: 0 0 20px;
-  color: var(--muted);
-  font-size: 18px;
-}
-
-.hero-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 28px;
-  margin-top: 26px;
-}
-
-.hero-links a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  font-size: 15px;
-}
-
-.portrait {
-  margin: 0;
-  overflow: hidden;
-}
-
-.portrait img {
-  width: 100%;
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  object-position: center 35%;
-}
-
-section {
-  padding: 62px 0;
-  border-top: 1px solid var(--line);
-}
-
-.section-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 25px;
-  margin-bottom: 28px;
-}
-
-h2 {
-  margin: 0;
-  font-size: clamp(29px, 3.2vw, 39px);
-  line-height: 1.25;
-  letter-spacing: -.025em;
-}
-
-.section-heading > a {
-  font-size: 14px;
-  white-space: nowrap;
-}
-
-.research-row {
-  display: grid;
-  grid-template-columns: .95fr 1.05fr 20px;
-  align-items: baseline;
-  gap: 30px;
-  padding: 25px 0;
-  border-top: 1px solid var(--line);
-  color: var(--ink);
-  text-decoration: none;
-}
-
-.research-row:last-child {
-  border-bottom: 1px solid var(--line);
-}
-
-.research-row h3 {
-  margin: 0;
-  font-size: 24px;
-  line-height: 1.35;
-}
-
-.research-row p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 15px;
-}
-
-.research-row:hover h3 {
-  text-decoration: underline;
-  text-underline-offset: 5px;
-}
-
-.research-row > span {
-  color: var(--green);
-}
-
-.split-section {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 85px;
-}
-
-.section-label {
-  margin: 0 0 18px;
-  color: var(--green);
-  font-size: 14px;
-}
-
-.split-section h2 {
-  margin-bottom: 24px;
-}
-
-.split-section p {
-  color: var(--muted);
-}
-
-.appointment {
-  padding: 0 0 25px;
-  margin-bottom: 25px;
-  border-bottom: 1px solid var(--line);
-}
-
-.appointment:last-child {
-  margin-bottom: 0;
-}
-
-.appointment time {
-  display: block;
-  margin-bottom: 12px;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.appointment h3 {
-  margin: 0 0 10px;
-  font-size: 25px;
-  line-height: 1.35;
-}
-
-.appointment p {
-  margin: 0;
-  font-size: 15px;
-}
-
-.publication {
-  display: grid;
-  grid-template-columns: 1.5fr .7fr 65px;
-  gap: 28px;
-  align-items: baseline;
-  padding: 25px 0;
-  border-top: 1px solid var(--line);
-}
-
-.publication h3 {
-  margin: 0;
-  font: 500 18px/1.6 var(--sans);
-}
-
-.publication p {
-  margin: 0;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.publication a {
-  font-size: 14px;
-}
-
-.project-photo {
-  display: block;
-  align-self: start;
-  overflow: hidden;
-}
-
-.project-photo img {
-  width: 100%;
-  aspect-ratio: 4 / 3;
-  object-fit: cover;
-  transition: transform .25s ease;
-}
-
-.project-photo:hover img {
-  transform: scale(1.02);
-}
-
-.footer {
-  padding: 35px 0;
-  border-top: 1px solid var(--line);
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 25px;
-}
-
-.footer-name {
-  margin: 0 0 10px;
-  font: 23px var(--serif);
-}
-
-.footer p {
-  margin: 0 0 12px;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.footer-links {
-  display: flex;
-  justify-content: flex-end;
-  align-content: start;
-  flex-wrap: wrap;
-  gap: 10px 25px;
-}
-
-.footer-links a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 44px;
-  font-size: 14px;
-}
-
-.copyright {
-  grid-column: 1 / -1;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-@media (max-width: 1050px) {
-  .header-inner {
-    flex-wrap: wrap;
-    padding: 20px 0;
-    gap: 12px;
-  }
-
-  .hero,
-  .split-section {
-    gap: 40px;
-  }
-
-  .publication {
-    grid-template-columns: 1.4fr .8fr;
-  }
-
-  .publication a {
-    grid-column: 2;
-  }
-}
-
-@media (max-width: 760px) {
-  .container {
-    width: calc(100% - 40px);
-  }
-
-  .header-inner {
-    min-height: 85px;
-    justify-content: space-between;
-  }
-
-  .menu-button {
-    display: block;
-  }
-
-  .site-nav {
-    display: none;
-    width: 100%;
-    flex-direction: column;
-    gap: 0;
-    padding-top: 10px;
-  }
-
-  .site-nav.is-open {
-    display: flex;
-  }
-
-  .site-nav a {
-    min-height: 48px;
-  }
-
-  .hero {
-    grid-template-columns: 1fr;
-    gap: 32px;
-    padding: 40px 0 50px;
-  }
-
-  .role {
-    font-size: 23px;
-  }
-
-  .portrait img {
-    aspect-ratio: 5 / 4;
-    object-position: center 28%;
-  }
-
-  section {
-    padding: 42px 0;
-  }
-
-  .section-heading {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 12px;
-  }
-
-  .research-row {
-    grid-template-columns: 1fr 20px;
-    gap: 12px;
-  }
-
-  .research-row p {
-    grid-column: 1;
-    grid-row: 2;
-  }
-
-  .research-row > span {
-    grid-column: 2;
-    grid-row: 1;
-  }
-
-  .research-row h3 {
-    font-size: 23px;
-  }
-
-  .split-section,
-  .publication,
-  .footer-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .publication {
-    gap: 12px;
-  }
-
-  .publication a {
-    grid-column: auto;
-  }
-
-  .footer-links {
-    justify-content: flex-start;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-
-  .project-photo img {
-    transition: none;
-  }
-
-  .project-photo:hover img {
-    transform: none;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+
+  <title>Rupesh Lal Karn | Materials Research &amp; Engineering</title>
+
+  <meta
+    name="description"
+    content="Rupesh Lal Karn studies functional materials through synthesis, characterization, and quantitative modelling. Research includes MXenes, magnetic oxides, photothermal response, and electrochemistry."
+  >
+
+  <meta property="og:title" content="Rupesh Lal Karn">
+  <meta
+    property="og:description"
+    content="Materials research, experimental engineering, publications, and academic experience."
+  >
+  <meta property="og:type" content="website">
+
+  <style>
+    :root {
+      color-scheme: light;
+
+      --paper: #faf9f6;
+      --ink: #272e2a;
+      --muted: #606961;
+      --line: #d8dcd4;
+      --green: #285946;
+
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: -apple-system, BlinkMacSystemFont,
+        "Segoe UI", Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.8 var(--sans);
+    }
+
+    a {
+      color: var(--green);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 5px;
+    }
+
+    a:hover {
+      color: #123a29;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--green);
+      outline-offset: 5px;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 64px));
+      margin: auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -80px;
+      left: 20px;
+      z-index: 100;
+      padding: 12px 18px;
+      background: white;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    /* Header */
+
+    .site-header {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      min-height: 98px;
+    }
+
+    .name {
+      color: var(--ink);
+      font: 22px/1.3 var(--serif);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 23px;
+    }
+
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      border-bottom: 1px solid transparent;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .site-nav a:hover,
+    .site-nav a[aria-current="page"] {
+      border-color: var(--green);
+      color: var(--ink);
+    }
+
+    .menu-button {
+      display: none;
+      min-height: 44px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    /* Introduction */
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      align-items: center;
+      gap: 85px;
+      padding: 75px 0 85px;
+    }
+
+    .affiliation {
+      margin: 0 0 23px;
+      color: var(--green);
+      font-size: 14px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    h1 {
+      margin: 0 0 18px;
+      font-size: clamp(43px, 5.3vw, 68px);
+      line-height: 1.12;
+      letter-spacing: -.035em;
+    }
+
+    .role {
+      margin: 0 0 26px;
+      font: 25px/1.45 var(--serif);
+    }
+
+    .introduction {
+      max-width: 560px;
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      margin-top: 26px;
+    }
+
+    .hero-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 15px;
+    }
+
+    .portrait {
+      margin: 0;
+      overflow: hidden;
+    }
+
+    .portrait img {
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      object-position: center 35%;
+    }
+
+    /* Section layout */
+
+    section {
+      padding: 62px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .section-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 25px;
+      margin-bottom: 28px;
+    }
+
+    h2 {
+      margin: 0;
+      font-size: clamp(29px, 3.2vw, 39px);
+      line-height: 1.25;
+      letter-spacing: -.025em;
+    }
+
+    .section-heading > a {
+      font-size: 14px;
+      white-space: nowrap;
+    }
+
+    /* Research index */
+
+    .research-row {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr 20px;
+      align-items: baseline;
+      gap: 30px;
+      padding: 25px 0;
+      border-top: 1px solid var(--line);
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .research-row:last-child {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .research-row h3 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.35;
+    }
+
+    .research-row p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .research-row:hover h3 {
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+
+    .research-row > span {
+      color: var(--green);
+      font-family: Arial, sans-serif;
+      font-size: 22px;
+    }
+
+    /* Appointments and engineering */
+
+    .split-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 85px;
+    }
+
+    .section-label {
+      margin: 0 0 18px;
+      color: var(--green);
+      font-size: 14px;
+    }
+
+    .split-section h2 {
+      margin-bottom: 24px;
+    }
+
+    .split-section p {
+      color: var(--muted);
+    }
+
+    .appointment {
+      padding: 0 0 25px;
+      margin-bottom: 25px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .appointment:last-child {
+      margin-bottom: 0;
+    }
+
+    .appointment time {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .appointment h3 {
+      margin: 0 0 10px;
+      font-size: 25px;
+      line-height: 1.35;
+    }
+
+    .appointment p {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    /* Publications */
+
+    .publication {
+      display: grid;
+      grid-template-columns: 1.5fr .7fr 65px;
+      gap: 28px;
+      align-items: baseline;
+      padding: 25px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .publication h3 {
+      margin: 0;
+      font: 500 18px/1.6 var(--sans);
+    }
+
+    .publication p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .publication a {
+      font-size: 14px;
+    }
+
+    /* Project photograph */
+
+    .project-photo {
+      display: block;
+      align-self: start;
+      overflow: hidden;
+    }
+
+    .project-photo img {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      object-fit: cover;
+      transition: transform .25s ease;
+    }
+
+    .project-photo:hover img {
+      transform: scale(1.02);
+    }
+
+    /* Footer */
+
+    .footer {
+      padding: 35px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .footer-name {
+      margin: 0 0 10px;
+      font: 23px var(--serif);
+    }
+
+    .footer p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: flex-end;
+      align-content: start;
+      flex-wrap: wrap;
+      gap: 10px 25px;
+    }
+
+    .footer-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+    }
+
+    .copyright {
+      grid-column: 1 / -1;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Animated green text glow */
+
+    main h1,
+    main h2 {
+      color: #20543f;
+      animation: headingGlow 3.6s ease-in-out infinite alternate;
+    }
+
+    @keyframes headingGlow {
+      from {
+        text-shadow:
+          0 0 3px rgba(26, 170, 116, .12);
+      }
+
+      to {
+        text-shadow:
+          0 0 5px rgba(26, 170, 116, .65),
+          0 0 17px rgba(39, 190, 139, .32),
+          0 0 34px rgba(39, 190, 139, .23);
+      }
+    }
+
+    /* Tablet */
+
+    @media (max-width: 1050px) {
+      .header-inner {
+        flex-wrap: wrap;
+        padding: 20px 0;
+        gap: 12px;
+      }
+
+      .hero,
+      .split-section {
+        gap: 40px;
+      }
+
+      .publication {
+        grid-template-columns: 1.4fr .8fr;
+      }
+
+      .publication a {
+        grid-column: 2;
+      }
+    }
+
+    /* Mobile */
+
+    @media (max-width: 760px) {
+      .container {
+        width: calc(100% - 40px);
+      }
+
+      .header-inner {
+        min-height: 85px;
+        justify-content: space-between;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .site-nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        padding-top: 10px;
+      }
+
+      .site-nav.is-open {
+        display: flex;
+      }
+
+      .site-nav a {
+        min-height: 48px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding: 40px 0 50px;
+      }
+
+      .role {
+        font-size: 23px;
+      }
+
+      .portrait img {
+        aspect-ratio: 5 / 4;
+        object-position: center 28%;
+      }
+
+      section {
+        padding: 42px 0;
+      }
+
+      .section-heading {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      .research-row {
+        grid-template-columns: 1fr 20px;
+        gap: 12px;
+      }
+
+      .research-row p {
+        grid-column: 1;
+        grid-row: 2;
+      }
+
+      .research-row > span {
+        grid-column: 2;
+        grid-row: 1;
+      }
+
+      .research-row h3 {
+        font-size: 23px;
+      }
+
+      .split-section,
+      .publication,
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .publication {
+        gap: 12px;
+      }
+
+      .publication a {
+        grid-column: auto;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+    }
+
+    /* Accessibility */
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      main h1,
+      main h2 {
+        animation: none;
+        text-shadow: 0 0 10px rgba(26, 170, 116, .2);
+      }
+
+      .project-photo img {
+        transition: none;
+      }
+
+      .project-photo:hover img {
+        transform: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="name" href="index.html">Rupesh Lal Karn</a>
 
-<header class="site-header">
-  <div class="container header-inner">
-
-    <a class="name" href="index.html">Rupesh Lal Karn</a>
-
-    <button
-      class="menu-button"
-      type="button"
-      aria-expanded="false"
-      aria-controls="site-navigation"
-    >
-      Menu
-    </button>
-
-    <nav
-      class="site-nav"
-      id="site-navigation"
-      aria-label="Main navigation"
-    >
-      <a href="index.html" aria-current="page">Home</a>
-      <a href="about.html">About</a>
-      <a href="research.html">Research</a>
-      <a href="publications.html">Publications</a>
-      <a href="experience.html">Experience</a>
-      <a href="skills.html">Skills</a>
-      <a href="contact.html">Contact</a>
-    </nav>
-
-  </div>
-</header>
-
-<main class="container" id="main">
-
-  <!-- INTRODUCTION -->
-
-  <div class="hero">
-    <div>
-      <p class="affiliation">
-        Prairie View A&amp;M University · Texas
-      </p>
-
-      <h1>Rupesh Lal Karn</h1>
-
-      <p class="role">
-        Materials researcher<br>
-        &amp; mechanical engineer
-      </p>
-
-      <p class="introduction">
-        I study how preparation changes the structure
-        and physical behaviour of functional materials.
-        My work combines synthesis, characterization,
-        and quantitative modelling.
-      </p>
-
-      <p class="introduction">
-        Current interests include MXenes and their composites,
-        magnetic oxides, photothermal response,
-        and electrochemical charge storage.
-      </p>
-
-      <div class="hero-links">
-        <a href="research.html">Research interests</a>
-        <a href="Rupesh_Lal_Karn_CV.pdf">Curriculum vitae</a>
-        <a href="mailto:rkarn@pvamu.edu">Email me</a>
-      </div>
-    </div>
-
-    <figure class="portrait">
-      <img
-        src="profile.png"
-        alt="Portrait of Rupesh Lal Karn"
-        width="1254"
-        height="1254"
-        fetchpriority="high"
+      <button
+        class="menu-button"
+        type="button"
+        aria-expanded="false"
+        aria-controls="site-navigation"
       >
-    </figure>
-  </div>
+        Menu
+      </button>
 
-  <!-- RESEARCH -->
+      <nav
+        class="site-nav"
+        id="site-navigation"
+        aria-label="Main navigation"
+      >
+        <a href="index.html" aria-current="page">Home</a>
+        <a href="about.html">About</a>
+        <a href="research.html">Research</a>
+        <a href="publications.html">Publications</a>
+        <a href="experience.html">Experience</a>
+        <a href="skills.html">Skills</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-  <section aria-labelledby="research-heading">
-    <div class="section-heading">
-      <h2 id="research-heading">Research</h2>
-      <a href="research.html">All research areas</a>
+  <main class="container" id="main">
+
+    <!-- Introduction -->
+
+    <div class="hero">
+      <div>
+        <p class="affiliation">
+          Prairie View A&amp;M University · Texas
+        </p>
+
+        <h1>Rupesh Lal Karn</h1>
+
+        <p class="role">
+          Materials researcher<br>
+          &amp; mechanical engineer
+        </p>
+
+        <p class="introduction">
+          I study how preparation changes the structure
+          and physical behaviour of functional materials.
+          My work combines synthesis, characterization,
+          and quantitative modelling.
+        </p>
+
+        <p class="introduction">
+          Current interests include MXenes and their composites,
+          magnetic oxides, photothermal response,
+          and electrochemical charge storage.
+        </p>
+
+        <div class="hero-links">
+          <a href="research.html">Research interests</a>
+          <a href="Rupesh_Lal_Karn_CV.pdf">Curriculum vitae</a>
+          <a href="mailto:rkarn@pvamu.edu">Email me</a>
+        </div>
+      </div>
+
+      <figure class="portrait">
+        <img
+          src="profile.png"
+          alt="Portrait of Rupesh Lal Karn"
+          width="1254"
+          height="1254"
+          fetchpriority="high"
+        >
+      </figure>
     </div>
 
-    <a class="research-row" href="two-dimensional-materials.html">
-      <h3>MXenes &amp; functional composites</h3>
-      <p>
-        Etching, intercalation, and composite preparation;
-        structural and surface-chemical characterization.
-      </p>
-      <span aria-hidden="true">↗</span>
-    </a>
+    <!-- Research -->
 
-    <a class="research-row" href="magnetic-materials.html">
-      <h3>Magnetic materials &amp; crystal growth</h3>
-      <p>
-        Co-substituted MnGeTeO₆, magnetic powders,
-        and Mn₃Al₂Ge₃O₁₂ single crystals.
-      </p>
-      <span aria-hidden="true">↗</span>
-    </a>
+    <section aria-labelledby="research-heading">
+      <div class="section-heading">
+        <h2 id="research-heading">Research</h2>
+        <a href="research.html">All research areas</a>
+      </div>
 
-    <a class="research-row" href="photothermal-electrochemistry.html">
-      <h3>Photothermal &amp; electrochemical studies</h3>
-      <p>
-        Heating–cooling measurements, charge storage,
-        impedance, and relaxation.
-      </p>
-      <span aria-hidden="true">↗</span>
-    </a>
-
-    <a class="research-row" href="modelling.html">
-      <h3>Modelling &amp; descriptor development</h3>
-      <p>
-        MATLAB-supported analysis, physical models,
-        and interpretable characterization-derived variables.
-      </p>
-      <span aria-hidden="true">↗</span>
-    </a>
-  </section>
-
-  <!-- APPOINTMENTS -->
-
-  <section
-    class="split-section"
-    aria-labelledby="appointments-heading"
-  >
-    <div>
-      <p class="section-label">Research appointments</p>
-
-      <h2 id="appointments-heading">
-        National laboratory experience
-      </h2>
-
-      <p>
-        My visiting research at Argonne and Los Alamos
-        involved magnetic-domain investigation and
-        quantum-oscillation measurements on single crystals.
-      </p>
-
-      <p>
-        These appointments complement my materials
-        synthesis and characterization work at
-        Prairie View A&amp;M University.
-      </p>
-
-      <a href="experience.html#national-laboratories">
-        Appointment details
+      <a class="research-row" href="two-dimensional-materials.html">
+        <h3>MXenes &amp; functional composites</h3>
+        <p>
+          Etching, intercalation, and composite preparation;
+          structural and surface-chemical characterization.
+        </p>
+        <span aria-hidden="true">&rarr;</span>
       </a>
-    </div>
 
-    <div>
-      <article class="appointment">
-        <time datetime="2025-06">June–July 2025</time>
+      <a class="research-row" href="magnetic-materials.html">
+        <h3>Magnetic materials &amp; crystal growth</h3>
+        <p>
+          Co-substituted MnGeTeO₆, magnetic powders,
+          and Mn₃Al₂Ge₃O₁₂ single crystals.
+        </p>
+        <span aria-hidden="true">&rarr;</span>
+      </a>
 
-        <h3>Argonne National Laboratory</h3>
+      <a class="research-row" href="photothermal-electrochemistry.html">
+        <h3>Photothermal &amp; electrochemical studies</h3>
+        <p>
+          Heating–cooling measurements, charge storage,
+          impedance, and relaxation.
+        </p>
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+
+      <a class="research-row" href="modelling.html">
+        <h3>Modelling &amp; descriptor development</h3>
+        <p>
+          MATLAB-supported analysis, physical models,
+          and interpretable characterization-derived variables.
+        </p>
+        <span aria-hidden="true">&rarr;</span>
+      </a>
+    </section>
+
+    <!-- National laboratory appointments -->
+
+    <section
+      class="split-section"
+      aria-labelledby="appointments-heading"
+    >
+      <div>
+        <p class="section-label">Research appointments</p>
+
+        <h2 id="appointments-heading">
+          National laboratory experience
+        </h2>
 
         <p>
-          Visiting Research Student. Lorentz TEM analysis
-          to investigate magnetic-domain structures.
+          My visiting research at Argonne and Los Alamos
+          involved magnetic-domain investigation and
+          quantum-oscillation measurements on single crystals.
         </p>
-      </article>
-
-      <article class="appointment">
-        <time datetime="2025-08">August 2025</time>
-
-        <h3>Los Alamos National Laboratory</h3>
 
         <p>
-          Visiting Research Student. Angle- and
-          temperature-dependent dHvA measurements
-          on HfSn₂ crystals.
+          These appointments complement my materials
+          synthesis and characterization work at
+          Prairie View A&amp;M University.
         </p>
-      </article>
-    </div>
-  </section>
 
-  <!-- PUBLICATIONS -->
-
-  <section aria-labelledby="publications-heading">
-    <div class="section-heading">
-      <h2 id="publications-heading">Selected publications</h2>
-      <a href="publications.html">Publication list</a>
-    </div>
-
-    <article class="publication">
-      <h3>
-        Effect of CuO nanoparticles in pine oil–diesel blends
-        on performance, combustion, and emissions of a
-        single-cylinder diesel engine
-      </h3>
-
-      <p>Next Research · 2026</p>
-
-      <a href="https://doi.org/10.1016/j.nexres.2025.101174">
-        DOI
-      </a>
-    </article>
-
-    <article class="publication">
-      <h3>
-        Evaluation of performance, combustion and emission
-        characteristics of blends of soybean biodiesel
-        in a single cylinder diesel engine:
-        An experimental approach
-      </h3>
-
-      <p>
-        Kathmandu University Journal of Science,
-        Engineering and Technology · 2025
-      </p>
-
-      <a href="https://doi.org/10.70530/kuset.v19i3.690">
-        DOI
-      </a>
-    </article>
-
-    <article class="publication">
-      <h3>
-        Effect of green synthesized zinc oxide nano additives
-        and rice bran oil biodiesel blend on performance and
-        combustion characteristics of variable compression
-        ratio diesel engine: An experimental study
-      </h3>
-
-      <p>Biofuels, Bioproducts and Biorefining · 2023</p>
-
-      <a href="https://doi.org/10.1002/bbb.2527">
-        DOI
-      </a>
-    </article>
-  </section>
-
-  <!-- ENGINEERING AND TEACHING -->
-
-  <section
-    class="split-section"
-    aria-labelledby="engineering-heading"
-  >
-    <div>
-      <p class="section-label">Engineering &amp; education</p>
-
-      <h2 id="engineering-heading">
-        From vehicle fabrication to materials research
-      </h2>
-
-      <p>
-        My background began in automobile engineering
-        and alternative-fuel research. It also includes
-        Tri-Car fabrication, go-kart modification,
-        undergraduate teaching, and student research supervision.
-      </p>
-
-      <p>
-        That experimental background continues to inform
-        how I approach sample preparation, measurements,
-        and interpretation.
-      </p>
-
-      <div class="hero-links">
-        <a href="projects.html">Engineering projects</a>
-
-        <a href="experience.html#teaching-experience">
-          Teaching &amp; mentorship
+        <a href="experience.html#national-laboratories">
+          Appointment details
         </a>
       </div>
-    </div>
 
-    <a
-      class="project-photo"
-      href="tricar.html"
-      aria-label="Read about the Tri-Car project"
+      <div>
+        <article class="appointment">
+          <time datetime="2025-06">June–July 2025</time>
+
+          <h3>Argonne National Laboratory</h3>
+
+          <p>
+            Visiting Research Student. Lorentz TEM analysis
+            to investigate magnetic-domain structures.
+          </p>
+        </article>
+
+        <article class="appointment">
+          <time datetime="2025-08">August 2025</time>
+
+          <h3>Los Alamos National Laboratory</h3>
+
+          <p>
+            Visiting Research Student. Angle- and
+            temperature-dependent dHvA measurements
+            on HfSn₂ crystals.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Publications -->
+
+    <section aria-labelledby="publications-heading">
+      <div class="section-heading">
+        <h2 id="publications-heading">Selected publications</h2>
+        <a href="publications.html">Publication list</a>
+      </div>
+
+      <article class="publication">
+        <h3>
+          Effect of CuO nanoparticles in pine oil–diesel blends
+          on performance, combustion, and emissions of a
+          single-cylinder diesel engine
+        </h3>
+
+        <p>Next Research · 2026</p>
+
+        <a href="https://doi.org/10.1016/j.nexres.2025.101174">
+          DOI
+        </a>
+      </article>
+
+      <article class="publication">
+        <h3>
+          Evaluation of performance, combustion and emission
+          characteristics of blends of soybean biodiesel
+          in a single cylinder diesel engine:
+          An experimental approach
+        </h3>
+
+        <p>
+          Kathmandu University Journal of Science,
+          Engineering and Technology · 2025
+        </p>
+
+        <a href="https://doi.org/10.70530/kuset.v19i3.690">
+          DOI
+        </a>
+      </article>
+
+      <article class="publication">
+        <h3>
+          Effect of green synthesized zinc oxide nano additives
+          and rice bran oil biodiesel blend on performance and
+          combustion characteristics of variable compression
+          ratio diesel engine: An experimental study
+        </h3>
+
+        <p>Biofuels, Bioproducts and Biorefining · 2023</p>
+
+        <a href="https://doi.org/10.1002/bbb.2527">
+          DOI
+        </a>
+      </article>
+    </section>
+
+    <!-- Engineering and teaching -->
+
+    <section
+      class="split-section"
+      aria-labelledby="engineering-heading"
     >
-      <img
-        src="Tricar_cover.jpg"
-        alt="Rupesh Lal Karn seated in the Tri-Car
-        prototype during workshop development."
-        width="1280"
-        height="720"
-        loading="lazy"
-      >
-    </a>
-  </section>
+      <div>
+        <p class="section-label">Engineering &amp; education</p>
 
-</main>
+        <h2 id="engineering-heading">
+          From vehicle fabrication to materials research
+        </h2>
 
-<footer class="footer">
-  <div class="container footer-grid">
-    <div>
-      <p class="footer-name">Rupesh Lal Karn</p>
-      <p>Prairie View, Texas</p>
+        <p>
+          My background began in automobile engineering
+          and alternative-fuel research. It also includes
+          Tri-Car fabrication, go-kart modification,
+          undergraduate teaching, and student research supervision.
+        </p>
 
-      <a href="mailto:rkarn@pvamu.edu">
-        rkarn@pvamu.edu
-      </a>
-    </div>
+        <p>
+          That experimental background continues to inform
+          how I approach sample preparation, measurements,
+          and interpretation.
+        </p>
 
-    <nav class="footer-links" aria-label="Academic profiles">
+        <div class="hero-links">
+          <a href="projects.html">Engineering projects</a>
+
+          <a href="experience.html#teaching-experience">
+            Teaching &amp; mentorship
+          </a>
+        </div>
+      </div>
+
       <a
-        href="https://scholar.google.com/citations?user=7RRtNOYAAAAJ&amp;hl=en"
+        class="project-photo"
+        href="tricar.html"
+        aria-label="Read about the Tri-Car project"
       >
-        Google Scholar
+        <img
+          src="Tricar_cover.jpg"
+          alt="Rupesh Lal Karn seated in the Tri-Car prototype during workshop development."
+          width="1280"
+          height="720"
+          loading="lazy"
+        >
       </a>
+    </section>
+  </main>
 
-      <a href="https://orcid.org/0009-0008-9261-024X">
-        ORCID
-      </a>
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <p class="footer-name">Rupesh Lal Karn</p>
+        <p>Prairie View, Texas</p>
 
-      <a href="Rupesh_Lal_Karn_CV.pdf">CV</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+        <a href="mailto:rkarn@pvamu.edu">
+          rkarn@pvamu.edu
+        </a>
+      </div>
 
-    <small class="copyright">
-      © <span id="year"></span> Rupesh Lal Karn
-    </small>
-  </div>
-</footer>
+      <nav class="footer-links" aria-label="Academic profiles">
+        <a
+          href="https://scholar.google.com/citations?user=7RRtNOYAAAAJ&amp;hl=en"
+        >
+          Google Scholar
+        </a>
 
-<script>
-const menuButton = document.querySelector(".menu-button");
-const navigation = document.getElementById("site-navigation");
+        <a href="https://orcid.org/0009-0008-9261-024X">
+          ORCID
+        </a>
 
-function setMenu(open) {
-  menuButton.setAttribute("aria-expanded", String(open));
-  menuButton.textContent = open ? "Close" : "Menu";
-  navigation.classList.toggle("is-open", open);
-}
+        <a href="Rupesh_Lal_Karn_CV.pdf">CV</a>
+        <a href="contact.html">Contact</a>
+      </nav>
 
-menuButton.addEventListener("click", function () {
-  setMenu(menuButton.getAttribute("aria-expanded") !== "true");
-});
+      <small class="copyright">
+        © <span id="year">2026</span> Rupesh Lal Karn
+      </small>
+    </div>
+  </footer>
 
-document.addEventListener("keydown", function (event) {
-  if (
-    event.key === "Escape" &&
-    menuButton.getAttribute("aria-expanded") === "true"
-  ) {
-    setMenu(false);
-    menuButton.focus();
-  }
-});
+  <script>
+    const menuButton = document.querySelector(".menu-button");
+    const navigation = document.getElementById("site-navigation");
 
-navigation.addEventListener("click", function (event) {
-  if (event.target.closest("a")) {
-    setMenu(false);
-  }
-});
+    function setMenu(open) {
+      menuButton.setAttribute("aria-expanded", String(open));
+      menuButton.textContent = open ? "Close" : "Menu";
+      navigation.classList.toggle("is-open", open);
+    }
 
-document.getElementById("year").textContent =
-  new Date().getFullYear();
-</script>
+    menuButton.addEventListener("click", function () {
+      const isOpen =
+        menuButton.getAttribute("aria-expanded") === "true";
 
+      setMenu(!isOpen);
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (
+        event.key === "Escape" &&
+        menuButton.getAttribute("aria-expanded") === "true"
+      ) {
+        setMenu(false);
+        menuButton.focus();
+      }
+    });
+
+    navigation.addEventListener("click", function (event) {
+      if (event.target.closest("a")) {
+        setMenu(false);
+      }
+    });
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
 </body>
 </html>
