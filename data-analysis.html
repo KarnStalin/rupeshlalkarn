@@ -1,1082 +1,1382 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Scientific Data Analysis | Rupesh Lal Karn</title>
-
-<meta
-  name="description"
-  content="Scientific data analysis across materials characterization,
-  thermal measurements, electrochemistry, engine performance,
-  combustion, and emissions."
->
-
-<style>
-:root {
-  --navy: #102237;
-  --ink: #193248;
-  --muted: #566c7d;
-  --paper: #f5f7fa;
-  --line: #d8e2ea;
-  --blue: #165ca6;
-  --green: #17695c;
-  --purple: #714298;
-  --orange: #a34e1b;
-}
-
-* { box-sizing: border-box; }
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 24px;
-}
-
-body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font: 16px/1.75 system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-a {
-  color: var(--blue);
-  text-underline-offset: 5px;
-}
-
-a:focus-visible {
-  outline: 3px solid #c87923;
-  outline-offset: 5px;
-}
-
-.container {
-  width: min(1240px, calc(100% - 48px));
-  margin: auto;
-}
-
-header {
-  background: var(--navy);
-}
-
-.header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 18px;
-  padding: 22px 0;
-}
-
-header a {
-  color: #e5effa;
-  text-decoration: none;
-}
-
-.brand { font-weight: 750; }
-
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 22px;
-}
-
-.hero {
-  padding: 65px 0 100px;
-  background:
-    radial-gradient(circle at 88% 20%, #284b65 0, transparent 40%),
-    var(--navy);
-  color: white;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.25fr .75fr;
-  gap: 50px;
-  align-items: center;
-}
-
-.eyebrow {
-  margin-bottom: 16px;
-  color: #9adccc;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-}
-
-h1 {
-  margin: 0 0 25px;
-  font-size: clamp(39px, 5.8vw, 72px);
-  line-height: 1.08;
-  letter-spacing: -.045em;
-}
-
-h1 span { color: #a9d9ff; }
-
-.hero p {
-  max-width: 760px;
-  color: #c6d6e6;
-  font-size: 18px;
-}
-
-.hero-flow {
-  padding: 28px;
-  border: 1px solid #49657d;
-  border-radius: 18px;
-  background: #ffffff06;
-}
-
-.hero-flow h2 {
-  margin-top: 0;
-  color: white;
-  font-size: 22px;
-}
-
-.flow-row {
-  display: grid;
-  grid-template-columns: 32px 1fr;
-  gap: 12px;
-  padding: 14px 0;
-  border-bottom: 1px solid #3c536b;
-}
-
-.flow-row:last-child { border-bottom: 0; }
-
-.flow-row span {
-  color: #9ee2cf;
-  font-family: monospace;
-}
-
-.flow-row strong { color: white; }
-
-.flow-row small {
-  display: block;
-  margin-top: 3px;
-  color: #bfd0e0;
-  font-size: 12px;
-}
-
-.scope {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 15px;
-  margin-top: -45px;
-  margin-bottom: 30px;
-}
-
-.scope article {
-  padding: 23px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: white;
-  box-shadow: 0 12px 28px #10223708;
-}
-
-.scope small {
-  display: block;
-  margin-bottom: 10px;
-  color: var(--green);
-  font-size: 11px;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-.scope strong {
-  display: block;
-  font-size: 18px;
-  line-height: 1.4;
-}
-
-.jump-links {
-  gap: 9px;
-  padding: 10px 0 30px;
-}
-
-.jump-links a {
-  padding: 8px 14px;
-  border: 1px solid var(--line);
-  border-radius: 24px;
-  background: white;
-  color: var(--ink);
-  font-size: 13px;
-  text-decoration: none;
-}
-
-section { padding: 35px 0; }
-
-.number {
-  color: var(--green);
-  font: 12px/1.6 ui-monospace, monospace;
-  letter-spacing: .12em;
-}
-
-h2 {
-  margin: 10px 0 20px;
-  font-size: clamp(27px, 3.2vw, 38px);
-  line-height: 1.2;
-  letter-spacing: -.035em;
-}
-
-h3 {
-  margin: 0 0 12px;
-  font-size: 20px;
-  line-height: 1.4;
-}
-
-p {
-  margin: 0 0 18px;
-  color: var(--muted);
-}
-
-strong { color: var(--ink); }
-
-.section-top {
-  display: grid;
-  grid-template-columns: .9fr 1.1fr;
-  gap: 35px;
-  align-items: start;
-  margin-bottom: 25px;
-}
-
-.table-wrap {
-  overflow-x: auto;
-  border: 1px solid var(--line);
-  border-radius: 15px;
-  background: white;
-}
-
-table {
-  width: 100%;
-  min-width: 680px;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-
-th, td {
-  padding: 18px;
-  text-align: left;
-  vertical-align: top;
-  border-bottom: 1px solid var(--line);
-}
-
-th {
-  background: #eaf0f6;
-  color: var(--ink);
-}
-
-td { color: var(--muted); }
-
-td:first-child {
-  color: var(--blue);
-  font-weight: 700;
-}
-
-tr:last-child td { border-bottom: 0; }
-
-.two-columns {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
-}
-
-.analysis-card {
-  padding: 28px;
-  border: 1px solid var(--border);
-  border-top: 4px solid var(--accent);
-  border-radius: 16px;
-  background: var(--surface);
-}
-
-.analysis-card h3 { color: var(--accent); }
-
-.analysis-card ul {
-  padding-left: 20px;
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.analysis-card li { margin-bottom: 10px; }
-
-.analysis-card a {
-  display: inline-block;
-  margin-top: 10px;
-  font-size: 14px;
-  font-weight: 650;
-}
-
-.engine-panel {
-  display: grid;
-  grid-template-columns: .8fr 1.2fr;
-  gap: 35px;
-  padding: 35px;
-  border-radius: 20px;
-  background: var(--navy);
-  color: white;
-}
-
-.engine-panel h2 { color: white; }
-
-.engine-panel p { color: #c4d5e5; }
-
-.engine-panel a { color: #a9d9ff; }
-
-.engine-item {
-  padding: 17px 0;
-  border-bottom: 1px solid #3d556d;
-}
-
-.engine-item:first-child { padding-top: 0; }
-
-.engine-item:last-child { border-bottom: 0; }
-
-.engine-item h3 {
-  color: #b4e5d5;
-  font-size: 18px;
-}
-
-.engine-item p {
-  margin: 0;
-  font-size: 14px;
-}
-
-.formula-strip {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin-top: 24px;
-}
-
-.formula-strip div {
-  padding: 15px 18px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: white;
-  font: 18px/1.6 Georgia, serif;
-}
-
-.checks {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-.check {
-  padding: 24px;
-  border: 1px solid var(--line);
-  border-radius: 13px;
-  background: white;
-}
-
-.check h3 {
-  color: var(--purple);
-  font-size: 18px;
-}
-
-.check p {
-  margin: 0;
-  font-size: 14px;
-}
-
-.steps {
-  margin: 25px 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: step;
-}
-
-.steps li {
-  display: grid;
-  grid-template-columns: 45px 220px 1fr;
-  gap: 18px;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--line);
-  color: var(--muted);
-  counter-increment: step;
-}
-
-.steps li::before {
-  content: counter(step, decimal-leading-zero);
-  color: var(--green);
-  font-family: monospace;
-}
-
-.steps strong { font-size: 17px; }
-
-.note {
-  padding: 18px 22px;
-  margin: 24px 0;
-  border-left: 3px solid #d6a255;
-  background: #fff7e9;
-  color: #655138;
-  font-size: 14px;
-}
-
-.evidence {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 22px;
-}
-
-.evidence article {
-  padding: 27px;
-  border: 1px solid var(--line);
-  border-radius: 15px;
-  background: white;
-}
-
-.evidence h3 { color: var(--blue); }
-
-.evidence p { font-size: 14px; }
-
-.back {
-  display: inline-block;
-  margin: 20px 0 35px;
-  font-weight: 650;
-}
-
-footer {
-  padding: 25px 0;
-  background: var(--navy);
-  color: #bccddd;
-  font-size: 13px;
-}
-
-@media(max-width: 950px) {
-  .hero-grid,
-  .section-top,
-  .engine-panel {
-    grid-template-columns: 1fr;
-  }
-
-  .scope,
-  .checks {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .hero-flow { max-width: 650px; }
-}
-
-@media(max-width: 650px) {
-  .container { width: calc(100% - 36px); }
-
-  .hero { padding-top: 35px; }
-
-  .two-columns,
-  .evidence,
-  .checks {
-    grid-template-columns: 1fr;
-  }
-
-  .scope article { padding: 18px; }
-
-  .scope strong { font-size: 16px; }
-
-  .engine-panel,
-  .analysis-card { padding: 23px; }
-
-  .steps li {
-    grid-template-columns: 35px 1fr;
-    gap: 10px;
-  }
-
-  .steps li span { grid-column: 2; }
-}
-
-@media(prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+
+  <title>Scientific Data Analysis | Rupesh Lal Karn</title>
+
+  <meta name="description"
+        content="Scientific data analysis for functional materials, crystal and magnetic studies, thermal measurements, electrochemistry, and earlier engine research.">
+
+  <link rel="canonical" href="https://rlk.com.np/data-analysis.html">
+
+  <style>
+    :root {
+      color-scheme: light;
+
+      --paper: #faf9f6;
+      --ink: #272e2a;
+      --muted: #606961;
+      --line: #d8dcd4;
+      --nav-accent: #385975;
+
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI",
+              Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.8 var(--sans);
+    }
+
+    a {
+      color: var(--nav-accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 5px;
+    }
+
+    a:focus-visible,
+    button:focus-visible,
+    .table-wrap:focus-visible {
+      outline: 2px solid var(--nav-accent);
+      outline-offset: 5px;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 64px));
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -80px;
+      left: 20px;
+      z-index: 100;
+      padding: 12px 18px;
+      background: white;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    /* Navigation */
+
+    .site-header {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      min-height: 98px;
+    }
+
+    .name {
+      color: var(--ink);
+      font: 22px/1.3 var(--serif);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 23px;
+    }
+
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      border-bottom: 1px solid transparent;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .site-nav a:hover,
+    .site-nav a.active {
+      border-color: var(--nav-accent);
+      color: var(--ink);
+    }
+
+    .menu-button {
+      display: none;
+      min-height: 44px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    /* Introduction */
+
+    .page-intro {
+      padding: 50px 0 30px;
+    }
+
+    .breadcrumb {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .breadcrumb a {
+      color: inherit;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+
+    h1 {
+      max-width: 950px;
+      margin: 0 0 22px;
+      color: #293b50;
+      font-size: clamp(39px, 4.7vw, 60px);
+      line-height: 1.15;
+      letter-spacing: -.035em;
+      animation: titleGlow 4s ease-in-out infinite alternate;
+    }
+
+    .lead {
+      max-width: 840px;
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.85;
+    }
+
+    .intro-note {
+      max-width: 840px;
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .jump-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      padding: 8px 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .jump-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      color: var(--nav-accent);
+      font-size: 14px;
+    }
+
+    /* Shared content */
+
+    main > section {
+      padding: 35px 0;
+      border-bottom: 1px solid var(--line);
+      scroll-margin-top: 24px;
+    }
+
+    h2 {
+      margin: 0 0 20px;
+      color: #293b50;
+      font-size: 32px;
+      line-height: 1.3;
+      letter-spacing: -.025em;
+    }
+
+    h3 {
+      margin: 0 0 12px;
+      color: var(--ink);
+      font-size: 24px;
+      line-height: 1.35;
+      letter-spacing: -.015em;
+    }
+
+    p {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
+    strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .section-top {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 45px;
+      align-items: start;
+      margin-bottom: 24px;
+    }
+
+    .section-top p {
+      margin: 0;
+    }
+
+    .method-link {
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    /* Characterization table */
+
+    .table-wrap {
+      max-width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: white;
+    }
+
+    table {
+      width: 100%;
+      min-width: 680px;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 17px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      background: #edf1f5;
+      color: #293b50;
+      font-weight: 600;
+    }
+
+    td {
+      color: var(--muted);
+    }
+
+    td:first-child {
+      color: #285ca3;
+      font-weight: 600;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    /* Crystal and magnetic data */
+
+    .magnetic-methods,
+    .two-columns,
+    .checks,
+    .evidence {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 26px 40px;
+    }
+
+    .magnetic-method {
+      min-width: 0;
+      padding: 23px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .magnetic-method h3 {
+      color: var(--method-colour);
+    }
+
+    .magnetic-method p {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .structural {
+      --method-colour: #285ca3;
+    }
+
+    .magnetic {
+      --method-colour: #9a365b;
+    }
+
+    .domains {
+      --method-colour: #7144a0;
+    }
+
+    .crystals {
+      --method-colour: #176b61;
+    }
+
+    /* Thermal and electrochemical analysis */
+
+    .analysis-card {
+      min-width: 0;
+      padding: 26px;
+      border: 1px solid var(--card-border);
+      border-top: 4px solid var(--accent);
+      border-radius: 12px;
+      background: var(--tint);
+    }
+
+    .analysis-card h3 {
+      color: var(--accent);
+      animation: methodGlow 4s ease-in-out infinite alternate;
+    }
+
+    .analysis-card p,
+    .analysis-card li {
+      color: #4e5963;
+      font-size: 15px;
+      line-height: 1.8;
+    }
+
+    .analysis-card ul {
+      padding-left: 20px;
+      margin: 0 0 18px;
+    }
+
+    .analysis-card li {
+      margin-bottom: 12px;
+    }
+
+    .analysis-card a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      color: var(--accent);
+      font-size: 14px;
+    }
+
+    .thermal-analysis {
+      --accent: #a64b2a;
+      --tint: #fff3ec;
+      --card-border: #edcdbd;
+      --glow: rgba(207, 109, 64, .24);
+    }
+
+    .electrochemical-analysis {
+      --accent: #7144a0;
+      --tint: #f6f0fc;
+      --card-border: #dacbed;
+      --glow: rgba(145, 88, 199, .24);
+    }
+
+    .electrochemical-analysis h3 {
+      animation-delay: -2s;
+    }
+
+    /* Fit assessment */
+
+    .check {
+      min-width: 0;
+      padding: 22px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .check h3 {
+      color: #7144a0;
+      font-size: 22px;
+    }
+
+    .check p {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .note {
+      padding: 18px 22px;
+      margin: 24px 0 0;
+      border-left: 3px solid #b58845;
+      background: #fcf6e9;
+      color: #655138;
+      font-size: 14px;
+    }
+
+    /* MATLAB workflow */
+
+    .steps {
+      margin: 24px 0 0;
+      padding: 0 0 0 25px;
+    }
+
+    .steps li {
+      padding: 18px 0 18px 8px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+    }
+
+    .steps li::marker {
+      color: #285ca3;
+    }
+
+    .steps strong {
+      display: block;
+      margin-bottom: 5px;
+      font-size: 17px;
+    }
+
+    .steps span {
+      display: block;
+    }
+
+    /* Earlier engineering research */
+
+    .engine-panel {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 45px;
+      align-items: start;
+    }
+
+    .engine-item {
+      padding: 20px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .engine-item:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .engine-item h3 {
+      color: #a64b2a;
+      font-size: 23px;
+    }
+
+    .engine-item p {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .formula-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 25px;
+    }
+
+    .formula-strip div {
+      padding: 18px 22px;
+      background: #f0f1eb;
+      color: var(--ink);
+      font: 21px/1.8 var(--serif);
+    }
+
+    .unit-note {
+      margin: 16px 0 0;
+      font-size: 13px;
+    }
+
+    /* Research links */
+
+    .evidence article {
+      min-width: 0;
+      padding: 22px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .evidence h3 {
+      color: #285ca3;
+    }
+
+    .evidence p {
+      font-size: 15px;
+    }
+
+    .evidence a {
+      font-size: 14px;
+    }
+
+    .back {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      margin: 20px 0 35px;
+      font-size: 14px;
+    }
+
+    /* Subtle text glow */
+
+    @keyframes titleGlow {
+      from {
+        text-shadow: 0 0 2px rgba(69, 110, 161, .04);
+      }
+
+      to {
+        text-shadow:
+          0 0 9px rgba(69, 110, 161, .22),
+          0 0 22px rgba(69, 110, 161, .11);
+      }
+    }
+
+    @keyframes methodGlow {
+      from {
+        text-shadow: 0 0 2px transparent;
+      }
+
+      to {
+        text-shadow:
+          0 0 7px var(--glow),
+          0 0 16px var(--glow);
+      }
+    }
+
+    /* Footer */
+
+    .footer {
+      padding: 35px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .footer .footer-name {
+      margin: 0 0 10px;
+      color: var(--ink);
+      font: 23px var(--serif);
+    }
+
+    .footer p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: flex-end;
+      align-content: start;
+      flex-wrap: wrap;
+      gap: 10px 25px;
+    }
+
+    .footer-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+    }
+
+    .copyright {
+      grid-column: 1 / -1;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Responsive layout */
+
+    @media (max-width: 1050px) {
+      .header-inner {
+        flex-wrap: wrap;
+        padding: 20px 0;
+        gap: 12px;
+      }
+
+      .site-nav {
+        gap: 18px;
+      }
+
+      .section-top,
+      .engine-panel {
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .section-top,
+      .engine-panel {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: calc(100% - 40px);
+      }
+
+      .header-inner {
+        min-height: 85px;
+        justify-content: space-between;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .site-nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        padding-top: 10px;
+      }
+
+      .site-nav.is-open {
+        display: flex;
+      }
+
+      .site-nav a {
+        min-height: 48px;
+      }
+
+      .page-intro {
+        padding: 35px 0 25px;
+      }
+
+      h1 {
+        font-size: 38px;
+      }
+
+      .lead {
+        font-size: 17px;
+      }
+
+      h2 {
+        font-size: 29px;
+      }
+
+      h3 {
+        font-size: 24px;
+      }
+
+      main > section {
+        padding: 28px 0;
+      }
+
+      .jump-links {
+        gap: 5px 20px;
+      }
+
+      .magnetic-methods,
+      .two-columns,
+      .checks,
+      .evidence {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .analysis-card {
+        padding: 23px 21px;
+      }
+
+      .formula-strip {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .formula-strip div {
+        font-size: 20px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      h1,
+      .analysis-card h3 {
+        animation: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<header>
-  <div class="container header-inner">
-    <a class="brand" href="index.html">Rupesh Lal Karn</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="name" href="index.html">Rupesh Lal Karn</a>
 
-    <nav aria-label="Main navigation">
-      <a href="research.html">Research</a>
-      <a href="modelling.html">Modelling</a>
-      <a href="publications.html">Publications</a>
+      <button class="menu-button"
+              type="button"
+              aria-controls="site-navigation"
+              aria-expanded="false">
+        Menu
+      </button>
+
+      <nav class="site-nav"
+           id="site-navigation"
+           aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a class="active" href="research.html">Research</a>
+        <a href="experience.html">Experience</a>
+        <a href="publications.html">Publications</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="projects.html">Projects</a>
+        <a href="skills.html">Skills</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="main">
+
+    <div class="page-intro">
+      <p class="breadcrumb">
+        <a href="research.html">Research</a>
+        / Scientific data analysis
+      </p>
+
+      <h1>Scientific Data Analysis</h1>
+
+      <p class="lead">
+        I analyse measurements from functional materials,
+        crystal and magnetic studies, thermal experiments,
+        and electrochemistry.
+      </p>
+
+      <p class="intro-note">
+        MATLAB-supported processing, quantitative feature extraction,
+        physical calculations, and statistical assessment connect
+        measured signals with interpretable material descriptors
+        and response parameters.
+      </p>
+    </div>
+
+    <nav class="jump-links" aria-label="Page sections">
+      <a href="#materials">Characterization</a>
+      <a href="#magnetic-data">Crystal &amp; magnetic data</a>
+      <a href="#thermal-electrochemical">Thermal &amp; electrochemical</a>
+      <a href="#reliability">Fit quality</a>
+      <a href="#workflow">MATLAB workflow</a>
+      <a href="#engines">Engine analysis</a>
+      <a href="#research-context">Research applications</a>
     </nav>
-  </div>
-</header>
 
-<div class="hero">
-  <div class="container hero-grid">
-    <div>
-      <div class="eyebrow">
-        Experimental measurements · Quantitative interpretation
-      </div>
+    <!-- MATERIALS CHARACTERIZATION -->
 
-      <h1>
-        Scientific Data<br>
-        <span>Analysis &amp; Interpretation</span>
-      </h1>
-
-      <p>
-        I analyse experimental data across materials
-        characterization, thermal response, electrochemistry,
-        and engine testing.
-      </p>
-
-      <p>
-        My work combines MATLAB-based processing,
-        quantitative feature extraction, physical calculations,
-        and statistical assessment to interpret relationships
-        between material preparation, operating conditions,
-        and measured behaviour.
-      </p>
-    </div>
-
-    <aside class="hero-flow" aria-label="Analysis sequence">
-      <h2>From measurement to evidence</h2>
-
-      <div class="flow-row">
-        <span>01</span>
-        <div>
-          <strong>Preserve context</strong>
-          <small>Sample identity, conditions, units, and raw signals</small>
-        </div>
-      </div>
-
-      <div class="flow-row">
-        <span>02</span>
-        <div>
-          <strong>Extract quantities</strong>
-          <small>Features, integrals, rates, and physical measures</small>
-        </div>
-      </div>
-
-      <div class="flow-row">
-        <span>03</span>
-        <div>
-          <strong>Assess reliability</strong>
-          <small>Residuals, sensitivity, uncertainty, and assumptions</small>
-        </div>
-      </div>
-
-      <div class="flow-row">
-        <span>04</span>
-        <div>
-          <strong>Interpret the evidence</strong>
-          <small>Comparisons linked to the experimental question</small>
-        </div>
-      </div>
-    </aside>
-  </div>
-</div>
-
-<main class="container">
-
-  <div class="scope" aria-label="Analysis areas">
-    <article>
-      <small>Materials</small>
-      <strong>Structure &amp; surface chemistry</strong>
-    </article>
-
-    <article>
-      <small>Thermal</small>
-      <strong>Conversion &amp; transient response</strong>
-    </article>
-
-    <article>
-      <small>Electrochemical</small>
-      <strong>Storage &amp; relaxation</strong>
-    </article>
-
-    <article>
-      <small>Engineering</small>
-      <strong>Performance &amp; emissions</strong>
-    </article>
-  </div>
-
-  <nav class="jump-links" aria-label="Page sections">
-    <a href="#materials">Characterization</a>
-    <a href="#thermal-electrochemical">Thermal &amp; electrochemical</a>
-    <a href="#engines">Engine analysis</a>
-    <a href="#reliability">Reliability</a>
-    <a href="#workflow">MATLAB workflow</a>
-    <a href="#research-context">Research context</a>
-  </nav>
-
-  <!-- MATERIALS -->
-
-  <section id="materials">
-    <div class="section-top">
-      <div>
-        <div class="number">01 / MATERIALS CHARACTERIZATION</div>
-        <h2>Extract comparable quantities from different instruments.</h2>
-      </div>
-
-      <p>
-        Each measurement requires its own processing choices.
-        Baseline treatment, fitting constraints, normalization,
-        and feature selection are retained alongside the
-        extracted quantities.
-      </p>
-    </div>
-
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Measurement</th>
-            <th>Analysis</th>
-            <th>Quantities interpreted</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>XRD</td>
-            <td>
-              Baseline correction and selected
-              diffraction-profile fitting
-            </td>
-            <td>
-              Peak position, basal spacing, width, area,
-              and apparent stacking coherence
-            </td>
-          </tr>
-
-          <tr>
-            <td>Raman</td>
-            <td>
-              Corresponding-feature identification
-              and spectral-profile fitting
-            </td>
-            <td>
-              Frequency shifts, linewidths,
-              and selected relative spectral contributions
-            </td>
-          </tr>
-
-          <tr>
-            <td>FTIR</td>
-            <td>
-              Baseline treatment and integration
-              over defined spectral windows
-            </td>
-            <td>
-              Band areas, band-area fractions,
-              and lattice-normalized ratios
-            </td>
-          </tr>
-
-          <tr>
-            <td>XPS</td>
-            <td>
-              Survey quantification and constrained
-              high-resolution envelope analysis
-            </td>
-            <td>
-              Elemental ratios and relative
-              chemical-envelope contributions
-            </td>
-          </tr>
-
-          <tr>
-            <td>Gas sorption</td>
-            <td>
-              Interpretation of surface-area and
-              pore-analysis outputs
-            </td>
-            <td>
-              Gas-accessible area, pore volume,
-              and operational pore descriptors
-            </td>
-          </tr>
-
-          <tr>
-            <td>Zeta potential / DLS</td>
-            <td>
-              Comparison of electrokinetic and
-              hydrodynamic measurements
-            </td>
-            <td>
-              Zeta-potential magnitude and
-              operational dispersion size
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-
-    <p style="margin-top:22px">
-      <a href="descriptor-extraction.html">
-        Explore characterization-derived descriptors →
-      </a>
-    </p>
-  </section>
-
-  <!-- THERMAL / ELECTROCHEMICAL -->
-
-  <section id="thermal-electrochemical">
-    <div class="number">02 / TIME, TEMPERATURE &amp; FREQUENCY</div>
-    <h2>Analyse response across different measurement domains.</h2>
-
-    <div class="two-columns">
-
-      <article
-        class="analysis-card"
-        style="
-          --surface:#fff3e8;
-          --border:#ebcdb2;
-          --accent:#a34e1b;
-        "
-      >
-        <h3>Thermal measurements</h3>
+    <section id="materials" aria-labelledby="materials-heading">
+      <div class="section-top">
+        <h2 id="materials-heading">Materials characterization</h2>
 
         <p>
-          Event selection and transient segmentation
-          define which part of the measurement
-          is being quantified.
+          Each measurement requires its own processing choices.
+          Baseline treatment, fitting constraints, normalization,
+          and feature selection are retained alongside the
+          extracted quantities.
         </p>
+      </div>
 
-        <ul>
-          <li>
-            <strong>TGA / DTG:</strong>
-            event boundaries, conversion,
-            derivative peaks, and multi-rate comparison.
-          </li>
+      <div class="table-wrap"
+           role="region"
+           tabindex="0"
+           aria-label="Characterization analysis table; scroll horizontally on small screens">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Measurement</th>
+              <th scope="col">Analysis</th>
+              <th scope="col">Quantities interpreted</th>
+            </tr>
+          </thead>
 
-          <li>
-            <strong>Photothermal response:</strong>
-            ambient correction, heating–cooling windows,
-            amplitudes, time constants, and transient area.
-          </li>
+          <tbody>
+            <tr>
+              <td>XRD</td>
+              <td>
+                Baseline correction and selected
+                diffraction-profile fitting
+              </td>
+              <td>
+                Peak position, basal spacing, width, area,
+                and apparent stacking coherence
+              </td>
+            </tr>
 
-          <li>
-            <strong>Reference calculations:</strong>
-            keep directly measured quantities separate
-            from calibrated or extrapolated estimates.
-          </li>
-        </ul>
+            <tr>
+              <td>Raman</td>
+              <td>
+                Corresponding-feature identification
+                and spectral-profile fitting
+              </td>
+              <td>
+                Frequency shifts, linewidths,
+                and selected relative spectral contributions
+              </td>
+            </tr>
 
-        <a href="thermal-modelling.html">TGA methods →</a>
-        <br>
-        <a href="photothermal-modelling.html">
-          Photothermal methods →
+            <tr>
+              <td>FTIR</td>
+              <td>
+                Baseline treatment and integration
+                over defined spectral windows
+              </td>
+              <td>
+                Band areas, band-area fractions,
+                and lattice-normalized ratios
+              </td>
+            </tr>
+
+            <tr>
+              <td>XPS</td>
+              <td>
+                Survey quantification and constrained
+                high-resolution envelope analysis
+              </td>
+              <td>
+                Elemental ratios and relative
+                chemical-envelope contributions
+              </td>
+            </tr>
+
+            <tr>
+              <td>Gas sorption</td>
+              <td>
+                Interpretation of surface-area
+                and pore-analysis outputs
+              </td>
+              <td>
+                Gas-accessible area, pore volume,
+                and operational pore descriptors
+              </td>
+            </tr>
+
+            <tr>
+              <td>Zeta potential / DLS</td>
+              <td>
+                Comparison of electrokinetic
+                and hydrodynamic measurements
+              </td>
+              <td>
+                Zeta-potential magnitude
+                and operational dispersion size
+              </td>
+            </tr>
+
+            <tr>
+              <td>SEM / EDX</td>
+              <td>
+                Morphology review and comparison
+                of elemental-analysis outputs
+              </td>
+              <td>
+                Observed particle or layer features,
+                elemental distributions, and reported composition
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p class="method-link">
+        <a href="descriptor-extraction.html">
+          Explore characterization-derived descriptors →
         </a>
-      </article>
-
-      <article
-        class="analysis-card"
-        style="
-          --surface:#f2ecf8;
-          --border:#dacbea;
-          --accent:#714298;
-        "
-      >
-        <h3>Electrochemical measurements</h3>
-
-        <p>
-          Potential, time, and frequency representations
-          provide complementary views of the electrode response.
-        </p>
-
-        <ul>
-          <li>
-            <strong>CV:</strong>
-            branch alignment, loop integration,
-            background separation, and scan-rate comparisons.
-          </li>
-
-          <li>
-            <strong>EIS:</strong>
-            impedance components, phase,
-            frequency-dependent capacitance, and consistency checks.
-          </li>
-
-          <li>
-            <strong>GCD:</strong>
-            charge–discharge segmentation,
-            capacitance, charge balance, and energy integration.
-          </li>
-        </ul>
-
-        <a href="electrochemical-modelling.html">
-          Electrochemical methods →
-        </a>
-      </article>
-
-    </div>
-  </section>
-
-  <!-- ENGINE RESEARCH -->
-
-  <section id="engines">
-    <div class="engine-panel">
-      <div>
-        <div class="eyebrow">03 / PUBLISHED ENGINEERING RESEARCH</div>
-        <h2>Compare fuels through measured engine behaviour.</h2>
-
-        <p>
-          My publication record includes alternative fuels,
-          biodiesel blends, plastic pyrolysis oil,
-          nanoparticle-assisted fuels, and engine testing.
-        </p>
-
-        <p>
-          Analysis connects fuel preparation and operating
-          conditions with performance, combustion,
-          emissions, and thermal accounting.
-        </p>
-
-        <a href="publications.html">Explore related publications →</a>
-      </div>
-
-      <div>
-        <article class="engine-item">
-          <h3>Performance analysis</h3>
-          <p>
-            Fuel-consumption, power, and efficiency calculations
-            support comparisons under defined load,
-            speed, and fuel conditions.
-          </p>
-        </article>
-
-        <article class="engine-item">
-          <h3>Combustion analysis</h3>
-          <p>
-            Combustion measurements and derived quantities
-            are interpreted using the applicable engine
-            protocol, acquisition settings, and calculation assumptions.
-          </p>
-        </article>
-
-        <article class="engine-item">
-          <h3>Emission analysis</h3>
-          <p>
-            Exhaust measurements are compared with consistent
-            units, operating conditions, and instrument context.
-            Concentration measurements remain distinct
-            from mass-specific emission factors.
-          </p>
-        </article>
-
-        <article class="engine-item">
-          <h3>Thermal-balance accounting</h3>
-          <p>
-            Fuel-energy input, useful output, measured
-            heat-loss terms, and the balance remainder
-            support energy-distribution analysis.
-          </p>
-        </article>
-      </div>
-    </div>
-
-    <div class="formula-strip" aria-label="Representative engineering calculations">
-      <div>
-        BSFC = ṁ<sub>f</sub> / P<sub>b</sub>
-      </div>
-
-      <div>
-        η<sub>b</sub> =
-        P<sub>b</sub> / (ṁ<sub>f</sub> × LHV)
-      </div>
-    </div>
-
-    <p style="margin-top:15px;font-size:13px">
-      Representative definitions: ṁf is fuel mass-flow rate,
-      Pb is brake power, and LHV is lower heating value.
-      Unit conversions and measurement conventions
-      must be consistent.
-    </p>
-  </section>
-
-  <!-- RELIABILITY -->
-
-  <section id="reliability">
-    <div class="section-top">
-      <div>
-        <div class="number">04 / STATISTICAL ASSESSMENT</div>
-        <h2>Assess the evidence behind an extracted quantity.</h2>
-      </div>
-
-      <p>
-        A fitted curve is one part of the analysis.
-        My thesis workflow also examines residual behaviour,
-        parameter identifiability, uncertainty, and sensitivity
-        in the relevant modelling tasks.
       </p>
+    </section>
+
+    <!-- CRYSTAL AND MAGNETIC MATERIALS -->
+
+    <section id="magnetic-data" aria-labelledby="magnetic-data-heading">
+      <div class="section-top">
+        <h2 id="magnetic-data-heading">
+          Crystal and magnetic-material data
+        </h2>
+
+        <p>
+          Structural and magnetic measurements are interpreted
+          alongside composition, sample preparation, orientation,
+          and measurement conditions.
+        </p>
+      </div>
+
+      <div class="magnetic-methods">
+
+        <article class="magnetic-method structural">
+          <h3>XRD &amp; Rietveld refinement</h3>
+          <p>
+            Phase identification, diffraction-profile comparison,
+            and structural refinement support the interpretation
+            of magnetic powders and crystalline materials.
+          </p>
+        </article>
+
+        <article class="magnetic-method magnetic">
+          <h3>Magnetic measurements</h3>
+          <p>
+            Comparisons retain field, temperature, sample
+            orientation, and preparation history so that changes
+            in measured response can be assessed in context.
+          </p>
+        </article>
+
+        <article class="magnetic-method domains">
+          <h3>Magnetic-domain analysis</h3>
+          <p>
+            Lorentz TEM analysis examines domain-related electron
+            contrast and spatial magnetic features, retaining
+            the imaging conditions used to interpret them.
+          </p>
+        </article>
+
+        <article class="magnetic-method crystals">
+          <h3>Single-crystal measurements</h3>
+          <p>
+            My visiting research includes angle- and
+            temperature-dependent dHvA measurements on HfSn₂
+            crystals. Sample orientation and measurement conditions
+            remain part of the data context.
+          </p>
+        </article>
+
+      </div>
+
+      <p class="method-link">
+        <a href="magnetic-materials.html">
+          Explore crystal growth and magnetic materials →
+        </a>
+      </p>
+    </section>
+
+    <!-- THERMAL AND ELECTROCHEMICAL ANALYSIS -->
+
+    <section id="thermal-electrochemical"
+             aria-labelledby="thermal-electrochemical-heading">
+
+      <h2 id="thermal-electrochemical-heading">
+        Thermal and electrochemical analysis
+      </h2>
+
+      <div class="two-columns">
+
+        <article class="analysis-card thermal-analysis">
+          <h3>Thermal measurements</h3>
+
+          <p>
+            Event selection and transient segmentation define
+            which part of the measurement is being quantified.
+          </p>
+
+          <ul>
+            <li>
+              <strong>TGA / DTG:</strong>
+              event boundaries, conversion, derivative peaks,
+              and multi-rate comparison.
+            </li>
+
+            <li>
+              <strong>Photothermal response:</strong>
+              ambient correction, heating–cooling windows,
+              amplitudes, time constants, and transient area.
+            </li>
+
+            <li>
+              <strong>Reference calculations:</strong>
+              keep directly measured quantities separate
+              from calibrated or extrapolated estimates.
+            </li>
+          </ul>
+
+          <a href="thermal-modelling.html">TGA methods →</a>
+          <br>
+          <a href="photothermal-modelling.html">
+            Photothermal methods →
+          </a>
+        </article>
+
+        <article class="analysis-card electrochemical-analysis">
+          <h3>Electrochemical measurements</h3>
+
+          <p>
+            Potential, time, and frequency representations
+            provide complementary views of the electrode response.
+          </p>
+
+          <ul>
+            <li>
+              <strong>CV:</strong>
+              branch alignment, loop integration,
+              background separation, and scan-rate comparisons.
+            </li>
+
+            <li>
+              <strong>EIS:</strong>
+              impedance components, phase,
+              frequency-dependent capacitance, and consistency checks.
+            </li>
+
+            <li>
+              <strong>GCD:</strong>
+              charge–discharge segmentation, capacitance,
+              charge balance, and energy integration.
+            </li>
+          </ul>
+
+          <a href="electrochemical-modelling.html">
+            Electrochemical methods →
+          </a>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- FIT QUALITY -->
+
+    <section id="reliability" aria-labelledby="reliability-heading">
+      <div class="section-top">
+        <h2 id="reliability-heading">
+          Fit quality and physical consistency
+        </h2>
+
+        <p>
+          A fitted curve is one part of the analysis. Residual
+          behaviour, parameter identifiability, uncertainty,
+          and sensitivity are examined in the relevant
+          modelling tasks.
+        </p>
+      </div>
+
+      <div class="checks">
+
+        <article class="check">
+          <h3>Residual structure</h3>
+          <p>
+            Look for systematic deviations and temporal dependence
+            that summary fit measures can conceal.
+          </p>
+        </article>
+
+        <article class="check">
+          <h3>Parameter identifiability</h3>
+          <p>
+            Examine whether available measurements can
+            distinguish the fitted parameters.
+          </p>
+        </article>
+
+        <article class="check">
+          <h3>Sensitivity</h3>
+          <p>
+            Assess the effects of fitting windows,
+            processing choices, and descriptor definitions.
+          </p>
+        </article>
+
+        <article class="check">
+          <h3>Uncertainty</h3>
+          <p>
+            Use parameter intervals and resampling in the
+            analyses where they are applicable.
+          </p>
+        </article>
+
+        <article class="check">
+          <h3>Model comparison</h3>
+          <p>
+            Consider complexity, information criteria, stability,
+            and appropriate withheld observations.
+          </p>
+        </article>
+
+        <article class="check">
+          <h3>Physical consistency</h3>
+          <p>
+            Check units, limiting cases, sign conventions,
+            and the plausibility of calculated quantities.
+          </p>
+        </article>
+
+      </div>
+
+      <p class="note">
+        Analysis choices follow the measurement and research
+        question. Fitted parameters are interpreted with their
+        units, assumptions, sensitivity, and physical consistency.
+      </p>
+    </section>
+
+    <!-- MATLAB WORKFLOW -->
+
+    <section id="workflow" aria-labelledby="workflow-heading">
+      <h2 id="workflow-heading">MATLAB analysis workflow</h2>
+
+      <ol class="steps">
+        <li>
+          <strong>Organize</strong>
+          <span>
+            Preserve raw files, sample identity, units,
+            experimental settings, and acquisition metadata.
+          </span>
+        </li>
+
+        <li>
+          <strong>Process</strong>
+          <span>
+            Apply measurement-specific correction,
+            interpolation, segmentation, or filtering,
+            documenting the choices.
+          </span>
+        </li>
+
+        <li>
+          <strong>Quantify</strong>
+          <span>
+            Extract features, calculate integrals,
+            apply physical definitions, and assemble comparison tables.
+          </span>
+        </li>
+
+        <li>
+          <strong>Assess</strong>
+          <span>
+            Check residuals, uncertainty, sensitivity,
+            parameter stability, and physical consistency.
+          </span>
+        </li>
+
+        <li>
+          <strong>Visualize</strong>
+          <span>
+            Use clear axes, consistent units, meaningful
+            normalization, and comparable scales.
+          </span>
+        </li>
+
+        <li>
+          <strong>Interpret</strong>
+          <span>
+            Connect the observations to the research question
+            while retaining assumptions and experimental limits.
+          </span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- EARLIER ENGINEERING RESEARCH -->
+
+    <section id="engines" aria-labelledby="engines-heading">
+      <div class="engine-panel">
+
+        <div>
+          <h2 id="engines-heading">Earlier engineering analysis</h2>
+
+          <p>
+            My earlier engineering research and publications
+            include alternative fuels, biodiesel blends,
+            plastic pyrolysis oil, nanoparticle-assisted fuels,
+            and engine testing.
+          </p>
+
+          <p>
+            Analysis connects fuel preparation and operating
+            conditions with performance, combustion,
+            emissions, and thermal accounting.
+          </p>
+
+          <a href="publications.html">
+            Explore related publications →
+          </a>
+        </div>
+
+        <div>
+          <article class="engine-item">
+            <h3>Performance analysis</h3>
+            <p>
+              Fuel-consumption, power, and efficiency calculations
+              support comparisons under defined load,
+              speed, and fuel conditions.
+            </p>
+          </article>
+
+          <article class="engine-item">
+            <h3>Combustion analysis</h3>
+            <p>
+              Combustion measurements and derived quantities
+              are interpreted using the applicable engine
+              protocol, acquisition settings, and calculation
+              assumptions.
+            </p>
+          </article>
+
+          <article class="engine-item">
+            <h3>Emission analysis</h3>
+            <p>
+              Exhaust measurements are compared with consistent
+              units, operating conditions, and instrument context.
+              Concentration measurements remain distinct
+              from mass-specific emission factors.
+            </p>
+          </article>
+
+          <article class="engine-item">
+            <h3>Thermal-balance accounting</h3>
+            <p>
+              Fuel-energy input, useful output, measured
+              heat-loss terms, and the balance remainder
+              support energy-distribution analysis.
+            </p>
+          </article>
+        </div>
+
+      </div>
+
+      <div class="formula-strip"
+           aria-label="Representative engineering calculations">
+        <div>
+          BSFC = ṁ<sub>f</sub> / P<sub>b</sub>
+        </div>
+
+        <div>
+          η<sub>b</sub> =
+          P<sub>b</sub> / (ṁ<sub>f</sub> × LHV)
+        </div>
+      </div>
+
+      <p class="unit-note">
+        Representative definitions: ṁ<sub>f</sub> is fuel
+        mass-flow rate, P<sub>b</sub> is brake power, and LHV
+        is lower heating value. Unit conversions and measurement
+        conventions must be consistent.
+      </p>
+    </section>
+
+    <!-- RESEARCH APPLICATIONS -->
+
+    <section id="research-context"
+             aria-labelledby="research-context-heading">
+
+      <h2 id="research-context-heading">Research applications</h2>
+
+      <div class="evidence">
+
+        <article>
+          <h3>Graduate materials research</h3>
+
+          <p>
+            Characterization-derived descriptors, multi-rate
+            thermal kinetics, photothermal transients,
+            and electrochemical response models support
+            my work on MXene-based materials.
+          </p>
+
+          <p>
+            The modelling pages describe governing equations,
+            assumptions, circuit structures, and numerical methods.
+          </p>
+
+          <a href="modelling.html">Explore modelling methods →</a>
+        </article>
+
+        <article>
+          <h3>Published engineering research</h3>
+
+          <p>
+            My publications address fuel properties,
+            engine performance, thermal balances, combustion,
+            and emissions across alternative-fuel systems.
+          </p>
+
+          <a href="publications.html">View publications →</a>
+        </article>
+
+      </div>
+    </section>
+
+    <a class="back" href="research.html">
+      ← Back to research interests
+    </a>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+
+      <div>
+        <p class="footer-name">Rupesh Lal Karn</p>
+        <p>Prairie View, Texas</p>
+        <a href="mailto:rkarn@pvamu.edu">rkarn@pvamu.edu</a>
+      </div>
+
+      <nav class="footer-links" aria-label="Academic profiles">
+        <a href="https://scholar.google.com/citations?user=7RRtNOYAAAAJ&amp;hl=en">
+          Google Scholar
+        </a>
+
+        <a href="https://orcid.org/0009-0008-9261-024X">
+          ORCID
+        </a>
+
+        <a href="Rupesh_Lal_Karn_CV.pdf">CV</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <small class="copyright">
+        © <span id="year">2026</span> Rupesh Lal Karn
+      </small>
+
     </div>
+  </footer>
 
-    <div class="checks">
-      <article class="check">
-        <h3>Residual structure</h3>
-        <p>
-          Look for systematic deviations and temporal
-          dependence that summary fit measures can conceal.
-        </p>
-      </article>
+  <script>
+    const menuButton = document.querySelector('.menu-button');
+    const navigation = document.getElementById('site-navigation');
 
-      <article class="check">
-        <h3>Parameter identifiability</h3>
-        <p>
-          Examine whether available measurements
-          can distinguish the fitted parameters.
-        </p>
-      </article>
+    function setMenu(open) {
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.textContent = open ? 'Close' : 'Menu';
+      navigation.classList.toggle('is-open', open);
+    }
 
-      <article class="check">
-        <h3>Sensitivity</h3>
-        <p>
-          Assess the effects of fitting windows,
-          processing choices, and descriptor definitions.
-        </p>
-      </article>
+    menuButton.addEventListener('click', () => {
+      setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
+    });
 
-      <article class="check">
-        <h3>Uncertainty</h3>
-        <p>
-          Use parameter intervals and resampling
-          in the analyses where they are applicable.
-        </p>
-      </article>
+    document.addEventListener('keydown', event => {
+      if (
+        event.key === 'Escape' &&
+        menuButton.getAttribute('aria-expanded') === 'true'
+      ) {
+        setMenu(false);
+        menuButton.focus();
+      }
+    });
 
-      <article class="check">
-        <h3>Model comparison</h3>
-        <p>
-          Consider complexity, information criteria,
-          stability, and appropriate withheld observations.
-        </p>
-      </article>
+    navigation.addEventListener('click', event => {
+      if (event.target.closest('a')) {
+        setMenu(false);
+      }
+    });
 
-      <article class="check">
-        <h3>Physical consistency</h3>
-        <p>
-          Check units, limiting cases, sign conventions,
-          and the plausibility of calculated quantities.
-        </p>
-      </article>
-    </div>
-
-    <div class="note">
-      Analysis methods are selected for the measurement and
-      question. Their use in a thesis workflow does not imply
-      that every method was applied to every publication.
-      Correlation and a strong fit alone do not establish causation
-      or a unique physical mechanism.
-    </div>
-  </section>
-
-  <!-- MATLAB -->
-
-  <section id="workflow">
-    <div class="number">05 / MATLAB &amp; SCIENTIFIC VISUALIZATION</div>
-    <h2>A traceable analysis sequence.</h2>
-
-    <ol class="steps">
-      <li>
-        <strong>Organize</strong>
-        <span>
-          Preserve raw files, sample identity,
-          units, experimental settings, and acquisition metadata.
-        </span>
-      </li>
-
-      <li>
-        <strong>Process</strong>
-        <span>
-          Apply measurement-specific correction,
-          interpolation, segmentation, or filtering,
-          documenting the choices.
-        </span>
-      </li>
-
-      <li>
-        <strong>Quantify</strong>
-        <span>
-          Extract features, calculate integrals,
-          apply physical definitions, and assemble comparison tables.
-        </span>
-      </li>
-
-      <li>
-        <strong>Assess</strong>
-        <span>
-          Check residuals, uncertainty, sensitivity,
-          parameter stability, and physical consistency.
-        </span>
-      </li>
-
-      <li>
-        <strong>Visualize</strong>
-        <span>
-          Use clear axes, consistent units, meaningful
-          normalization, and comparable scales.
-        </span>
-      </li>
-
-      <li>
-        <strong>Interpret</strong>
-        <span>
-          Connect the observations to the research question
-          while retaining assumptions and experimental limits.
-        </span>
-      </li>
-    </ol>
-  </section>
-
-  <!-- RESEARCH CONTEXT -->
-
-  <section id="research-context">
-    <div class="number">06 / RESEARCH CONTEXT</div>
-    <h2>Methods grounded in experimental work.</h2>
-
-    <div class="evidence">
-      <article>
-        <h3>Published engineering research</h3>
-
-        <p>
-          My publications address fuel properties,
-          engine performance, thermal balances,
-          combustion, and emissions across alternative-fuel systems.
-        </p>
-
-        <p>
-          These studies provide the engineering context
-          for quantitative comparisons of fuels
-          and operating conditions.
-        </p>
-
-        <a href="publications.html">View publications →</a>
-      </article>
-
-      <article>
-        <h3>Master’s thesis analysis</h3>
-
-        <p>
-          My thesis develops characterization-derived
-          descriptors, multi-rate thermal kinetics,
-          photothermal transient analysis, and
-          electrochemical modelling workflows for MXene-based materials.
-        </p>
-
-        <p>
-          The modelling pages explain the governing equations,
-          circuit structures, assumptions, and numerical simulations.
-        </p>
-
-        <a href="modelling.html">Explore modelling methods →</a>
-      </article>
-    </div>
-  </section>
-
-  <a class="back" href="research.html">← Back to research interests</a>
-
-</main>
-
-<footer>
-  <div class="container">
-    Rupesh Lal Karn · Scientific Data Analysis &amp; Interpretation
-  </div>
-</footer>
-
+    document.getElementById('year').textContent =
+      new Date().getFullYear();
+  </script>
 </body>
 </html>
