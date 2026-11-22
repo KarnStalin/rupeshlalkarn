@@ -9,7 +9,7 @@
 
   <meta
     name="description"
-    content="CV, EIS, GCD, equivalent-circuit modelling, state-space simulation, and assessment of electrochemical response models."
+    content="Electrochemical modelling through cyclic voltammetry, impedance spectroscopy, galvanostatic charge–discharge, equivalent circuits, and MATLAB simulation."
   >
 
   <link
@@ -52,7 +52,8 @@
     }
 
     a:focus-visible,
-    button:focus-visible {
+    button:focus-visible,
+    summary:focus-visible {
       outline: 2px solid var(--nav-accent);
       outline-offset: 5px;
     }
@@ -198,6 +199,42 @@
       font-size: 14px;
     }
 
+    /* Main schematic */
+
+    .schematic {
+      max-width: 1000px;
+      margin: 26px auto;
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .image-link {
+      display: block;
+    }
+
+    .image-link img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    figcaption {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding: 10px 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    figcaption a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+    }
+
     /* Scientific sections */
 
     main > section {
@@ -257,43 +294,7 @@
       letter-spacing: -.015em;
     }
 
-    /* Schematics */
-
-    .schematic {
-      max-width: 1000px;
-      margin: 26px auto;
-      border: 1px solid var(--line);
-      background: white;
-    }
-
-    .image-link {
-      display: block;
-    }
-
-    .image-link img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-
-    figcaption {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 15px;
-      padding: 10px 16px;
-      border-top: 1px solid var(--line);
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    figcaption a {
-      display: inline-flex;
-      align-items: center;
-      min-height: 36px;
-    }
-
-    /* Model explanations and equations */
+    /* Explanations and equations */
 
     .model-row {
       display: grid;
@@ -409,15 +410,10 @@
     }
 
     summary {
-      cursor: pointer;
       min-height: 44px;
       color: var(--accent);
       font: 22px/1.5 var(--serif);
-    }
-
-    summary:focus-visible {
-      outline: 2px solid var(--accent);
-      outline-offset: 5px;
+      cursor: pointer;
     }
 
     details[open] summary {
@@ -474,18 +470,6 @@
       font-size: 14px;
     }
 
-    @keyframes titleGlow {
-      from {
-        text-shadow: 0 0 2px rgba(128, 81, 157, .04);
-      }
-
-      to {
-        text-shadow:
-          0 0 9px rgba(128, 81, 157, .22),
-          0 0 22px rgba(128, 81, 157, .11);
-      }
-    }
-
     /* Footer */
 
     .footer {
@@ -531,13 +515,27 @@
       font-size: 13px;
     }
 
+    /* Subtle heading glow */
+
+    @keyframes titleGlow {
+      from {
+        text-shadow: 0 0 2px rgba(128, 81, 157, .04);
+      }
+
+      to {
+        text-shadow:
+          0 0 9px rgba(128, 81, 157, .22),
+          0 0 22px rgba(128, 81, 157, .11);
+      }
+    }
+
     /* Responsive layout */
 
     @media (max-width: 1050px) {
       .header-inner {
         flex-wrap: wrap;
-        padding: 20px 0;
         gap: 12px;
+        padding: 20px 0;
       }
 
       .site-nav {
@@ -594,16 +592,16 @@
         font-size: 39px;
       }
 
-      .lead {
-        font-size: 17px;
-      }
-
       h2 {
         font-size: 29px;
       }
 
       h3 {
         font-size: 24px;
+      }
+
+      .lead {
+        font-size: 17px;
       }
 
       main > section {
@@ -687,7 +685,8 @@
     <div class="page-intro">
       <p class="breadcrumb">
         <a href="research.html">Research</a> /
-        <a href="modelling.html">Modelling</a> / Electrochemical
+        <a href="modelling.html">Modelling</a> /
+        Electrochemical
       </p>
 
       <h1>Electrochemical Modelling</h1>
@@ -715,7 +714,7 @@
       <a href="#workflow">MATLAB workflow</a>
     </nav>
 
-    <!-- Upload electrochemical-response.png beside this HTML file. -->
+    <!-- Your uploaded CV/EIS/GCD schematic -->
 
     <figure class="schematic">
       <a class="image-link" href="electrochemical-response.png">
@@ -724,13 +723,13 @@
           width="1752"
           height="897"
           fetchpriority="high"
-          alt="Schematic CV loop, EIS Nyquist response, and galvanostatic charge–discharge curves"
+          alt="Schematic showing cyclic voltammetry, electrochemical impedance spectroscopy, and galvanostatic charge–discharge"
         >
       </a>
 
       <figcaption>
-        <span>Complementary electrochemical measurements · Schematic</span>
-        <a href="electrochemical-response.png">Enlarge</a>
+        <span>CV · EIS · GCD — Schematic</span>
+        <a href="electrochemical-response.png">View full image</a>
       </figcaption>
     </figure>
 
@@ -752,7 +751,7 @@
           </p>
 
           <div class="model-purpose">
-            It summarizes stored-charge response across the
+            This summarizes stored-charge response across the
             selected potential interval.
           </div>
         </div>
@@ -769,8 +768,8 @@
           </div>
 
           <p>
-            ν: scan rate. i<sub>a</sub> and i<sub>c</sub>:
-            corresponding branch currents. Specific or areal
+            ν is the scan rate. i<sub>a</sub> and i<sub>c</sub>
+            are corresponding branch currents. Specific or areal
             capacitance requires the corresponding mass or
             area normalization.
           </p>
@@ -825,8 +824,8 @@
           </p>
 
           <div class="model-purpose">
-            They provide operational rate descriptors for comparable
-            potentials and sessions.
+            These provide operational rate descriptors for
+            comparable potentials and measurement sessions.
           </div>
         </div>
 
@@ -842,10 +841,10 @@
           </div>
 
           <p>
-            b describes rate scaling. k<sub>1</sub> and
-            k<sub>2</sub> are operational decomposition coefficients.
-            Conventional surface-like or diffusion-like interpretations
-            do not prove a mechanism.
+            b describes rate scaling. k<sub>1</sub> and k<sub>2</sub>
+            are operational decomposition coefficients.
+            Conventional surface-like or diffusion-like
+            interpretations do not prove a mechanism.
           </p>
         </div>
       </article>
@@ -854,8 +853,9 @@
         <summary>Trasatti charge-accessibility analysis</summary>
 
         <p>
-          Slow- and fast-rate extrapolations provide operational outer
-          and total charge estimates within appropriate fitting ranges.
+          Slow- and fast-rate extrapolations provide operational
+          outer and total charge estimates within appropriate
+          fitting ranges.
         </p>
 
         <div class="equation-box">
@@ -870,15 +870,15 @@
           </div>
 
           <p>
-            The ratio q<sub>out</sub>/q<sub>tot</sub> is an accessibility
-            descriptor. The validity of the extrapolation depends on
-            the selected rate domain.
+            The ratio q<sub>out</sub>/q<sub>tot</sub>
+            is an accessibility descriptor. The validity of
+            the extrapolation depends on the selected rate domain.
           </p>
         </div>
       </details>
     </section>
 
-    <!-- IMPEDANCE SPECTROSCOPY -->
+    <!-- ELECTROCHEMICAL IMPEDANCE SPECTROSCOPY -->
 
     <section id="eis" aria-labelledby="eis-heading">
       <p class="section-label">Frequency-dependent response</p>
@@ -891,13 +891,13 @@
 
           <p>
             Candidate networks combine series resistance, storage
-            branches, and non-ideal capacitive elements. Circuit labels
-            identify mathematical branches rather than predetermined
-            mechanisms.
+            branches, and non-ideal capacitive elements. Circuit
+            labels identify mathematical branches rather than
+            predetermined mechanisms.
           </p>
 
           <div class="model-purpose">
-            They connect frequency dependence with interpretable
+            These connect frequency dependence with interpretable
             resistance and timescale parameters.
           </div>
         </div>
@@ -945,17 +945,17 @@
           </div>
 
           <p>
-            Additional descriptors include the high-frequency real-axis
-            intercept, low-frequency impedance, phase, and
-            characteristic relaxation measures.
+            Additional descriptors include the high-frequency
+            real-axis intercept, low-frequency impedance, phase,
+            and characteristic relaxation measures.
           </p>
         </div>
       </article>
 
       <div class="note">
         Linear Kramers–Kronig checks and residual inspection support
-        assessment of spectral consistency. A visually plausible circuit
-        fit alone does not establish parameter identifiability.
+        assessment of spectral consistency. A visually plausible
+        circuit fit alone does not establish parameter identifiability.
       </div>
     </section>
 
@@ -975,13 +975,13 @@
 
           <p>
             Segment duration, potential window, and applied current
-            define apparent capacitance. Charge and energy integration
-            provide complementary efficiency measures.
+            define apparent capacitance. Charge and energy
+            integration provide complementary efficiency measures.
           </p>
 
           <div class="model-purpose">
-            They distinguish charge recovery from voltage-dependent
-            energy recovery.
+            These distinguish charge recovery from
+            voltage-dependent energy recovery.
           </div>
         </div>
 
@@ -1022,30 +1022,11 @@
         From circuit topology to simulated response
       </h2>
 
-      <!-- This is the filename already uploaded to your repository. -->
-
-      <figure class="schematic">
-        <a class="image-link" href="electrochemical-modelling.png">
-          <img
-            src="electrochemical-modelling.png"
-            width="1752"
-            height="897"
-            loading="lazy"
-            alt="Candidate storage circuit connected to a state-space representation and electrochemical excitations"
-          >
-        </a>
-
-        <figcaption>
-          <span>Circuit-to-response workflow · Schematic</span>
-          <a href="electrochemical-modelling.png">Enlarge</a>
-        </figcaption>
-      </figure>
-
       <p>
-        Within each multi-rate CV or GCD fit, one parameter set describes
-        the complete family of curves. Rate dependence therefore emerges
-        from circuit time constants rather than independent parameters
-        assigned to every scan rate or current.
+        Within each multi-rate CV or GCD fit, one parameter set
+        describes the complete family of curves. Rate dependence
+        therefore emerges from circuit time constants rather than
+        independent parameters assigned to every scan rate or current.
       </p>
 
       <div
@@ -1092,8 +1073,8 @@
               <td>R<sub>p</sub></td>
               <td>Leakage path across the storage network</td>
               <td>
-                Tests whether a conductive parasitic path is
-                needed by the observations.
+                Tests whether a conductive parasitic path
+                is needed by the observations.
               </td>
             </tr>
 
@@ -1101,8 +1082,8 @@
               <td>CPE</td>
               <td>Distributed capacitive response</td>
               <td>
-                Describes non-ideal relaxation over a range
-                of timescales.
+                Describes non-ideal relaxation over
+                a range of timescales.
               </td>
             </tr>
           </tbody>
@@ -1115,13 +1096,14 @@
           <h3>Use capacitor voltages as states</h3>
 
           <p>
-            Finite RC networks are expressed as linear dynamical systems.
-            The excitation changes between CV and GCD while the circuit
-            equations retain their physical structure.
+            Finite RC networks are expressed as linear dynamical
+            systems. The excitation changes between CV and GCD
+            while the circuit equations retain their physical
+            structure.
           </p>
 
           <div class="model-purpose">
-            It supports direct simulation of complete waveforms
+            This supports direct simulation of complete waveforms
             rather than only summary descriptors.
           </div>
         </div>
@@ -1136,8 +1118,8 @@
           </div>
 
           <p>
-            x contains internal capacitor voltages. Matrices and vectors
-            follow from the candidate topology.
+            x contains internal capacitor voltages. Matrices
+            and vectors follow from the candidate topology.
           </p>
         </div>
       </article>
@@ -1148,9 +1130,9 @@
         </summary>
 
         <p>
-          For nonzero feedthrough D, potential control eliminates current
-          from the state equations. Each linear sweep is propagated using
-          the analytical linear-system solution.
+          For nonzero feedthrough D, potential control eliminates
+          current from the state equations. Each linear sweep is
+          propagated using the analytical linear-system solution.
         </p>
 
         <div class="equation-box">
@@ -1165,9 +1147,10 @@
         </div>
 
         <p class="detail-note">
-          Initial state, cycle count, and sampling follow the experimental
-          protocol. Analytical propagation avoids an arbitrary time-step
-          approximation for the finite linear network.
+          Initial state, cycle count, and sampling follow the
+          experimental protocol. Analytical propagation avoids
+          an arbitrary time-step approximation for the finite
+          linear network.
         </p>
       </details>
 
@@ -1175,10 +1158,10 @@
         <summary>GCD simulation: constant-current segments</summary>
 
         <p>
-          Constant applied current drives the state equations. Charge and
-          discharge segments are propagated to the defined potential
-          boundaries, with switching and initial conditions retained
-          explicitly.
+          Constant applied current drives the state equations.
+          Charge and discharge segments are propagated to the
+          defined potential boundaries, with switching and
+          initial conditions retained explicitly.
         </p>
       </details>
 
@@ -1186,14 +1169,16 @@
         <summary>CPE realization: distributed timescales</summary>
 
         <p>
-          A CPE has no exact finite-dimensional state-space realization.
-          I use a discretized relaxation-time distribution to construct
-          a finite approximation over the experimental window.
+          A CPE has no exact finite-dimensional state-space
+          realization. I use a discretized relaxation-time
+          distribution to construct a finite approximation
+          over the experimental window.
         </p>
 
         <p>
-          The numerical realization is checked against the analytical
-          impedance before being used for time-domain simulation.
+          The numerical realization is checked against the
+          analytical impedance before being used for
+          time-domain simulation.
         </p>
       </details>
     </section>
@@ -1208,9 +1193,9 @@
       </h2>
 
       <p>
-        Empirical functions summarize capacitance versus scan rate or
-        current. Circuit models instead aim to explain the complete
-        curve family through shared physical parameters.
+        Empirical functions summarize capacitance versus scan rate
+        or current. Circuit models instead aim to explain the
+        complete curve family through shared physical parameters.
       </p>
 
       <div class="equation-box">
@@ -1229,23 +1214,25 @@
         </div>
 
         <p>
-          x denotes the relevant measurement rate. Here β is a fitted
-          rate exponent, unrelated to TGA heating-rate notation.
+          x denotes the relevant measurement rate. Here β
+          is a fitted rate exponent, unrelated to TGA
+          heating-rate notation.
         </p>
       </div>
 
       <div class="note">
-        Model assessment considers parameter identifiability, bounds,
-        residual structure, information criteria, bootstrap uncertainty,
-        and withheld scan rates, currents, or frequencies. Extra circuit
-        branches require support beyond improved visual agreement.
+        Model assessment considers parameter identifiability,
+        bounds, residual structure, information criteria,
+        bootstrap uncertainty, and withheld scan rates,
+        currents, or frequencies. Extra circuit branches
+        require support beyond improved visual agreement.
       </div>
 
       <p class="detail-note">
-        Cross-technique comparison examines compatible resistance and
-        relaxation scales. It does not assume that every technique must
-        return identical apparent capacitance or share one independently
-        untested fit.
+        Cross-technique comparison examines compatible resistance
+        and relaxation scales. It does not assume that every
+        technique must return identical apparent capacitance
+        or share one independently untested fit.
       </p>
     </section>
 
@@ -1258,9 +1245,9 @@
       <ol class="steps">
         <li>
           <strong>Import and check the measurements</strong>
-          Preserve electrode identity, acquisition session, cycle
-          selection, potential windows, scan rates, currents,
-          and frequencies.
+          Preserve electrode identity, acquisition session,
+          cycle selection, potential windows, scan rates,
+          currents, and frequencies.
         </li>
 
         <li>
@@ -1284,27 +1271,27 @@
 
         <li>
           <strong>Simulate the experimental excitation</strong>
-          Apply piecewise potential ramps or current steps with the
-          stated initial conditions and switching rules.
+          Apply piecewise potential ramps or current steps with
+          the stated initial conditions and switching rules.
         </li>
 
         <li>
           <strong>Fit shared parameters within each curve family</strong>
-          Let rate dependence emerge from the model rather than fitting
-          independent parameters at every rate.
+          Let rate dependence emerge from the model rather than
+          fitting independent parameters at every rate.
         </li>
 
         <li>
           <strong>Assess identifiability and predictive checks</strong>
-          Examine residuals, parameter stability, bootstrap intervals,
-          and appropriate withheld observations.
+          Examine residuals, parameter stability, bootstrap
+          intervals, and appropriate withheld observations.
         </li>
 
         <li>
           <strong>Verify the numerical implementation</strong>
-          Compare limiting cases with analytical RC and leaky-capacitor
-          expressions, and check CPE approximations against analytical
-          impedance.
+          Compare limiting cases with analytical RC and
+          leaky-capacitor expressions, and check CPE
+          approximations against analytical impedance.
         </li>
       </ol>
     </section>
