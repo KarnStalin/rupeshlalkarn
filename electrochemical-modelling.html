@@ -7,11 +7,15 @@
 
   <title>Electrochemical Modelling | Rupesh Lal Karn</title>
 
-  <meta name="description"
-        content="CV, EIS, GCD, equivalent-circuit modelling, state-space simulation, and assessment of electrochemical response models.">
+  <meta
+    name="description"
+    content="CV, EIS, GCD, equivalent-circuit modelling, state-space simulation, and assessment of electrochemical response models."
+  >
 
-  <link rel="canonical"
-        href="https://rlk.com.np/electrochemical-modelling.html">
+  <link
+    rel="canonical"
+    href="https://rlk.com.np/electrochemical-modelling.html"
+  >
 
   <style>
     :root {
@@ -22,8 +26,7 @@
       --line: #d8dcd4;
       --nav-accent: #385975;
       --serif: Georgia, "Times New Roman", serif;
-      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI",
-              Arial, sans-serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
     }
 
     * {
@@ -643,22 +646,28 @@
 </head>
 
 <body>
+
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <div class="container header-inner">
+
       <a class="name" href="index.html">Rupesh Lal Karn</a>
 
-      <button class="menu-button"
-              type="button"
-              aria-controls="site-navigation"
-              aria-expanded="false">
+      <button
+        class="menu-button"
+        type="button"
+        aria-controls="site-navigation"
+        aria-expanded="false"
+      >
         Menu
       </button>
 
-      <nav class="site-nav"
-           id="site-navigation"
-           aria-label="Main navigation">
+      <nav
+        class="site-nav"
+        id="site-navigation"
+        aria-label="Main navigation"
+      >
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a class="active" href="research.html">Research</a>
@@ -669,6 +678,7 @@
         <a href="skills.html">Skills</a>
         <a href="contact.html">Contact</a>
       </nav>
+
     </div>
   </header>
 
@@ -683,9 +693,9 @@
       <h1>Electrochemical Modelling</h1>
 
       <p class="lead">
-        I model electrochemical charge storage through
-        complementary analyses of cyclic voltammetry,
-        impedance spectroscopy, and galvanostatic charge–discharge.
+        I model electrochemical charge storage through complementary
+        analyses of cyclic voltammetry, impedance spectroscopy,
+        and galvanostatic charge–discharge.
       </p>
 
       <p class="intro-note">
@@ -705,13 +715,17 @@
       <a href="#workflow">MATLAB workflow</a>
     </nav>
 
+    <!-- Upload electrochemical-response.png beside this HTML file. -->
+
     <figure class="schematic">
       <a class="image-link" href="electrochemical-response.png">
-        <img src="electrochemical-response.png"
-             width="1752"
-             height="897"
-             fetchpriority="high"
-             alt="Schematic CV loop, EIS Nyquist response, and galvanostatic charge–discharge curves.">
+        <img
+          src="electrochemical-response.png"
+          width="1752"
+          height="897"
+          fetchpriority="high"
+          alt="Schematic CV loop, EIS Nyquist response, and galvanostatic charge–discharge curves"
+        >
       </a>
 
       <figcaption>
@@ -732,14 +746,14 @@
           <h3>Integrate the complete response</h3>
 
           <p>
-            Anodic and cathodic branches are interpolated
-            onto a common potential grid before integration.
-            The potential window and scan rate remain explicit.
+            Anodic and cathodic branches are interpolated onto a
+            common potential grid before integration. The potential
+            window and scan rate remain explicit.
           </p>
 
           <div class="model-purpose">
-            It summarizes stored-charge response across
-            the selected potential interval.
+            It summarizes stored-charge response across the
+            selected potential interval.
           </div>
         </div>
 
@@ -757,8 +771,8 @@
           <p>
             ν: scan rate. i<sub>a</sub> and i<sub>c</sub>:
             corresponding branch currents. Specific or areal
-            capacitance requires the corresponding mass
-            or area normalization.
+            capacitance requires the corresponding mass or
+            area normalization.
           </p>
         </div>
       </article>
@@ -769,14 +783,14 @@
           <h3>Separate common background current</h3>
 
           <p>
-            The branch average describes common-direction
-            background, while the half-difference isolates
-            the symmetric response used for rate analysis.
+            The branch average describes common-direction background,
+            while the half-difference isolates the symmetric response
+            used for rate analysis.
           </p>
 
           <div class="model-purpose">
-            A shared background can bias power-law fits
-            performed on one branch alone.
+            A shared background can bias power-law fits performed
+            on one branch alone.
           </div>
         </div>
 
@@ -792,9 +806,9 @@
           </div>
 
           <p>
-            Cancellation applies to a contribution shared
-            by both branches; it is not a universal separation
-            of all electrochemical processes.
+            Cancellation applies to a contribution shared by both
+            branches; it is not a universal separation of all
+            electrochemical processes.
           </p>
         </div>
       </article>
@@ -805,14 +819,14 @@
           <h3>Power-law and two-term analysis</h3>
 
           <p>
-            The power law describes current scaling.
-            The Dunn-type decomposition represents terms
-            proportional to scan rate and its square root.
+            The power law describes current scaling. The Dunn-type
+            decomposition represents terms proportional to scan rate
+            and its square root.
           </p>
 
           <div class="model-purpose">
-            They provide operational rate descriptors for
-            comparable potentials and sessions.
+            They provide operational rate descriptors for comparable
+            potentials and sessions.
           </div>
         </div>
 
@@ -829,9 +843,9 @@
 
           <p>
             b describes rate scaling. k<sub>1</sub> and
-            k<sub>2</sub> are operational decomposition
-            coefficients. Conventional surface-like or
-            diffusion-like interpretations do not prove a mechanism.
+            k<sub>2</sub> are operational decomposition coefficients.
+            Conventional surface-like or diffusion-like interpretations
+            do not prove a mechanism.
           </p>
         </div>
       </article>
@@ -840,9 +854,8 @@
         <summary>Trasatti charge-accessibility analysis</summary>
 
         <p>
-          Slow- and fast-rate extrapolations provide operational
-          outer and total charge estimates within appropriate
-          fitting ranges.
+          Slow- and fast-rate extrapolations provide operational outer
+          and total charge estimates within appropriate fitting ranges.
         </p>
 
         <div class="equation-box">
@@ -857,9 +870,9 @@
           </div>
 
           <p>
-            The ratio q<sub>out</sub>/q<sub>tot</sub>
-            is an accessibility descriptor. The validity
-            of the extrapolation depends on the selected rate domain.
+            The ratio q<sub>out</sub>/q<sub>tot</sub> is an accessibility
+            descriptor. The validity of the extrapolation depends on
+            the selected rate domain.
           </p>
         </div>
       </details>
@@ -877,10 +890,10 @@
           <h3>Describe resistance and relaxation</h3>
 
           <p>
-            Candidate networks combine series resistance,
-            storage branches, and non-ideal capacitive elements.
-            Circuit labels identify mathematical branches
-            rather than predetermined mechanisms.
+            Candidate networks combine series resistance, storage
+            branches, and non-ideal capacitive elements. Circuit labels
+            identify mathematical branches rather than predetermined
+            mechanisms.
           </p>
 
           <div class="model-purpose">
@@ -915,10 +928,10 @@
           <h3>Re-express the measured impedance</h3>
 
           <p>
-            Complex capacitance supplies a complementary
-            representation of storage and loss across frequency.
-            Its interpretation remains tied to the impedance
-            definition and any resistance correction.
+            Complex capacitance supplies a complementary representation
+            of storage and loss across frequency. Its interpretation
+            remains tied to the impedance definition and any
+            resistance correction.
           </p>
         </div>
 
@@ -932,18 +945,17 @@
           </div>
 
           <p>
-            Additional descriptors include the high-frequency
-            real-axis intercept, low-frequency impedance,
-            phase, and characteristic relaxation measures.
+            Additional descriptors include the high-frequency real-axis
+            intercept, low-frequency impedance, phase, and
+            characteristic relaxation measures.
           </p>
         </div>
       </article>
 
       <div class="note">
-        Linear Kramers–Kronig checks and residual inspection
-        support assessment of spectral consistency.
-        A visually plausible circuit fit alone does not
-        establish parameter identifiability.
+        Linear Kramers–Kronig checks and residual inspection support
+        assessment of spectral consistency. A visually plausible circuit
+        fit alone does not establish parameter identifiability.
       </div>
     </section>
 
@@ -962,15 +974,14 @@
           <h3>Quantify resolved charge–discharge segments</h3>
 
           <p>
-            Segment duration, potential window, and applied
-            current define apparent capacitance.
-            Charge and energy integration provide
-            complementary efficiency measures.
+            Segment duration, potential window, and applied current
+            define apparent capacitance. Charge and energy integration
+            provide complementary efficiency measures.
           </p>
 
           <div class="model-purpose">
-            They distinguish charge recovery from
-            voltage-dependent energy recovery.
+            They distinguish charge recovery from voltage-dependent
+            energy recovery.
           </div>
         </div>
 
@@ -1006,38 +1017,43 @@
 
     <section id="circuits" aria-labelledby="circuits-heading">
       <p class="section-label">Physical curve reconstruction</p>
+
       <h2 id="circuits-heading">
         From circuit topology to simulated response
       </h2>
 
+      <!-- This is the filename already uploaded to your repository. -->
+
       <figure class="schematic">
-        <a class="image-link" href="electrochemical-circuit.png">
-          <img src="electrochemical-circuit.png"
-               width="1752"
-               height="897"
-               loading="lazy"
-               alt="Candidate storage circuit connected to a state-space representation and electrochemical excitations.">
+        <a class="image-link" href="electrochemical-modelling.png">
+          <img
+            src="electrochemical-modelling.png"
+            width="1752"
+            height="897"
+            loading="lazy"
+            alt="Candidate storage circuit connected to a state-space representation and electrochemical excitations"
+          >
         </a>
 
         <figcaption>
           <span>Circuit-to-response workflow · Schematic</span>
-          <a href="electrochemical-circuit.png">Enlarge</a>
+          <a href="electrochemical-modelling.png">Enlarge</a>
         </figcaption>
       </figure>
 
       <p>
-        Within each multi-rate CV or GCD fit, one parameter
-        set describes the complete family of curves.
-        Rate dependence therefore emerges from circuit
-        time constants rather than independent parameters
+        Within each multi-rate CV or GCD fit, one parameter set describes
+        the complete family of curves. Rate dependence therefore emerges
+        from circuit time constants rather than independent parameters
         assigned to every scan rate or current.
       </p>
 
-      <div class="table-wrap"
-           role="region"
-           tabindex="0"
-           aria-label="Equivalent-circuit elements; scroll horizontally on small screens">
-
+      <div
+        class="table-wrap"
+        role="region"
+        tabindex="0"
+        aria-label="Equivalent-circuit elements; scroll horizontally on small screens"
+      >
         <table>
           <thead>
             <tr>
@@ -1052,8 +1068,8 @@
               <td>R<sub>s</sub></td>
               <td>Series resistance</td>
               <td>
-                Ohmic contribution; constrained using EIS
-                from the corresponding electrode.
+                Ohmic contribution; constrained using EIS from
+                the corresponding electrode.
               </td>
             </tr>
 
@@ -1076,8 +1092,8 @@
               <td>R<sub>p</sub></td>
               <td>Leakage path across the storage network</td>
               <td>
-                Tests whether a conductive parasitic path
-                is needed by the observations.
+                Tests whether a conductive parasitic path is
+                needed by the observations.
               </td>
             </tr>
 
@@ -1085,8 +1101,8 @@
               <td>CPE</td>
               <td>Distributed capacitive response</td>
               <td>
-                Describes non-ideal relaxation over
-                a range of timescales.
+                Describes non-ideal relaxation over a range
+                of timescales.
               </td>
             </tr>
           </tbody>
@@ -1099,15 +1115,14 @@
           <h3>Use capacitor voltages as states</h3>
 
           <p>
-            Finite RC networks are expressed as linear dynamical
-            systems. The excitation changes between CV and GCD
-            while the circuit equations retain their
-            physical structure.
+            Finite RC networks are expressed as linear dynamical systems.
+            The excitation changes between CV and GCD while the circuit
+            equations retain their physical structure.
           </p>
 
           <div class="model-purpose">
-            It supports direct simulation of complete
-            waveforms rather than only summary descriptors.
+            It supports direct simulation of complete waveforms
+            rather than only summary descriptors.
           </div>
         </div>
 
@@ -1121,8 +1136,8 @@
           </div>
 
           <p>
-            x contains internal capacitor voltages.
-            Matrices and vectors follow from the candidate topology.
+            x contains internal capacitor voltages. Matrices and vectors
+            follow from the candidate topology.
           </p>
         </div>
       </article>
@@ -1133,10 +1148,9 @@
         </summary>
 
         <p>
-          For nonzero feedthrough D, potential control
-          eliminates current from the state equations.
-          Each linear sweep is propagated using the
-          analytical linear-system solution.
+          For nonzero feedthrough D, potential control eliminates current
+          from the state equations. Each linear sweep is propagated using
+          the analytical linear-system solution.
         </p>
 
         <div class="equation-box">
@@ -1151,10 +1165,9 @@
         </div>
 
         <p class="detail-note">
-          Initial state, cycle count, and sampling follow
-          the experimental protocol. Analytical propagation
-          avoids an arbitrary time-step approximation
-          for the finite linear network.
+          Initial state, cycle count, and sampling follow the experimental
+          protocol. Analytical propagation avoids an arbitrary time-step
+          approximation for the finite linear network.
         </p>
       </details>
 
@@ -1162,10 +1175,10 @@
         <summary>GCD simulation: constant-current segments</summary>
 
         <p>
-          Constant applied current drives the state equations.
-          Charge and discharge segments are propagated
-          to the defined potential boundaries, with switching
-          and initial conditions retained explicitly.
+          Constant applied current drives the state equations. Charge and
+          discharge segments are propagated to the defined potential
+          boundaries, with switching and initial conditions retained
+          explicitly.
         </p>
       </details>
 
@@ -1173,16 +1186,14 @@
         <summary>CPE realization: distributed timescales</summary>
 
         <p>
-          A CPE has no exact finite-dimensional state-space
-          realization. I use a discretized relaxation-time
-          distribution to construct a finite approximation
-          over the experimental window.
+          A CPE has no exact finite-dimensional state-space realization.
+          I use a discretized relaxation-time distribution to construct
+          a finite approximation over the experimental window.
         </p>
 
         <p>
-          The numerical realization is checked against the
-          analytical impedance before being used for
-          time-domain simulation.
+          The numerical realization is checked against the analytical
+          impedance before being used for time-domain simulation.
         </p>
       </details>
     </section>
@@ -1197,10 +1208,9 @@
       </h2>
 
       <p>
-        Empirical functions summarize capacitance versus
-        scan rate or current. Circuit models instead aim
-        to explain the complete curve family through
-        shared physical parameters.
+        Empirical functions summarize capacitance versus scan rate or
+        current. Circuit models instead aim to explain the complete
+        curve family through shared physical parameters.
       </p>
 
       <div class="equation-box">
@@ -1219,25 +1229,23 @@
         </div>
 
         <p>
-          x denotes the relevant measurement rate.
-          Here β is a fitted rate exponent, unrelated
-          to TGA heating-rate notation.
+          x denotes the relevant measurement rate. Here β is a fitted
+          rate exponent, unrelated to TGA heating-rate notation.
         </p>
       </div>
 
       <div class="note">
-        Model assessment considers parameter identifiability,
-        bounds, residual structure, information criteria,
-        bootstrap uncertainty, and withheld scan rates,
-        currents, or frequencies. Extra circuit branches
-        require support beyond improved visual agreement.
+        Model assessment considers parameter identifiability, bounds,
+        residual structure, information criteria, bootstrap uncertainty,
+        and withheld scan rates, currents, or frequencies. Extra circuit
+        branches require support beyond improved visual agreement.
       </div>
 
       <p class="detail-note">
-        Cross-technique comparison examines compatible
-        resistance and relaxation scales. It does not assume
-        that every technique must return identical apparent
-        capacitance or share one independently untested fit.
+        Cross-technique comparison examines compatible resistance and
+        relaxation scales. It does not assume that every technique must
+        return identical apparent capacitance or share one independently
+        untested fit.
       </p>
     </section>
 
@@ -1250,54 +1258,53 @@
       <ol class="steps">
         <li>
           <strong>Import and check the measurements</strong>
-          Preserve electrode identity, acquisition session,
-          cycle selection, potential windows, scan rates,
-          currents, and frequencies.
+          Preserve electrode identity, acquisition session, cycle
+          selection, potential windows, scan rates, currents,
+          and frequencies.
         </li>
 
         <li>
           <strong>Extract model-independent descriptors</strong>
           Calculate CV loop measures, branch-separated currents,
-          impedance descriptors, and resolved
-          charge–discharge quantities.
+          impedance descriptors, and resolved charge–discharge
+          quantities.
         </li>
 
         <li>
           <strong>Fit rate relationships</strong>
-          Compare candidate functions using consistent
-          observation windows and normalization.
+          Compare candidate functions using consistent observation
+          windows and normalization.
         </li>
 
         <li>
           <strong>Construct candidate storage networks</strong>
-          Compare blocking, relaxing, distributed,
-          and leakage-containing topologies.
+          Compare blocking, relaxing, distributed, and
+          leakage-containing topologies.
         </li>
 
         <li>
           <strong>Simulate the experimental excitation</strong>
-          Apply piecewise potential ramps or current steps
-          with the stated initial conditions and switching rules.
+          Apply piecewise potential ramps or current steps with the
+          stated initial conditions and switching rules.
         </li>
 
         <li>
           <strong>Fit shared parameters within each curve family</strong>
-          Let rate dependence emerge from the model rather
-          than fitting independent parameters at every rate.
+          Let rate dependence emerge from the model rather than fitting
+          independent parameters at every rate.
         </li>
 
         <li>
           <strong>Assess identifiability and predictive checks</strong>
-          Examine residuals, parameter stability,
-          bootstrap intervals, and appropriate
-          withheld observations.
+          Examine residuals, parameter stability, bootstrap intervals,
+          and appropriate withheld observations.
         </li>
 
         <li>
           <strong>Verify the numerical implementation</strong>
-          Compare limiting cases with analytical RC and
-          leaky-capacitor expressions, and check CPE
-          approximations against analytical impedance.
+          Compare limiting cases with analytical RC and leaky-capacitor
+          expressions, and check CPE approximations against analytical
+          impedance.
         </li>
       </ol>
     </section>
@@ -1340,37 +1347,38 @@
   </footer>
 
   <script>
-    const menuButton = document.querySelector('.menu-button');
-    const navigation = document.getElementById('site-navigation');
+    const menuButton = document.querySelector(".menu-button");
+    const navigation = document.getElementById("site-navigation");
 
     function setMenu(open) {
-      menuButton.setAttribute('aria-expanded', String(open));
-      menuButton.textContent = open ? 'Close' : 'Menu';
-      navigation.classList.toggle('is-open', open);
+      menuButton.setAttribute("aria-expanded", String(open));
+      menuButton.textContent = open ? "Close" : "Menu";
+      navigation.classList.toggle("is-open", open);
     }
 
-    menuButton.addEventListener('click', () => {
-      setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
+    menuButton.addEventListener("click", () => {
+      setMenu(menuButton.getAttribute("aria-expanded") !== "true");
     });
 
-    document.addEventListener('keydown', event => {
+    document.addEventListener("keydown", (event) => {
       if (
-        event.key === 'Escape' &&
-        menuButton.getAttribute('aria-expanded') === 'true'
+        event.key === "Escape" &&
+        menuButton.getAttribute("aria-expanded") === "true"
       ) {
         setMenu(false);
         menuButton.focus();
       }
     });
 
-    navigation.addEventListener('click', event => {
-      if (event.target.closest('a')) {
+    navigation.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
         setMenu(false);
       }
     });
 
-    document.getElementById('year').textContent =
+    document.getElementById("year").textContent =
       new Date().getFullYear();
   </script>
+
 </body>
 </html>
