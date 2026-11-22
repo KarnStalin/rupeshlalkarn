@@ -1,847 +1,1283 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
 
-<title>Experimental & Analytical Skills | Rupesh Lal Karn</title>
+  <title>Experimental &amp; Analytical Skills | Rupesh Lal Karn</title>
 
-<meta
-  name="description"
-  content="Materials synthesis, crystal growth, characterization,
-  magnetic measurements, electrochemistry, thermal analysis,
-  engineering, and scientific computing."
->
+  <meta name="description"
+        content="Materials synthesis, crystal growth, characterization, magnetic measurements, electrochemistry, thermal analysis, and MATLAB-supported scientific computing.">
 
-<style>
-:root {
-  --navy: #102237;
-  --ink: #193248;
-  --muted: #566c7d;
-  --paper: #f5f7fa;
-  --line: #d8e2ea;
-  --blue: #165ca6;
-}
+  <link rel="canonical" href="https://rlk.com.np/skills.html">
 
-* { box-sizing: border-box; }
+  <style>
+    :root {
+      color-scheme: light;
 
-body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font: 16px/1.75 system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
+      --paper: #faf9f6;
+      --ink: #272e2a;
+      --muted: #606961;
+      --line: #d8dcd4;
+      --nav-accent: #385975;
 
-a {
-  color: var(--blue);
-  text-underline-offset: 5px;
-}
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI",
+              Arial, sans-serif;
+    }
 
-a:focus-visible,
-button:focus-visible,
-[role="tabpanel"]:focus-visible {
-  outline: 3px solid #c87923;
-  outline-offset: 5px;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-.container {
-  width: min(1240px, calc(100% - 48px));
-  margin: auto;
-}
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
+    }
 
-header { background: var(--navy); }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.8 var(--sans);
+    }
 
-.header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 18px;
-  padding: 22px 0;
-}
+    [hidden] {
+      display: none !important;
+    }
 
-header a {
-  color: #e5effa;
-  text-decoration: none;
-}
+    a {
+      color: var(--nav-accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 5px;
+    }
 
-.brand { font-weight: 750; }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--nav-accent);
+      outline-offset: 5px;
+    }
 
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
+    .container {
+      width: min(1160px, calc(100% - 64px));
+      margin-inline: auto;
+    }
 
-nav a[aria-current="page"] { color: #a5dfd0; }
+    .skip-link {
+      position: absolute;
+      top: -80px;
+      left: 20px;
+      z-index: 100;
+      padding: 12px 18px;
+      background: white;
+    }
 
-.hero {
-  padding: 55px 0 85px;
-  background:
-    radial-gradient(circle at 85% 20%, #2b526d, transparent 42%),
-    var(--navy);
-  color: white;
-}
+    .skip-link:focus {
+      top: 12px;
+    }
 
-.eyebrow {
-  margin-bottom: 16px;
-  color: #a5dfd0;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-}
+    /* Navigation */
 
-h1 {
-  margin: 0 0 25px;
-  font-size: clamp(38px, 5.8vw, 70px);
-  line-height: 1.08;
-  letter-spacing: -.045em;
-}
+    .site-header {
+      border-bottom: 1px solid var(--line);
+    }
 
-h1 span { color: #acd9ff; }
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      min-height: 98px;
+    }
 
-.hero p {
-  max-width: 850px;
-  margin: 0;
-  color: #c6d6e6;
-  font-size: 18px;
-}
+    .name {
+      color: var(--ink);
+      font: 22px/1.3 var(--serif);
+      text-decoration: none;
+      white-space: nowrap;
+    }
 
-.tabs {
-  position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  padding: 12px;
-  margin: -32px 0 30px;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: white;
-  box-shadow: 0 12px 30px #1022370c;
-}
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 23px;
+    }
 
-.tab {
-  flex: 1 1 125px;
-  min-height: 52px;
-  padding: 12px 15px;
-  border: 1px solid transparent;
-  border-radius: 9px;
-  background: #edf2f7;
-  color: var(--ink);
-  font: 650 14px/1.4 system-ui, sans-serif;
-  cursor: pointer;
-}
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      border-bottom: 1px solid transparent;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+    }
 
-.tab:hover { background: #dfeaf5; }
+    .site-nav a:hover,
+    .site-nav a[aria-current="page"] {
+      border-color: var(--nav-accent);
+      color: var(--ink);
+    }
 
-.tab[aria-selected="true"] {
-  background: var(--navy);
-  color: white;
-}
+    .menu-button {
+      display: none;
+      min-height: 44px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      cursor: pointer;
+    }
 
-[hidden] { display: none !important; }
+    /* Introduction */
 
-.panel {
-  --accent: #17695c;
-  --surface: #eaf5ef;
-  --border: #c4dfd0;
-  padding-bottom: 25px;
-}
+    .page-intro {
+      padding: 50px 0 34px;
+    }
 
-.panel-intro {
-  display: grid;
-  grid-template-columns: .9fr 1.1fr;
-  gap: 35px;
-  align-items: start;
-  padding: 25px 0;
-}
+    .breadcrumb {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 13px;
+    }
 
-.panel-label {
-  margin-bottom: 10px;
-  color: var(--accent);
-  font: 12px/1.6 ui-monospace, monospace;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
+    .breadcrumb a {
+      color: inherit;
+    }
 
-h2 {
-  margin: 0 0 16px;
-  font-size: clamp(28px, 3.3vw, 39px);
-  line-height: 1.2;
-  letter-spacing: -.035em;
-}
+    h1,
+    h2,
+    h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+    }
 
-h3 {
-  margin: 0 0 12px;
-  font-size: 21px;
-  line-height: 1.4;
-}
+    h1 {
+      margin: 0 0 22px;
+      color: #293b50;
+      font-size: clamp(40px, 4.8vw, 62px);
+      line-height: 1.15;
+      letter-spacing: -.035em;
+      animation: titleGlow 4s ease-in-out infinite alternate;
+    }
 
-p {
-  margin: 0 0 18px;
-  color: var(--muted);
-}
+    .lead {
+      max-width: 850px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.85;
+    }
 
-strong { color: var(--ink); }
+    p {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
 
-.cards {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-}
+    /* Category navigation */
 
-.card {
-  padding: 28px;
-  border: 1px solid var(--border);
-  border-top: 4px solid var(--accent);
-  border-radius: 15px;
-  background: var(--surface);
-}
+    .tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0 24px;
+      margin: 0 0 34px;
+      border-bottom: 1px solid var(--line);
+    }
 
-.card h3 { color: var(--accent); }
+    .tab {
+      min-height: 57px;
+      margin-bottom: -1px;
+      padding: 13px 0;
+      border: 0;
+      border-bottom: 3px solid transparent;
+      background: transparent;
+      color: var(--muted);
+      text-align: left;
+      font: 500 14px/1.5 var(--sans);
+      cursor: pointer;
+    }
 
-.card p {
-  font-size: 15px;
-}
+    .tab:hover,
+    .tab[aria-selected="true"] {
+      color: var(--accent);
+      border-bottom-color: var(--accent);
+    }
 
-.card p:last-child { margin-bottom: 0; }
+    /* Category colours */
 
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 20px;
-}
+    #tab-synthesis,
+    #synthesis {
+      --accent: #176b61;
+      --glow: rgba(34, 134, 119, .22);
+    }
 
-.tags span {
-  padding: 5px 10px;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  background: #ffffff90;
-  color: var(--accent);
-  font-size: 12px;
-}
+    #tab-characterization,
+    #characterization {
+      --accent: #285ca3;
+      --glow: rgba(59, 116, 206, .25);
+    }
 
-.panel-link {
-  display: inline-block;
-  padding: 12px 17px;
-  margin: 25px 0 10px;
-  border: 1px solid var(--border);
-  border-radius: 10px;
-  background: white;
-  color: var(--accent);
-  font-size: 14px;
-  font-weight: 700;
-  text-decoration: none;
-}
+    #tab-magnetism,
+    #magnetism {
+      --accent: #9a365b;
+      --glow: rgba(170, 65, 107, .22);
+    }
 
-.cv-strip {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 25px;
-  margin: 15px 0 40px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: white;
-}
+    #tab-electrochemistry,
+    #electrochemistry {
+      --accent: #7144a0;
+      --glow: rgba(145, 88, 199, .24);
+    }
 
-.cv-strip p { margin: 0; }
+    #tab-thermal,
+    #thermal {
+      --accent: #a64b2a;
+      --glow: rgba(207, 109, 64, .24);
+    }
 
-.cv-strip a { font-weight: 700; }
+    #tab-computing,
+    #computing {
+      --accent: #17646e;
+      --glow: rgba(40, 128, 142, .23);
+    }
 
-footer {
-  padding: 25px 0;
-  background: var(--navy);
-  color: #bccddd;
-  font-size: 13px;
-}
+    #tab-engineering,
+    #engineering {
+      --accent: #886016;
+      --glow: rgba(166, 121, 35, .23);
+    }
 
-@media(max-width: 800px) {
-  .panel-intro { grid-template-columns: 1fr; gap: 5px; }
-}
+    /* Skill panels */
 
-@media(max-width: 600px) {
-  .container { width: calc(100% - 36px); }
-  .hero { padding-top: 35px; }
-  .cards { grid-template-columns: 1fr; }
-  .card { padding: 23px; }
-  .tab { flex-basis: 110px; }
-}
-</style>
+    .panel {
+      padding-bottom: 30px;
+    }
+
+    .panel:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 6px;
+    }
+
+    .panel-intro {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 45px;
+      align-items: start;
+      margin-bottom: 28px;
+    }
+
+    .panel-intro p {
+      margin: 0;
+    }
+
+    .panel-label {
+      margin: 0 0 10px !important;
+      color: var(--accent);
+      font-size: 13px;
+    }
+
+    h2 {
+      margin: 0;
+      color: var(--accent);
+      font-size: 32px;
+      line-height: 1.3;
+      letter-spacing: -.025em;
+      animation: methodGlow 4s ease-in-out infinite alternate;
+    }
+
+    .skill-columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0 50px;
+    }
+
+    .skill {
+      min-width: 0;
+      padding: 25px 0 22px;
+      border-top: 1px solid var(--line);
+    }
+
+    .skill h3 {
+      margin: 0 0 13px;
+      color: var(--accent);
+      font-size: 25px;
+      line-height: 1.35;
+      letter-spacing: -.02em;
+    }
+
+    .skill p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    .panel-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 28px;
+      margin-top: 14px;
+      padding-top: 15px;
+      border-top: 1px solid var(--line);
+    }
+
+    .panel-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      color: var(--accent);
+      font-size: 14px;
+    }
+
+    .page-end {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px 30px;
+      padding: 23px 0 40px;
+      border-top: 1px solid var(--line);
+    }
+
+    .page-end p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .page-end a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+    }
+
+    /* Subtle text glow */
+
+    @keyframes titleGlow {
+      from {
+        text-shadow: 0 0 2px rgba(69, 110, 161, .04);
+      }
+
+      to {
+        text-shadow:
+          0 0 9px rgba(69, 110, 161, .22),
+          0 0 22px rgba(69, 110, 161, .11);
+      }
+    }
+
+    @keyframes methodGlow {
+      from {
+        text-shadow: 0 0 2px transparent;
+      }
+
+      to {
+        text-shadow:
+          0 0 7px var(--glow),
+          0 0 16px var(--glow);
+      }
+    }
+
+    /* Footer */
+
+    .footer {
+      padding: 35px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .footer .footer-name {
+      margin: 0 0 10px;
+      color: var(--ink);
+      font: 23px var(--serif);
+    }
+
+    .footer p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: flex-end;
+      align-content: start;
+      flex-wrap: wrap;
+      gap: 10px 25px;
+    }
+
+    .footer-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+    }
+
+    .copyright {
+      grid-column: 1 / -1;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Responsive layout */
+
+    @media (max-width: 1050px) {
+      .header-inner {
+        flex-wrap: wrap;
+        padding: 20px 0;
+        gap: 12px;
+      }
+
+      .site-nav {
+        gap: 18px;
+      }
+
+      .panel-intro {
+        gap: 30px;
+      }
+
+      .skill-columns {
+        column-gap: 35px;
+      }
+    }
+
+    @media (max-width: 850px) {
+      .panel-intro {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: calc(100% - 40px);
+      }
+
+      .header-inner {
+        min-height: 85px;
+        justify-content: space-between;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .site-nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        padding-top: 10px;
+      }
+
+      .site-nav.is-open {
+        display: flex;
+      }
+
+      .site-nav a {
+        min-height: 48px;
+      }
+
+      .page-intro {
+        padding: 35px 0 28px;
+      }
+
+      h1 {
+        font-size: 39px;
+      }
+
+      .lead {
+        font-size: 17px;
+      }
+
+      h2 {
+        font-size: 29px;
+      }
+
+      .skill h3 {
+        font-size: 24px;
+      }
+
+      .tabs {
+        gap: 0 22px;
+        margin-bottom: 28px;
+      }
+
+      .tab {
+        min-height: 52px;
+      }
+
+      .skill-columns {
+        grid-template-columns: 1fr;
+      }
+
+      .skill {
+        padding: 22px 0;
+      }
+
+      .panel-links {
+        gap: 5px 22px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      h1,
+      h2 {
+        animation: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<header>
-  <div class="container header-inner">
-    <a class="brand" href="index.html">Rupesh Lal Karn</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="name" href="index.html">Rupesh Lal Karn</a>
 
-    <nav aria-label="Main navigation">
-      <a href="research.html">Research</a>
-      <a href="experience.html">Experience</a>
-      <a href="skills.html" aria-current="page">Skills</a>
-      <a href="contact.html">Connect</a>
-    </nav>
-  </div>
-</header>
+      <button class="menu-button"
+              type="button"
+              aria-controls="site-navigation"
+              aria-expanded="false">
+        Menu
+      </button>
 
-<div class="hero">
-  <div class="container">
-    <div class="eyebrow">
-      Laboratory practice · Measurements · Scientific computing
+      <nav class="site-nav"
+           id="site-navigation"
+           aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="research.html">Research</a>
+        <a href="experience.html">Experience</a>
+        <a href="publications.html">Publications</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="projects.html">Projects</a>
+        <a href="skills.html" aria-current="page">Skills</a>
+        <a href="contact.html">Contact</a>
+      </nav>
     </div>
+  </header>
 
-    <h1>
-      Experimental &amp;<br>
-      <span>Analytical Skills</span>
-    </h1>
+  <main class="container" id="main">
 
-    <p>
-      Explore my capabilities in materials preparation,
-      characterization, physical measurements,
-      quantitative analysis, and engineering research.
-    </p>
-  </div>
-</div>
+    <div class="page-intro">
+      <p class="breadcrumb">
+        <a href="index.html">Home</a> / Skills
+      </p>
 
-<main class="container">
+      <h1>Experimental &amp; Analytical Skills</h1>
 
-  <div class="tabs" role="tablist" aria-label="Skill categories">
-    <button class="tab" id="tab-synthesis" type="button"
-      role="tab" aria-selected="true"
-      aria-controls="synthesis" tabindex="0">Synthesis</button>
-
-    <button class="tab" id="tab-characterization" type="button"
-      role="tab" aria-selected="false"
-      aria-controls="characterization" tabindex="-1">
-      Characterization
-    </button>
-
-    <button class="tab" id="tab-magnetism" type="button"
-      role="tab" aria-selected="false"
-      aria-controls="magnetism" tabindex="-1">Magnetism</button>
-
-    <button class="tab" id="tab-electrochemistry" type="button"
-      role="tab" aria-selected="false"
-      aria-controls="electrochemistry" tabindex="-1">
-      Electrochemistry
-    </button>
-
-    <button class="tab" id="tab-thermal" type="button"
-      role="tab" aria-selected="false"
-      aria-controls="thermal" tabindex="-1">Thermal &amp; Optical</button>
-
-    <button class="tab" id="tab-engineering" type="button"
-      role="tab" aria-selected="false"
-      aria-controls="engineering" tabindex="-1">Engineering</button>
-
-    <button class="tab" id="tab-computing" type="button"
-      role="tab" aria-selected="false"
-      aria-controls="computing" tabindex="-1">Computing</button>
-  </div>
-
-  <!-- SYNTHESIS -->
-
-  <section class="panel" id="synthesis" role="tabpanel"
-    aria-labelledby="tab-synthesis" tabindex="0">
-
-    <div class="panel-intro">
-      <div>
-        <div class="panel-label">01 / Materials preparation</div>
-        <h2>Synthesis, Doping &amp; Crystal Growth</h2>
-      </div>
-      <p>
-        Preparation experience spanning magnetic powders,
-        substituted oxides, single crystals, nanoparticles,
-        and MXene-based materials.
+      <p class="lead">
+        My work combines materials synthesis and crystal growth
+        with characterization, physical measurements, and
+        MATLAB-supported modelling. Select a category to
+        explore the methods I use.
       </p>
     </div>
 
-    <div class="cards">
-      <article class="card">
-        <h3>Magnetic-powder synthesis</h3>
-        <p>
-          Solid-state synthesis and preparation of magnetic
-          materials for structural and physical-property studies.
-        </p>
-        <div class="tags">
-          <span>Solid-state synthesis</span>
-          <span>Magnetic powders</span>
+    <div class="tabs" role="tablist" aria-label="Skill categories">
+
+      <button class="tab"
+              id="tab-synthesis"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="synthesis"
+              tabindex="0">
+        Synthesis
+      </button>
+
+      <button class="tab"
+              id="tab-characterization"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="characterization"
+              tabindex="-1">
+        Characterization
+      </button>
+
+      <button class="tab"
+              id="tab-magnetism"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="magnetism"
+              tabindex="-1">
+        Magnetism
+      </button>
+
+      <button class="tab"
+              id="tab-electrochemistry"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="electrochemistry"
+              tabindex="-1">
+        Electrochemistry
+      </button>
+
+      <button class="tab"
+              id="tab-thermal"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="thermal"
+              tabindex="-1">
+        Thermal &amp; Optical
+      </button>
+
+      <button class="tab"
+              id="tab-computing"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="computing"
+              tabindex="-1">
+        Computing
+      </button>
+
+      <button class="tab"
+              id="tab-engineering"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="engineering"
+              tabindex="-1">
+        Engineering
+      </button>
+
+    </div>
+
+    <!-- SYNTHESIS -->
+
+    <section class="panel"
+             id="synthesis"
+             role="tabpanel"
+             aria-labelledby="tab-synthesis"
+             tabindex="0">
+
+      <div class="panel-intro">
+        <div>
+          <p class="panel-label">Materials preparation</p>
+          <h2>Synthesis, Doping &amp; Crystal Growth</h2>
         </div>
-      </article>
 
-      <article class="card">
-        <h3>Compositional doping</h3>
         <p>
-          Cobalt substitution in MnGeTeO₆,
-          expressed as Mn₁₋ₓCoₓGeTeO₆.
+          Preparation experience spans magnetic powders,
+          substituted oxides, single crystals, nanoparticles,
+          and MXene-based materials.
         </p>
-        <div class="tags">
-          <span>Co substitution</span>
-          <span>Composition series</span>
+      </div>
+
+      <div class="skill-columns">
+
+        <article class="skill">
+          <h3>Magnetic-powder synthesis</h3>
+          <p>
+            Solid-state synthesis and preparation of magnetic
+            materials for structural and physical-property studies.
+          </p>
+        </article>
+
+        <article class="skill">
+          <h3>Compositional doping</h3>
+          <p>
+            Cobalt substitution in MnGeTeO₆,
+            expressed as Mn₁₋ₓCoₓGeTeO₆.
+          </p>
+        </article>
+
+        <article class="skill">
+          <h3>Single-crystal growth</h3>
+          <p>
+            Growth of Mn₃Al₂Ge₃O₁₂ single crystals
+            and preparation of samples for characterization.
+          </p>
+        </article>
+
+        <article class="skill">
+          <h3>Functional nanomaterials</h3>
+          <p>
+            MXene processing, acid etching, intercalation,
+            nanoparticle synthesis, and composite preparation.
+          </p>
+        </article>
+
+      </div>
+
+      <div class="panel-links">
+        <a href="magnetic-materials.html">
+          Magnetic materials &amp; crystal growth →
+        </a>
+        <a href="two-dimensional-materials.html">
+          MXenes &amp; functional composites →
+        </a>
+      </div>
+    </section>
+
+    <!-- CHARACTERIZATION -->
+
+    <section class="panel"
+             id="characterization"
+             role="tabpanel"
+             aria-labelledby="tab-characterization"
+             tabindex="0"
+             hidden>
+
+      <div class="panel-intro">
+        <div>
+          <p class="panel-label">Structure, chemistry &amp; interfaces</p>
+          <h2>Materials Characterization</h2>
         </div>
-      </article>
 
-      <article class="card">
-        <h3>Single-crystal growth</h3>
         <p>
-          Growth of Mn₃Al₂Ge₃O₁₂ single crystals
-          and preparation of samples for characterization.
+          Connecting instrument measurements with structural,
+          chemical, morphological, and interface information.
         </p>
-        <div class="tags">
-          <span>Mn₃Al₂Ge₃O₁₂</span>
-          <span>Crystal growth</span>
+      </div>
+
+      <div class="skill-columns">
+
+        <article class="skill">
+          <h3>XRD &amp; Rietveld Refinement</h3>
+          <p>
+            Phase identification, diffraction-profile analysis,
+            structural refinement, and assessment of
+            crystallographic models.
+          </p>
+        </article>
+
+        <article class="skill">
+          <h3>Raman &amp; FTIR</h3>
+          <p>
+            Vibrational-feature analysis, spectral fitting,
+            band integration, and comparative descriptors.
+          </p>
+        </article>
+
+        <article class="skill">
+          <h3>XPS &amp; SEM/EDS</h3>
+          <p>
+            Surface composition, chemical-envelope interpretation,
+            morphology, and elemental distribution.
+          </p>
+        </article>
+
+        <article class="skill">
+          <h3>BET, Zeta Potential &amp; DLS</h3>
+          <p>
+            Gas-accessible area, pore descriptors,
+            electrokinetic response, and operational
+            hydrodynamic size.
+          </p>
+        </article>
+
+      </div>
+
+      <div class="panel-links">
+        <a href="descriptor-extraction.html">
+          Characterization-derived descriptors →
+        </a>
+      </div>
+    </section>
+
+    <!-- MAGNETISM -->
+
+    <section class="panel"
+             id="magnetism"
+             role="tabpanel"
+             aria-labelledby="tab-magnetism"
+             tabindex="0"
+             hidden>
+
+      <div class="panel-intro">
+        <div>
+          <p class="panel-label">
+            Magnetic &amp; single-crystal measurements
+          </p>
+          <h2>Magnetism &amp; Single Crystals</h2>
         </div>
-      </article>
 
-      <article class="card">
-        <h3>Functional nanomaterials</h3>
         <p>
-          MXene processing, acid etching, intercalation,
-          nanoparticle synthesis, and composite preparation.
+          Magnetic characterization complemented by
+          visiting research at Argonne and
+          Los Alamos National Laboratories.
         </p>
-        <div class="tags">
-          <span>MXenes</span>
-          <span>Nanoparticles</span>
-          <span>Composites</span>
+      </div>
+
+      <div class="skill-columns">
+
+        <article class="skill">
+          <h3>SQUID Measurements</h3>
+          <p>
+            Investigation of magnetic response under
+            defined temperature and applied-field conditions.
+          </p>
+        </article>
+
+        <article class="skill">
+          <h3>Lorentz TEM</h3>
+          <p>
+            LTEM analysis of magnetic-domain structures
+            during visiting research at Argonne National Laboratory.
+          </p>
+        </article>
+
+        <article class="skill">
+          <h3>Quantum Oscillations</h3>
+          <p>
+            Angle- and temperature-dependent dHvA measurements
+            on HfSn₂ crystals at Los Alamos National Laboratory.
+          </p>
+        </article>
+
+        <article class="skill">
+          <h3>Structure–Property Interpretation</h3>
+          <p>
+            Connecting magnetic measurements with diffraction,
+            refinement, composition, and sample-preparation history.
+          </p>
+        </article>
+
+      </div>
+
+      <div class="panel-links">
+        <a href="magnetic-materials.html">
+          Magnetic-materials research →
+        </a>
+        <a href="experience.html#national-laboratories">
+          National laboratory appointments →
+        </a>
+      </div>
+    </section>
+
+    <!-- ELECTROCHEMISTRY -->
+
+    <section class="panel"
+             id="electrochemistry"
+             role="tabpanel"
+             aria-labelledby="tab-electrochemistry"
+             tabindex="0"
+             hidden>
+
+      <div class="panel-intro">
+        <div>
+          <p class="panel-label">Current, potential &amp; frequency</p>
+          <h2>Electrochemical Methods</h2>
         </div>
-      </article>
-    </div>
 
-    <a class="panel-link" href="magnetic-materials.html">
-      Explore materials research →
-    </a>
-  </section>
-
-  <!-- CHARACTERIZATION -->
-
-  <section class="panel" id="characterization" role="tabpanel"
-    aria-labelledby="tab-characterization" tabindex="0" hidden
-    style="--accent:#165ca6;--surface:#eaf3fd;--border:#bdd4eb">
-
-    <div class="panel-intro">
-      <div>
-        <div class="panel-label">02 / Structure &amp; interfaces</div>
-        <h2>Materials Characterization</h2>
+        <p>
+          Complementary measurements and analysis of charge
+          storage, rate dependence, impedance, and
+          electrocatalytic response.
+        </p>
       </div>
-      <p>
-        Connecting instrument measurements with structural,
-        chemical, morphological, and interface information.
-      </p>
-    </div>
 
-    <div class="cards">
-      <article class="card">
-        <h3>XRD &amp; Rietveld Refinement</h3>
-        <p>
-          Phase identification, diffraction-profile analysis,
-          structural refinement, and assessment of
-          crystallographic models.
-        </p>
-      </article>
+      <div class="skill-columns">
 
-      <article class="card">
-        <h3>Raman &amp; FTIR</h3>
-        <p>
-          Vibrational-feature analysis, spectral fitting,
-          band integration, and comparative descriptors.
-        </p>
-      </article>
+        <article class="skill">
+          <h3>CV &amp; GCD</h3>
+          <p>
+            Branch processing, loop integration,
+            charge–discharge segmentation, capacitance,
+            and charge balance.
+          </p>
+        </article>
 
-      <article class="card">
-        <h3>XPS &amp; SEM/EDS</h3>
-        <p>
-          Surface composition, chemical-envelope interpretation,
-          morphology, and elemental distribution.
-        </p>
-      </article>
+        <article class="skill">
+          <h3>EIS</h3>
+          <p>
+            Impedance interpretation, equivalent circuits,
+            non-ideal capacitive response,
+            and relaxation descriptors.
+          </p>
+        </article>
 
-      <article class="card">
-        <h3>BET, Zeta Potential &amp; DLS</h3>
-        <p>
-          Gas-accessible area, pore descriptors,
-          electrokinetic response, and operational
-          hydrodynamic size.
-        </p>
-      </article>
-    </div>
+        <article class="skill">
+          <h3>Electrocatalytic Assessment</h3>
+          <p>
+            LSV, Tafel analysis, OER testing,
+            and double-layer-capacitance assessment.
+          </p>
+        </article>
 
-    <a class="panel-link" href="descriptor-extraction.html">
-      Explore descriptor extraction →
-    </a>
-  </section>
+        <article class="skill">
+          <h3>Numerical Interpretation</h3>
+          <p>
+            Rate relationships, circuit simulation,
+            shared-parameter fitting, and model assessment.
+          </p>
+        </article>
 
-  <!-- MAGNETISM -->
-
-  <section class="panel" id="magnetism" role="tabpanel"
-    aria-labelledby="tab-magnetism" tabindex="0" hidden
-    style="--accent:#714298;--surface:#f2ecf8;--border:#dacbea">
-
-    <div class="panel-intro">
-      <div>
-        <div class="panel-label">03 / Physical measurements</div>
-        <h2>Magnetism &amp; Single Crystals</h2>
       </div>
-      <p>
-        Magnetic characterization complemented by
-        visiting research at Argonne and
-        Los Alamos National Laboratories.
-      </p>
-    </div>
 
-    <div class="cards">
-      <article class="card">
-        <h3>SQUID Measurements</h3>
-        <p>
-          Investigation of magnetic response under
-          defined temperature and applied-field conditions.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Lorentz TEM</h3>
-        <p>
-          LTEM analysis of magnetic-domain structures
-          during visiting research at Argonne National Laboratory.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Quantum Oscillations</h3>
-        <p>
-          Angle- and temperature-dependent dHvA measurements
-          on HfSn₂ crystals at Los Alamos National Laboratory.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Structure–Property Interpretation</h3>
-        <p>
-          Connecting magnetic measurements with
-          diffraction, refinement, composition,
-          and sample-preparation history.
-        </p>
-      </article>
-    </div>
-
-    <a class="panel-link" href="experience.html#national-laboratories">
-      National laboratory appointments →
-    </a>
-  </section>
-
-  <!-- ELECTROCHEMISTRY -->
-
-  <section class="panel" id="electrochemistry" role="tabpanel"
-    aria-labelledby="tab-electrochemistry" tabindex="0" hidden
-    style="--accent:#355b9a;--surface:#edf2fc;--border:#c9d5ed">
-
-    <div class="panel-intro">
-      <div>
-        <div class="panel-label">04 / Current, potential &amp; frequency</div>
-        <h2>Electrochemical Methods</h2>
+      <div class="panel-links">
+        <a href="electrochemical-modelling.html">
+          Electrochemical modelling →
+        </a>
       </div>
-      <p>
-        Complementary measurements and analysis
-        of charge storage, rate dependence,
-        impedance, and electrocatalytic response.
-      </p>
-    </div>
+    </section>
 
-    <div class="cards">
-      <article class="card">
-        <h3>CV &amp; GCD</h3>
+    <!-- THERMAL AND OPTICAL -->
+
+    <section class="panel"
+             id="thermal"
+             role="tabpanel"
+             aria-labelledby="tab-thermal"
+             tabindex="0"
+             hidden>
+
+      <div class="panel-intro">
+        <div>
+          <p class="panel-label">Temperature &amp; optical response</p>
+          <h2>Thermal &amp; Optical Analysis</h2>
+        </div>
+
         <p>
-          Branch processing, loop integration,
-          charge–discharge segmentation,
-          capacitance, and charge balance.
+          Thermal-event analysis, optical characterization,
+          and irradiation-induced heating–cooling measurements.
         </p>
-      </article>
-
-      <article class="card">
-        <h3>EIS</h3>
-        <p>
-          Impedance interpretation, equivalent circuits,
-          non-ideal capacitive response,
-          and relaxation descriptors.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Electrocatalytic Assessment</h3>
-        <p>
-          LSV, Tafel analysis, OER testing,
-          and double-layer-capacitance assessment.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Numerical Interpretation</h3>
-        <p>
-          Rate relationships, circuit simulation,
-          shared-parameter fitting, and model assessment.
-        </p>
-      </article>
-    </div>
-
-    <a class="panel-link" href="electrochemical-modelling.html">
-      Electrochemical modelling →
-    </a>
-  </section>
-
-  <!-- THERMAL -->
-
-  <section class="panel" id="thermal" role="tabpanel"
-    aria-labelledby="tab-thermal" tabindex="0" hidden
-    style="--accent:#a34e1b;--surface:#fff3e8;--border:#ebcdb2">
-
-    <div class="panel-intro">
-      <div>
-        <div class="panel-label">05 / Temperature &amp; light</div>
-        <h2>Thermal &amp; Optical Analysis</h2>
       </div>
-      <p>
-        Thermal-event analysis, optical characterization,
-        and irradiation-induced heating–cooling measurements.
-      </p>
-    </div>
 
-    <div class="cards">
-      <article class="card">
-        <h3>TGA / DSC</h3>
-        <p>
-          Thermal-event assessment, derivative processing,
-          mass-loss analysis, and event-specific conversion.
-        </p>
-      </article>
+      <div class="skill-columns">
 
-      <article class="card">
-        <h3>Thermal Kinetics</h3>
-        <p>
-          Multi-rate activation-energy analysis and
-          numerical reconstruction of selected thermal events.
-        </p>
-      </article>
+        <article class="skill">
+          <h3>TGA / DSC</h3>
+          <p>
+            Thermal-event assessment, derivative processing,
+            mass-loss analysis, and event-specific conversion.
+          </p>
+        </article>
 
-      <article class="card">
-        <h3>Photothermal Response</h3>
-        <p>
-          Heating–cooling fitting, water-reference calibration,
-          time constants, and energy-balance interpretation.
-        </p>
-      </article>
+        <article class="skill">
+          <h3>Thermal Kinetics</h3>
+          <p>
+            Multi-rate activation-energy analysis and
+            numerical reconstruction of selected thermal events.
+          </p>
+        </article>
 
-      <article class="card">
-        <h3>UV–Vis &amp; Photoluminescence</h3>
-        <p>
-          Optical-response characterization and interpretation
-          alongside complementary material measurements.
-        </p>
-      </article>
-    </div>
+        <article class="skill">
+          <h3>Photothermal Response</h3>
+          <p>
+            Heating–cooling fitting, water-reference calibration,
+            time constants, and energy-balance interpretation.
+          </p>
+        </article>
 
-    <a class="panel-link" href="modelling.html">
-      Explore thermal modelling methods →
-    </a>
-  </section>
+        <article class="skill">
+          <h3>UV–Vis &amp; Photoluminescence</h3>
+          <p>
+            Optical-response characterization and interpretation
+            alongside complementary material measurements.
+          </p>
+        </article>
 
-  <!-- ENGINEERING -->
-
-  <section class="panel" id="engineering" role="tabpanel"
-    aria-labelledby="tab-engineering" tabindex="0" hidden
-    style="--accent:#886016;--surface:#fff6df;--border:#e8d5a6">
-
-    <div class="panel-intro">
-      <div>
-        <div class="panel-label">06 / Energy systems</div>
-        <h2>Fuels, Engines &amp; Engineering</h2>
       </div>
-      <p>
-        Experimental preparation, testing, and analysis
-        developed through alternative-fuel
-        and mechanical-engineering research.
-      </p>
-    </div>
 
-    <div class="cards">
-      <article class="card">
-        <h3>Fuel Preparation</h3>
-        <p>
-          Esterification, transesterification,
-          lipid extraction, pyrolysis,
-          and fractional distillation.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Fuel Characterization</h3>
-        <p>
-          GC–MS, bomb calorimetry, viscosity,
-          density, and relevant ASTM fuel-analysis procedures.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Engine Testing</h3>
-        <p>
-          Performance, fuel consumption, combustion,
-          emissions, and thermal-balance analysis.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Mechanical Engineering</h3>
-        <p>
-          Heat transfer, instrumentation, engineering drawing,
-          and mechanical design and fabrication projects.
-        </p>
-      </article>
-    </div>
-
-    <a class="panel-link" href="alternative-fuels.html">
-      Explore alternative-fuel research →
-    </a>
-  </section>
-
-  <!-- COMPUTING -->
-
-  <section class="panel" id="computing" role="tabpanel"
-    aria-labelledby="tab-computing" tabindex="0" hidden
-    style="--accent:#17646e;--surface:#eaf5f7;--border:#bfdde2">
-
-    <div class="panel-intro">
-      <div>
-        <div class="panel-label">07 / Analysis &amp; simulation</div>
-        <h2>Scientific Computing &amp; Software</h2>
+      <div class="panel-links">
+        <a href="thermal-modelling.html">TGA modelling →</a>
+        <a href="photothermal-modelling.html">
+          Photothermal modelling →
+        </a>
       </div>
-      <p>
-        Computational tools support data processing,
-        physical calculations, model assessment,
-        and scientific communication.
-      </p>
+    </section>
+
+    <!-- SCIENTIFIC COMPUTING -->
+
+    <section class="panel"
+             id="computing"
+             role="tabpanel"
+             aria-labelledby="tab-computing"
+             tabindex="0"
+             hidden>
+
+      <div class="panel-intro">
+        <div>
+          <p class="panel-label">
+            Analysis, simulation &amp; communication
+          </p>
+          <h2>Scientific Computing &amp; Software</h2>
+        </div>
+
+        <p>
+          Computational tools support measurement processing,
+          physical calculations, parameter estimation,
+          and scientific communication.
+        </p>
+      </div>
+
+      <div class="skill-columns">
+
+        <article class="skill">
+          <h3>MATLAB</h3>
+          <p>
+            Signal processing, nonlinear fitting,
+            numerical integration, circuit simulation,
+            and descriptor-based analysis.
+          </p>
+        </article>
+
+        <article class="skill">
+          <h3>Structural Software</h3>
+          <p>
+            FullProf Suite, X’Pert HighScore, and MATCH!
+            for diffraction and structural-analysis workflows.
+          </p>
+        </article>
+
+        <article class="skill">
+          <h3>Analysis &amp; Visualization</h3>
+          <p>
+            OriginPro, SigmaPlot, and Excel for
+            quantitative comparisons, plotting,
+            and research presentation.
+          </p>
+        </article>
+
+        <article class="skill">
+          <h3>Engineering &amp; Communication</h3>
+          <p>
+            Ricardo WAVE, technical writing,
+            figure preparation, research documentation,
+            and scientific presentations.
+          </p>
+        </article>
+
+      </div>
+
+      <div class="panel-links">
+        <a href="modelling.html">Modelling methods →</a>
+        <a href="data-analysis.html">Scientific data analysis →</a>
+      </div>
+    </section>
+
+    <!-- EARLIER ENGINEERING WORK -->
+
+    <section class="panel"
+             id="engineering"
+             role="tabpanel"
+             aria-labelledby="tab-engineering"
+             tabindex="0"
+             hidden>
+
+      <div class="panel-intro">
+        <div>
+          <p class="panel-label">Earlier engineering research</p>
+          <h2>Fuels, Engines &amp; Engineering</h2>
+        </div>
+
+        <p>
+          Experimental preparation, testing, and analysis
+          developed through alternative-fuel
+          and mechanical-engineering research.
+        </p>
+      </div>
+
+      <div class="skill-columns">
+
+        <article class="skill">
+          <h3>Fuel Preparation</h3>
+          <p>
+            Esterification, transesterification,
+            lipid extraction, pyrolysis,
+            and fractional distillation.
+          </p>
+        </article>
+
+        <article class="skill">
+          <h3>Fuel Characterization</h3>
+          <p>
+            GC–MS, bomb calorimetry, viscosity,
+            density, and relevant ASTM fuel-analysis procedures.
+          </p>
+        </article>
+
+        <article class="skill">
+          <h3>Engine Testing</h3>
+          <p>
+            Performance, fuel consumption, combustion,
+            emissions, and thermal-balance analysis.
+          </p>
+        </article>
+
+        <article class="skill">
+          <h3>Mechanical Engineering</h3>
+          <p>
+            Heat transfer, instrumentation, engineering drawing,
+            and mechanical design and fabrication projects.
+          </p>
+        </article>
+
+      </div>
+
+      <div class="panel-links">
+        <a href="alternative-fuels.html">
+          Alternative-fuel research →
+        </a>
+        <a href="projects.html">Engineering projects →</a>
+      </div>
+    </section>
+
+    <aside class="page-end">
+      <p>Explore the research experience behind these methods.</p>
+      <a href="Rupesh_Lal_Karn_CV.pdf">View complete CV →</a>
+    </aside>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+
+      <div>
+        <p class="footer-name">Rupesh Lal Karn</p>
+        <p>Prairie View, Texas</p>
+        <a href="mailto:rkarn@pvamu.edu">rkarn@pvamu.edu</a>
+      </div>
+
+      <nav class="footer-links" aria-label="Academic profiles">
+        <a href="https://scholar.google.com/citations?user=7RRtNOYAAAAJ&amp;hl=en">
+          Google Scholar
+        </a>
+        <a href="https://orcid.org/0009-0008-9261-024X">
+          ORCID
+        </a>
+        <a href="Rupesh_Lal_Karn_CV.pdf">CV</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <small class="copyright">
+        © <span id="year">2026</span> Rupesh Lal Karn
+      </small>
+
     </div>
+  </footer>
 
-    <div class="cards">
-      <article class="card">
-        <h3>MATLAB</h3>
-        <p>
-          Signal processing, nonlinear fitting,
-          numerical integration, circuit simulation,
-          and descriptor-based analysis.
-        </p>
-      </article>
+  <script>
+    /* Mobile navigation */
 
-      <article class="card">
-        <h3>Structural Software</h3>
-        <p>
-          FullProf Suite, X’Pert HighScore, and MATCH!
-          for diffraction and structural-analysis workflows.
-        </p>
-      </article>
+    const menuButton = document.querySelector('.menu-button');
+    const navigation = document.getElementById('site-navigation');
 
-      <article class="card">
-        <h3>Analysis &amp; Visualization</h3>
-        <p>
-          OriginPro, SigmaPlot, and Excel for
-          quantitative comparisons, plotting,
-          and research presentation.
-        </p>
-      </article>
-
-      <article class="card">
-        <h3>Engineering &amp; Communication</h3>
-        <p>
-          Ricardo WAVE, technical writing,
-          figure preparation, research documentation,
-          and scientific presentations.
-        </p>
-      </article>
-    </div>
-
-    <a class="panel-link" href="data-analysis.html">
-      Scientific data analysis →
-    </a>
-  </section>
-
-  <aside class="cv-strip">
-    <p>Explore the research experience behind these capabilities.</p>
-    <a href="Rupesh_Lal_Karn_CV.pdf">View complete CV →</a>
-  </aside>
-
-</main>
-
-<footer>
-  <div class="container">
-    Rupesh Lal Karn · Experimental &amp; Analytical Skills
-  </div>
-</footer>
-
-<script>
-const tabs = Array.from(document.querySelectorAll('[role="tab"]'));
-const panels = Array.from(
-  document.querySelectorAll('[role="tabpanel"]')
-);
-
-function activateTab(tab, updateHash = true) {
-  const panelId = tab.getAttribute("aria-controls");
-
-  tabs.forEach(function (item) {
-    const active = item === tab;
-    item.setAttribute("aria-selected", String(active));
-    item.tabIndex = active ? 0 : -1;
-  });
-
-  panels.forEach(function (panel) {
-    panel.hidden = panel.id !== panelId;
-  });
-
-  if (updateHash) {
-    history.replaceState(null, "", "#" + panelId);
-  }
-}
-
-tabs.forEach(function (tab, index) {
-  tab.addEventListener("click", function () {
-    activateTab(tab);
-  });
-
-  tab.addEventListener("keydown", function (event) {
-    let next;
-
-    if (event.key === "ArrowRight") {
-      next = (index + 1) % tabs.length;
-    } else if (event.key === "ArrowLeft") {
-      next = (index - 1 + tabs.length) % tabs.length;
-    } else if (event.key === "Home") {
-      next = 0;
-    } else if (event.key === "End") {
-      next = tabs.length - 1;
-    } else {
-      return;
+    function setMenu(open) {
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.textContent = open ? 'Close' : 'Menu';
+      navigation.classList.toggle('is-open', open);
     }
 
-    event.preventDefault();
-    tabs[next].focus();
-    activateTab(tabs[next]);
-  });
-});
+    menuButton.addEventListener('click', () => {
+      setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
+    });
 
-function activateFromHash() {
-  const id = location.hash.slice(1);
-  const tab = tabs.find(function (item) {
-    return item.getAttribute("aria-controls") === id;
-  });
+    document.addEventListener('keydown', event => {
+      if (
+        event.key === 'Escape' &&
+        menuButton.getAttribute('aria-expanded') === 'true'
+      ) {
+        setMenu(false);
+        menuButton.focus();
+      }
+    });
 
-  if (tab) activateTab(tab, false);
-}
+    navigation.addEventListener('click', event => {
+      if (event.target.closest('a')) {
+        setMenu(false);
+      }
+    });
 
-window.addEventListener("hashchange", activateFromHash);
-activateFromHash();
-</script>
+    document.getElementById('year').textContent =
+      new Date().getFullYear();
 
+    /* Skill tabs */
+
+    const tabs = Array.from(
+      document.querySelectorAll('[role="tab"]')
+    );
+
+    const panels = Array.from(
+      document.querySelectorAll('[role="tabpanel"]')
+    );
+
+    function activateTab(tab, updateHash = true) {
+      const panelId = tab.getAttribute('aria-controls');
+
+      tabs.forEach(item => {
+        const selected = item === tab;
+
+        item.setAttribute('aria-selected', String(selected));
+        item.tabIndex = selected ? 0 : -1;
+      });
+
+      panels.forEach(panel => {
+        panel.hidden = panel.id !== panelId;
+      });
+
+      if (updateHash) {
+        history.replaceState(null, '', '#' + panelId);
+      }
+    }
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => {
+        activateTab(tab);
+      });
+
+      tab.addEventListener('keydown', event => {
+        let nextIndex;
+
+        if (event.key === 'ArrowRight') {
+          nextIndex = (index + 1) % tabs.length;
+        } else if (event.key === 'ArrowLeft') {
+          nextIndex = (index - 1 + tabs.length) % tabs.length;
+        } else if (event.key === 'Home') {
+          nextIndex = 0;
+        } else if (event.key === 'End') {
+          nextIndex = tabs.length - 1;
+        } else {
+          return;
+        }
+
+        event.preventDefault();
+
+        tabs[nextIndex].focus();
+        activateTab(tabs[nextIndex]);
+      });
+    });
+
+    /* Support direct links such as skills.html#computing */
+
+    function activateFromHash() {
+      const panelId = window.location.hash.slice(1);
+
+      const matchingTab = tabs.find(tab => {
+        return tab.getAttribute('aria-controls') === panelId;
+      });
+
+      activateTab(matchingTab || tabs[0], false);
+    }
+
+    window.addEventListener('hashchange', activateFromHash);
+    activateFromHash();
+  </script>
 </body>
 </html>
