@@ -1,953 +1,1359 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
 
-<title>Descriptor Extraction | Rupesh Lal Karn</title>
+  <title>Descriptor Extraction | Rupesh Lal Karn</title>
 
-<meta
-  name="description"
-  content="Characterization modelling and descriptor extraction
-  using XRD, XPS, Raman, FTIR, BET, SEM/EDX, and zeta potential."
->
+  <meta name="description"
+        content="Characterization modelling and descriptor extraction using XRD, XPS, Raman, FTIR, BET, SEM/EDX, and zeta potential.">
 
-<style>
-  :root {
-    --background: #0c1727;
-    --panel: #14253a;
-    --text: #eef4fc;
-    --muted: #bac9db;
-    --line: #2b415a;
-    --mint: #a0e8ce;
-  }
+  <link rel="canonical"
+        href="https://rlk.com.np/descriptor-extraction.html">
 
-  * {
-    box-sizing: border-box;
-  }
-
-  html {
-    scroll-behavior: smooth;
-    scroll-padding-top: 24px;
-  }
-
-  body {
-    margin: 0;
-    background: var(--background);
-    color: var(--text);
-    font-family: system-ui, -apple-system, BlinkMacSystemFont,
-      "Segoe UI", sans-serif;
-    font-size: 16px;
-    line-height: 1.75;
-  }
-
-  a {
-    color: #a4d5ff;
-    text-underline-offset: 5px;
-  }
-
-  a:focus-visible,
-  button:focus-visible {
-    outline: 3px solid #ffda9d;
-    outline-offset: 5px;
-  }
-
-  header,
-  main,
-  footer {
-    width: min(1360px, 100%);
-    margin: auto;
-    padding: 26px;
-  }
-
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 18px;
-    border-bottom: 1px solid var(--line);
-  }
-
-  header a {
-    text-decoration: none;
-  }
-
-  .brand {
-    color: var(--text);
-    font-weight: 750;
-  }
-
-  nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 22px;
-  }
-
-  .hero {
-    max-width: 1000px;
-    padding: 60px 0 30px;
-  }
-
-  .eyebrow {
-    color: var(--mint);
-    font-size: 12px;
-    font-weight: 750;
-    letter-spacing: .15em;
-    text-transform: uppercase;
-  }
-
-  h1 {
-    margin: 20px 0 24px;
-    font-size: clamp(40px, 6.5vw, 76px);
-    line-height: 1.08;
-    letter-spacing: -.045em;
-  }
-
-  h1 span {
-    color: var(--mint);
-  }
-
-  p {
-    margin: 0 0 18px;
-    color: var(--muted);
-  }
-
-  .lead {
-    max-width: 900px;
-    font-size: 20px;
-  }
-
-  .jump-links {
-    gap: 10px;
-    margin: 5px 0 35px;
-  }
-
-  .jump-links a {
-    padding: 8px 16px;
-    border: 1px solid var(--line);
-    border-radius: 24px;
-    background: var(--panel);
-    color: var(--text);
-    font-size: 14px;
-    text-decoration: none;
-  }
-
-  .jump-links a:hover {
-    border-color: var(--mint);
-    color: var(--mint);
-  }
-
-  .method {
-    display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
-    align-items: center;
-    gap: 36px;
-    padding: 38px 0;
-    border-top: 1px solid var(--line);
-  }
-
-  figure {
-    min-width: 0;
-    margin: 0;
-    overflow: hidden;
-    border: 1px solid var(--line);
-    border-radius: 17px;
-    background: #f4f6f8;
-  }
-
-  figure a {
-    display: block;
-    line-height: 0;
-  }
-
-  figure img {
-    display: block;
-    width: 100%;
-    height: auto;
-  }
-
-  figcaption {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    padding: 12px 17px;
-    background: var(--panel);
-    color: var(--muted);
-    font-size: 12px;
-    line-height: 1.6;
-  }
-
-  figcaption a {
-    line-height: inherit;
-  }
-
-  .description {
-    min-width: 0;
-  }
-
-  .index {
-    margin-bottom: 9px;
-    color: var(--accent);
-    font-family: ui-monospace, SFMono-Regular, Consolas, monospace;
-    font-size: 12px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-  }
-
-  h2 {
-    margin: 0 0 13px;
-    font-size: clamp(27px, 3vw, 36px);
-    line-height: 1.2;
-    letter-spacing: -.025em;
-  }
-
-  .description > p {
-    font-size: 15px;
-  }
-
-  dl {
-    margin: 20px 0;
-  }
-
-  .descriptor {
-    display: grid;
-    grid-template-columns: 145px minmax(0, 1fr);
-    gap: 16px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--line);
-  }
-
-  .descriptor:last-child {
-    border-bottom: 0;
-  }
-
-  dt {
-    color: var(--accent);
-    font-size: 14px;
-    font-weight: 700;
-  }
-
-  dd {
-    margin: 0;
-    color: var(--muted);
-    font-size: 14px;
-    line-height: 1.7;
-  }
-
-  strong {
-    color: var(--text);
-  }
-
-  .processing {
-    margin-top: 18px;
-    padding: 13px 16px;
-    border-left: 2px solid var(--accent);
-    border-radius: 0 9px 9px 0;
-    background: var(--panel);
-    color: var(--muted);
-    font-size: 13px;
-  }
-
-  .workflow {
-    margin-top: 30px;
-    padding: 30px;
-    border: 1px solid var(--line);
-    border-radius: 17px;
-    background: var(--panel);
-  }
-
-  .workflow h2 {
-    margin-top: 12px;
-    font-size: 28px;
-  }
-
-  .workflow-steps {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
-    margin: 22px 0;
-  }
-
-  .workflow-steps span {
-    padding: 8px 13px;
-    border: 1px solid #36516b;
-    border-radius: 8px;
-    color: var(--mint);
-    font-size: 13px;
-  }
-
-  .workflow-steps b {
-    color: var(--muted);
-  }
-
-  .back-link {
-    display: inline-block;
-    margin-top: 30px;
-    font-weight: 650;
-  }
-
-  footer {
-    margin-top: 30px;
-    border-top: 1px solid var(--line);
-    color: var(--muted);
-    font-size: 13px;
-  }
-
-  @media (max-width: 950px) {
-    .method {
-      grid-template-columns: 1fr;
-      gap: 25px;
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #faf9f6;
+      --ink: #272e2a;
+      --muted: #606961;
+      --line: #d8dcd4;
+      --nav-accent: #385975;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI",
+              Arial, sans-serif;
     }
 
-    figure {
-      width: 100%;
-      max-width: 800px;
-    }
-  }
-
-  @media (max-width: 540px) {
-    header,
-    main,
-    footer {
-      padding: 20px;
+    * {
+      box-sizing: border-box;
     }
 
-    .hero {
-      padding-top: 38px;
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.8 var(--sans);
+    }
+
+    a {
+      color: var(--nav-accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 5px;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--nav-accent);
+      outline-offset: 5px;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 64px));
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -80px;
+      left: 20px;
+      z-index: 100;
+      padding: 12px 18px;
+      background: white;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    /* Navigation */
+
+    .site-header {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      min-height: 98px;
+    }
+
+    .name {
+      color: var(--ink);
+      font: 22px/1.3 var(--serif);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 23px;
+    }
+
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      border-bottom: 1px solid transparent;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .site-nav a:hover,
+    .site-nav a.active {
+      border-color: var(--nav-accent);
+      color: var(--ink);
+    }
+
+    .menu-button {
+      display: none;
+      min-height: 44px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    /* Introduction */
+
+    .page-intro {
+      padding: 50px 0 28px;
+    }
+
+    .breadcrumb {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .breadcrumb a {
+      color: inherit;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+
+    h1 {
+      margin: 0 0 22px;
+      color: #293b50;
+      font-size: clamp(40px, 4.8vw, 62px);
+      line-height: 1.15;
+      letter-spacing: -.035em;
+      animation: titleGlow 4s ease-in-out infinite alternate;
     }
 
     .lead {
+      max-width: 850px;
+      margin: 0 0 16px;
       font-size: 18px;
+      line-height: 1.85;
     }
 
-    .descriptor {
-      grid-template-columns: 1fr;
-      gap: 4px;
+    .intro-note {
+      max-width: 850px;
+      margin: 0;
     }
 
-    .workflow {
-      padding: 22px;
+    p {
+      margin: 0 0 18px;
+      color: var(--muted);
     }
+
+    strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    /* Technique navigation */
+
+    .jump-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px 27px;
+      padding: 6px 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .jump-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      color: var(--accent);
+      font-size: 14px;
+    }
+
+    #xrd,
+    [href="#xrd"] {
+      --accent: #96391d;
+      --tint: #fff3ec;
+    }
+
+    #xps,
+    [href="#xps"] {
+      --accent: #7144a0;
+      --tint: #f6f0fc;
+    }
+
+    #raman,
+    [href="#raman"] {
+      --accent: #176b61;
+      --tint: #edf6f1;
+    }
+
+    #ftir,
+    [href="#ftir"] {
+      --accent: #a34b39;
+      --tint: #fff1ed;
+    }
+
+    #bet,
+    [href="#bet"] {
+      --accent: #285ca3;
+      --tint: #edf3fb;
+    }
+
+    #sem,
+    [href="#sem"] {
+      --accent: #4b5968;
+      --tint: #eef1f4;
+    }
+
+    #zeta,
+    [href="#zeta"] {
+      --accent: #9a365b;
+      --tint: #faf0f4;
+    }
+
+    /* Image and description rows */
 
     .method {
-      padding: 28px 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr);
+      gap: 40px;
+      align-items: center;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    figure {
+      min-width: 0;
+      margin: 0;
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .image-link {
+      display: block;
+    }
+
+    .image-link img {
+      display: block;
+      width: 100%;
+      height: auto;
     }
 
     figcaption {
-      flex-wrap: wrap;
-      gap: 5px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding: 10px 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
     }
-  }
 
-  @media (prefers-reduced-motion: reduce) {
-    html {
-      scroll-behavior: auto;
+    figcaption a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
     }
-  }
-</style>
+
+    .description {
+      min-width: 0;
+    }
+
+    .method-label {
+      margin: 0 0 10px;
+      color: var(--accent);
+      font-size: 13px;
+    }
+
+    h2 {
+      margin: 0 0 16px;
+      color: var(--accent);
+      font-size: 32px;
+      line-height: 1.3;
+      letter-spacing: -.025em;
+    }
+
+    .description > p {
+      font-size: 15px;
+    }
+
+    .description dl {
+      margin: 18px 0;
+    }
+
+    .descriptor {
+      display: grid;
+      grid-template-columns: 145px minmax(0, 1fr);
+      gap: 18px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .descriptor:last-child {
+      border-bottom: 0;
+    }
+
+    .descriptor dt {
+      color: var(--accent);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .descriptor dd {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.75;
+    }
+
+    .processing {
+      padding: 15px 18px;
+      margin-top: 18px;
+      border-left: 3px solid var(--accent);
+      background: var(--tint);
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Descriptor workflow */
+
+    .workflow {
+      padding: 35px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .workflow-intro {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 45px;
+      align-items: start;
+    }
+
+    .workflow h2 {
+      color: #293b50;
+    }
+
+    .workflow-intro p {
+      margin: 0;
+    }
+
+    .workflow-steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px 40px;
+      padding: 0;
+      margin: 28px 0;
+      list-style: none;
+      counter-reset: stage;
+    }
+
+    .workflow-steps li {
+      min-width: 0;
+      padding: 18px 0 0;
+      border-top: 1px solid var(--line);
+      counter-increment: stage;
+    }
+
+    .workflow-steps li::before {
+      content: counter(stage) ".";
+      display: block;
+      margin-bottom: 8px;
+      color: #7144a0;
+      font: 18px var(--serif);
+    }
+
+    .workflow-steps strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #385975;
+      font: 22px/1.4 var(--serif);
+    }
+
+    .workflow-steps p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .workflow-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+    }
+
+    .page-end {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px 30px;
+      padding: 20px 0 38px;
+    }
+
+    .page-end a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+    }
+
+    @keyframes titleGlow {
+      from {
+        text-shadow: 0 0 2px rgba(69, 110, 161, .04);
+      }
+
+      to {
+        text-shadow:
+          0 0 9px rgba(69, 110, 161, .22),
+          0 0 22px rgba(69, 110, 161, .11);
+      }
+    }
+
+    /* Footer */
+
+    .footer {
+      padding: 35px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .footer .footer-name {
+      margin: 0 0 10px;
+      color: var(--ink);
+      font: 23px var(--serif);
+    }
+
+    .footer p {
+      margin: 0 0 12px;
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: flex-end;
+      align-content: start;
+      flex-wrap: wrap;
+      gap: 10px 25px;
+    }
+
+    .footer-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+    }
+
+    .copyright {
+      grid-column: 1 / -1;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Responsive layout */
+
+    @media (max-width: 1050px) {
+      .header-inner {
+        flex-wrap: wrap;
+        padding: 20px 0;
+        gap: 12px;
+      }
+
+      .site-nav {
+        gap: 18px;
+      }
+
+      .method {
+        gap: 28px;
+      }
+
+      .descriptor {
+        grid-template-columns: 120px minmax(0, 1fr);
+        gap: 15px;
+      }
+    }
+
+    @media (max-width: 950px) {
+      .method {
+        grid-template-columns: 1fr;
+        gap: 25px;
+      }
+
+      .method figure {
+        width: 100%;
+        max-width: 800px;
+      }
+
+      .descriptor {
+        grid-template-columns: 145px minmax(0, 1fr);
+      }
+
+      .workflow-intro {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: calc(100% - 40px);
+      }
+
+      .header-inner {
+        min-height: 85px;
+        justify-content: space-between;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .site-nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        padding-top: 10px;
+      }
+
+      .site-nav.is-open {
+        display: flex;
+      }
+
+      .site-nav a {
+        min-height: 48px;
+      }
+
+      .page-intro {
+        padding: 35px 0 25px;
+      }
+
+      h1 {
+        font-size: 39px;
+      }
+
+      .lead {
+        font-size: 17px;
+      }
+
+      h2 {
+        font-size: 29px;
+      }
+
+      .method,
+      .workflow {
+        padding: 28px 0;
+      }
+
+      .workflow-steps {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 22px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .descriptor {
+        grid-template-columns: 1fr;
+        gap: 5px;
+      }
+
+      .workflow-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .processing {
+        padding: 14px 16px;
+      }
+
+      figcaption {
+        flex-wrap: wrap;
+        gap: 4px 15px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      h1 {
+        animation: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<header>
-  <a class="brand" href="index.html">Rupesh Lal Karn</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="name" href="index.html">Rupesh Lal Karn</a>
 
-  <nav aria-label="Main navigation">
-    <a href="modelling.html">Modelling</a>
-    <a href="research.html">Research</a>
-    <a href="projects.html">Projects</a>
-  </nav>
-</header>
+      <button class="menu-button"
+              type="button"
+              aria-controls="site-navigation"
+              aria-expanded="false">
+        Menu
+      </button>
 
-<main>
-
-  <div class="hero">
-    <div class="eyebrow">
-      Characterization modelling · MATLAB · Descriptors
+      <nav class="site-nav"
+           id="site-navigation"
+           aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a class="active" href="research.html">Research</a>
+        <a href="experience.html">Experience</a>
+        <a href="publications.html">Publications</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="projects.html">Projects</a>
+        <a href="skills.html">Skills</a>
+        <a href="contact.html">Contact</a>
+      </nav>
     </div>
+  </header>
 
-    <h1>
-      Descriptor<br>
-      <span>Extraction</span>
-    </h1>
+  <main class="container" id="main">
 
-    <p class="lead">
-      I extract interpretable variables from characterization
-      measurements to describe material structure, surface
-      chemistry, accessible interfaces, and dispersion.
-    </p>
-
-    <p>
-      The schematics introduce each measurement and the meaning
-      of its descriptors. Baseline treatment, fitting, integration,
-      and physical transformations connect the experimental
-      signal with the modelling framework.
-    </p>
-  </div>
-
-  <nav class="jump-links" aria-label="Characterization methods">
-    <a href="#xrd">XRD</a>
-    <a href="#xps">XPS</a>
-    <a href="#raman">Raman</a>
-    <a href="#ftir">FTIR</a>
-    <a href="#bet">BET</a>
-    <a href="#sem">SEM / EDX</a>
-    <a href="#zeta">Zeta</a>
-  </nav>
-
-  <!-- XRD -->
-
-  <section class="method" id="xrd" style="--accent:#ffca91">
-    <figure>
-      <a href="XRD.png" aria-label="Open XRD schematic">
-        <img
-          src="XRD.png"
-          alt="XRD schematic showing peak position,
-          full width at half maximum, integrated peak area,
-          and layered crystal structure."
-          fetchpriority="high"
-        >
-      </a>
-
-      <figcaption>
-        <span>XRD · Schematic</span>
-        <a href="XRD.png">Enlarge image</a>
-      </figcaption>
-    </figure>
-
-    <div class="description">
-      <div class="index">01 / Structural descriptors</div>
-      <h2>X-ray Diffraction</h2>
-
-      <p>
-        Diffraction-profile modelling separates peak position,
-        broadening, and area to characterize basal spacing
-        and apparent stacking coherence.
+    <div class="page-intro">
+      <p class="breadcrumb">
+        <a href="research.html">Research</a> /
+        <a href="modelling.html">Modelling</a> /
+        Descriptor extraction
       </p>
 
-      <dl>
-        <div class="descriptor">
-          <dt>Basal spacing, d</dt>
-          <dd>
-            Interplanar distance obtained from Bragg's law.
-            Tracks spacing changes between corresponding reflections.
-          </dd>
-        </div>
+      <h1>Descriptor Extraction</h1>
 
-        <div class="descriptor">
-          <dt>Peak width, β</dt>
-          <dd>
-            Full width at half maximum. Describes broadening
-            from coherence, strain, and instrumental contributions.
-          </dd>
-        </div>
-
-        <div class="descriptor">
-          <dt>Apparent Lc</dt>
-          <dd>
-            A Scherrer-type stacking-coherence estimate.
-            Provides a comparative structural descriptor,
-            rather than a direct flake-thickness measurement.
-          </dd>
-        </div>
-
-        <div class="descriptor">
-          <dt>Area / parent index</dt>
-          <dd>
-            Integrated intensity measures for selected regions.
-            Track diffraction features without directly determining
-            a residual-phase fraction.
-          </dd>
-        </div>
-      </dl>
-
-      <div class="processing">
-        <strong>MATLAB:</strong> baseline correction →
-        peak-profile fitting → residual assessment →
-        structural descriptor extraction.
-      </div>
-    </div>
-  </section>
-
-  <!-- XPS -->
-
-  <section class="method" id="xps" style="--accent:#d5bdff">
-    <figure>
-      <a href="XPS.png" aria-label="Open XPS schematic">
-        <img
-          src="XPS.png"
-          alt="XPS schematic showing a spectral envelope,
-          fitted components, and background."
-          loading="lazy"
-        >
-      </a>
-
-      <figcaption>
-        <span>XPS · Schematic</span>
-        <a href="XPS.png">Enlarge image</a>
-      </figcaption>
-    </figure>
-
-    <div class="description">
-      <div class="index">02 / Surface-chemical descriptors</div>
-      <h2>XPS</h2>
-
-      <p>
-        Survey quantification describes surface composition.
-        High-resolution envelope fitting examines relative
-        contributions from selected chemical environments.
+      <p class="lead">
+        I extract interpretable variables from characterization
+        measurements to describe material structure, surface
+        chemistry, accessible interfaces, and dispersion.
       </p>
 
-      <dl>
-        <div class="descriptor">
-          <dt>Elemental ratios</dt>
-          <dd>
-            Quantified atomic-fraction ratios, including F/Ti
-            where available. Describe relative surface composition.
-          </dd>
-        </div>
-
-        <div class="descriptor">
-          <dt>Binding energy</dt>
-          <dd>
-            Position of a fitted spectral contribution.
-            Supports chemical-environment interpretation with
-            calibration and assignment controls.
-          </dd>
-        </div>
-
-        <div class="descriptor">
-          <dt>Component fraction</dt>
-          <dd>
-            A component's share of the fitted envelope area.
-            Compares modelled chemical contributions within that region.
-          </dd>
-        </div>
-
-        <div class="descriptor">
-          <dt>TiOₓ-like fraction</dt>
-          <dd>
-            A model-dependent contribution associated with
-            selected oxidized titanium environments.
-          </dd>
-        </div>
-      </dl>
-
-      <div class="processing">
-        <strong>Fitting:</strong> background alternatives,
-        constrained components, linked spin–orbit partners,
-        and residual checks. Survey composition remains
-        distinct from envelope fractions.
-      </div>
-    </div>
-  </section>
-
-  <!-- RAMAN -->
-
-  <section class="method" id="raman" style="--accent:#a2e7be">
-    <figure>
-      <a href="Raman.png" aria-label="Open Raman schematic">
-        <img
-          src="Raman.png"
-          alt="Raman schematic illustrating peak shift,
-          linewidth, and integrated spectral contribution."
-          loading="lazy"
-        >
-      </a>
-
-      <figcaption>
-        <span>Raman · Schematic</span>
-        <a href="Raman.png">Enlarge image</a>
-      </figcaption>
-    </figure>
-
-    <div class="description">
-      <div class="index">03 / Vibrational descriptors</div>
-      <h2>Raman Spectroscopy</h2>
-
-      <p>
-        Corresponding vibrational features are fitted to
-        quantify frequency displacement, broadening,
-        and relative spectral contributions.
+      <p class="intro-note">
+        Baseline treatment, profile fitting, integration,
+        and physical transformations connect each measured
+        signal with a defined descriptor. The schematics below
+        introduce the measurements and the meaning of the
+        extracted quantities.
       </p>
-
-      <dl>
-        <div class="descriptor">
-          <dt>Peak shift, Δω</dt>
-          <dd>
-            Frequency change relative to a defined reference.
-            Tracks changes in the selected vibrational environment.
-          </dd>
-        </div>
-
-        <div class="descriptor">
-          <dt>Linewidth, Γ</dt>
-          <dd>
-            Width of a fitted vibrational feature.
-            Describes broadening that can reflect disorder
-            and other mode-dependent effects.
-          </dd>
-        </div>
-
-        <div class="descriptor">
-          <dt>Integrated area</dt>
-          <dd>
-            Signal beneath a fitted feature.
-            Supports controlled comparisons of spectral contributions.
-          </dd>
-        </div>
-
-        <div class="descriptor">
-          <dt>Normalized shift</dt>
-          <dd>
-            Rescaled selected Raman shift.
-            Supplies the vibrational variable used in the
-            composite descriptor framework.
-          </dd>
-        </div>
-      </dl>
-
-      <div class="processing">
-        <strong>MATLAB:</strong> spectral processing →
-        corresponding-feature identification → peak fitting.
-        Absolute intensity depends on acquisition conditions.
-      </div>
     </div>
-  </section>
 
-  <!-- FTIR -->
+    <nav class="jump-links" aria-label="Characterization methods">
+      <a href="#xrd">XRD</a>
+      <a href="#xps">XPS</a>
+      <a href="#raman">Raman</a>
+      <a href="#ftir">FTIR</a>
+      <a href="#bet">BET</a>
+      <a href="#sem">SEM / EDX</a>
+      <a href="#zeta">Zeta</a>
+    </nav>
 
-  <section class="method" id="ftir" style="--accent:#ffbdad">
-    <figure>
-      <a href="FTIR.png" aria-label="Open FTIR schematic">
-        <img
-          src="FTIR.png"
-          alt="FTIR transmittance schematic showing downward
-          absorption bands and selected integration regions."
-          loading="lazy"
-        >
+    <!-- XRD -->
+
+    <section class="method" id="xrd" aria-labelledby="xrd-heading">
+      <figure>
+        <a class="image-link"
+           href="XRD.png"
+           aria-label="Open XRD schematic">
+          <img src="XRD.png"
+               width="1752"
+               height="897"
+               fetchpriority="high"
+               alt="XRD schematic showing peak position, full width at half maximum, integrated peak area, and layered crystal structure.">
+        </a>
+
+        <figcaption>
+          <span>XRD · Schematic</span>
+          <a href="XRD.png">Enlarge image</a>
+        </figcaption>
+      </figure>
+
+      <div class="description">
+        <p class="method-label">Structural descriptors</p>
+        <h2 id="xrd-heading">X-ray Diffraction</h2>
+
+        <p>
+          Diffraction-profile modelling separates peak position,
+          broadening, and area to characterize basal spacing
+          and apparent stacking coherence.
+        </p>
+
+        <dl>
+          <div class="descriptor">
+            <dt>Basal spacing, d</dt>
+            <dd>
+              Interplanar distance obtained from Bragg’s law.
+              Tracks spacing changes between corresponding reflections.
+            </dd>
+          </div>
+
+          <div class="descriptor">
+            <dt>Peak width, β</dt>
+            <dd>
+              Full width at half maximum. Describes broadening
+              from coherence, strain, and instrumental contributions.
+            </dd>
+          </div>
+
+          <div class="descriptor">
+            <dt>Apparent L<sub>c</sub></dt>
+            <dd>
+              A Scherrer-type stacking-coherence estimate.
+              Provides a comparative structural descriptor,
+              rather than a direct flake-thickness measurement.
+            </dd>
+          </div>
+
+          <div class="descriptor">
+            <dt>Area / parent index</dt>
+            <dd>
+              Integrated intensity measures for selected regions.
+              Track diffraction features without directly
+              determining a residual-phase fraction.
+            </dd>
+          </div>
+        </dl>
+
+        <div class="processing">
+          <strong>MATLAB:</strong>
+          baseline correction → peak-profile fitting →
+          residual assessment → structural descriptor extraction.
+        </div>
+      </div>
+    </section>
+
+    <!-- XPS -->
+
+    <section class="method" id="xps" aria-labelledby="xps-heading">
+      <figure>
+        <a class="image-link"
+           href="XPS.png"
+           aria-label="Open XPS schematic">
+          <img src="XPS.png"
+               width="1752"
+               height="897"
+               loading="lazy"
+               alt="XPS schematic showing a spectral envelope, fitted components, and background.">
+        </a>
+
+        <figcaption>
+          <span>XPS · Schematic</span>
+          <a href="XPS.png">Enlarge image</a>
+        </figcaption>
+      </figure>
+
+      <div class="description">
+        <p class="method-label">Surface-chemical descriptors</p>
+        <h2 id="xps-heading">XPS</h2>
+
+        <p>
+          Survey quantification describes surface composition.
+          High-resolution envelope fitting examines relative
+          contributions from selected chemical environments.
+        </p>
+
+        <dl>
+          <div class="descriptor">
+            <dt>Elemental ratios</dt>
+            <dd>
+              Quantified atomic-fraction ratios, including
+              F/Ti where available. Describe relative
+              surface composition.
+            </dd>
+          </div>
+
+          <div class="descriptor">
+            <dt>Binding energy</dt>
+            <dd>
+              Position of a fitted spectral contribution.
+              Supports chemical-environment interpretation
+              with calibration and assignment controls.
+            </dd>
+          </div>
+
+          <div class="descriptor">
+            <dt>Component fraction</dt>
+            <dd>
+              A component’s share of the fitted envelope area.
+              Compares modelled chemical contributions
+              within that region.
+            </dd>
+          </div>
+
+          <div class="descriptor">
+            <dt>TiOₓ-like fraction</dt>
+            <dd>
+              A model-dependent contribution associated with
+              selected oxidized titanium environments.
+            </dd>
+          </div>
+        </dl>
+
+        <div class="processing">
+          <strong>Fitting:</strong>
+          background alternatives, constrained components,
+          linked spin–orbit partners, and residual checks.
+          Survey composition remains distinct from envelope fractions.
+        </div>
+      </div>
+    </section>
+
+    <!-- RAMAN -->
+
+    <section class="method" id="raman" aria-labelledby="raman-heading">
+      <figure>
+        <a class="image-link"
+           href="Raman.png"
+           aria-label="Open Raman schematic">
+          <img src="Raman.png"
+               width="1752"
+               height="897"
+               loading="lazy"
+               alt="Raman schematic illustrating peak shift, linewidth, and integrated spectral contribution.">
+        </a>
+
+        <figcaption>
+          <span>Raman · Schematic</span>
+          <a href="Raman.png">Enlarge image</a>
+        </figcaption>
+      </figure>
+
+      <div class="description">
+        <p class="method-label">Vibrational descriptors</p>
+        <h2 id="raman-heading">Raman Spectroscopy</h2>
+
+        <p>
+          Corresponding vibrational features are fitted to
+          quantify frequency displacement, broadening,
+          and relative spectral contributions.
+        </p>
+
+        <dl>
+          <div class="descriptor">
+            <dt>Peak shift, Δω</dt>
+            <dd>
+              Frequency change relative to a defined reference.
+              Tracks changes in the selected vibrational environment.
+            </dd>
+          </div>
+
+          <div class="descriptor">
+            <dt>Linewidth, Γ</dt>
+            <dd>
+              Width of a fitted vibrational feature.
+              Describes broadening that can reflect disorder
+              and other mode-dependent effects.
+            </dd>
+          </div>
+
+          <div class="descriptor">
+            <dt>Integrated area</dt>
+            <dd>
+              Signal beneath a fitted feature.
+              Supports controlled comparisons of spectral contributions.
+            </dd>
+          </div>
+
+          <div class="descriptor">
+            <dt>Normalized shift</dt>
+            <dd>
+              Rescaled selected Raman shift.
+              Supplies the vibrational variable used
+              in the composite descriptor framework.
+            </dd>
+          </div>
+        </dl>
+
+        <div class="processing">
+          <strong>MATLAB:</strong>
+          spectral processing → corresponding-feature
+          identification → peak fitting.
+          Absolute intensity depends on acquisition conditions.
+        </div>
+      </div>
+    </section>
+
+    <!-- FTIR -->
+
+    <section class="method" id="ftir" aria-labelledby="ftir-heading">
+      <figure>
+        <a class="image-link"
+           href="FTIR.png"
+           aria-label="Open FTIR schematic">
+          <img src="FTIR.png"
+               width="1752"
+               height="897"
+               loading="lazy"
+               alt="FTIR transmittance schematic showing downward absorption bands and selected integration regions.">
+        </a>
+
+        <figcaption>
+          <span>FTIR transmittance · Schematic</span>
+          <a href="FTIR.png">Enlarge image</a>
+        </figcaption>
+      </figure>
+
+      <div class="description">
+        <p class="method-label">Integrated spectral descriptors</p>
+        <h2 id="ftir-heading">FTIR</h2>
+
+        <p>
+          Transmittance bands visualize infrared absorption.
+          For descriptor extraction, corrected absorbance
+          provides defined band areas and comparative spectral ratios.
+        </p>
+
+        <dl>
+          <div class="descriptor">
+            <dt>Band position</dt>
+            <dd>
+              Wavenumber of a selected absorption feature.
+              Helps identify and compare vibrational regions.
+            </dd>
+          </div>
+
+          <div class="descriptor">
+            <dt>Band areas, B1–B4</dt>
+            <dd>
+              Integrated corrected absorbance over defined windows.
+              Quantifies each selected spectral contribution.
+            </dd>
+          </div>
+
+          <div class="descriptor">
+            <dt>B2 area fraction</dt>
+            <dd>
+              Relative contribution of the termination-sensitive
+              region. Provides an interface-sensitive descriptor.
+            </dd>
+          </div>
+
+          <div class="descriptor">
+            <dt>Band-area ratios</dt>
+            <dd>
+              B2/B1, B3/B1, and B4/B1 compare termination-,
+              adsorbate-, and hydroxyl-sensitive regions
+              with the lattice-related window.
+            </dd>
+          </div>
+        </dl>
+
+        <div class="processing">
+          <strong>Processing:</strong>
+          when starting from transmittance,
+          A = −log₁₀(T), with T expressed as a fraction.
+          Baseline-corrected absorbance is integrated.
+          The displayed schematic remains in transmittance.
+        </div>
+      </div>
+    </section>
+
+    <!-- BET -->
+
+    <section class="method" id="bet" aria-labelledby="bet-heading">
+      <figure>
+        <a class="image-link"
+           href="BET.png"
+           aria-label="Open BET schematic">
+          <img src="BET.png"
+               width="1568"
+               height="1003"
+               loading="lazy"
+               alt="Gas-sorption schematic showing adsorption, desorption, hysteresis, and a porous solid.">
+        </a>
+
+        <figcaption>
+          <span>BET / gas sorption · Schematic</span>
+          <a href="BET.png">Enlarge image</a>
+        </figcaption>
+      </figure>
+
+      <div class="description">
+        <p class="method-label">Accessible interface descriptors</p>
+        <h2 id="bet-heading">BET &amp; Gas Sorption</h2>
+
+        <p>
+          Gas-sorption analysis describes accessible surface
+          area and pore geometry. Derived variables provide
+          inputs for interface and effective-transport models.
+        </p>
+
+        <dl>
+          <div class="descriptor">
+            <dt>Surface area, S<sub>BET</sub></dt>
+            <dd>
+              Gas-accessible area per unit mass.
+              Describes the interface available
+              to the adsorptive probe.
+            </dd>
+          </div>
+
+          <div class="descriptor">
+            <dt>Pore volume, Vp</dt>
+            <dd>
+              Sorption-derived pore-space measure.
+              Describes accessible pore capacity
+              under the analysis assumptions.
+            </dd>
+          </div>
+
+          <div class="descriptor">
+            <dt>Pore diameter, Dp</dt>
+            <dd>
+              Operational pore-size descriptor.
+              The approximation 4Vp/S<sub>BET</sub> connects
+              pore volume and area under a defined geometric treatment.
+            </dd>
+          </div>
+
+          <div class="descriptor">
+            <dt>Interface area, av</dt>
+            <dd>
+              Surface area multiplied by an assumed bulk density.
+              Provides a volumetric interface term
+              for transport modelling.
+            </dd>
+          </div>
+        </dl>
+
+        <div class="processing">
+          <strong>Interpretation:</strong>
+          BET and pore-distribution analyses have distinct
+          assumptions. Gas-accessible area does not directly
+          determine thermally active interface area.
+        </div>
+      </div>
+    </section>
+
+    <!-- SEM / EDX -->
+
+    <section class="method" id="sem" aria-labelledby="sem-heading">
+      <figure>
+        <a class="image-link"
+           href="SEM.png"
+           aria-label="Open SEM and EDX schematic">
+          <img src="SEM.png"
+               width="1752"
+               height="897"
+               loading="lazy"
+               alt="SEM and EDX schematic showing simulated layered morphology, elemental maps, and a spectrum.">
+        </a>
+
+        <figcaption>
+          <span>SEM / EDX · Schematic</span>
+          <a href="SEM.png">Enlarge image</a>
+        </figcaption>
+      </figure>
+
+      <div class="description">
+        <p class="method-label">Morphology and spatial composition</p>
+        <h2 id="sem-heading">SEM / EDX</h2>
+
+        <p>
+          Morphology and elemental distribution provide
+          complementary spatial context for structural
+          and chemical characterization.
+        </p>
+
+        <dl>
+          <div class="descriptor">
+            <dt>Morphology</dt>
+            <dd>
+              Visible flake, aggregate, and surface features.
+              Contextualizes material assembly and structural changes.
+            </dd>
+          </div>
+
+          <div class="descriptor">
+            <dt>Image-based size</dt>
+            <dd>
+              Dimensions measured from calibrated images.
+              Describe sampled projected features when
+              quantitative image analysis is performed.
+            </dd>
+          </div>
+
+          <div class="descriptor">
+            <dt>EDX composition</dt>
+            <dd>
+              Quantified atomic or mass fractions.
+              Supports composition comparisons
+              within instrumental limits.
+            </dd>
+          </div>
+
+          <div class="descriptor">
+            <dt>Elemental distribution</dt>
+            <dd>
+              Spatial patterns in elemental maps.
+              Supports assessment of heterogeneity and co-location.
+            </dd>
+          </div>
+        </dl>
+
+        <div class="processing">
+          <strong>Role:</strong>
+          complementary characterization. These measures
+          are not automatically included in the composite scores.
+          EDX alone does not establish oxidation state
+          or chemical bonding.
+        </div>
+      </div>
+    </section>
+
+    <!-- ZETA POTENTIAL -->
+
+    <section class="method" id="zeta" aria-labelledby="zeta-heading">
+      <figure>
+        <a class="image-link"
+           href="ZETA.png"
+           aria-label="Open zeta-potential schematic">
+          <img src="ZETA.png"
+               width="1663"
+               height="946"
+               loading="lazy"
+               alt="Zeta-potential schematic showing a distribution and particle–liquid interface.">
+        </a>
+
+        <figcaption>
+          <span>Zeta potential · Schematic</span>
+          <a href="ZETA.png">Enlarge image</a>
+        </figcaption>
+      </figure>
+
+      <div class="description">
+        <p class="method-label">Dispersion descriptors</p>
+        <h2 id="zeta-heading">Zeta Potential &amp; DLS</h2>
+
+        <p>
+          Electrokinetic magnitude and hydrodynamic size
+          provide complementary operational descriptions
+          of particle dispersions.
+        </p>
+
+        <dl>
+          <div class="descriptor">
+            <dt>Zeta potential, ζ</dt>
+            <dd>
+              Electrokinetic potential associated with the
+              slipping plane. Describes the interface
+              under specified measurement conditions.
+            </dd>
+          </div>
+
+          <div class="descriptor">
+            <dt>Magnitude, |ζ|</dt>
+            <dd>
+              Charge-related dispersion variable.
+              Supports comparisons of electrostatic
+              contributions to dispersion behaviour.
+            </dd>
+          </div>
+
+          <div class="descriptor">
+            <dt>DLS size, Dh</dt>
+            <dd>
+              Operational hydrodynamic diameter.
+              Can include aggregates and is not
+              a direct sheet-width measure.
+            </dd>
+          </div>
+
+          <div class="descriptor">
+            <dt>Dispersion score, S</dt>
+            <dd>
+              Combines normalized |ζ| with inverted normalized
+              log₁₀(Dh). Compares dispersion variables
+              within the defined material set.
+            </dd>
+          </div>
+        </dl>
+
+        <div class="processing">
+          <strong>Measurement context:</strong>
+          dispersion medium, pH, ionic strength,
+          and preparation affect interpretation.
+          PDI-based corrections require available PDI measurements.
+        </div>
+      </div>
+    </section>
+
+    <!-- WORKFLOW -->
+
+    <section class="workflow" aria-labelledby="workflow-heading">
+      <div class="workflow-intro">
+        <h2 id="workflow-heading">
+          From measurement to model input
+        </h2>
+
+        <p>
+          The descriptor table distinguishes measured inputs,
+          fitted parameters, derived quantities, and composite
+          scores. Each quantity retains its definition,
+          units, and processing context.
+        </p>
+      </div>
+
+      <ol class="workflow-steps">
+        <li>
+          <strong>Preserve the signal</strong>
+          <p>
+            Retain raw measurements, sample identity,
+            units, and acquisition conditions.
+          </p>
+        </li>
+
+        <li>
+          <strong>Process for the method</strong>
+          <p>
+            Apply appropriate baseline treatment,
+            fitting, integration, or physical transformations.
+          </p>
+        </li>
+
+        <li>
+          <strong>Extract quantities</strong>
+          <p>
+            Record selected parameters, spectral areas,
+            ratios, and operational physical descriptors.
+          </p>
+        </li>
+
+        <li>
+          <strong>Screen descriptors</strong>
+          <p>
+            Assess comparability, missing values, redundancy,
+            acquisition sensitivity, and dependence
+            on assumed parameters.
+          </p>
+        </li>
+
+        <li>
+          <strong>Connect with response</strong>
+          <p>
+            Use the screened variables in the relevant physical
+            or descriptor-based model, retaining assumptions
+            and normalization choices.
+          </p>
+        </li>
+      </ol>
+
+      <a class="workflow-link" href="physics-guided-modelling.html">
+        Explore physics-guided descriptor modelling →
       </a>
+    </section>
 
-      <figcaption>
-        <span>FTIR transmittance · Schematic</span>
-        <a href="FTIR.png">Enlarge image</a>
-      </figcaption>
-    </figure>
+    <div class="page-end">
+      <a href="modelling.html">← Back to modelling</a>
+      <a href="data-analysis.html">Scientific data analysis →</a>
+    </div>
 
-    <div class="description">
-      <div class="index">04 / Integrated spectral descriptors</div>
-      <h2>FTIR</h2>
+  </main>
 
-      <p>
-        Transmittance bands visualize infrared absorption.
-        For descriptor extraction, corrected absorbance
-        provides defined band areas and comparative spectral ratios.
-      </p>
+  <footer class="footer">
+    <div class="container footer-grid">
 
-      <dl>
-        <div class="descriptor">
-          <dt>Band position</dt>
-          <dd>
-            Wavenumber of a selected absorption feature.
-            Helps identify and compare vibrational regions.
-          </dd>
-        </div>
-
-        <div class="descriptor">
-          <dt>Band areas, B1–B4</dt>
-          <dd>
-            Integrated corrected absorbance over defined windows.
-            Quantifies each selected spectral contribution.
-          </dd>
-        </div>
-
-        <div class="descriptor">
-          <dt>B2 area fraction</dt>
-          <dd>
-            Relative contribution of the termination-sensitive region.
-            Provides an interface-sensitive descriptor.
-          </dd>
-        </div>
-
-        <div class="descriptor">
-          <dt>Band-area ratios</dt>
-          <dd>
-            B2/B1, B3/B1, and B4/B1 compare termination-,
-            adsorbate-, and hydroxyl-sensitive regions
-            with the lattice-related window.
-          </dd>
-        </div>
-      </dl>
-
-      <div class="processing">
-        <strong>Processing:</strong> when starting from
-        transmittance, A = −log₁₀(T), with T expressed as a fraction.
-        Baseline-corrected absorbance is integrated.
-        The displayed schematic remains in transmittance.
+      <div>
+        <p class="footer-name">Rupesh Lal Karn</p>
+        <p>Prairie View, Texas</p>
+        <a href="mailto:rkarn@pvamu.edu">rkarn@pvamu.edu</a>
       </div>
+
+      <nav class="footer-links" aria-label="Academic profiles">
+        <a href="https://scholar.google.com/citations?user=7RRtNOYAAAAJ&amp;hl=en">
+          Google Scholar
+        </a>
+
+        <a href="https://orcid.org/0009-0008-9261-024X">
+          ORCID
+        </a>
+
+        <a href="Rupesh_Lal_Karn_CV.pdf">CV</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <small class="copyright">
+        © <span id="year">2026</span> Rupesh Lal Karn
+      </small>
+
     </div>
-  </section>
+  </footer>
 
-  <!-- BET -->
+  <script>
+    const menuButton = document.querySelector('.menu-button');
+    const navigation = document.getElementById('site-navigation');
 
-  <section class="method" id="bet" style="--accent:#a6d9ff">
-    <figure>
-      <a href="BET.png" aria-label="Open BET schematic">
-        <img
-          src="BET.png"
-          alt="Gas-sorption schematic showing adsorption,
-          desorption, hysteresis, and a porous solid."
-          loading="lazy"
-        >
-      </a>
+    function setMenu(open) {
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.textContent = open ? 'Close' : 'Menu';
+      navigation.classList.toggle('is-open', open);
+    }
 
-      <figcaption>
-        <span>BET / gas sorption · Schematic</span>
-        <a href="BET.png">Enlarge image</a>
-      </figcaption>
-    </figure>
+    menuButton.addEventListener('click', () => {
+      setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
+    });
 
-    <div class="description">
-      <div class="index">05 / Accessible interface descriptors</div>
-      <h2>BET &amp; Gas Sorption</h2>
+    document.addEventListener('keydown', event => {
+      if (
+        event.key === 'Escape' &&
+        menuButton.getAttribute('aria-expanded') === 'true'
+      ) {
+        setMenu(false);
+        menuButton.focus();
+      }
+    });
 
-      <p>
-        Gas-sorption analysis describes accessible surface
-        area and pore geometry. Derived variables provide
-        inputs for interface and effective-transport models.
-      </p>
+    navigation.addEventListener('click', event => {
+      if (event.target.closest('a')) {
+        setMenu(false);
+      }
+    });
 
-      <dl>
-        <div class="descriptor">
-          <dt>Surface area, S<sub>BET</sub></dt>
-          <dd>
-            Gas-accessible area per unit mass.
-            Describes the interface available to the adsorptive probe.
-          </dd>
-        </div>
-
-        <div class="descriptor">
-          <dt>Pore volume, Vp</dt>
-          <dd>
-            Sorption-derived pore-space measure.
-            Describes accessible pore capacity under the analysis assumptions.
-          </dd>
-        </div>
-
-        <div class="descriptor">
-          <dt>Pore diameter, Dp</dt>
-          <dd>
-            Operational pore-size descriptor.
-            The approximation 4Vp/S<sub>BET</sub> connects
-            pore volume and area under a defined geometric treatment.
-          </dd>
-        </div>
-
-        <div class="descriptor">
-          <dt>Interface area, av</dt>
-          <dd>
-            Surface area multiplied by an assumed bulk density.
-            Provides a volumetric interface term for transport modelling.
-          </dd>
-        </div>
-      </dl>
-
-      <div class="processing">
-        <strong>Interpretation:</strong> BET and pore-distribution
-        analyses have distinct assumptions. Gas-accessible
-        area does not directly determine thermally active interface area.
-      </div>
-    </div>
-  </section>
-
-  <!-- SEM / EDX -->
-
-  <section class="method" id="sem" style="--accent:#d7dfe9">
-    <figure>
-      <a href="SEM.png" aria-label="Open SEM and EDX schematic">
-        <img
-          src="SEM.png"
-          alt="SEM and EDX schematic showing simulated
-          layered morphology, elemental maps, and a spectrum."
-          loading="lazy"
-        >
-      </a>
-
-      <figcaption>
-        <span>SEM / EDX · Schematic</span>
-        <a href="SEM.png">Enlarge image</a>
-      </figcaption>
-    </figure>
-
-    <div class="description">
-      <div class="index">06 / Morphology and spatial composition</div>
-      <h2>SEM / EDX</h2>
-
-      <p>
-        Morphology and elemental distribution provide
-        complementary spatial context for structural
-        and chemical characterization.
-      </p>
-
-      <dl>
-        <div class="descriptor">
-          <dt>Morphology</dt>
-          <dd>
-            Visible flake, aggregate, and surface features.
-            Contextualizes material assembly and structural changes.
-          </dd>
-        </div>
-
-        <div class="descriptor">
-          <dt>Image-based size</dt>
-          <dd>
-            Dimensions measured from calibrated images.
-            Describe sampled projected features when quantitative
-            image analysis is performed.
-          </dd>
-        </div>
-
-        <div class="descriptor">
-          <dt>EDX composition</dt>
-          <dd>
-            Quantified atomic or mass fractions.
-            Supports composition comparisons within instrumental limits.
-          </dd>
-        </div>
-
-        <div class="descriptor">
-          <dt>Elemental distribution</dt>
-          <dd>
-            Spatial patterns in elemental maps.
-            Supports assessment of heterogeneity and co-location.
-          </dd>
-        </div>
-      </dl>
-
-      <div class="processing">
-        <strong>Role:</strong> complementary characterization.
-        These measures are not automatically included in the
-        composite scores. EDX alone does not establish
-        oxidation state or chemical bonding.
-      </div>
-    </div>
-  </section>
-
-  <!-- ZETA -->
-
-  <section class="method" id="zeta" style="--accent:#f4b9d7">
-    <figure>
-      <a href="ZETA.png" aria-label="Open zeta-potential schematic">
-        <img
-          src="ZETA.png"
-          alt="Zeta-potential schematic showing a distribution
-          and particle–liquid interface."
-          loading="lazy"
-        >
-      </a>
-
-      <figcaption>
-        <span>Zeta potential · Schematic</span>
-        <a href="ZETA.png">Enlarge image</a>
-      </figcaption>
-    </figure>
-
-    <div class="description">
-      <div class="index">07 / Dispersion descriptors</div>
-      <h2>Zeta Potential &amp; DLS</h2>
-
-      <p>
-        Electrokinetic magnitude and hydrodynamic size
-        provide complementary operational descriptions
-        of particle dispersions.
-      </p>
-
-      <dl>
-        <div class="descriptor">
-          <dt>Zeta potential, ζ</dt>
-          <dd>
-            Electrokinetic potential associated with the slipping plane.
-            Describes the interface under specified measurement conditions.
-          </dd>
-        </div>
-
-        <div class="descriptor">
-          <dt>Magnitude, |ζ|</dt>
-          <dd>
-            Charge-related dispersion variable.
-            Supports comparisons of electrostatic contributions
-            to dispersion behavior.
-          </dd>
-        </div>
-
-        <div class="descriptor">
-          <dt>DLS size, Dh</dt>
-          <dd>
-            Operational hydrodynamic diameter.
-            Can include aggregates and is not a direct sheet-width measure.
-          </dd>
-        </div>
-
-        <div class="descriptor">
-          <dt>Dispersion score, S</dt>
-          <dd>
-            Combines normalized |ζ| with inverted normalized log₁₀(Dh).
-            Compares dispersion variables within the study's material set.
-          </dd>
-        </div>
-      </dl>
-
-      <div class="processing">
-        <strong>Measurement context:</strong> dispersion medium,
-        pH, ionic strength, and preparation affect interpretation.
-        PDI-based corrections require available PDI measurements.
-      </div>
-    </div>
-  </section>
-
-  <!-- WORKFLOW -->
-
-  <div class="workflow">
-    <div class="eyebrow">MATLAB workflow</div>
-
-    <h2>From measurement to model input</h2>
-
-    <div class="workflow-steps" aria-label="Descriptor extraction sequence">
-      <span>Raw signal</span>
-      <b aria-hidden="true">→</b>
-      <span>Processing</span>
-      <b aria-hidden="true">→</b>
-      <span>Parameter extraction</span>
-      <b aria-hidden="true">→</b>
-      <span>Descriptor screening</span>
-      <b aria-hidden="true">→</b>
-      <span>Response modelling</span>
-    </div>
-
-    <p>
-      The descriptor table distinguishes measured inputs,
-      fitted parameters, derived quantities, and composite
-      scores. Screening considers comparability, missing values,
-      redundancy, acquisition sensitivity, and dependence on
-      assumed physical parameters.
-    </p>
-
-    <a href="physics-guided-modelling.html">
-      Explore physics-guided descriptor modelling →
-    </a>
-  </div>
-
-  <a class="back-link" href="modelling.html">
-    ← Back to modelling
-  </a>
-
-</main>
-
-<footer>
-  Rupesh Lal Karn · Characterization &amp; Descriptor Extraction
-</footer>
-
+    document.getElementById('year').textContent =
+      new Date().getFullYear();
+  </script>
 </body>
 </html>
