@@ -7,26 +7,22 @@
 
   <title>About &amp; Education | Rupesh Lal Karn</title>
 
-  <meta
-    name="description"
-    content="Academic background and education of Rupesh Lal Karn, a graduate researcher working on functional materials, performance modelling, crystal growth, and magnetic materials."
-  >
+  <meta name="description"
+        content="Academic background and education of Rupesh Lal Karn, a graduate researcher working on functional materials, performance modelling, crystal growth, and magnetic materials.">
 
   <link rel="canonical" href="https://rlk.com.np/about.html">
 
   <style>
     :root {
       color-scheme: light;
-
       --paper: #faf9f6;
       --ink: #272e2a;
       --muted: #606961;
       --line: #d8dcd4;
-      --accent: #385975;
-
+      --nav-accent: #385975;
       --serif: Georgia, "Times New Roman", serif;
-      --sans: -apple-system, BlinkMacSystemFont,
-        "Segoe UI", Arial, sans-serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI",
+              Arial, sans-serif;
     }
 
     * {
@@ -46,14 +42,14 @@
     }
 
     a {
-      color: var(--accent);
+      color: var(--nav-accent);
       text-decoration-thickness: 1px;
       text-underline-offset: 5px;
     }
 
     a:focus-visible,
     button:focus-visible {
-      outline: 2px solid var(--accent);
+      outline: 2px solid var(--nav-accent);
       outline-offset: 5px;
     }
 
@@ -75,7 +71,7 @@
       top: 12px;
     }
 
-    /* HEADER */
+    /* Navigation */
 
     .site-header {
       border-bottom: 1px solid var(--line);
@@ -114,7 +110,7 @@
 
     .site-nav a:hover,
     .site-nav a[aria-current="page"] {
-      border-color: var(--accent);
+      border-color: var(--nav-accent);
       color: var(--ink);
     }
 
@@ -129,7 +125,7 @@
       cursor: pointer;
     }
 
-    /* PAGE INTRODUCTION */
+    /* Introduction */
 
     .page-intro {
       padding: 50px 0 34px;
@@ -169,7 +165,7 @@
       line-height: 1.85;
     }
 
-    /* RESEARCH BACKGROUND */
+    /* Research background */
 
     .about-layout {
       display: grid;
@@ -197,6 +193,10 @@
       color: #4e5963;
     }
 
+    .biography p:last-child {
+      margin-bottom: 0;
+    }
+
     .material-formula {
       white-space: nowrap;
     }
@@ -219,7 +219,7 @@
       font-size: 14px;
     }
 
-    /* EDUCATION */
+    /* Education */
 
     .education-section {
       padding: 35px 0 60px;
@@ -281,18 +281,41 @@
       line-height: 1.8;
     }
 
-    .education-record p.institution {
+    .education-record .institution {
       color: var(--ink);
       font-weight: 500;
     }
 
-    .education-record p.grade {
-      margin-top: 18px;
-      color: var(--degree-colour);
-      font-size: 14px;
+    .education-record .grade {
+      margin-top: 18px !important;
+      color: var(--degree-colour) !important;
+      font-size: 14px !important;
     }
 
-    /* SUBTLE HEADING GLOW */
+    /* Community service */
+
+    .community-service {
+      display: grid;
+      grid-template-columns: .65fr 1.35fr;
+      gap: 70px;
+      padding: 35px 0 45px;
+      border-top: 1px solid var(--line);
+    }
+
+    .community-service h2 {
+      margin: 0;
+      color: #9a365b;
+      font-size: 32px;
+      line-height: 1.3;
+      letter-spacing: -.025em;
+    }
+
+    .community-service p {
+      margin: 0;
+      color: #4e5963;
+    }
+
+    /* Text glow */
 
     @keyframes titleGlow {
       from {
@@ -318,7 +341,7 @@
       }
     }
 
-    /* FOOTER */
+    /* Footer */
 
     .footer {
       padding: 35px 0;
@@ -331,16 +354,16 @@
       gap: 25px;
     }
 
-    .footer p {
-      margin: 0 0 12px;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
     .footer .footer-name {
       margin: 0 0 10px;
       color: var(--ink);
       font: 23px var(--serif);
+    }
+
+    .footer p {
+      margin: 0 0 12px;
+      color: var(--muted);
+      font-size: 14px;
     }
 
     .footer-links {
@@ -364,7 +387,7 @@
       font-size: 13px;
     }
 
-    /* TABLET */
+    /* Responsive layout */
 
     @media (max-width: 1050px) {
       .header-inner {
@@ -378,19 +401,19 @@
       }
 
       .about-layout,
-      .education-grid {
+      .education-grid,
+      .community-service {
         gap: 40px;
       }
     }
 
     @media (max-width: 900px) {
-      .about-layout {
+      .about-layout,
+      .community-service {
         grid-template-columns: 1fr;
         gap: 22px;
       }
     }
-
-    /* MOBILE */
 
     @media (max-width: 760px) {
       .container {
@@ -439,12 +462,17 @@
       }
 
       .about-layout h2,
-      .education-section > h2 {
+      .education-section > h2,
+      .community-service h2 {
         font-size: 29px;
       }
 
       .education-section {
         padding: 28px 0 40px;
+      }
+
+      .community-service {
+        padding: 28px 0 35px;
       }
 
       .education-grid {
@@ -486,20 +514,16 @@
     <div class="container header-inner">
       <a class="name" href="index.html">Rupesh Lal Karn</a>
 
-      <button
-        class="menu-button"
-        type="button"
-        aria-expanded="false"
-        aria-controls="site-navigation"
-      >
+      <button class="menu-button"
+              type="button"
+              aria-controls="site-navigation"
+              aria-expanded="false">
         Menu
       </button>
 
-      <nav
-        class="site-nav"
-        id="site-navigation"
-        aria-label="Main navigation"
-      >
+      <nav class="site-nav"
+           id="site-navigation"
+           aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="about.html" aria-current="page">About</a>
         <a href="research.html">Research</a>
@@ -531,25 +555,22 @@
 
     <!-- RESEARCH BACKGROUND -->
 
-    <section
-      class="about-layout"
-      aria-labelledby="background-heading"
-    >
+    <section class="about-layout" aria-labelledby="background-heading">
       <h2 id="background-heading">Research background</h2>
 
       <div class="biography">
         <p>
           My research examines how synthesis and processing
           change material structure and interfaces, and how
-          those changes relate to physical response.
-          I combine experimental characterization with
-          physics-based modelling to study these relationships.
+          those changes relate to physical response. I combine
+          experimental characterization with physics-based
+          modelling to study these relationships.
         </p>
 
         <p>
           My work with MXenes and related composites combines
-          synthesis, processing, and characterization.
-          I use MATLAB-supported thermal, photothermal, and
+          synthesis, processing, and characterization. I use
+          MATLAB-supported thermal, photothermal, and
           electrochemical modelling to extract parameters
           and build interpretable links between measurements
           and response.
@@ -574,22 +595,20 @@
         </p>
 
         <p>
-          Before my graduate work, I studied Automobile
-          Engineering at Thapathali Campus, Institute of
-          Engineering, Tribhuvan University, Nepal.
-          My earlier research covered biodiesel, plastic-derived
-          fuels, nanoparticle additives, and engine performance,
-          combustion, and emissions.
+          Before my graduate work, I studied Automobile Engineering
+          at Thapathali Campus, Institute of Engineering,
+          Tribhuvan University, Nepal. My earlier research
+          covered biodiesel, plastic-derived fuels, nanoparticle
+          additives, and engine performance, combustion,
+          and emissions.
         </p>
 
         <div class="about-links">
           <a href="research.html">Research interests</a>
 
-          <a
-            href="Rupesh_Lal_Karn_CV.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
+          <a href="Rupesh_Lal_Karn_CV.pdf"
+             target="_blank"
+             rel="noopener noreferrer">
             View complete CV
           </a>
         </div>
@@ -598,20 +617,16 @@
 
     <!-- EDUCATION -->
 
-    <section
-      class="education-section"
-      aria-labelledby="education-heading"
-    >
+    <section class="education-section"
+             aria-labelledby="education-heading">
+
       <h2 id="education-heading">Education</h2>
 
       <div class="education-grid">
 
-        <!-- GRADUATE EDUCATION -->
+        <article class="education-record graduate"
+                 aria-labelledby="masters-heading">
 
-        <article
-          class="education-record graduate"
-          aria-labelledby="masters-heading"
-        >
           <p class="degree-period">2025–2026 · Graduate study</p>
 
           <h3 id="masters-heading">
@@ -624,12 +639,9 @@
           <p class="grade">GPA: 3.77 / 4.00</p>
         </article>
 
-        <!-- UNDERGRADUATE EDUCATION -->
+        <article class="education-record undergraduate"
+                 aria-labelledby="bachelors-heading">
 
-        <article
-          class="education-record undergraduate"
-          aria-labelledby="bachelors-heading"
-        >
           <p class="degree-period">
             2015–2020 · Undergraduate study
           </p>
@@ -646,10 +658,26 @@
 
       </div>
     </section>
+
+    <!-- COMMUNITY SERVICE -->
+
+    <section class="community-service"
+             aria-labelledby="community-heading">
+
+      <h2 id="community-heading">Community Service</h2>
+
+      <p>
+        I was an active blood donor with the Nepal Red Cross
+        Society, contributing to community blood donation
+        efforts in Nepal.
+      </p>
+    </section>
+
   </main>
 
   <footer class="footer">
     <div class="container footer-grid">
+
       <div>
         <p class="footer-name">Rupesh Lal Karn</p>
         <p>Prairie View, Texas</p>
@@ -657,9 +685,7 @@
       </div>
 
       <nav class="footer-links" aria-label="Academic profiles">
-        <a
-          href="https://scholar.google.com/citations?user=7RRtNOYAAAAJ&amp;hl=en"
-        >
+        <a href="https://scholar.google.com/citations?user=7RRtNOYAAAAJ&amp;hl=en">
           Google Scholar
         </a>
 
@@ -675,40 +701,41 @@
       <small class="copyright">
         © <span id="year">2026</span> Rupesh Lal Karn
       </small>
+
     </div>
   </footer>
 
   <script>
-    const menuButton = document.querySelector(".menu-button");
-    const navigation = document.getElementById("site-navigation");
+    const menuButton = document.querySelector('.menu-button');
+    const navigation = document.getElementById('site-navigation');
 
     function setMenu(open) {
-      menuButton.setAttribute("aria-expanded", String(open));
-      menuButton.textContent = open ? "Close" : "Menu";
-      navigation.classList.toggle("is-open", open);
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.textContent = open ? 'Close' : 'Menu';
+      navigation.classList.toggle('is-open', open);
     }
 
-    menuButton.addEventListener("click", function () {
-      setMenu(menuButton.getAttribute("aria-expanded") !== "true");
+    menuButton.addEventListener('click', () => {
+      setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
     });
 
-    document.addEventListener("keydown", function (event) {
+    document.addEventListener('keydown', event => {
       if (
-        event.key === "Escape" &&
-        menuButton.getAttribute("aria-expanded") === "true"
+        event.key === 'Escape' &&
+        menuButton.getAttribute('aria-expanded') === 'true'
       ) {
         setMenu(false);
         menuButton.focus();
       }
     });
 
-    navigation.addEventListener("click", function (event) {
-      if (event.target.closest("a")) {
+    navigation.addEventListener('click', event => {
+      if (event.target.closest('a')) {
         setMenu(false);
       }
     });
 
-    document.getElementById("year").textContent =
+    document.getElementById('year').textContent =
       new Date().getFullYear();
   </script>
 </body>
