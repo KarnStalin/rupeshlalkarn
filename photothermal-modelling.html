@@ -1,891 +1,1221 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Photothermal Modelling | Rupesh Lal Karn</title>
-
-<meta
-  name="description"
-  content="Photothermal heat-balance modelling,
-  heating-cooling analysis, calibration, and transient descriptors."
->
-
-<style>
-:root {
-  --navy: #102237;
-  --ink: #183148;
-  --muted: #566c7d;
-  --paper: #f5f7fa;
-  --line: #d8e2ea;
-  --blue: #165ca6;
-  --orange: #b45319;
-  --green: #17695c;
-}
-
-* { box-sizing: border-box; }
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 24px;
-}
-
-body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font: 16px/1.75 system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-a {
-  color: var(--blue);
-  text-underline-offset: 5px;
-}
-
-a:focus-visible {
-  outline: 3px solid #d47a20;
-  outline-offset: 5px;
-}
-
-header {
-  background: var(--navy);
-  color: white;
-}
-
-.header-inner,
-.container {
-  width: min(1200px, calc(100% - 48px));
-  margin: auto;
-}
-
-.header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 18px;
-  padding: 22px 0;
-}
-
-header a {
-  color: #e5effa;
-  text-decoration: none;
-}
-
-.brand { font-weight: 750; }
-
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 22px;
-}
-
-.hero {
-  padding: 60px 0 115px;
-  background:
-    radial-gradient(circle at 85% 20%, #204867 0, transparent 38%),
-    var(--navy);
-  color: white;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.4fr .6fr;
-  gap: 45px;
-  align-items: center;
-}
-
-.eyebrow {
-  margin-bottom: 15px;
-  color: #8cd7c8;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: .16em;
-  text-transform: uppercase;
-}
-
-h1 {
-  margin: 0 0 25px;
-  font-size: clamp(40px, 6.5vw, 76px);
-  line-height: 1.05;
-  letter-spacing: -.05em;
-}
-
-h1 span { color: #a6d8ff; }
-
-.hero p {
-  max-width: 710px;
-  color: #c6d6e6;
-  font-size: 18px;
-}
-
-.hero-equation {
-  padding: 28px;
-  border: 1px solid #496781;
-  border-radius: 18px;
-  background: #ffffff08;
-}
-
-.hero-equation small {
-  color: #9fdccf;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-.hero-equation div {
-  margin: 16px 0;
-  font: 25px/1.6 Georgia, serif;
-}
-
-.hero-equation p {
-  margin: 0;
-  font-size: 13px;
-}
-
-.figure-card {
-  position: relative;
-  margin: -70px 0 30px;
-  padding: 12px;
-  background: white;
-  border: 1px solid var(--line);
-  border-radius: 22px;
-  box-shadow: 0 18px 45px #10223712;
-}
-
-.figure-card img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 13px;
-}
-
-figcaption {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-  padding: 13px 10px 5px;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.jump-links {
-  gap: 9px;
-  padding: 10px 0 35px;
-}
-
-.jump-links a {
-  padding: 8px 15px;
-  border: 1px solid var(--line);
-  border-radius: 24px;
-  background: white;
-  color: var(--ink);
-  text-decoration: none;
-  font-size: 13px;
-}
-
-section {
-  padding: 35px 0;
-}
-
-.section-top {
-  display: grid;
-  grid-template-columns: .9fr 1.1fr;
-  gap: 35px;
-  align-items: start;
-  margin-bottom: 25px;
-}
-
-.number {
-  color: var(--green);
-  font: 12px/1.6 ui-monospace, monospace;
-  letter-spacing: .12em;
-}
-
-h2 {
-  margin: 10px 0 18px;
-  font-size: clamp(27px, 3.3vw, 38px);
-  line-height: 1.2;
-  letter-spacing: -.035em;
-}
-
-h3 {
-  margin: 0 0 13px;
-  font-size: 21px;
-  line-height: 1.35;
-}
-
-p {
-  margin: 0 0 18px;
-  color: var(--muted);
-}
-
-strong { color: var(--ink); }
-
-.balance {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
-}
-
-.balance article {
-  padding: 25px;
-  background: white;
-  border: 1px solid var(--line);
-  border-top: 4px solid var(--accent);
-  border-radius: 13px;
-}
-
-.balance h3 { color: var(--accent); }
-
-.balance p {
-  margin: 0;
-  font-size: 14px;
-}
-
-.models {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-
-.model {
-  padding: 30px;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  background: var(--surface);
-}
-
-.model .tag {
-  display: inline-block;
-  margin-bottom: 20px;
-  padding: 5px 11px;
-  background: white;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  color: var(--accent);
-  font-size: 11px;
-  font-weight: 750;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-}
-
-.model h3 { color: var(--accent); }
-
-.formula {
-  padding: 19px 0;
-  margin: 18px 0;
-  border-top: 1px solid var(--border, var(--line));
-  border-bottom: 1px solid var(--border, var(--line));
-  color: var(--ink);
-  font: clamp(18px, 2.2vw, 24px)/1.8 Georgia, serif;
-  overflow-wrap: anywhere;
-}
-
-.formula div + div { margin-top: 12px; }
-
-.model p:last-child { margin-bottom: 0; }
-
-.caption {
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.calibration {
-  display: grid;
-  grid-template-columns: .8fr 1.2fr;
-  gap: 30px;
-  padding: 35px;
-  background: var(--navy);
-  color: white;
-  border-radius: 20px;
-}
-
-.calibration h2 { color: white; }
-
-.calibration p { color: #c4d5e5; }
-
-.calibration strong { color: white; }
-
-.calibration .formula {
-  --border: #405970;
-  margin-top: 0;
-  color: #b8e8dc;
-}
-
-.note {
-  margin-top: 22px;
-  padding: 17px 20px;
-  border-left: 3px solid #d6a255;
-  background: #fff7e9;
-  color: #655138;
-  font-size: 14px;
-}
-
-.table-wrap {
-  overflow-x: auto;
-  border: 1px solid var(--line);
-  border-radius: 15px;
-  background: white;
-}
-
-table {
-  width: 100%;
-  min-width: 650px;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-
-th, td {
-  padding: 18px;
-  text-align: left;
-  vertical-align: top;
-  border-bottom: 1px solid var(--line);
-}
-
-th {
-  background: #eaf0f6;
-  color: var(--ink);
-}
-
-td { color: var(--muted); }
-
-td:first-child {
-  color: var(--blue);
-  font-weight: 700;
-}
-
-tr:last-child td { border-bottom: 0; }
-
-.steps {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  margin: 25px 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: step;
-}
-
-.steps li {
-  position: relative;
-  padding: 24px 24px 24px 65px;
-  border: 1px solid var(--line);
-  border-radius: 13px;
-  background: white;
-  color: var(--muted);
-  font-size: 14px;
-  counter-increment: step;
-}
-
-.steps li::before {
-  content: counter(step, decimal-leading-zero);
-  position: absolute;
-  left: 22px;
-  top: 25px;
-  color: var(--green);
-  font-family: monospace;
-  font-weight: 750;
-}
-
-.steps strong {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 16px;
-}
-
-.related {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 28px;
-  margin: 30px 0;
-  border: 1px solid #c8ded8;
-  border-radius: 16px;
-  background: #eaf4f0;
-}
-
-.related p {
-  max-width: 720px;
-  margin-bottom: 0;
-}
-
-.related a {
-  color: var(--green);
-  font-weight: 750;
-}
-
-.back {
-  display: inline-block;
-  margin: 5px 0 35px;
-}
-
-footer {
-  padding: 25px 0;
-  background: var(--navy);
-  color: #bccddd;
-  font-size: 13px;
-}
-
-@media(max-width: 850px) {
-  .hero-grid,
-  .section-top,
-  .calibration {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-equation { max-width: 540px; }
-  .balance { grid-template-columns: 1fr; }
-}
-
-@media(max-width: 600px) {
-  .header-inner,
-  .container {
-    width: calc(100% - 36px);
-  }
-
-  .hero { padding-top: 35px; }
-
-  .models,
-  .steps {
-    grid-template-columns: 1fr;
-  }
-
-  .model,
-  .calibration { padding: 23px; }
-
-  .figure-card { border-radius: 15px; }
-}
-
-@media(prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+
+  <title>Photothermal Modelling | Rupesh Lal Karn</title>
+
+  <meta name="description"
+        content="Photothermal energy-balance modelling, heating–cooling fits, water-reference calibration, and interpretation of transient response parameters.">
+
+  <link rel="canonical"
+        href="https://rlk.com.np/photothermal-modelling.html">
+
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #faf9f6;
+      --ink: #272e2a;
+      --muted: #606961;
+      --line: #d8dcd4;
+      --nav-accent: #385975;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI",
+              Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.8 var(--sans);
+    }
+
+    a {
+      color: var(--nav-accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 5px;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--nav-accent);
+      outline-offset: 5px;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 64px));
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -80px;
+      left: 20px;
+      z-index: 100;
+      padding: 12px 18px;
+      background: white;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    /* Navigation */
+
+    .site-header {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      min-height: 98px;
+    }
+
+    .name {
+      color: var(--ink);
+      font: 22px/1.3 var(--serif);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 23px;
+    }
+
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      border-bottom: 1px solid transparent;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .site-nav a:hover,
+    .site-nav a.active {
+      border-color: var(--nav-accent);
+      color: var(--ink);
+    }
+
+    .menu-button {
+      display: none;
+      min-height: 44px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    /* Introduction */
+
+    .page-intro {
+      padding: 50px 0 28px;
+    }
+
+    .breadcrumb {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .breadcrumb a {
+      color: inherit;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+
+    h1 {
+      margin: 0 0 22px;
+      color: #8e442a;
+      font-size: clamp(40px, 4.8vw, 62px);
+      line-height: 1.15;
+      letter-spacing: -.035em;
+      animation: titleGlow 4s ease-in-out infinite alternate;
+    }
+
+    .lead {
+      max-width: 850px;
+      margin: 0 0 16px;
+      font-size: 18px;
+      line-height: 1.85;
+    }
+
+    .intro-note {
+      max-width: 850px;
+      margin: 0;
+    }
+
+    p {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
+    strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .jump-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px 27px;
+      padding: 6px 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .jump-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+    }
+
+    /* Shared sections */
+
+    main > section {
+      padding: 35px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-top {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 45px;
+      align-items: start;
+      margin-bottom: 26px;
+    }
+
+    .section-top p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-label {
+      margin: 0 0 10px;
+      color: #a64b2a;
+      font-size: 13px;
+    }
+
+    h2 {
+      margin: 0 0 20px;
+      color: #293b50;
+      font-size: 32px;
+      line-height: 1.3;
+      letter-spacing: -.025em;
+    }
+
+    h3 {
+      margin: 0 0 12px;
+      color: var(--accent, #385975);
+      font-size: 25px;
+      line-height: 1.35;
+      letter-spacing: -.015em;
+    }
+
+    /* Energy balance and schematic */
+
+    .balance-visual {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+      gap: 35px;
+      align-items: center;
+    }
+
+    .response-figure {
+      min-width: 0;
+      margin: 0;
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .image-link {
+      display: block;
+    }
+
+    .image-link img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    figcaption {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding: 10px 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    figcaption a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+    }
+
+    .balance article {
+      padding: 17px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .balance article:first-child {
+      padding-top: 0;
+      border-top: 0;
+    }
+
+    .balance p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .heat-input {
+      --accent: #a64b2a;
+    }
+
+    .storage {
+      --accent: #285ca3;
+    }
+
+    .heat-loss {
+      --accent: #176b61;
+    }
+
+    /* Equations */
+
+    .formula {
+      padding: 19px 23px;
+      margin: 22px 0;
+      border-left: 3px solid var(--accent, #385975);
+      background: var(--tint, #edf1f5);
+      color: var(--ink);
+      font: clamp(19px, 2.1vw, 24px)/1.85 var(--serif);
+      overflow-wrap: anywhere;
+    }
+
+    .formula > div + div {
+      margin-top: 12px;
+    }
+
+    .caption {
+      font-size: 13px;
+    }
+
+    /* Heating and cooling */
+
+    .models {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 40px;
+      margin-top: 28px;
+    }
+
+    .model {
+      min-width: 0;
+      padding-top: 20px;
+      border-top: 2px solid var(--accent);
+    }
+
+    .model p:last-child {
+      margin-bottom: 0;
+    }
+
+    .model > p {
+      font-size: 15px;
+    }
+
+    .model .caption {
+      font-size: 13px;
+    }
+
+    .segment-label {
+      display: block;
+      margin-bottom: 12px;
+      color: var(--accent);
+      font-size: 13px;
+    }
+
+    .heating {
+      --accent: #a64b2a;
+      --tint: #fff3ec;
+    }
+
+    .cooling {
+      --accent: #285ca3;
+      --tint: #edf3fb;
+    }
+
+    /* Reference calibration */
+
+    .calibration {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 45px;
+      align-items: start;
+      --accent: #176b61;
+      --tint: #edf6f1;
+    }
+
+    .calibration .section-label,
+    .calibration h2 {
+      color: #176b61;
+    }
+
+    .calibration .formula {
+      margin-top: 0;
+    }
+
+    .calibration p {
+      font-size: 15px;
+    }
+
+    .note {
+      padding: 18px 22px;
+      margin-top: 22px;
+      border-left: 3px solid #a57b36;
+      background: #fcf6e9;
+      color: #655138;
+      font-size: 14px;
+    }
+
+    /* Parameter table */
+
+    .table-wrap {
+      max-width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .table-wrap:focus-visible {
+      outline: 2px solid var(--nav-accent);
+      outline-offset: 5px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 650px;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 17px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      background: #edf1f5;
+      color: #293b50;
+      font-weight: 600;
+    }
+
+    td {
+      color: var(--muted);
+    }
+
+    td:first-child {
+      color: #285ca3;
+      font-weight: 500;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    /* MATLAB workflow */
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 40px;
+      margin: 25px 0 0;
+      padding-left: 25px;
+    }
+
+    .steps li {
+      padding: 18px 0 18px 8px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .steps li::marker {
+      color: #7144a0;
+    }
+
+    .steps strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 17px;
+    }
+
+    /* Related work */
+
+    .related {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 30px;
+      align-items: center;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+      --accent: #7144a0;
+    }
+
+    .related p {
+      max-width: 750px;
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .related a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      color: #7144a0;
+      font-size: 14px;
+    }
+
+    .page-end {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px 30px;
+      padding: 20px 0 38px;
+    }
+
+    .page-end a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+    }
+
+    @keyframes titleGlow {
+      from {
+        text-shadow: 0 0 2px rgba(181, 104, 66, .04);
+      }
+
+      to {
+        text-shadow:
+          0 0 9px rgba(181, 104, 66, .22),
+          0 0 22px rgba(181, 104, 66, .11);
+      }
+    }
+
+    /* Footer */
+
+    .footer {
+      padding: 35px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .footer .footer-name {
+      margin: 0 0 10px;
+      color: var(--ink);
+      font: 23px var(--serif);
+    }
+
+    .footer p {
+      margin: 0 0 12px;
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: flex-end;
+      align-content: start;
+      flex-wrap: wrap;
+      gap: 10px 25px;
+    }
+
+    .footer-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+    }
+
+    .copyright {
+      grid-column: 1 / -1;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Responsive layout */
+
+    @media (max-width: 1050px) {
+      .header-inner {
+        flex-wrap: wrap;
+        padding: 20px 0;
+        gap: 12px;
+      }
+
+      .site-nav {
+        gap: 18px;
+      }
+
+      .section-top,
+      .calibration,
+      .balance-visual {
+        gap: 30px;
+      }
+
+      .models {
+        gap: 28px;
+      }
+    }
+
+    @media (max-width: 850px) {
+      .section-top,
+      .calibration,
+      .balance-visual {
+        grid-template-columns: 1fr;
+        gap: 23px;
+      }
+
+      .related {
+        grid-template-columns: 1fr;
+        gap: 15px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: calc(100% - 40px);
+      }
+
+      .header-inner {
+        min-height: 85px;
+        justify-content: space-between;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .site-nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        padding-top: 10px;
+      }
+
+      .site-nav.is-open {
+        display: flex;
+      }
+
+      .site-nav a {
+        min-height: 48px;
+      }
+
+      .page-intro {
+        padding: 35px 0 25px;
+      }
+
+      h1 {
+        font-size: 39px;
+      }
+
+      .lead {
+        font-size: 17px;
+      }
+
+      h2 {
+        font-size: 29px;
+      }
+
+      h3 {
+        font-size: 24px;
+      }
+
+      main > section,
+      .related {
+        padding: 28px 0;
+      }
+
+      .models,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .models {
+        gap: 28px;
+      }
+
+      .steps {
+        gap: 0;
+      }
+
+      .formula {
+        padding: 17px 18px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      h1 {
+        animation: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<header>
-  <div class="header-inner">
-    <a class="brand" href="index.html">Rupesh Lal Karn</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="name" href="index.html">Rupesh Lal Karn</a>
 
-    <nav aria-label="Main navigation">
-      <a href="modelling.html">Modelling</a>
-      <a href="research.html">Research</a>
-    </nav>
-  </div>
-</header>
+      <button class="menu-button"
+              type="button"
+              aria-controls="site-navigation"
+              aria-expanded="false">
+        Menu
+      </button>
 
-<div class="hero">
-  <div class="container hero-grid">
-    <div>
-      <div class="eyebrow">Energy balance · Transient analysis</div>
+      <nav class="site-nav"
+           id="site-navigation"
+           aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a class="active" href="research.html">Research</a>
+        <a href="experience.html">Experience</a>
+        <a href="publications.html">Publications</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="projects.html">Projects</a>
+        <a href="skills.html">Skills</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-      <h1>
-        Following the heat.<br>
-        <span>Modelling the response.</span>
-      </h1>
+  <main class="container" id="main">
 
-      <p>
+    <div class="page-intro">
+      <p class="breadcrumb">
+        <a href="research.html">Research</a> /
+        <a href="modelling.html">Modelling</a> / Photothermal
+      </p>
+
+      <h1>Photothermal Modelling</h1>
+
+      <p class="lead">
         Photothermal modelling translates measured heating
         and cooling curves into response times, thermal
         amplitudes, and reference-calibrated heat-input estimates.
       </p>
+
+      <p class="intro-note">
+        The analysis fits laser-on and laser-off segments
+        separately and retains a clear distinction between
+        measured, fitted, extrapolated, and reference-calibrated
+        quantities.
+      </p>
     </div>
 
-    <aside class="hero-equation">
-      <small>The physical principle</small>
-      <div>
-        Thermal storage<br>
-        = heat input − heat loss
+    <nav class="jump-links" aria-label="Page sections">
+      <a href="#balance">Energy balance</a>
+      <a href="#curves">Heating &amp; cooling</a>
+      <a href="#calibration">Calibration</a>
+      <a href="#descriptors">Extracted quantities</a>
+      <a href="#workflow">MATLAB workflow</a>
+    </nav>
+
+    <!-- ENERGY BALANCE -->
+
+    <section id="balance" aria-labelledby="balance-heading">
+      <div class="section-top">
+        <div>
+          <p class="section-label">The physical model</p>
+          <h2 id="balance-heading">
+            Three terms describe the transient.
+          </h2>
+        </div>
+
+        <p>
+          A representative bulk temperature describes the
+          suspension. Effective thermal capacity accounts
+          for storage, while a combined heat-loss conductance
+          describes exchange with the surroundings.
+        </p>
       </div>
-      <p>
-        A lumped energy balance connects the measured
-        temperature with the model parameters.
+
+      <div class="balance-visual">
+
+        <figure class="response-figure">
+          <a class="image-link" href="photothermal-transient.png">
+            <img src="photothermal-transient.png"
+                 width="1752"
+                 height="897"
+                 fetchpriority="high"
+                 alt="Photothermal schematic showing heating, laser switch-off, cooling, and heat-transfer pathways.">
+          </a>
+
+          <figcaption>
+            <span>Photothermal transient model · Schematic</span>
+            <a href="photothermal-transient.png">
+              View full image →
+            </a>
+          </figcaption>
+        </figure>
+
+        <div class="balance">
+          <article class="heat-input">
+            <h3>Heat input</h3>
+            <p>
+              The effective rate of thermal energy supplied
+              during irradiation.
+            </p>
+          </article>
+
+          <article class="storage">
+            <h3>Thermal storage</h3>
+            <p>
+              Energy accumulation associated with the
+              changing system temperature.
+            </p>
+          </article>
+
+          <article class="heat-loss">
+            <h3>Heat loss</h3>
+            <p>
+              Effective environmental loss proportional
+              to the temperature rise.
+            </p>
+          </article>
+        </div>
+
+      </div>
+
+      <div class="formula">
+        <div>
+          C<sub>sys</sub> dΔT/dt = Q<sub>in</sub> − HΔT
+        </div>
+
+        <div>
+          ΔT = T − T<sub>amb</sub>, &nbsp; H = hA
+        </div>
+      </div>
+
+      <p class="caption">
+        C<sub>sys</sub>: thermal capacity, J K⁻¹ ·
+        Q<sub>in</sub>: heat-input rate, W ·
+        H: effective heat-loss conductance, W K⁻¹.
       </p>
+
+      <div class="note">
+        Assumptions: representative bulk temperature,
+        approximately constant thermal properties and laser
+        input, effective linear heat loss, negligible evaporation,
+        and cessation of irradiation-induced input at switch-off.
+      </div>
+    </section>
+
+    <!-- HEATING AND COOLING -->
+
+    <section id="curves" aria-labelledby="curves-heading">
+      <p class="section-label">Fit the two segments</p>
+
+      <h2 id="curves-heading">
+        Heating and cooling tell different parts of the story.
+      </h2>
+
+      <div class="models">
+
+        <article class="model heating">
+          <span class="segment-label">Laser on</span>
+          <h3>Heating response</h3>
+
+          <p>
+            The fitted curve describes the approach toward
+            an asymptotic rise under constant effective conditions.
+          </p>
+
+          <div class="formula">
+            ΔT(t) = ΔT<sub>∞</sub>
+            [1 − exp(−t/τ<sub>H</sub>)]
+          </div>
+
+          <p>
+            <strong>τ<sub>H</sub>:</strong> heating timescale.<br>
+            <strong>ΔT<sub>∞</sub>:</strong>
+            model-extrapolated asymptotic rise.
+          </p>
+
+          <p class="caption">
+            This form assumes zero initial temperature rise.
+            For a nonzero initial rise, retain its exponential term.
+          </p>
+        </article>
+
+        <article class="model cooling">
+          <span class="segment-label">Laser off</span>
+          <h3>Cooling response</h3>
+
+          <p>
+            Once irradiation ends, the temperature decays
+            toward ambient through effective environmental loss.
+          </p>
+
+          <div class="formula">
+            ΔT(t) = ΔT<sub>off</sub>
+            exp[−(t − t<sub>off</sub>)/τ<sub>C</sub>]
+          </div>
+
+          <p>
+            <strong>τ<sub>C</sub>:</strong> cooling timescale.<br>
+            <strong>ΔT<sub>off</sub>:</strong> rise at switch-off.
+          </p>
+
+          <p class="caption">
+            The ideal lumped relation is τ = C<sub>sys</sub>/H.
+            Heating and cooling times are fitted separately.
+          </p>
+        </article>
+
+      </div>
+
+      <div class="note">
+        The temperature reached at switch-off and the fitted
+        asymptotic temperature are distinct quantities.
+        An asymptote does not imply that equilibrium
+        was reached during the experiment.
+      </div>
+    </section>
+
+    <!-- WATER-REFERENCE CALIBRATION -->
+
+    <section id="calibration" aria-labelledby="calibration-heading">
+      <div class="calibration">
+
+        <div>
+          <p class="section-label">Water-reference calibration</p>
+
+          <h2 id="calibration-heading">
+            Give the heat estimate a defined scale.
+          </h2>
+
+          <p>
+            Water cooling supplies a reference heat-loss
+            conductance. Comparative sample calculations use
+            that scale with explicit thermal-capacity assumptions.
+          </p>
+        </div>
+
+        <div>
+          <div class="formula">
+            <div>
+              C<sub>sys</sub> =
+              m<sub>liq</sub>c<sub>p</sub> +
+              C<sub>container</sub>
+            </div>
+
+            <div>
+              H<sub>water</sub> =
+              C<sub>sys,water</sub>/τ<sub>C,water</sub>
+            </div>
+
+            <div>
+              Q<sub>net,off</sub> = H<sub>water</sub>
+              [ΔT<sub>sample,off</sub> −
+              ΔT<sub>water,off</sub>]
+            </div>
+          </div>
+
+          <p>
+            The container contribution is not independently
+            available and is set to zero in this calculation.
+            The resulting calibration therefore uses nominal
+            liquid thermal capacity.
+          </p>
+
+          <p>
+            The switch-off estimator assumes compatible geometry
+            and effective heat-loss behaviour. It remains
+            distinct from equilibrium input or intrinsic
+            conversion efficiency.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EXTRACTED QUANTITIES -->
+
+    <section id="descriptors" aria-labelledby="descriptors-heading">
+      <div class="section-top">
+        <div>
+          <p class="section-label">Extracted quantities</p>
+
+          <h2 id="descriptors-heading">
+            Each parameter has a specific meaning.
+          </h2>
+        </div>
+
+        <p>
+          Measured, fitted, and derived quantities remain
+          identifiable. Units, fitting intervals, material
+          mass, and reference conditions accompany the values.
+        </p>
+      </div>
+
+      <div class="table-wrap"
+           role="region"
+           tabindex="0"
+           aria-label="Photothermal model quantities; scroll horizontally on small screens">
+
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Quantity</th>
+              <th scope="col">What it describes</th>
+              <th scope="col">Type</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>ΔT<sub>off</sub></td>
+              <td>Temperature rise at the irradiation endpoint</td>
+              <td>Finite-time response</td>
+            </tr>
+
+            <tr>
+              <td>ΔT<sub>∞</sub></td>
+              <td>Asymptotic temperature rise from the heating fit</td>
+              <td>Model extrapolation</td>
+            </tr>
+
+            <tr>
+              <td>τ<sub>H</sub>, τ<sub>C</sub></td>
+              <td>Heating and cooling response times</td>
+              <td>Fitted parameters</td>
+            </tr>
+
+            <tr>
+              <td>1/τ<sub>H</sub>, 1/τ<sub>C</sub></td>
+              <td>Reciprocal response times</td>
+              <td>Derived rate measures</td>
+            </tr>
+
+            <tr>
+              <td>∫ΔT(t) dt</td>
+              <td>Temperature-rise area over a stated interval</td>
+              <td>Integrated transient measure</td>
+            </tr>
+
+            <tr>
+              <td>Q<sub>net,off</sub></td>
+              <td>Water-calibrated switch-off estimator</td>
+              <td>Comparative heat-input quantity</td>
+            </tr>
+
+            <tr>
+              <td>Q<sub>net,off</sub> / m<sub>p</sub></td>
+              <td>Heat-input estimator per dispersed material mass</td>
+              <td>Mass-normalized quantity</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+    </section>
+
+    <!-- MATLAB WORKFLOW -->
+
+    <section id="workflow" aria-labelledby="workflow-heading">
+      <p class="section-label">MATLAB workflow</p>
+
+      <h2 id="workflow-heading">
+        From temperature records to thermal parameters.
+      </h2>
+
+      <ol class="steps">
+        <li>
+          <strong>Prepare the records</strong>
+          Align time, temperature, laser switching,
+          concentration, material mass, and water-reference data.
+        </li>
+
+        <li>
+          <strong>Define the baseline</strong>
+          Establish ambient temperature and calculate
+          the temperature rise.
+        </li>
+
+        <li>
+          <strong>Select fitting intervals</strong>
+          Separate heating and cooling using the
+          irradiation boundaries.
+        </li>
+
+        <li>
+          <strong>Fit the transients</strong>
+          Estimate amplitudes and separate time constants.
+          Positive parameters can use logarithmic coordinates.
+        </li>
+
+        <li>
+          <strong>Apply the calibration</strong>
+          Combine the water cooling timescale with
+          the stated nominal thermal capacity.
+        </li>
+
+        <li>
+          <strong>Extract response measures</strong>
+          Calculate switch-off rise, transient area,
+          time constants, and comparative heat-input quantities.
+        </li>
+
+        <li>
+          <strong>Inspect uncertainty</strong>
+          Examine residual autocorrelation, systematic
+          deviations, parameter stability,
+          and fitting-window sensitivity.
+        </li>
+
+        <li>
+          <strong>Check physical consistency</strong>
+          Verify units, initial conditions, ambient recovery,
+          and the distinction between measured and
+          extrapolated quantities.
+        </li>
+      </ol>
+    </section>
+
+    <aside class="related">
+      <div>
+        <h3>Connecting response to material properties</h3>
+
+        <p>
+          The extracted thermal quantities provide response
+          targets for the separate physics-guided
+          descriptor framework.
+        </p>
+      </div>
+
+      <a href="physics-guided-modelling.html">
+        Explore descriptor modelling →
+      </a>
     </aside>
-  </div>
-</div>
 
-<main class="container">
-
-  <figure class="figure-card">
-    <a href="photothermal-transient.png">
-      <img
-        src="photothermal-transient.png"
-        alt="Photothermal schematic showing heating,
-        laser switch-off, cooling, and heat-transfer pathways."
-        fetchpriority="high"
-      >
-    </a>
-
-    <figcaption>
-      <span>Photothermal transient model · Schematic</span>
-      <a href="photothermal-transient.png">View full image →</a>
-    </figcaption>
-  </figure>
-
-  <nav class="jump-links" aria-label="Page sections">
-    <a href="#balance">Energy balance</a>
-    <a href="#curves">Heating &amp; cooling</a>
-    <a href="#calibration">Calibration</a>
-    <a href="#descriptors">Extracted quantities</a>
-    <a href="#workflow">MATLAB workflow</a>
-  </nav>
-
-  <!-- ENERGY BALANCE -->
-
-  <section id="balance">
-    <div class="section-top">
-      <div>
-        <div class="number">01 / THE PHYSICAL MODEL</div>
-        <h2>Three terms describe the transient.</h2>
-      </div>
-
-      <p>
-        A representative bulk temperature describes the
-        suspension. Effective thermal capacity accounts
-        for storage, while a combined heat-loss conductance
-        describes exchange with the surroundings.
-      </p>
+    <div class="page-end">
+      <a href="modelling.html">← Back to modelling</a>
+      <a href="photothermal.html">Photothermal experiments →</a>
     </div>
 
-    <div class="balance">
-      <article style="--accent:#b45319">
-        <h3>Heat input</h3>
-        <p>
-          The effective rate of thermal energy supplied
-          during irradiation.
-        </p>
-      </article>
+  </main>
 
-      <article style="--accent:#165ca6">
-        <h3>Thermal storage</h3>
-        <p>
-          Energy accumulation associated with the
-          changing system temperature.
-        </p>
-      </article>
-
-      <article style="--accent:#17695c">
-        <h3>Heat loss</h3>
-        <p>
-          Effective environmental loss proportional
-          to the temperature rise.
-        </p>
-      </article>
-    </div>
-
-    <div class="formula">
-      <div>
-        C<sub>sys</sub> dΔT/dt = Q<sub>in</sub> − HΔT
-      </div>
-      <div>
-        ΔT = T − T<sub>amb</sub>, &nbsp; H = hA
-      </div>
-    </div>
-
-    <p class="caption">
-      Csys: thermal capacity, J K⁻¹ · Qin: heat-input rate, W ·
-      H: effective heat-loss conductance, W K⁻¹.
-    </p>
-
-    <div class="note">
-      Assumptions: representative bulk temperature,
-      approximately constant thermal properties and laser input,
-      effective linear heat loss, negligible evaporation,
-      and cessation of irradiation-induced input at switch-off.
-    </div>
-  </section>
-
-  <!-- TRANSIENT MODELS -->
-
-  <section id="curves">
-    <div class="number">02 / FIT THE TWO SEGMENTS</div>
-    <h2>Heating and cooling tell different parts of the story.</h2>
-
-    <div class="models">
-
-      <article
-        class="model"
-        style="
-          --surface:#fff3e8;
-          --border:#ebcdb2;
-          --accent:#a54c17;
-        "
-      >
-        <span class="tag">Laser on</span>
-        <h3>Heating response</h3>
-
-        <p>
-          The fitted curve describes the approach toward
-          an asymptotic rise under constant effective conditions.
-        </p>
-
-        <div class="formula">
-          ΔT(t) = ΔT<sub>∞</sub>
-          [1 − exp(−t/τ<sub>H</sub>)]
-        </div>
-
-        <p>
-          <strong>τH:</strong> heating timescale.<br>
-          <strong>ΔT∞:</strong> model-extrapolated asymptotic rise.
-        </p>
-
-        <p class="caption">
-          This form assumes zero initial temperature rise.
-          For a nonzero initial rise, retain its exponential term.
-        </p>
-      </article>
-
-      <article
-        class="model"
-        style="
-          --surface:#eaf3fd;
-          --border:#bdd4eb;
-          --accent:#165ca6;
-        "
-      >
-        <span class="tag">Laser off</span>
-        <h3>Cooling response</h3>
-
-        <p>
-          Once irradiation ends, the temperature decays
-          toward ambient through effective environmental loss.
-        </p>
-
-        <div class="formula">
-          ΔT(t) = ΔT<sub>off</sub>
-          exp[−(t − t<sub>off</sub>)/τ<sub>C</sub>]
-        </div>
-
-        <p>
-          <strong>τC:</strong> cooling timescale.<br>
-          <strong>ΔToff:</strong> rise at switch-off.
-        </p>
-
-        <p class="caption">
-          The ideal lumped relation is τ = Csys/H.
-          Heating and cooling times are fitted separately.
-        </p>
-      </article>
-
-    </div>
-
-    <div class="note">
-      The temperature reached at switch-off and the fitted
-      asymptotic temperature are distinct quantities.
-      An asymptote does not imply that equilibrium
-      was reached during the experiment.
-    </div>
-  </section>
-
-  <!-- CALIBRATION -->
-
-  <section id="calibration">
-    <div class="calibration">
-      <div>
-        <div class="eyebrow">03 / WATER REFERENCE</div>
-        <h2>Give the heat estimate a defined scale.</h2>
-
-        <p>
-          Water cooling supplies a reference heat-loss
-          conductance. Comparative sample calculations use
-          that scale with explicit thermal-capacity assumptions.
-        </p>
-      </div>
+  <footer class="footer">
+    <div class="container footer-grid">
 
       <div>
-        <div class="formula">
-          <div>
-            C<sub>sys</sub> =
-            m<sub>liq</sub>c<sub>p</sub> +
-            C<sub>container</sub>
-          </div>
-
-          <div>
-            H<sub>water</sub> =
-            C<sub>sys,water</sub>/τ<sub>C,water</sub>
-          </div>
-
-          <div>
-            Q<sub>net,off</sub> = H<sub>water</sub>
-            [ΔT<sub>sample,off</sub> − ΔT<sub>water,off</sub>]
-          </div>
-        </div>
-
-        <p>
-          In the thesis analysis, the independently unavailable
-          container contribution is set to zero. The calculation
-          therefore uses nominal liquid thermal capacity.
-        </p>
-
-        <p>
-          The switch-off estimator assumes compatible geometry
-          and effective heat-loss behavior. It remains distinct
-          from equilibrium input or intrinsic conversion efficiency.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- DESCRIPTORS -->
-
-  <section id="descriptors">
-    <div class="section-top">
-      <div>
-        <div class="number">04 / EXTRACTED QUANTITIES</div>
-        <h2>Each parameter has a specific meaning.</h2>
+        <p class="footer-name">Rupesh Lal Karn</p>
+        <p>Prairie View, Texas</p>
+        <a href="mailto:rkarn@pvamu.edu">rkarn@pvamu.edu</a>
       </div>
 
-      <p>
-        Measured, fitted, and derived quantities remain
-        identifiable. Units, fitting intervals, material
-        mass, and reference conditions accompany the values.
-      </p>
+      <nav class="footer-links" aria-label="Academic profiles">
+        <a href="https://scholar.google.com/citations?user=7RRtNOYAAAAJ&amp;hl=en">
+          Google Scholar
+        </a>
+
+        <a href="https://orcid.org/0009-0008-9261-024X">
+          ORCID
+        </a>
+
+        <a href="Rupesh_Lal_Karn_CV.pdf">CV</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <small class="copyright">
+        © <span id="year">2026</span> Rupesh Lal Karn
+      </small>
+
     </div>
+  </footer>
 
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Quantity</th>
-            <th>What it describes</th>
-            <th>Type</th>
-          </tr>
-        </thead>
+  <script>
+    const menuButton = document.querySelector('.menu-button');
+    const navigation = document.getElementById('site-navigation');
 
-        <tbody>
-          <tr>
-            <td>ΔToff</td>
-            <td>Temperature rise at the irradiation endpoint</td>
-            <td>Finite-time response</td>
-          </tr>
+    function setMenu(open) {
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.textContent = open ? 'Close' : 'Menu';
+      navigation.classList.toggle('is-open', open);
+    }
 
-          <tr>
-            <td>ΔT∞</td>
-            <td>Asymptotic temperature rise from the heating fit</td>
-            <td>Model extrapolation</td>
-          </tr>
+    menuButton.addEventListener('click', () => {
+      setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
+    });
 
-          <tr>
-            <td>τH / τC</td>
-            <td>Heating and cooling response times</td>
-            <td>Fitted parameters</td>
-          </tr>
+    document.addEventListener('keydown', event => {
+      if (
+        event.key === 'Escape' &&
+        menuButton.getAttribute('aria-expanded') === 'true'
+      ) {
+        setMenu(false);
+        menuButton.focus();
+      }
+    });
 
-          <tr>
-            <td>1/τH / 1/τC</td>
-            <td>Reciprocal response times</td>
-            <td>Derived rate measures</td>
-          </tr>
+    navigation.addEventListener('click', event => {
+      if (event.target.closest('a')) {
+        setMenu(false);
+      }
+    });
 
-          <tr>
-            <td>∫ΔT(t) dt</td>
-            <td>Temperature-rise area over a stated interval</td>
-            <td>Integrated transient measure</td>
-          </tr>
-
-          <tr>
-            <td>Qnet,off</td>
-            <td>Water-calibrated switch-off estimator</td>
-            <td>Comparative heat-input quantity</td>
-          </tr>
-
-          <tr>
-            <td>Qnet,off / mp</td>
-            <td>Heat-input estimator per dispersed material mass</td>
-            <td>Mass-normalized quantity</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- WORKFLOW -->
-
-  <section id="workflow">
-    <div class="number">05 / MATLAB WORKFLOW</div>
-    <h2>From temperature records to thermal parameters.</h2>
-
-    <ol class="steps">
-      <li>
-        <strong>Prepare the records</strong>
-        Align time, temperature, laser switching,
-        concentration, material mass, and water-reference data.
-      </li>
-
-      <li>
-        <strong>Define the baseline</strong>
-        Establish ambient temperature and calculate
-        the temperature rise.
-      </li>
-
-      <li>
-        <strong>Select fitting intervals</strong>
-        Separate heating and cooling using the
-        irradiation boundaries.
-      </li>
-
-      <li>
-        <strong>Fit the transients</strong>
-        Estimate amplitudes and separate time constants.
-        Positive parameters can use logarithmic coordinates.
-      </li>
-
-      <li>
-        <strong>Apply the calibration</strong>
-        Combine the water cooling timescale with
-        the stated nominal thermal capacity.
-      </li>
-
-      <li>
-        <strong>Extract response measures</strong>
-        Calculate switch-off rise, transient area,
-        time constants, and comparative heat-input quantities.
-      </li>
-
-      <li>
-        <strong>Inspect uncertainty</strong>
-        Examine residual autocorrelation, systematic deviations,
-        parameter stability, and fitting-window sensitivity.
-      </li>
-
-      <li>
-        <strong>Check physical consistency</strong>
-        Verify units, initial conditions, ambient recovery,
-        and the distinction between measured and extrapolated quantities.
-      </li>
-    </ol>
-  </section>
-
-  <aside class="related">
-    <div>
-      <h3>Connecting response to material properties</h3>
-      <p>
-        The extracted thermal quantities provide response
-        targets for the separate physics-guided descriptor framework.
-      </p>
-    </div>
-
-    <a href="physics-guided-modelling.html">
-      Explore descriptor modelling →
-    </a>
-  </aside>
-
-  <a class="back" href="modelling.html">← Back to modelling</a>
-
-</main>
-
-<footer>
-  <div class="container">
-    Rupesh Lal Karn · Photothermal Modelling &amp; Transient Analysis
-  </div>
-</footer>
-
+    document.getElementById('year').textContent =
+      new Date().getFullYear();
+  </script>
 </body>
 </html>
