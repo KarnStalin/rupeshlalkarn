@@ -7,8 +7,10 @@
 
   <title>Research &amp; Academic Experience | Rupesh Lal Karn</title>
 
-  <meta name="description"
-        content="National laboratory appointments, graduate materials research, teaching, and student mentorship of Rupesh Lal Karn.">
+  <meta
+    name="description"
+    content="Research, national laboratory appointments, teaching, automobile consultancy, and professional committee service of Rupesh Lal Karn."
+  >
 
   <link rel="canonical" href="https://rlk.com.np/experience.html">
 
@@ -21,8 +23,7 @@
       --line: #d8dcd4;
       --nav-accent: #385975;
       --serif: Georgia, "Times New Roman", serif;
-      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI",
-              Arial, sans-serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
     }
 
     * {
@@ -53,7 +54,7 @@
 
     a:focus-visible,
     button:focus-visible,
-    .panel:focus-visible {
+    summary:focus-visible {
       outline: 2px solid var(--nav-accent);
       outline-offset: 5px;
     }
@@ -76,7 +77,7 @@
       top: 12px;
     }
 
-    /* Navigation */
+    /* Header */
 
     .site-header {
       border-bottom: 1px solid var(--line);
@@ -130,21 +131,7 @@
       cursor: pointer;
     }
 
-    /* Introduction */
-
-    .page-intro {
-      padding: 50px 0 34px;
-    }
-
-    .breadcrumb {
-      margin: 0 0 22px;
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .breadcrumb a {
-      color: inherit;
-    }
+    /* Typography */
 
     h1,
     h2,
@@ -163,12 +150,26 @@
       animation: titleGlow 4s ease-in-out infinite alternate;
     }
 
-    .lead {
-      max-width: 850px;
+    h2 {
       margin: 0;
-      color: var(--muted);
-      font-size: 18px;
-      line-height: 1.85;
+      color: #293b50;
+      font-size: 32px;
+      line-height: 1.3;
+      letter-spacing: -.025em;
+    }
+
+    h3 {
+      margin: 0 0 12px;
+      font-size: 27px;
+      line-height: 1.3;
+      letter-spacing: -.02em;
+    }
+
+    h4 {
+      margin: 0 0 12px;
+      font-size: 23px;
+      line-height: 1.35;
+      letter-spacing: -.015em;
     }
 
     p {
@@ -179,6 +180,40 @@
     strong {
       color: var(--ink);
       font-weight: 600;
+    }
+
+    ul {
+      margin: 0;
+      padding-left: 20px;
+      color: var(--muted);
+    }
+
+    li {
+      margin-bottom: 8px;
+    }
+
+    /* Introduction */
+
+    .page-intro {
+      padding: 50px 0 34px;
+    }
+
+    .breadcrumb {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .breadcrumb a {
+      color: inherit;
+    }
+
+    .lead {
+      max-width: 850px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+      line-height: 1.85;
     }
 
     /* Experience tabs */
@@ -222,15 +257,24 @@
       --tab-accent: #a64b2a;
     }
 
+    #tab-service {
+      --tab-accent: #943c54;
+    }
+
     .panel {
       padding-bottom: 28px;
+    }
+
+    .panel:focus-visible {
+      outline: 2px solid var(--nav-accent);
+      outline-offset: 7px;
     }
 
     .section-intro {
       display: grid;
       grid-template-columns: .85fr 1.15fr;
-      gap: 45px;
       align-items: start;
+      gap: 45px;
       margin-bottom: 30px;
     }
 
@@ -238,29 +282,7 @@
       margin: 0;
     }
 
-    h2 {
-      margin: 0;
-      color: #293b50;
-      font-size: 32px;
-      line-height: 1.3;
-      letter-spacing: -.025em;
-    }
-
-    h3 {
-      margin: 0 0 12px;
-      font-size: 27px;
-      line-height: 1.3;
-      letter-spacing: -.02em;
-    }
-
-    h4 {
-      margin: 0 0 12px;
-      font-size: 23px;
-      line-height: 1.35;
-      letter-spacing: -.015em;
-    }
-
-    /* Appointment rows */
+    /* Appointment records */
 
     .appointment {
       display: grid;
@@ -343,28 +365,20 @@
       font-size: 14px;
     }
 
-    /* Distinct institutional colours */
+    /* Appointment colours */
 
     .argonne {
       --accent: #7144a0;
       --glow: rgba(145, 88, 199, .24);
     }
 
-    .los-alamos {
-      --accent: #285ca3;
-      --glow: rgba(59, 116, 206, .25);
-    }
-
+    .los-alamos,
     .graduate {
       --accent: #285ca3;
       --glow: rgba(59, 116, 206, .25);
     }
 
-    .nast {
-      --accent: #a64b2a;
-      --glow: rgba(207, 109, 64, .24);
-    }
-
+    .nast,
     .thapathali {
       --accent: #a64b2a;
       --glow: rgba(207, 109, 64, .24);
@@ -383,6 +397,16 @@
     .universal {
       --accent: #9a365b;
       --glow: rgba(170, 65, 107, .22);
+    }
+
+    .consultancy {
+      --accent: #385975;
+      --glow: rgba(56, 89, 117, .15);
+    }
+
+    .committee {
+      --accent: #943c54;
+      --glow: rgba(148, 60, 84, .15);
     }
 
     .graduate .magnetic-heading {
@@ -413,16 +437,6 @@
       font-size: 15px;
     }
 
-    ul {
-      padding-left: 20px;
-      margin: 0;
-      color: var(--muted);
-    }
-
-    li {
-      margin-bottom: 8px;
-    }
-
     /* Mentorship */
 
     .mentorship {
@@ -448,6 +462,147 @@
       font-size: 15px;
     }
 
+    /* Committee report scope */
+
+    .service-scope {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 30px;
+      padding: 28px 0 36px;
+      border-top: 1px solid var(--line);
+    }
+
+    .service-scope h3 {
+      margin-bottom: 10px;
+      color: #943c54;
+      font: 500 16px/1.5 var(--sans);
+    }
+
+    .service-scope p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    /* Study-visit photographs */
+
+    .photo-heading {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 15px;
+      margin: 14px 0 22px;
+    }
+
+    .photo-heading h3 {
+      margin: 0;
+      color: #385975;
+      font-size: 27px;
+    }
+
+    .photo-heading p {
+      margin: 0;
+      font-size: 13px;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 30px;
+      margin-bottom: 42px;
+    }
+
+    .photo-grid figure,
+    .workshop figure {
+      min-width: 0;
+      margin: 0;
+    }
+
+    .photo-link {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      aspect-ratio: 2 / 1;
+      background: #eeede8;
+    }
+
+    .photo-link img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    figcaption {
+      padding-top: 12px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+    }
+
+    figcaption strong {
+      display: block;
+      margin-bottom: 3px;
+      color: #385975;
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    /* Consultative workshop */
+
+    .workshop {
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .workshop-feature {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .workshop h3 {
+      color: #943c54;
+      font-size: 27px;
+    }
+
+    .workshop p {
+      font-size: 15px;
+    }
+
+    .workshop-note {
+      font-size: 13px !important;
+    }
+
+    .workshop details {
+      margin-top: 25px;
+      padding-top: 16px;
+      border-top: 1px solid var(--line);
+    }
+
+    .workshop summary {
+      min-height: 44px;
+      padding-block: 8px;
+      color: #943c54;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .workshop-more {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 22px;
+      max-width: 720px;
+      padding-top: 18px;
+    }
+
+    .photo-credit {
+      margin: 20px 0 0;
+      font-size: 12px;
+    }
+
+    /* Page ending */
+
     .page-end {
       display: flex;
       flex-wrap: wrap;
@@ -462,32 +617,6 @@
       align-items: center;
       min-height: 44px;
       font-size: 14px;
-    }
-
-    /* Subtle text glow */
-
-    @keyframes titleGlow {
-      from {
-        text-shadow: 0 0 2px rgba(69, 110, 161, .04);
-      }
-
-      to {
-        text-shadow:
-          0 0 9px rgba(69, 110, 161, .22),
-          0 0 22px rgba(69, 110, 161, .11);
-      }
-    }
-
-    @keyframes recordGlow {
-      from {
-        text-shadow: 0 0 2px transparent;
-      }
-
-      to {
-        text-shadow:
-          0 0 7px var(--glow),
-          0 0 16px var(--glow);
-      }
     }
 
     /* Footer */
@@ -517,9 +646,9 @@
 
     .footer-links {
       display: flex;
+      flex-wrap: wrap;
       justify-content: flex-end;
       align-content: start;
-      flex-wrap: wrap;
       gap: 10px 25px;
     }
 
@@ -536,13 +665,39 @@
       font-size: 13px;
     }
 
+    /* Subtle text glow */
+
+    @keyframes titleGlow {
+      from {
+        text-shadow: 0 0 2px rgba(69, 110, 161, .04);
+      }
+
+      to {
+        text-shadow:
+          0 0 9px rgba(69, 110, 161, .22),
+          0 0 22px rgba(69, 110, 161, .11);
+      }
+    }
+
+    @keyframes recordGlow {
+      from {
+        text-shadow: 0 0 2px transparent;
+      }
+
+      to {
+        text-shadow:
+          0 0 7px var(--glow),
+          0 0 16px var(--glow);
+      }
+    }
+
     /* Responsive layout */
 
     @media (max-width: 1050px) {
       .header-inner {
         flex-wrap: wrap;
-        padding: 20px 0;
         gap: 12px;
+        padding: 20px 0;
       }
 
       .site-nav {
@@ -569,8 +724,8 @@
       }
 
       .header-inner {
-        min-height: 85px;
         justify-content: space-between;
+        min-height: 85px;
       }
 
       .menu-button {
@@ -579,9 +734,9 @@
 
       .site-nav {
         display: none;
-        width: 100%;
         flex-direction: column;
         gap: 0;
+        width: 100%;
         padding-top: 10px;
       }
 
@@ -601,16 +756,16 @@
         font-size: 39px;
       }
 
-      .lead {
-        font-size: 17px;
-      }
-
       h2 {
         font-size: 29px;
       }
 
       h3 {
         font-size: 26px;
+      }
+
+      .lead {
+        font-size: 17px;
       }
 
       .tabs {
@@ -628,9 +783,31 @@
       }
 
       .supporting-work,
-      .mentorship-list {
+      .mentorship-list,
+      .service-scope,
+      .photo-grid,
+      .workshop-feature,
+      .workshop-more {
         grid-template-columns: 1fr;
+      }
+
+      .supporting-work,
+      .mentorship-list,
+      .service-scope,
+      .workshop-feature {
         gap: 22px;
+      }
+
+      .photo-grid {
+        gap: 25px;
+      }
+
+      .photo-heading {
+        display: block;
+      }
+
+      .photo-heading p {
+        margin-top: 7px;
       }
 
       .footer-grid {
@@ -656,22 +833,28 @@
 </head>
 
 <body>
+
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header">
     <div class="container header-inner">
+
       <a class="name" href="index.html">Rupesh Lal Karn</a>
 
-      <button class="menu-button"
-              type="button"
-              aria-controls="site-navigation"
-              aria-expanded="false">
+      <button
+        class="menu-button"
+        type="button"
+        aria-controls="site-navigation"
+        aria-expanded="false"
+      >
         Menu
       </button>
 
-      <nav class="site-nav"
-           id="site-navigation"
-           aria-label="Main navigation">
+      <nav
+        class="site-nav"
+        id="site-navigation"
+        aria-label="Main navigation"
+      >
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="research.html">Research</a>
@@ -682,6 +865,7 @@
         <a href="skills.html">Skills</a>
         <a href="contact.html">Contact</a>
       </nav>
+
     </div>
   </header>
 
@@ -695,72 +879,93 @@
       <h1>Research &amp; Academic Experience</h1>
 
       <p class="lead">
-        Graduate research in functional materials, performance
-        modelling, crystal growth, and magnetism, alongside
-        national laboratory appointments and earlier engineering
-        teaching and research.
+        Graduate research in functional materials, performance modelling,
+        crystal growth, and magnetism, alongside national laboratory
+        appointments, engineering teaching, and professional service.
       </p>
     </div>
 
-    <div class="tabs"
-         role="tablist"
-         aria-label="Experience categories">
+    <!-- EXPERIENCE TABS -->
 
-      <button class="tab"
-              id="tab-national"
-              type="button"
-              role="tab"
-              aria-selected="true"
-              aria-controls="national-laboratories"
-              tabindex="0">
+    <div
+      class="tabs"
+      role="tablist"
+      aria-label="Experience categories"
+    >
+      <button
+        class="tab"
+        id="tab-national"
+        type="button"
+        role="tab"
+        aria-controls="national-laboratories"
+        aria-selected="true"
+        tabindex="0"
+      >
         National Laboratory Appointments
       </button>
 
-      <button class="tab"
-              id="tab-research"
-              type="button"
-              role="tab"
-              aria-selected="false"
-              aria-controls="research-experience"
-              tabindex="-1">
+      <button
+        class="tab"
+        id="tab-research"
+        type="button"
+        role="tab"
+        aria-controls="research-experience"
+        aria-selected="false"
+        tabindex="-1"
+      >
         Research Experience
       </button>
 
-      <button class="tab"
-              id="tab-teaching"
-              type="button"
-              role="tab"
-              aria-selected="false"
-              aria-controls="teaching-experience"
-              tabindex="-1">
+      <button
+        class="tab"
+        id="tab-teaching"
+        type="button"
+        role="tab"
+        aria-controls="teaching-experience"
+        aria-selected="false"
+        tabindex="-1"
+      >
         Teaching Experience
       </button>
 
+      <button
+        class="tab"
+        id="tab-service"
+        type="button"
+        role="tab"
+        aria-controls="professional-service"
+        aria-selected="false"
+        tabindex="-1"
+      >
+        Professional Service
+      </button>
     </div>
 
     <!-- NATIONAL LABORATORY APPOINTMENTS -->
 
-    <section class="panel"
-             id="national-laboratories"
-             role="tabpanel"
-             aria-labelledby="tab-national"
-             tabindex="0">
-
+    <section
+      class="panel"
+      id="national-laboratories"
+      role="tabpanel"
+      aria-labelledby="tab-national"
+      tabindex="0"
+    >
       <div class="section-intro">
         <h2>National Laboratory Appointments</h2>
 
         <p>
-          Visiting research at Argonne and Los Alamos National
-          Laboratories involved magnetic-domain investigation
-          and angle- and temperature-dependent measurements
-          on single crystals.
+          Visiting research at Argonne and Los Alamos National Laboratories
+          involved magnetic-domain investigation and angle- and
+          temperature-dependent measurements on single crystals.
         </p>
       </div>
 
       <article class="appointment argonne">
         <div class="appointment-meta">
           <p class="date">23 June – 4 July 2025</p>
+
           <h3>Argonne National Laboratory</h3>
+
           <p class="role">Visiting Research Student</p>
         </div>
 
@@ -768,15 +973,14 @@
           <h4>Lorentz transmission electron microscopy</h4>
 
           <p>
-            Performed advanced Lorentz transmission electron
-            microscopy (LTEM) analysis to investigate
-            magnetic-domain structures.
+            Performed advanced Lorentz transmission electron microscopy
+            (LTEM) analysis to investigate magnetic-domain structures.
           </p>
 
           <p>
             This work developed my experience in spatial magnetic
-            characterization and the interpretation of
-            domain-related electron contrast.
+            characterization and the interpretation of domain-related
+            electron contrast.
           </p>
 
           <p class="method-note">
@@ -789,7 +993,9 @@
       <article class="appointment los-alamos">
         <div class="appointment-meta">
           <p class="date">4–15 August 2025</p>
+
           <h3>Los Alamos National Laboratory</h3>
+
           <p class="role">Visiting Research Student</p>
         </div>
 
@@ -797,15 +1003,15 @@
           <h4>Quantum-oscillation measurements on HfSn₂</h4>
 
           <p>
-            Performed angle- and temperature-dependent
-            de Haas–van Alphen (dHvA) measurements on HfSn₂ crystals.
+            Performed angle- and temperature-dependent de Haas–van Alphen
+            (dHvA) measurements on HfSn₂ crystals.
           </p>
 
           <p>
-            The measurements probed single-crystal response
-            relevant to electronic structure and quantum
-            oscillations, with sample orientation and temperature
-            forming part of the experimental context.
+            The measurements probed single-crystal response relevant to
+            electronic structure and quantum oscillations, with sample
+            orientation and temperature forming part of the experimental
+            context.
           </p>
 
           <p class="method-note">
@@ -824,32 +1030,32 @@
 
     <!-- RESEARCH EXPERIENCE -->
 
-    <section class="panel"
-             id="research-experience"
-             role="tabpanel"
-             aria-labelledby="tab-research"
-             tabindex="0"
-             hidden>
-
+    <section
+      class="panel"
+      id="research-experience"
+      role="tabpanel"
+      aria-labelledby="tab-research"
+      tabindex="0"
+      hidden
+    >
       <div class="section-intro">
         <h2>Research Experience</h2>
 
         <p>
-          My current research connects material preparation
-          and characterization with physical interpretation
-          and quantitative modelling. Earlier work centred on
-          alternative fuels and engine experiments.
+          My current research connects material preparation and
+          characterization with physical interpretation and quantitative
+          modelling. Earlier work centred on alternative fuels and engine
+          experiments.
         </p>
       </div>
 
       <article class="appointment graduate">
         <div class="appointment-meta">
           <p class="date">January 2025 – Present</p>
+
           <h3>Prairie View A&amp;M University</h3>
 
-          <p class="role">
-            Research Assistant · Graduate Research
-          </p>
+          <p class="role">Research Assistant · Graduate Research</p>
 
           <p class="affiliation">Prairie View, Texas</p>
         </div>
@@ -860,15 +1066,15 @@
             <h4>MXenes &amp; functional materials</h4>
 
             <p>
-              DOE-supported research under Dr. Seena Reeves
-              and Dr. Gururaj M. Neelgund involves the development
-              and characterization of MXene-based materials,
-              including photothermal and electrochemical studies.
+              DOE-supported research under Dr. Seena Reeves and
+              Dr. Gururaj M. Neelgund involves the development and
+              characterization of MXene-based materials, including
+              photothermal and electrochemical studies.
             </p>
 
             <p>
-              I examine how processing, structure, and surface
-              chemistry relate to measured functional response.
+              I examine how processing, structure, and surface chemistry
+              relate to measured functional response.
             </p>
           </div>
 
@@ -878,15 +1084,14 @@
             </h4>
 
             <p>
-              NSF-supported research under Dr. Sunil Karna
-              included magnetic-material synthesis and
-              structural refinement.
+              NSF-supported research under Dr. Sunil Karna included
+              magnetic-material synthesis and structural refinement.
             </p>
 
             <p>
-              My experience includes magnetic-powder synthesis,
-              cobalt substitution in Mn₁₋ₓCoₓGeTeO₆,
-              and growth of Mn₃Al₂Ge₃O₁₂ single crystals.
+              My experience includes magnetic-powder synthesis, cobalt
+              substitution in Mn₁₋ₓCoₓGeTeO₆, and growth of
+              Mn₃Al₂Ge₃O₁₂ single crystals.
             </p>
           </div>
 
@@ -896,17 +1101,16 @@
             </h4>
 
             <p>
-              I use MATLAB-supported analysis to extract
-              characterization descriptors and interpret thermal,
-              photothermal, and electrochemical measurements
-              through physically defined quantities and
-              response models.
+              I use MATLAB-supported analysis to extract characterization
+              descriptors and interpret thermal, photothermal, and
+              electrochemical measurements through physically defined
+              quantities and response models.
             </p>
 
             <p>
-              The work includes signal processing, parameter
-              estimation, and assessment of fit quality,
-              sensitivity, and physical consistency.
+              The work includes signal processing, parameter estimation,
+              and assessment of fit quality, sensitivity, and physical
+              consistency.
             </p>
           </div>
 
@@ -921,7 +1125,9 @@
       <article class="appointment nast">
         <div class="appointment-meta">
           <p class="date">November 2021 – November 2022</p>
+
           <h3>Nepal Academy of Science and Technology</h3>
+
           <p class="role">Research Assistant</p>
         </div>
 
@@ -929,37 +1135,31 @@
           <h4>Nanoparticles &amp; alternative fuels</h4>
 
           <p>
-            Worked on nanoparticle synthesis and characterization,
-            and on the feasibility of alternative and hybrid
-            fuels prepared from biodiesel and plastic-fuel
-            blends, with and without nanoparticle additives.
+            Worked on nanoparticle synthesis and characterization, and on
+            the feasibility of alternative and hybrid fuels prepared from
+            biodiesel and plastic-fuel blends, with and without
+            nanoparticle additives.
           </p>
 
           <p>
-            Contributed to establishing a fuel-testing
-            laboratory at NAST.
+            Contributed to establishing a fuel-testing laboratory at NAST.
           </p>
 
           <div class="record-links">
-            <a href="alternative-fuels.html">
-              Alternative-fuel research →
-            </a>
-
+            <a href="alternative-fuels.html">Alternative-fuel research →</a>
             <a href="publications.html">Related publications →</a>
           </div>
         </div>
       </article>
 
       <div class="supporting-work">
-
         <article>
           <h3>Institutional research grant</h3>
 
           <p>
-            Served as Co-Principal Investigator in a
-            Thapathali Campus research project, contributing
-            to experimental research, data analysis,
-            and interpretation.
+            Served as Co-Principal Investigator in a Thapathali Campus
+            research project, contributing to experimental research,
+            data analysis, and interpretation.
           </p>
         </article>
 
@@ -967,38 +1167,40 @@
           <h3>Grant-supported energy research</h3>
 
           <p>
-            Research contributions include projects associated
-            with UGC Nepal and AEPC Nepal in engineering
-            and alternative-energy research.
+            Research contributions include projects associated with
+            UGC Nepal and AEPC Nepal in engineering and alternative-energy
+            research.
           </p>
         </article>
-
       </div>
     </section>
 
     <!-- TEACHING EXPERIENCE -->
 
-    <section class="panel"
-             id="teaching-experience"
-             role="tabpanel"
-             aria-labelledby="tab-teaching"
-             tabindex="0"
-             hidden>
-
+    <section
+      class="panel"
+      id="teaching-experience"
+      role="tabpanel"
+      aria-labelledby="tab-teaching"
+      tabindex="0"
+      hidden
+    >
       <div class="section-intro">
         <h2>Teaching Experience</h2>
 
         <p>
           My teaching spans undergraduate engineering instruction,
-          laboratory and drawing-based subjects, physics
-          education, and supervision of student research projects.
+          laboratory and drawing-based subjects, physics education,
+          and supervision of student research projects.
         </p>
       </div>
 
       <article class="appointment thapathali">
         <div class="appointment-meta">
           <p class="date">November 2021 – January 2025</p>
+
           <h3>Thapathali Campus</h3>
+
           <p class="role">Assistant Lecturer</p>
 
           <p class="affiliation">
@@ -1010,9 +1212,8 @@
           <h4>Mechanical &amp; automobile engineering</h4>
 
           <p>
-            Undergraduate instruction and academic guidance
-            across engine, measurement, and engineering-drawing
-            subjects.
+            Undergraduate instruction and academic guidance across engine,
+            measurement, and engineering-drawing subjects.
           </p>
 
           <ul>
@@ -1028,7 +1229,9 @@
       <article class="appointment kantipur">
         <div class="appointment-meta">
           <p class="date">February 2023 – January 2025</p>
+
           <h3>Kantipur City College</h3>
+
           <p class="role">Assistant Lecturer</p>
 
           <p class="affiliation">
@@ -1050,7 +1253,9 @@
       <article class="appointment everest">
         <div class="appointment-meta">
           <p class="date">July – November 2021</p>
+
           <h3>Everest Engineering College</h3>
+
           <p class="role">Assistant Lecturer</p>
 
           <p class="affiliation">
@@ -1071,7 +1276,9 @@
       <article class="appointment universal">
         <div class="appointment-meta">
           <p class="date">January 2020 – July 2021</p>
+
           <h3>Universal College</h3>
+
           <p class="role">Teacher</p>
 
           <p class="affiliation">
@@ -1081,6 +1288,7 @@
 
         <div class="appointment-body">
           <h4>Physics education</h4>
+
           <p>Taught physics at the higher-secondary level.</p>
         </div>
       </article>
@@ -1089,9 +1297,9 @@
         <h3>Undergraduate research &amp; mentorship</h3>
 
         <p>
-          Guided students in research planning, experimental
-          design, data analysis, interpretation, and technical
-          writing. Supervised project areas include:
+          Guided students in research planning, experimental design,
+          data analysis, interpretation, and technical writing.
+          Supervised project areas include:
         </p>
 
         <ul class="mentorship-list">
@@ -1101,26 +1309,304 @@
           </li>
 
           <li>
-            CNG conversion of a 175 cc petrol engine and
-            comparative performance and emissions
+            CNG conversion of a 175 cc petrol engine and comparative
+            performance and emissions
           </li>
 
           <li>
-            Simulation and experimental testing
-            of jatropha-biodiesel blends
+            Simulation and experimental testing of jatropha-biodiesel
+            blends
           </li>
 
           <li>
-            Soybean–sesame hybrid biodiesel
-            and engine-response evaluation
+            Soybean–sesame hybrid biodiesel and engine-response evaluation
           </li>
 
           <li>
-            Preheated palm-biodiesel blends
-            in a single-cylinder diesel engine
+            Preheated palm-biodiesel blends in a single-cylinder
+            diesel engine
           </li>
         </ul>
       </div>
+    </section>
+
+    <!-- PROFESSIONAL SERVICE AND CONSULTANCY -->
+
+    <section
+      class="panel"
+      id="professional-service"
+      role="tabpanel"
+      aria-labelledby="tab-service"
+      tabindex="0"
+      hidden
+    >
+      <div class="section-intro">
+        <h2>Professional Service &amp; Consultancy</h2>
+
+        <p>
+          Automobile and mechanical consultancy in Kathmandu, alongside
+          committee service supporting the planning of research
+          infrastructure at Thapathali Campus.
+        </p>
+      </div>
+
+      <!-- SERVICE 1: AUTOMOBILE CONSULTANCY -->
+
+      <article class="appointment consultancy">
+        <div class="appointment-meta">
+          <p class="date">September 2021 – January 2025</p>
+
+          <h3>Mhepy Engineering Consultancy Pvt. Ltd.</h3>
+
+          <p class="role">Automobile/Mechanical Consultant</p>
+
+          <p class="affiliation">Kathmandu-16, Nepal</p>
+        </div>
+
+        <div class="appointment-body">
+          <h4>Automobile &amp; mechanical consultancy</h4>
+
+          <p>
+            I worked as an Automobile/Mechanical Consultant at Mhepy
+            Engineering Consultancy Pvt. Ltd. in Kathmandu, Nepal,
+            from September 2021 to January 2025.
+          </p>
+
+          <div class="record-links">
+            <a href="Rupesh_Lal_Karn_CV.pdf">
+              View professional background in my CV →
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- SERVICE 2: COMMITTEE APPOINTMENT -->
+
+      <article class="appointment committee">
+        <div class="appointment-meta">
+          <p class="date">2023 · Nepal</p>
+
+          <h3>Rupesh Lal Karn</h3>
+
+          <p class="role">
+            Committee Member — Automobile Expert
+          </p>
+
+          <p class="affiliation">
+            Thapathali Campus<br>
+            Institute of Engineering, Tribhuvan University
+          </p>
+        </div>
+
+        <div class="appointment-body">
+          <h4>
+            Automobile Research Centre Study Report Committee
+          </h4>
+
+          <p>
+            I served as an automobile expert on the committee preparing
+            the study report for the proposed establishment of an
+            Automobile Research Centre at Thapathali Campus.
+          </p>
+
+          <p>
+            The committee examined the facilities, technical capabilities,
+            and operational planning needed to support automobile research
+            and testing. The report documents institutional and industry
+            study visits, alongside a consultative workshop.
+          </p>
+
+          <p class="method-note">
+            Study report: “Establishment of Automobile Research Centre”
+            · 28 June 2023
+          </p>
+        </div>
+      </article>
+
+      <div
+        class="service-scope"
+        aria-label="Areas addressed in the committee report"
+      >
+        <article>
+          <h3>Research &amp; testing infrastructure</h3>
+
+          <p>
+            Laboratory facilities, equipment, vehicle testing,
+            certification, and calibration capabilities.
+          </p>
+        </article>
+
+        <article>
+          <h3>Academic–industry consultation</h3>
+
+          <p>
+            Study visits and discussions informing the proposed centre’s
+            research and technical-service scope.
+          </p>
+        </article>
+
+        <article>
+          <h3>Development &amp; operation</h3>
+
+          <p>
+            Feasibility, phased development, and long-term operational
+            planning for the proposed centre.
+          </p>
+        </article>
+      </div>
+
+      <!-- STUDY-VISIT PHOTOGRAPHS -->
+
+      <div class="photo-heading">
+        <h3>Institutional &amp; industry study visits</h3>
+        <p>Select a photograph to view its original file.</p>
+      </div>
+
+      <div class="photo-grid">
+
+        <figure>
+          <a class="photo-link" href="image9.jpeg">
+            <img
+              src="image9.jpeg"
+              width="1036"
+              height="476"
+              loading="lazy"
+              alt="Committee group photograph during the visit to the Automotive Research Association of India"
+            >
+          </a>
+
+          <figcaption>
+            <strong>
+              Automotive Research Association of India
+            </strong>
+            Committee study visit to ARAI, documented in the study report.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <a class="photo-link" href="image10.jpeg">
+            <img
+              src="image10.jpeg"
+              width="1025"
+              height="476"
+              loading="lazy"
+              alt="Committee members with Tata Motors officials during the institutional study visit"
+            >
+          </a>
+
+          <figcaption>
+            <strong>Tata Motors</strong>
+            Committee photograph with Tata Motors officials.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <a class="photo-link" href="image11.jpeg">
+            <img
+              src="image11.jpeg"
+              width="444"
+              height="207"
+              loading="lazy"
+              alt="Committee members wearing high-visibility vests during the visit to JCB"
+            >
+          </a>
+
+          <figcaption>
+            <strong>JCB</strong>
+            Committee photograph with JCB officials during the study visit.
+          </figcaption>
+        </figure>
+
+        <figure>
+          <a class="photo-link" href="image12.jpeg">
+            <img
+              src="image12.jpeg"
+              width="1044"
+              height="473"
+              loading="lazy"
+              alt="Committee group photograph during the academic visit to IIT Bombay"
+            >
+          </a>
+
+          <figcaption>
+            <strong>
+              Indian Institute of Technology Bombay
+            </strong>
+            Academic study visit to the Department of Mechanical Engineering.
+          </figcaption>
+        </figure>
+
+      </div>
+
+      <!-- CONSULTATIVE WORKSHOP -->
+
+      <section class="workshop" aria-labelledby="workshop-title">
+
+        <div class="workshop-feature">
+
+          <figure>
+            <a class="photo-link" href="image14.jpg">
+              <img
+                src="image14.jpg"
+                width="459"
+                height="222"
+                loading="lazy"
+                alt="Group photograph of participants at the Automobile Research Centre consultative workshop"
+              >
+            </a>
+
+            <figcaption>
+              Participants at the consultative workshop.
+            </figcaption>
+          </figure>
+
+          <div>
+            <h3 id="workshop-title">Consultative workshop</h3>
+
+            <p>
+              The report also records a consultative workshop connected
+              with the proposed Automobile Research Centre. These
+              photographs document the group discussion and participants.
+            </p>
+
+            <p class="workshop-note">
+              Thapathali Campus · Institute of Engineering ·
+              Tribhuvan University
+            </p>
+          </div>
+
+        </div>
+
+        <details>
+          <summary>View workshop discussion photograph</summary>
+
+          <div class="workshop-more">
+
+            <figure>
+              <a class="photo-link" href="image13.jpeg">
+                <img
+                  src="image13.jpeg"
+                  width="1022"
+                  height="529"
+                  loading="lazy"
+                  alt="Workshop participants seated around a conference table during the consultation"
+                >
+              </a>
+
+              <figcaption>
+                Consultation around the conference table.
+              </figcaption>
+            </figure>
+
+          </div>
+        </details>
+
+        <p class="photo-credit">
+          Photographs reproduced from the Automobile Research Centre
+          study report, 2023.
+        </p>
+
+      </section>
     </section>
 
     <div class="page-end">
@@ -1161,41 +1647,46 @@
   </footer>
 
   <script>
-    /* Mobile navigation */
+    // Mobile navigation
 
-    const menuButton = document.querySelector('.menu-button');
-    const navigation = document.getElementById('site-navigation');
+    const menuButton = document.querySelector(".menu-button");
+    const navigation = document.getElementById("site-navigation");
 
     function setMenu(open) {
-      menuButton.setAttribute('aria-expanded', String(open));
-      menuButton.textContent = open ? 'Close' : 'Menu';
-      navigation.classList.toggle('is-open', open);
+      menuButton.setAttribute("aria-expanded", String(open));
+      menuButton.textContent = open ? "Close" : "Menu";
+      navigation.classList.toggle("is-open", open);
     }
 
-    menuButton.addEventListener('click', () => {
-      setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
+    menuButton.addEventListener("click", () => {
+      const isOpen =
+        menuButton.getAttribute("aria-expanded") === "true";
+
+      setMenu(!isOpen);
     });
 
-    document.addEventListener('keydown', event => {
+    document.addEventListener("keydown", (event) => {
       if (
-        event.key === 'Escape' &&
-        menuButton.getAttribute('aria-expanded') === 'true'
+        event.key === "Escape" &&
+        menuButton.getAttribute("aria-expanded") === "true"
       ) {
         setMenu(false);
         menuButton.focus();
       }
     });
 
-    navigation.addEventListener('click', event => {
-      if (event.target.closest('a')) {
+    navigation.addEventListener("click", (event) => {
+      if (event.target.closest("a")) {
         setMenu(false);
       }
     });
 
-    document.getElementById('year').textContent =
+    // Footer year
+
+    document.getElementById("year").textContent =
       new Date().getFullYear();
 
-    /* Experience tabs */
+    // Accessible experience tabs
 
     const tabs = Array.from(
       document.querySelectorAll('[role="tab"]')
@@ -1206,39 +1697,39 @@
     );
 
     function activateTab(tab, updateHash = true) {
-      const panelId = tab.getAttribute('aria-controls');
+      const panelId = tab.getAttribute("aria-controls");
 
-      tabs.forEach(item => {
+      tabs.forEach((item) => {
         const selected = item === tab;
 
-        item.setAttribute('aria-selected', String(selected));
+        item.setAttribute("aria-selected", String(selected));
         item.tabIndex = selected ? 0 : -1;
       });
 
-      panels.forEach(panel => {
+      panels.forEach((panel) => {
         panel.hidden = panel.id !== panelId;
       });
 
       if (updateHash) {
-        history.replaceState(null, '', '#' + panelId);
+        history.replaceState(null, "", "#" + panelId);
       }
     }
 
     tabs.forEach((tab, index) => {
-      tab.addEventListener('click', () => {
+      tab.addEventListener("click", () => {
         activateTab(tab);
       });
 
-      tab.addEventListener('keydown', event => {
+      tab.addEventListener("keydown", (event) => {
         let nextIndex;
 
-        if (event.key === 'ArrowRight') {
+        if (event.key === "ArrowRight") {
           nextIndex = (index + 1) % tabs.length;
-        } else if (event.key === 'ArrowLeft') {
+        } else if (event.key === "ArrowLeft") {
           nextIndex = (index - 1 + tabs.length) % tabs.length;
-        } else if (event.key === 'Home') {
+        } else if (event.key === "Home") {
           nextIndex = 0;
-        } else if (event.key === 'End') {
+        } else if (event.key === "End") {
           nextIndex = tabs.length - 1;
         } else {
           return;
@@ -1251,20 +1742,23 @@
       });
     });
 
-    /* Open the appropriate tab when arriving through a direct link. */
+    // Direct links to experience categories are supported.
+    // Example: experience.html#professional-service
 
     function activateFromHash() {
-      const panelId = window.location.hash.slice(1);
+      const id = window.location.hash.slice(1);
 
-      const matchingTab = tabs.find(tab => {
-        return tab.getAttribute('aria-controls') === panelId;
+      const matchingTab = tabs.find((tab) => {
+        return tab.getAttribute("aria-controls") === id;
       });
 
       activateTab(matchingTab || tabs[0], false);
     }
 
-    window.addEventListener('hashchange', activateFromHash);
+    window.addEventListener("hashchange", activateFromHash);
+
     activateFromHash();
   </script>
+
 </body>
 </html>
