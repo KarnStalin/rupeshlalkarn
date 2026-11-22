@@ -2,143 +2,1287 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+
   <title>MXenes &amp; Functional Composites | Rupesh Lal Karn</title>
-  <link rel="stylesheet" href="research-design.css">
+
+  <meta name="description"
+        content="Research on Ti₃AlCN-derived Ti₃CNTₓ MXenes, DMSO intercalation, sulfide composites, characterization, and the connection between material processing and functional response.">
+
+  <link rel="canonical"
+        href="https://rlk.com.np/two-dimensional-materials.html">
+
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #faf9f6;
+      --ink: #272e2a;
+      --muted: #606961;
+      --line: #d8dcd4;
+      --nav-accent: #385975;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI",
+              Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.8 var(--sans);
+    }
+
+    a {
+      color: var(--nav-accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 5px;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--nav-accent);
+      outline-offset: 5px;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 64px));
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -80px;
+      left: 20px;
+      z-index: 100;
+      padding: 12px 18px;
+      background: white;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    /* Navigation */
+
+    .site-header {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      min-height: 98px;
+    }
+
+    .name {
+      color: var(--ink);
+      font: 22px/1.3 var(--serif);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 23px;
+    }
+
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      border-bottom: 1px solid transparent;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .site-nav a:hover,
+    .site-nav a.active {
+      border-color: var(--nav-accent);
+      color: var(--ink);
+    }
+
+    .menu-button {
+      display: none;
+      min-height: 44px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    /* Introduction */
+
+    .page-intro {
+      padding: 50px 0 30px;
+    }
+
+    .breadcrumb {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .breadcrumb a {
+      color: inherit;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.4fr .6fr;
+      gap: 50px;
+      align-items: center;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+
+    h1 {
+      margin: 0 0 22px;
+      color: #285176;
+      font-size: clamp(40px, 4.8vw, 62px);
+      line-height: 1.15;
+      letter-spacing: -.035em;
+      animation: titleGlow 4s ease-in-out infinite alternate;
+    }
+
+    .lead {
+      margin: 0 0 17px;
+      font-size: 18px;
+      line-height: 1.85;
+    }
+
+    .intro-note {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    p {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
+    strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .material-identity {
+      min-width: 0;
+      padding: 8px 0 8px 25px;
+      border-left: 2px solid #285ca3;
+    }
+
+    .material-identity h2 {
+      margin: 0 0 15px;
+      color: #285ca3;
+      font: 13px var(--sans);
+    }
+
+    .identity-formula {
+      margin: 0 0 13px;
+      color: #285ca3;
+      font: clamp(35px, 4.1vw, 52px)/1.3 var(--serif);
+    }
+
+    .material-identity p:not(.identity-formula) {
+      margin: 0 0 12px;
+      font-size: 14px;
+    }
+
+    .material-identity p:last-child {
+      margin: 0;
+    }
+
+    .jump-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px 26px;
+      padding: 6px 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .jump-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+    }
+
+    /* Shared sections */
+
+    main > section {
+      padding: 35px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-top,
+    .reading-layout {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 45px;
+      align-items: start;
+    }
+
+    .section-top {
+      margin-bottom: 25px;
+    }
+
+    .section-top p:last-child,
+    .reading-layout p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-label {
+      margin: 0 0 10px;
+      color: #285ca3;
+      font-size: 13px;
+    }
+
+    h2 {
+      margin: 0 0 20px;
+      color: #293b50;
+      font-size: 32px;
+      line-height: 1.3;
+      letter-spacing: -.025em;
+    }
+
+    h3 {
+      margin: 0 0 12px;
+      color: var(--accent, #385975);
+      font-size: 25px;
+      line-height: 1.35;
+      letter-spacing: -.015em;
+    }
+
+    /* MXene family */
+
+    .general-formula {
+      margin: 20px 0;
+      padding: 14px 20px;
+      border-left: 3px solid #285ca3;
+      background: #edf3fb;
+      color: #293b50;
+      font: 29px/1.5 var(--serif);
+    }
+
+    .formula-key {
+      margin: 0;
+    }
+
+    .formula-key > div {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr);
+      gap: 20px;
+      padding: 13px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .formula-key dt {
+      color: #285ca3;
+      font: 23px var(--serif);
+    }
+
+    .formula-key dd {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Processing sequence */
+
+    .material-path {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 35px;
+      margin: 27px 0 0;
+      padding: 0;
+      list-style: none;
+      counter-reset: material;
+    }
+
+    .material-path li {
+      min-width: 0;
+      padding-top: 19px;
+      border-top: 2px solid var(--accent);
+      counter-increment: material;
+    }
+
+    .material-path li::before {
+      content: counter(material) ".";
+      display: block;
+      margin-bottom: 10px;
+      color: var(--accent);
+      font: 18px var(--serif);
+    }
+
+    .material-path p {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    .precursor {
+      --accent: #285ca3;
+    }
+
+    .etched {
+      --accent: #a64b2a;
+    }
+
+    .intercalated {
+      --accent: #7144a0;
+    }
+
+    /* Research questions */
+
+    .questions {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 25px 45px;
+      margin-top: 27px;
+    }
+
+    .questions article {
+      min-width: 0;
+      padding-top: 21px;
+      border-top: 1px solid var(--line);
+    }
+
+    .questions h3 {
+      color: #7144a0;
+    }
+
+    .questions p {
+      margin: 0;
+      font-size: 15px;
+    }
+
+    /* Composite systems */
+
+    .sulfide-series {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 28px;
+      padding: 16px 0;
+      margin: 20px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      color: #9a365b;
+      font: 29px/1.5 var(--serif);
+    }
+
+    .composite-focus {
+      padding: 16px 20px;
+      border-left: 3px solid #9a365b;
+      background: #faf0f4;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    /* Characterization table */
+
+    .table-wrap {
+      max-width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .table-wrap:focus-visible {
+      outline: 2px solid var(--nav-accent);
+      outline-offset: 5px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 650px;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 17px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      background: #edf1f5;
+      color: #293b50;
+      font-weight: 600;
+    }
+
+    td {
+      color: var(--muted);
+    }
+
+    td:first-child {
+      color: #285ca3;
+      font-weight: 500;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .method-link {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      margin-top: 15px;
+      font-size: 14px;
+    }
+
+    /* Related functional studies */
+
+    .study-columns {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 35px;
+      margin-top: 26px;
+    }
+
+    .study-link {
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding-top: 20px;
+      border-top: 2px solid var(--accent);
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .study-link p {
+      flex: 1;
+      margin: 0 0 15px;
+      font-size: 15px;
+    }
+
+    .study-action {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      color: var(--accent);
+      font-size: 14px;
+    }
+
+    .study-link:hover .study-action,
+    .study-link:focus-visible .study-action {
+      text-decoration: underline;
+      text-underline-offset: 5px;
+    }
+
+    .photothermal {
+      --accent: #a64b2a;
+    }
+
+    .electrochemical {
+      --accent: #176b61;
+    }
+
+    .modelling {
+      --accent: #7144a0;
+    }
+
+    .page-end {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px 30px;
+      padding: 20px 0 38px;
+    }
+
+    .page-end a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+    }
+
+    @keyframes titleGlow {
+      from {
+        text-shadow: 0 0 2px rgba(69, 110, 161, .04);
+      }
+
+      to {
+        text-shadow:
+          0 0 9px rgba(69, 110, 161, .22),
+          0 0 22px rgba(69, 110, 161, .11);
+      }
+    }
+
+    /* Footer */
+
+    .footer {
+      padding: 35px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .footer .footer-name {
+      margin: 0 0 10px;
+      color: var(--ink);
+      font: 23px var(--serif);
+    }
+
+    .footer p {
+      margin: 0 0 12px;
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: flex-end;
+      align-content: start;
+      flex-wrap: wrap;
+      gap: 10px 25px;
+    }
+
+    .footer-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+    }
+
+    .copyright {
+      grid-column: 1 / -1;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Responsive layout */
+
+    @media (max-width: 1050px) {
+      .header-inner {
+        flex-wrap: wrap;
+        padding: 20px 0;
+        gap: 12px;
+      }
+
+      .site-nav {
+        gap: 18px;
+      }
+
+      .intro-grid,
+      .section-top,
+      .reading-layout {
+        gap: 30px;
+      }
+
+      .material-path,
+      .study-columns {
+        gap: 25px;
+      }
+    }
+
+    @media (max-width: 850px) {
+      .intro-grid,
+      .section-top,
+      .reading-layout {
+        grid-template-columns: 1fr;
+        gap: 23px;
+      }
+
+      .material-identity {
+        max-width: 550px;
+      }
+
+      .questions {
+        gap: 25px 30px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: calc(100% - 40px);
+      }
+
+      .header-inner {
+        min-height: 85px;
+        justify-content: space-between;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .site-nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        padding-top: 10px;
+      }
+
+      .site-nav.is-open {
+        display: flex;
+      }
+
+      .site-nav a {
+        min-height: 48px;
+      }
+
+      .page-intro {
+        padding: 35px 0 25px;
+      }
+
+      h1 {
+        font-size: 39px;
+      }
+
+      .lead {
+        font-size: 17px;
+      }
+
+      h2 {
+        font-size: 29px;
+      }
+
+      h3 {
+        font-size: 24px;
+      }
+
+      main > section {
+        padding: 28px 0;
+      }
+
+      .material-path,
+      .questions,
+      .study-columns {
+        grid-template-columns: 1fr;
+        gap: 26px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      h1 {
+        animation: none;
+      }
+    }
+  </style>
 </head>
 
-<body class="materials">
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<nav aria-label="Main navigation">
-  <a class="brand" href="index.html">Rupesh Lal Karn.</a>
-  <a href="research.html">← Research</a>
-</nav>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="name" href="index.html">Rupesh Lal Karn</a>
 
-<main>
+      <button class="menu-button"
+              type="button"
+              aria-controls="site-navigation"
+              aria-expanded="false">
+        Menu
+      </button>
 
-  <header class="section split">
-    <div>
-      <p class="eyebrow accent">01 / Two-dimensional materials</p>
-
-      <h1>Layers, surfaces,<br>and what lies between.</h1>
-
-      <p class="intro">MXenes &amp; Functional Composites</p>
-
-      <p class="muted">
-        I study Ti₃AlCN-derived Ti₃CNTₓ and transition-metal
-        sulfide composites, focusing on how processing
-        changes their structure, surface chemistry,
-        and morphology.
-      </p>
-    </div>
-
-    <div class="formula">
-      <p class="eyebrow">Material system</p>
-      <strong>Ti₃CNTₓ</strong>
-      <small>Layered titanium carbonitride MXene</small>
-      <p>Tₓ denotes surface terminations.</p>
+      <nav class="site-nav"
+           id="site-navigation"
+           aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a class="active" href="research.html">Research</a>
+        <a href="experience.html">Experience</a>
+        <a href="publications.html">Publications</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="projects.html">Projects</a>
+        <a href="skills.html">Skills</a>
+        <a href="contact.html">Contact</a>
+      </nav>
     </div>
   </header>
 
-  <section class="section rule">
-    <p class="eyebrow accent">The material journey</p>
-    <h2>One precursor. Several material states.</h2>
+  <main class="container" id="main">
 
-    <div class="material-path">
+    <div class="page-intro">
+      <p class="breadcrumb">
+        <a href="research.html">Research</a> /
+        Two-dimensional materials
+      </p>
 
-      <article>
-        <p class="eyebrow">01 / Start</p>
-        <h3>Ti₃AlCN MAX phase</h3>
+      <div class="intro-grid">
+        <div>
+          <h1>MXenes &amp; Functional Composites</h1>
+
+          <p class="lead">
+            I study Ti₃AlCN-derived Ti₃CNTₓ MXenes and
+            transition-metal sulfide composites, examining
+            how processing changes their structure, surface
+            chemistry, morphology, and functional response.
+          </p>
+
+          <p class="intro-note">
+            My work combines synthesis and intercalation
+            with complementary characterization, photothermal
+            and electrochemical measurements, and
+            physics-guided descriptor analysis.
+          </p>
+        </div>
+
+        <aside class="material-identity"
+               aria-labelledby="identity-heading">
+          <h2 id="identity-heading">My primary MXene system</h2>
+
+          <p class="identity-formula">Ti₃CNTₓ</p>
+
+          <p>Layered titanium carbonitride MXene</p>
+
+          <p>
+            Tₓ denotes surface terminations introduced
+            or modified during processing.
+          </p>
+        </aside>
+      </div>
+    </div>
+
+    <nav class="jump-links" aria-label="Page sections">
+      <a href="#mxenes">About MXenes</a>
+      <a href="#processing">Processing</a>
+      <a href="#questions">Research questions</a>
+      <a href="#composites">Composites</a>
+      <a href="#characterization">Characterization</a>
+      <a href="#functional-studies">Functional studies</a>
+    </nav>
+
+    <!-- ABOUT MXENES -->
+
+    <section id="mxenes" aria-labelledby="mxenes-heading">
+      <div class="reading-layout">
+
+        <div>
+          <p class="section-label">The material family</p>
+
+          <h2 id="mxenes-heading">
+            A layered framework with chemically active surfaces.
+          </h2>
+        </div>
+
+        <div>
+          <p>
+            MXenes are a family of two-dimensional transition-metal
+            carbides, nitrides, and carbonitrides. Their
+            metal–carbon or metal–nitrogen framework is combined
+            with surface groups that interact with surrounding
+            molecules, ions, and other material phases.
+          </p>
+
+          <p>
+            The family is studied for electrical conductivity,
+            accessible surfaces, and tunable interlayer chemistry.
+            In practice, performance depends on how the sheets
+            are prepared, stacked, dispersed, and combined
+            with other materials.
+          </p>
+
+          <div class="general-formula">
+            M<sub>n+1</sub>X<sub>n</sub>T<sub>x</sub>
+          </div>
+
+          <dl class="formula-key">
+            <div>
+              <dt>M</dt>
+              <dd>
+                An early transition metal; titanium
+                in my primary material system.
+              </dd>
+            </div>
+
+            <div>
+              <dt>X</dt>
+              <dd>
+                Carbon and/or nitrogen within
+                the layered framework.
+              </dd>
+            </div>
+
+            <div>
+              <dt>T<sub>x</sub></dt>
+              <dd>
+                Surface terminations, which can include
+                oxygen-, hydroxyl-, and fluorine-containing
+                groups depending on the preparation route.
+              </dd>
+            </div>
+          </dl>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- MATERIAL PROCESSING -->
+
+    <section id="processing" aria-labelledby="processing-heading">
+      <div class="section-top">
+        <div>
+          <p class="section-label">Material preparation</p>
+
+          <h2 id="processing-heading">
+            Track the material through each processing state.
+          </h2>
+        </div>
+
         <p>
-          The layered precursor provides the starting
-          structure for selective aluminium removal
-          and a reference for later characterization.
+          I compare the precursor and processed MXene states
+          so that structural, chemical, and functional
+          measurements retain a clear preparation history.
         </p>
-      </article>
+      </div>
 
-      <article>
-        <p class="eyebrow">02 / Transform</p>
-        <h3>Etched and intercalated MXene</h3>
+      <ol class="material-path">
+
+        <li class="precursor">
+          <h3>Ti₃AlCN MAX precursor</h3>
+          <p>
+            The layered precursor supplies the starting
+            structure and a reference for examining selective
+            aluminium removal and subsequent material changes.
+          </p>
+        </li>
+
+        <li class="etched">
+          <h3>Acid-etched MXene</h3>
+          <p>
+            LiF/HCl etching is followed by centrifugation
+            and washing to remove residual acid and soluble
+            by-products. The recovered material is examined
+            for changes in phase signatures, stacking,
+            and surface chemistry.
+          </p>
+        </li>
+
+        <li class="intercalated">
+          <h3>DMSO-treated MXene</h3>
+          <p>
+            DMSO treatment promotes intercalation between
+            layers. Washing and recovery prepare the treated
+            material for comparisons of layer arrangement,
+            dispersion, and measured response.
+          </p>
+        </li>
+
+      </ol>
+    </section>
+
+    <!-- RESEARCH QUESTIONS -->
+
+    <section id="questions" aria-labelledby="questions-heading">
+      <p class="section-label">Processing–structure relationships</p>
+
+      <h2 id="questions-heading">
+        What changes when the layers are modified?
+      </h2>
+
+      <div class="questions">
+
+        <article>
+          <h3>Interlayer arrangement</h3>
+          <p>
+            How do etching and intercalation affect basal spacing,
+            stacking coherence, and the arrangement of layered
+            assemblies? I use diffraction alongside complementary
+            measurements to examine these questions.
+          </p>
+        </article>
+
+        <article>
+          <h3>Surface chemistry</h3>
+          <p>
+            How do surface composition and selected chemical
+            environments change with treatment? Spectroscopic
+            analysis helps distinguish surface-related
+            contributions from changes in the underlying
+            material framework.
+          </p>
+        </article>
+
+        <article>
+          <h3>Dispersion &amp; restacking</h3>
+          <p>
+            How do the processed sheets assemble in suspension?
+            Zeta potential, DLS, morphology, and gas-sorption
+            measurements provide complementary information
+            on dispersion and accessible interfaces.
+          </p>
+        </article>
+
+        <article>
+          <h3>Structure &amp; functional response</h3>
+          <p>
+            Which measured structural and interfacial variables
+            are useful for interpreting thermal stability,
+            irradiation-induced heating, and electrochemical
+            behaviour? Descriptor-based analysis connects
+            these measurements while retaining their assumptions.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- FUNCTIONAL COMPOSITES -->
+
+    <section id="composites" aria-labelledby="composites-heading">
+      <div class="reading-layout">
+
+        <div>
+          <p class="section-label">MXene–sulfide systems</p>
+
+          <h2 id="composites-heading">
+            A layered host with additional interfaces.
+          </h2>
+        </div>
+
+        <div>
+          <p>
+            My work also includes MXene-based composite systems
+            containing transition-metal sulfides. These systems
+            extend the research from modifying a layered material
+            to examining how secondary phases are distributed
+            and connected with it.
+          </p>
+
+          <div class="sulfide-series" aria-label="Sulfide systems">
+            <span>NiS₂</span>
+            <span>CuS₂</span>
+            <span>ZnS</span>
+            <span>MoS₂</span>
+          </div>
+
+          <p>
+            The questions include phase identification,
+            morphology, elemental distribution, and
+            surface-chemical changes associated with composite
+            preparation. The aim is to understand the interfaces
+            rather than assume that combining materials
+            automatically improves performance.
+          </p>
+
+          <div class="composite-focus">
+            Composite interpretation draws on XRD, Raman,
+            FTIR, XPS, and SEM/EDS. Structural and spatial
+            evidence are considered together when examining
+            the relationship between constituent phases.
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CHARACTERIZATION -->
+
+    <section id="characterization"
+             aria-labelledby="characterization-heading">
+
+      <div class="section-top">
+        <div>
+          <p class="section-label">Complementary measurements</p>
+
+          <h2 id="characterization-heading">
+            Build the material picture from several measurements.
+          </h2>
+        </div>
+
         <p>
-          LiF/HCl etching, washing, and DMSO treatment
-          form the processing sequence used to investigate
-          changes in layer arrangement and surface chemistry.
+          Each technique probes a different part of the system.
+          I combine their information to examine structure,
+          chemistry, accessible interfaces, dispersion,
+          and stability.
         </p>
-      </article>
+      </div>
 
-      <article>
-        <p class="eyebrow">03 / Combine</p>
-        <h3>Sulfide composites</h3>
-        <p>
-          MXene-based systems containing NiS₂, CuS₂, ZnS,
-          and MoS₂ extend the study to interfaces between
-          the layered material and sulfide phases.
-        </p>
-      </article>
+      <div class="table-wrap"
+           role="region"
+           tabindex="0"
+           aria-label="MXene characterization methods; scroll horizontally on small screens">
+
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Method</th>
+              <th scope="col">What I examine</th>
+              <th scope="col">Connection to the research</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>XRD</td>
+              <td>
+                Phase signatures, basal reflections,
+                peak positions, and broadening
+              </td>
+              <td>
+                Layer spacing, stacking, and
+                processing-dependent structural changes
+              </td>
+            </tr>
+
+            <tr>
+              <td>Raman &amp; FTIR</td>
+              <td>
+                Vibrational features, peak shifts,
+                linewidths, and selected band areas
+              </td>
+              <td>
+                Comparative information on the framework,
+                surface groups, and interfacial environments
+              </td>
+            </tr>
+
+            <tr>
+              <td>XPS</td>
+              <td>
+                Near-surface composition and fitted
+                chemical-envelope contributions
+              </td>
+              <td>
+                Surface-chemical changes associated with
+                etching, treatment, and composite preparation
+              </td>
+            </tr>
+
+            <tr>
+              <td>SEM / EDS</td>
+              <td>Morphology and elemental distribution</td>
+              <td>
+                Layered assemblies, aggregates, and spatial
+                context for constituent phases
+              </td>
+            </tr>
+
+            <tr>
+              <td>BET / gas sorption</td>
+              <td>
+                Gas-accessible area, pore volume,
+                and operational pore descriptors
+              </td>
+              <td>
+                Accessible interfaces and
+                pore-related material coordinates
+              </td>
+            </tr>
+
+            <tr>
+              <td>Zeta potential &amp; DLS</td>
+              <td>
+                Electrokinetic response and hydrodynamic size
+              </td>
+              <td>
+                Operational comparisons of dispersion
+                under defined measurement conditions
+              </td>
+            </tr>
+
+            <tr>
+              <td>TGA / DTG</td>
+              <td>
+                Mass-loss events, conversion,
+                and heating-rate dependence
+              </td>
+              <td>
+                Thermal stability, apparent kinetics,
+                and event-specific reconstruction
+              </td>
+            </tr>
+
+            <tr>
+              <td>Optical measurements</td>
+              <td>
+                Optical-response features considered
+                with other characterization
+              </td>
+              <td>
+                Context for interpreting
+                irradiation-induced heating
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <a class="method-link" href="descriptor-extraction.html">
+        Explore characterization-derived descriptors →
+      </a>
+    </section>
+
+    <!-- FUNCTIONAL STUDIES -->
+
+    <section id="functional-studies"
+             aria-labelledby="functional-studies-heading">
+
+      <p class="section-label">From materials to response</p>
+
+      <h2 id="functional-studies-heading">
+        Connect preparation with measured performance.
+      </h2>
+
+      <div class="study-columns">
+
+        <a class="study-link photothermal"
+           href="photothermal.html"
+           aria-labelledby="photothermal-heading">
+
+          <h3 id="photothermal-heading">Photothermal studies</h3>
+
+          <p>
+            Near-infrared heating–cooling measurements examine
+            how processing state and suspension concentration
+            relate to the temperature response.
+          </p>
+
+          <span class="study-action">
+            Explore photothermal studies →
+          </span>
+        </a>
+
+        <a class="study-link electrochemical"
+           href="electrochemistry.html"
+           aria-labelledby="electrochemical-heading">
+
+          <h3 id="electrochemical-heading">
+            Electrochemical studies
+          </h3>
+
+          <p>
+            CV, EIS, and GCD measurements provide complementary
+            views of charge storage, rate dependence,
+            impedance, and relaxation.
+          </p>
+
+          <span class="study-action">
+            Explore electrochemical studies →
+          </span>
+        </a>
+
+        <a class="study-link modelling"
+           href="modelling.html"
+           aria-labelledby="modelling-heading">
+
+          <h3 id="modelling-heading">Modelling &amp; descriptors</h3>
+
+          <p>
+            MATLAB-supported analysis connects measured features
+            with physical models, response parameters,
+            and interpretable material descriptors.
+          </p>
+
+          <span class="study-action">
+            Explore modelling methods →
+          </span>
+        </a>
+
+      </div>
+    </section>
+
+    <div class="page-end">
+      <a href="research.html">← Back to research</a>
+      <a href="data-analysis.html">Scientific data analysis →</a>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+
+      <div>
+        <p class="footer-name">Rupesh Lal Karn</p>
+        <p>Prairie View, Texas</p>
+        <a href="mailto:rkarn@pvamu.edu">rkarn@pvamu.edu</a>
+      </div>
+
+      <nav class="footer-links" aria-label="Academic profiles">
+        <a href="https://scholar.google.com/citations?user=7RRtNOYAAAAJ&amp;hl=en">
+          Google Scholar
+        </a>
+
+        <a href="https://orcid.org/0009-0008-9261-024X">
+          ORCID
+        </a>
+
+        <a href="Rupesh_Lal_Karn_CV.pdf">CV</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <small class="copyright">
+        © <span id="year">2026</span> Rupesh Lal Karn
+      </small>
 
     </div>
-  </section>
+  </footer>
 
-  <section class="section split">
-    <div>
-      <p class="eyebrow accent">Processing questions</p>
-      <h2>What changes when the layers are modified?</h2>
-    </div>
+  <script>
+    const menuButton = document.querySelector('.menu-button');
+    const navigation = document.getElementById('site-navigation');
 
-    <div>
-      <p>
-        Selective etching removes aluminium from the
-        MAX precursor. Subsequent washing prepares the
-        material for further treatment, while DMSO
-        promotes intercalation between layers.
-      </p>
+    function setMenu(open) {
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.textContent = open ? 'Close' : 'Menu';
+      navigation.classList.toggle('is-open', open);
+    }
 
-      <p class="muted">
-        I compare processing stages to examine changes
-        in stacking, morphology, and surface chemical
-        states. Composite formation adds a further question:
-        how are the constituent phases distributed
-        and connected?
-      </p>
-    </div>
-  </section>
+    menuButton.addEventListener('click', () => {
+      setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
+    });
 
-  <section class="section rule">
-    <p class="eyebrow accent">Reading the evidence</p>
-    <h2>A material needs more than one view.</h2>
+    document.addEventListener('keydown', event => {
+      if (
+        event.key === 'Escape' &&
+        menuButton.getAttribute('aria-expanded') === 'true'
+      ) {
+        setMenu(false);
+        menuButton.focus();
+      }
+    });
 
-    <div class="method-list">
-      <p>
-        <strong>XRD</strong><br>
-        Crystalline phases and diffraction changes associated
-        with layer spacing and stacking.
-      </p>
+    navigation.addEventListener('click', event => {
+      if (event.target.closest('a')) {
+        setMenu(false);
+      }
+    });
 
-      <p>
-        <strong>Raman &amp; FTIR</strong><br>
-        Vibrational signatures that help examine bonding
-        and functional groups.
-      </p>
-
-      <p>
-        <strong>XPS</strong><br>
-        Near-surface elemental composition and chemical states.
-      </p>
-
-      <p>
-        <strong>SEM / EDS</strong><br>
-        Morphology, elemental identification,
-        and spatial distribution.
-      </p>
-    </div>
-  </section>
-
-</main>
-
-<footer>
-  <span>Rupesh Lal Karn · MXenes &amp; Functional Composites</span>
-  <a href="research.html">Back to Research</a>
-</footer>
-
+    document.getElementById('year').textContent =
+      new Date().getFullYear();
+  </script>
 </body>
 </html>
