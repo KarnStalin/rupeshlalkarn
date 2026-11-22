@@ -1,296 +1,956 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
 
-<title>Photothermal Studies | Rupesh Lal Karn</title>
+  <title>Photothermal Studies | Rupesh Lal Karn</title>
 
-<meta
-  name="description"
-  content="Experimental studies of near-infrared-induced heating
-  in MAX, acid-etched MXene, and DMSO-treated MXene suspensions."
->
+  <meta name="description"
+        content="Experimental studies of near-infrared-induced heating and cooling in MAX, acid-etched MXene, and DMSO-treated MXene suspensions.">
 
-<link rel="stylesheet" href="research-studies.css">
+  <link rel="canonical" href="https://rlk.com.np/photothermal.html">
+
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #faf9f6;
+      --ink: #272e2a;
+      --muted: #606961;
+      --line: #d8dcd4;
+      --nav-accent: #385975;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI",
+              Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.8 var(--sans);
+    }
+
+    a {
+      color: var(--nav-accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 5px;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--nav-accent);
+      outline-offset: 5px;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 64px));
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -80px;
+      left: 20px;
+      z-index: 100;
+      padding: 12px 18px;
+      background: white;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    /* Navigation */
+
+    .site-header {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      min-height: 98px;
+    }
+
+    .name {
+      color: var(--ink);
+      font: 22px/1.3 var(--serif);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 23px;
+    }
+
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      border-bottom: 1px solid transparent;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .site-nav a:hover,
+    .site-nav a.active {
+      border-color: var(--nav-accent);
+      color: var(--ink);
+    }
+
+    .menu-button {
+      display: none;
+      min-height: 44px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    /* Introduction */
+
+    .page-intro {
+      padding: 50px 0 28px;
+    }
+
+    .breadcrumb {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .breadcrumb a {
+      color: inherit;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+
+    h1 {
+      margin: 0 0 22px;
+      color: #8e442a;
+      font-size: clamp(40px, 4.8vw, 62px);
+      line-height: 1.15;
+      letter-spacing: -.035em;
+      animation: titleGlow 4s ease-in-out infinite alternate;
+    }
+
+    .lead {
+      max-width: 850px;
+      margin: 0 0 16px;
+      font-size: 18px;
+      line-height: 1.85;
+    }
+
+    .intro-note {
+      max-width: 850px;
+      margin: 0;
+    }
+
+    p {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
+    strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .jump-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px 27px;
+      padding: 6px 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .jump-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+    }
+
+    /* Content */
+
+    main > section {
+      padding: 35px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-top {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 45px;
+      align-items: start;
+      margin-bottom: 25px;
+    }
+
+    .section-top p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-label {
+      margin: 0 0 10px;
+      color: #a64b2a;
+      font-size: 13px;
+    }
+
+    h2 {
+      margin: 0 0 20px;
+      color: #293b50;
+      font-size: 32px;
+      line-height: 1.3;
+      letter-spacing: -.025em;
+    }
+
+    h3 {
+      margin: 0 0 14px;
+      color: var(--accent);
+      font-size: 26px;
+      line-height: 1.35;
+      letter-spacing: -.02em;
+    }
+
+    /* Heating–cooling schematic */
+
+    .response-figure {
+      max-width: 1000px;
+      margin: 28px auto 0;
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .image-link {
+      display: block;
+    }
+
+    .image-link img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    figcaption {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding: 10px 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    figcaption a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+    }
+
+    /* Material series */
+
+    .material-series {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 35px;
+      margin-top: 27px;
+    }
+
+    .material {
+      min-width: 0;
+      padding: 20px 0 0;
+      border-top: 2px solid var(--accent);
+    }
+
+    .material p {
+      margin: 0;
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    .precursor {
+      --accent: #285ca3;
+    }
+
+    .etched {
+      --accent: #176b61;
+    }
+
+    .treated {
+      --accent: #7144a0;
+    }
+
+    /* Experimental procedure */
+
+    .experiment-layout {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 45px;
+      align-items: start;
+    }
+
+    .steps {
+      margin: 0;
+      padding-left: 25px;
+    }
+
+    .steps li {
+      padding: 18px 0 18px 8px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .steps li::marker {
+      color: #a64b2a;
+    }
+
+    .steps strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 17px;
+    }
+
+    /* Measurement table */
+
+    .table-wrap {
+      max-width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .table-wrap:focus-visible {
+      outline: 2px solid var(--nav-accent);
+      outline-offset: 5px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 650px;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 17px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      background: #f6ede5;
+      color: #79452d;
+      font-weight: 600;
+    }
+
+    td {
+      color: var(--muted);
+    }
+
+    td:first-child {
+      color: #8e442a;
+      font-weight: 500;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .note {
+      padding: 18px 22px;
+      margin-top: 22px;
+      border-left: 3px solid #a57b36;
+      background: #fcf6e9;
+      color: #655138;
+      font-size: 14px;
+    }
+
+    /* Related methods */
+
+    .related {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 45px;
+      padding: 35px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .related a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      color: #a64b2a;
+      font-size: 14px;
+    }
+
+    .page-end {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px 30px;
+      padding: 20px 0 38px;
+    }
+
+    .page-end a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+    }
+
+    @keyframes titleGlow {
+      from {
+        text-shadow: 0 0 2px rgba(181, 104, 66, .04);
+      }
+
+      to {
+        text-shadow:
+          0 0 9px rgba(181, 104, 66, .22),
+          0 0 22px rgba(181, 104, 66, .11);
+      }
+    }
+
+    /* Footer */
+
+    .footer {
+      padding: 35px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .footer .footer-name {
+      margin: 0 0 10px;
+      color: var(--ink);
+      font: 23px var(--serif);
+    }
+
+    .footer p {
+      margin: 0 0 12px;
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: flex-end;
+      align-content: start;
+      flex-wrap: wrap;
+      gap: 10px 25px;
+    }
+
+    .footer-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+    }
+
+    .copyright {
+      grid-column: 1 / -1;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Responsive layout */
+
+    @media (max-width: 1050px) {
+      .header-inner {
+        flex-wrap: wrap;
+        padding: 20px 0;
+        gap: 12px;
+      }
+
+      .site-nav {
+        gap: 18px;
+      }
+
+      .section-top,
+      .experiment-layout,
+      .related {
+        gap: 30px;
+      }
+
+      .material-series {
+        gap: 25px;
+      }
+    }
+
+    @media (max-width: 850px) {
+      .section-top,
+      .experiment-layout,
+      .related {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: calc(100% - 40px);
+      }
+
+      .header-inner {
+        min-height: 85px;
+        justify-content: space-between;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .site-nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        padding-top: 10px;
+      }
+
+      .site-nav.is-open {
+        display: flex;
+      }
+
+      .site-nav a {
+        min-height: 48px;
+      }
+
+      .page-intro {
+        padding: 35px 0 25px;
+      }
+
+      h1 {
+        font-size: 39px;
+      }
+
+      .lead {
+        font-size: 17px;
+      }
+
+      h2 {
+        font-size: 29px;
+      }
+
+      h3 {
+        font-size: 25px;
+      }
+
+      main > section,
+      .related {
+        padding: 28px 0;
+      }
+
+      .material-series {
+        grid-template-columns: 1fr;
+        gap: 26px;
+      }
+
+      .response-figure {
+        margin-top: 23px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      h1 {
+        animation: none;
+      }
+    }
+  </style>
 </head>
 
-<body style="
-  --accent:#a34e1b;
-  --highlight:#ffd2a1;
-  --glow:#66412f;
-">
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<header>
-  <div class="container header-inner">
-    <a class="brand" href="index.html">Rupesh Lal Karn</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="name" href="index.html">Rupesh Lal Karn</a>
 
-    <nav aria-label="Main navigation">
-      <a href="research.html">Research</a>
-      <a href="photothermal-electrochemistry.html">
-        Photothermal &amp; Electrochemical Studies
-      </a>
+      <button class="menu-button"
+              type="button"
+              aria-controls="site-navigation"
+              aria-expanded="false">
+        Menu
+      </button>
+
+      <nav class="site-nav"
+           id="site-navigation"
+           aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a class="active" href="research.html">Research</a>
+        <a href="experience.html">Experience</a>
+        <a href="publications.html">Publications</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="projects.html">Projects</a>
+        <a href="skills.html">Skills</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container" id="main">
+
+    <div class="page-intro">
+      <p class="breadcrumb">
+        <a href="research.html">Research</a> /
+        <a href="photothermal-electrochemistry.html">
+          Photothermal &amp; Electrochemical Studies
+        </a>
+      </p>
+
+      <h1>Photothermal Studies</h1>
+
+      <p class="lead">
+        I investigate how material processing and suspension
+        concentration influence heating and cooling under
+        near-infrared irradiation.
+      </p>
+
+      <p class="intro-note">
+        The experimental framework connects controlled
+        temperature measurements with characterization
+        of structure, surface chemistry, and dispersion.
+      </p>
+    </div>
+
+    <nav class="jump-links" aria-label="Page sections">
+      <a href="#focus">Research focus</a>
+      <a href="#materials">Material series</a>
+      <a href="#experiment">Experimental approach</a>
+      <a href="#measurements">Measurements</a>
     </nav>
-  </div>
-</header>
 
-<div class="hero">
-  <div class="container">
-    <div class="eyebrow">
-      Materials response · Near-infrared irradiation
-    </div>
+    <!-- RESEARCH FOCUS -->
 
-    <h1>
-      Photothermal<br>
-      <span>Studies</span>
-    </h1>
+    <section id="focus" aria-labelledby="focus-heading">
+      <div class="section-top">
+        <div>
+          <p class="section-label">Research question</p>
 
-    <p>
-      I investigate how material processing and suspension
-      concentration influence heating and cooling under
-      near-infrared irradiation.
-    </p>
+          <h2 id="focus-heading">
+            How does processing change the thermal response?
+          </h2>
+        </div>
 
-    <p>
-      The experimental framework connects controlled
-      temperature measurements with characterization
-      of structure, surface chemistry, and dispersion.
-    </p>
-  </div>
-</div>
+        <div>
+          <p>
+            Chemical etching and intercalation alter material
+            structure and interfaces. Photothermal measurements
+            examine the associated temperature response
+            under defined irradiation conditions.
+          </p>
 
-<main class="container">
-
-  <div class="highlights">
-    <article>
-      <small>Excitation</small>
-      <strong>Near-infrared irradiation</strong>
-    </article>
-
-    <article>
-      <small>Measurement</small>
-      <strong>Heating–cooling transients</strong>
-    </article>
-
-    <article>
-      <small>Comparison</small>
-      <strong>Processing &amp; concentration</strong>
-    </article>
-  </div>
-
-  <nav class="jump-links" aria-label="Page sections">
-    <a href="#focus">Research focus</a>
-    <a href="#materials">Material series</a>
-    <a href="#experiment">Experimental approach</a>
-    <a href="#measurements">Measurements</a>
-  </nav>
-
-  <section id="focus">
-    <div class="section-top">
-      <div>
-        <div class="number">01 / RESEARCH QUESTION</div>
-        <h2>How does processing change the thermal response?</h2>
+          <p>
+            The study considers both the rise during irradiation
+            and the subsequent cooling, rather than relying
+            only on an endpoint temperature.
+          </p>
+        </div>
       </div>
+
+      <figure class="response-figure">
+        <a class="image-link" href="photothermal-transient.png">
+          <img src="photothermal-transient.png"
+               width="1752"
+               height="897"
+               fetchpriority="high"
+               alt="Schematic photothermal heating and cooling with irradiation and heat-loss pathways.">
+        </a>
+
+        <figcaption>
+          <span>Heating–cooling response · Schematic</span>
+          <a href="photothermal-transient.png">Enlarge image</a>
+        </figcaption>
+      </figure>
+    </section>
+
+    <!-- MATERIAL SERIES -->
+
+    <section id="materials" aria-labelledby="materials-heading">
+      <p class="section-label">Material series</p>
+      <h2 id="materials-heading">Follow the processing sequence.</h2>
+
+      <div class="material-series">
+
+        <article class="material precursor">
+          <h3>MAX precursor</h3>
+          <p>
+            Ti₃AlCN provides the precursor reference for
+            comparing processing-dependent changes.
+          </p>
+        </article>
+
+        <article class="material etched">
+          <h3>Acid-etched MXene</h3>
+          <p>
+            Ti₃CNTₓ represents the etched material state,
+            with structure and surface chemistry examined
+            through complementary characterization.
+          </p>
+        </article>
+
+        <article class="material treated">
+          <h3>DMSO-treated MXene</h3>
+          <p>
+            The treated state extends the comparison to
+            processing-related changes in stacking,
+            interfaces, and dispersion.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- EXPERIMENTAL APPROACH -->
+
+    <section id="experiment" aria-labelledby="experiment-heading">
+      <div class="experiment-layout">
+
+        <div>
+          <p class="section-label">Experimental approach</p>
+
+          <h2 id="experiment-heading">
+            Measure the complete irradiation cycle.
+          </h2>
+        </div>
+
+        <ol class="steps">
+          <li>
+            <strong>Prepare the suspensions</strong>
+            Retain material identity, concentration,
+            suspension volume, and preparation history.
+          </li>
+
+          <li>
+            <strong>Establish the baseline</strong>
+            Record the initial temperature and maintain
+            consistent vessel and irradiation geometry.
+          </li>
+
+          <li>
+            <strong>Apply near-infrared irradiation</strong>
+            Track the temperature continuously during
+            the defined laser-on interval.
+          </li>
+
+          <li>
+            <strong>Record cooling</strong>
+            Continue measuring after switch-off to
+            characterize the return toward ambient.
+          </li>
+
+          <li>
+            <strong>Measure the water reference</strong>
+            Use comparable conditions to distinguish
+            the suspension response from the reference background.
+          </li>
+        </ol>
+
+      </div>
+    </section>
+
+    <!-- MEASUREMENTS -->
+
+    <section id="measurements" aria-labelledby="measurements-heading">
+      <p class="section-label">Quantities of interest</p>
+
+      <h2 id="measurements-heading">
+        Read the transient at several levels.
+      </h2>
+
+      <div class="table-wrap"
+           role="region"
+           tabindex="0"
+           aria-label="Photothermal measurements table; scroll horizontally on small screens">
+
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Observation</th>
+              <th scope="col">What it describes</th>
+              <th scope="col">Interpretation</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Temperature rise</td>
+              <td>Change relative to the ambient baseline</td>
+              <td>Finite-time heating response</td>
+            </tr>
+
+            <tr>
+              <td>Heating profile</td>
+              <td>Evolution during irradiation</td>
+              <td>Rate and shape of the temperature increase</td>
+            </tr>
+
+            <tr>
+              <td>Cooling profile</td>
+              <td>Evolution after switch-off</td>
+              <td>Effective loss-controlled response</td>
+            </tr>
+
+            <tr>
+              <td>Concentration comparison</td>
+              <td>Response across suspension loadings</td>
+              <td>Condition-dependent behaviour</td>
+            </tr>
+
+            <tr>
+              <td>Processing comparison</td>
+              <td>Response across the material series</td>
+              <td>
+                Context for comparison with characterization
+                and dispersion measurements
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        A larger measured temperature rise alone does not
+        establish a larger intrinsic conversion efficiency.
+        Geometry, thermal capacity, heat loss, concentration,
+        and absorbed optical power affect interpretation.
+      </div>
+    </section>
+
+    <!-- RELATED MODELLING -->
+
+    <aside class="related">
+      <h2>Explore the analysis behind the measurements.</h2>
 
       <div>
         <p>
-          Chemical etching and intercalation alter material
-          structure and interfaces. Photothermal measurements
-          examine the associated temperature response under
-          defined irradiation conditions.
+          The dedicated modelling page explains the energy
+          balance, heating–cooling fits, water calibration,
+          thermal descriptors, and uncertainty assessment.
         </p>
 
-        <p>
-          The study considers both the rise during irradiation
-          and the subsequent cooling, rather than relying
-          only on an endpoint temperature.
-        </p>
+        <a href="photothermal-modelling.html">
+          Photothermal modelling →
+        </a>
       </div>
-    </div>
+    </aside>
 
-    <figure>
-      <a href="photothermal-transient.png">
-        <img
-          src="photothermal-transient.png"
-          alt="Schematic photothermal heating and cooling
-          with irradiation and heat-loss pathways."
-          fetchpriority="high"
-        >
+    <div class="page-end">
+      <a href="photothermal-electrochemistry.html">
+        ← Photothermal &amp; electrochemical studies
       </a>
 
-      <figcaption>
-        <span>Heating–cooling response · Schematic</span>
-        <a href="photothermal-transient.png">Enlarge image</a>
-      </figcaption>
-    </figure>
-  </section>
-
-  <section id="materials">
-    <div class="number">02 / MATERIAL SERIES</div>
-    <h2>Follow the processing sequence.</h2>
-
-    <div class="cards">
-      <article class="card" style="
-        --surface:#fff3e8;
-        --border:#ebcdb2;
-        --colour:#a34e1b;
-      ">
-        <h3>MAX precursor</h3>
-        <p>
-          Ti₃AlCN provides the precursor reference for
-          comparing processing-dependent changes.
-        </p>
-      </article>
-
-      <article class="card" style="
-        --surface:#eaf5ef;
-        --border:#c4dfd0;
-        --colour:#17695c;
-      ">
-        <h3>Acid-etched MXene</h3>
-        <p>
-          Ti₃CNTₓ represents the etched material state,
-          with structure and surface chemistry examined
-          through complementary characterization.
-        </p>
-      </article>
-
-      <article class="card" style="
-        --surface:#f2ecf8;
-        --border:#dacbea;
-        --colour:#714298;
-      ">
-        <h3>DMSO-treated MXene</h3>
-        <p>
-          The treated state extends the comparison to
-          processing-related changes in stacking,
-          interfaces, and dispersion.
-        </p>
-      </article>
-    </div>
-  </section>
-
-  <section id="experiment">
-    <div class="number">03 / EXPERIMENTAL APPROACH</div>
-    <h2>Measure the complete irradiation cycle.</h2>
-
-    <ol class="steps">
-      <li>
-        <strong>Prepare the suspensions</strong>
-        Retain material identity, concentration,
-        suspension volume, and preparation history.
-      </li>
-
-      <li>
-        <strong>Establish the baseline</strong>
-        Record the initial temperature and maintain
-        consistent vessel and irradiation geometry.
-      </li>
-
-      <li>
-        <strong>Apply near-infrared irradiation</strong>
-        Track the temperature continuously during
-        the defined laser-on interval.
-      </li>
-
-      <li>
-        <strong>Record cooling</strong>
-        Continue measuring after switch-off to
-        characterize the return toward ambient.
-      </li>
-
-      <li>
-        <strong>Measure the water reference</strong>
-        Use comparable conditions to distinguish
-        the suspension response from the reference background.
-      </li>
-    </ol>
-  </section>
-
-  <section id="measurements">
-    <div class="number">04 / QUANTITIES OF INTEREST</div>
-    <h2>Read the transient at several levels.</h2>
-
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Observation</th>
-            <th>What it describes</th>
-            <th>Interpretation</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>Temperature rise</td>
-            <td>Change relative to the ambient baseline</td>
-            <td>Finite-time heating response</td>
-          </tr>
-
-          <tr>
-            <td>Heating profile</td>
-            <td>Evolution during irradiation</td>
-            <td>Rate and shape of the temperature increase</td>
-          </tr>
-
-          <tr>
-            <td>Cooling profile</td>
-            <td>Evolution after switch-off</td>
-            <td>Effective loss-controlled response</td>
-          </tr>
-
-          <tr>
-            <td>Concentration comparison</td>
-            <td>Response across suspension loadings</td>
-            <td>Condition-dependent behaviour</td>
-          </tr>
-
-          <tr>
-            <td>Processing comparison</td>
-            <td>Response across the material series</td>
-            <td>
-              Context for comparison with characterization
-              and dispersion measurements
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <a href="electrochemistry.html">
+        Electrochemical studies →
+      </a>
     </div>
 
-    <div class="note">
-      A larger measured temperature rise alone does not
-      establish a larger intrinsic conversion efficiency.
-      Geometry, thermal capacity, heat loss, concentration,
-      and absorbed optical power affect interpretation.
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+
+      <div>
+        <p class="footer-name">Rupesh Lal Karn</p>
+        <p>Prairie View, Texas</p>
+        <a href="mailto:rkarn@pvamu.edu">rkarn@pvamu.edu</a>
+      </div>
+
+      <nav class="footer-links" aria-label="Academic profiles">
+        <a href="https://scholar.google.com/citations?user=7RRtNOYAAAAJ&amp;hl=en">
+          Google Scholar
+        </a>
+
+        <a href="https://orcid.org/0009-0008-9261-024X">
+          ORCID
+        </a>
+
+        <a href="Rupesh_Lal_Karn_CV.pdf">CV</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <small class="copyright">
+        © <span id="year">2026</span> Rupesh Lal Karn
+      </small>
+
     </div>
-  </section>
+  </footer>
 
-  <aside class="related">
-    <h2>Explore the analysis behind the measurements.</h2>
+  <script>
+    const menuButton = document.querySelector('.menu-button');
+    const navigation = document.getElementById('site-navigation');
 
-    <p>
-      The dedicated modelling page explains the energy balance,
-      heating–cooling fits, water calibration,
-      thermal descriptors, and uncertainty assessment.
-    </p>
+    function setMenu(open) {
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.textContent = open ? 'Close' : 'Menu';
+      navigation.classList.toggle('is-open', open);
+    }
 
-    <a href="photothermal-modelling.html">
-      Photothermal modelling →
-    </a>
-  </aside>
+    menuButton.addEventListener('click', () => {
+      setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
+    });
 
-  <a class="back" href="photothermal-electrochemistry.html">
-    ← Back to photothermal &amp; electrochemical studies
-  </a>
+    document.addEventListener('keydown', event => {
+      if (
+        event.key === 'Escape' &&
+        menuButton.getAttribute('aria-expanded') === 'true'
+      ) {
+        setMenu(false);
+        menuButton.focus();
+      }
+    });
 
-</main>
+    navigation.addEventListener('click', event => {
+      if (event.target.closest('a')) {
+        setMenu(false);
+      }
+    });
 
-<footer>
-  <div class="container">
-    Rupesh Lal Karn · Photothermal Studies
-  </div>
-</footer>
-
+    document.getElementById('year').textContent =
+      new Date().getFullYear();
+  </script>
 </body>
 </html>
