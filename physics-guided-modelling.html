@@ -1,1065 +1,1419 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
-<title>Physics-Guided Descriptor Modelling | Rupesh Lal Karn</title>
-
-<meta
-  name="description"
-  content="Physics-guided descriptor construction, screening,
-  response modelling, and sensitivity assessment."
->
-
-<style>
-:root {
-  --navy: #102237;
-  --ink: #183148;
-  --muted: #566c7d;
-  --paper: #f5f7fa;
-  --line: #d8e2ea;
-  --blue: #165ca6;
-  --green: #17695c;
-  --purple: #714298;
-  --amber: #986014;
-}
-
-* { box-sizing: border-box; }
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 24px;
-}
-
-body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font: 16px/1.75 system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-a {
-  color: var(--blue);
-  text-underline-offset: 5px;
-}
-
-a:focus-visible {
-  outline: 3px solid #c87923;
-  outline-offset: 5px;
-}
-
-.container {
-  width: min(1200px, calc(100% - 48px));
-  margin: auto;
-}
-
-header {
-  background: var(--navy);
-}
-
-.header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 18px;
-  padding: 22px 0;
-}
-
-header a {
-  color: #e5effa;
-  text-decoration: none;
-}
-
-.brand { font-weight: 750; }
-
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 22px;
-}
-
-.hero {
-  padding: 58px 0 112px;
-  background:
-    radial-gradient(circle at 88% 25%, #304562 0, transparent 40%),
-    var(--navy);
-  color: white;
-}
-
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.4fr .6fr;
-  gap: 40px;
-  align-items: center;
-}
-
-.eyebrow {
-  margin-bottom: 16px;
-  color: #9adccc;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-}
-
-h1 {
-  margin: 0 0 24px;
-  font-size: clamp(37px, 5.8vw, 69px);
-  line-height: 1.08;
-  letter-spacing: -.045em;
-}
-
-h1 span { color: #c8c2ff; }
-
-.hero p {
-  max-width: 750px;
-  color: #c6d6e6;
-  font-size: 18px;
-}
-
-.hero-aside {
-  padding: 28px;
-  border: 1px solid #4a607b;
-  border-radius: 18px;
-  background: #ffffff07;
-}
-
-.hero-aside small {
-  color: #a7e3d3;
-  font-size: 11px;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-.hero-aside div {
-  margin: 18px 0;
-  font: 25px/1.55 Georgia, serif;
-}
-
-.hero-aside p {
-  margin: 0;
-  font-size: 13px;
-}
-
-.schematic {
-  position: relative;
-  margin: -68px 0 28px;
-  padding: 12px;
-  border: 1px solid var(--line);
-  border-radius: 21px;
-  background: white;
-  box-shadow: 0 18px 45px #10223712;
-}
-
-.schematic img {
-  display: block;
-  width: 100%;
-  height: auto;
-  border-radius: 12px;
-}
-
-figcaption {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 12px;
-  padding: 13px 10px 5px;
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.jump-links {
-  gap: 9px;
-  padding: 10px 0 30px;
-}
-
-.jump-links a {
-  padding: 8px 14px;
-  border: 1px solid var(--line);
-  border-radius: 24px;
-  background: white;
-  color: var(--ink);
-  font-size: 13px;
-  text-decoration: none;
-}
-
-section { padding: 35px 0; }
-
-.number {
-  color: var(--green);
-  font: 12px/1.6 ui-monospace, monospace;
-  letter-spacing: .12em;
-}
-
-h2 {
-  margin: 10px 0 20px;
-  font-size: clamp(27px, 3.3vw, 38px);
-  line-height: 1.2;
-  letter-spacing: -.035em;
-}
-
-h3 {
-  margin: 0 0 12px;
-  font-size: 21px;
-  line-height: 1.35;
-}
-
-p {
-  margin: 0 0 18px;
-  color: var(--muted);
-}
-
-strong { color: var(--ink); }
-
-.section-top {
-  display: grid;
-  grid-template-columns: .9fr 1.1fr;
-  gap: 35px;
-  align-items: start;
-  margin-bottom: 25px;
-}
-
-.framework {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 18px;
-}
-
-.framework article {
-  padding: 25px;
-  border: 1px solid var(--line);
-  border-top: 4px solid var(--accent);
-  border-radius: 13px;
-  background: white;
-}
-
-.framework h3 { color: var(--accent); }
-
-.framework p {
-  margin: 0;
-  font-size: 14px;
-}
-
-.normalization {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 30px;
-  align-items: center;
-  padding: 30px;
-  margin: 26px 0;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: white;
-}
-
-.formula {
-  padding: 17px 0;
-  margin: 15px 0;
-  border-top: 1px solid var(--border, var(--line));
-  border-bottom: 1px solid var(--border, var(--line));
-  color: var(--ink);
-  font: clamp(18px, 2.2vw, 24px)/1.8 Georgia, serif;
-  overflow-wrap: anywhere;
-}
-
-.formula div + div { margin-top: 12px; }
-
-.caption {
-  color: var(--muted);
-  font-size: 13px;
-}
-
-.descriptor {
-  display: grid;
-  grid-template-columns: 95px minmax(0, 1fr) minmax(0, 1fr);
-  gap: 28px;
-  align-items: center;
-  margin: 20px 0;
-  padding: 30px;
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  background: var(--surface);
-}
-
-.symbol {
-  color: var(--accent);
-  font: italic 75px/1 Georgia, serif;
-}
-
-.descriptor h3 { color: var(--accent); }
-
-.descriptor p {
-  margin-bottom: 0;
-  font-size: 14px;
-}
-
-.descriptor .formula {
-  margin-top: 0;
-  font-size: 20px;
-}
-
-.note {
-  padding: 18px 22px;
-  margin: 24px 0;
-  border-left: 3px solid #d6a255;
-  background: #fff7e9;
-  color: #655138;
-  font-size: 14px;
-}
-
-.table-wrap {
-  overflow-x: auto;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: white;
-}
-
-table {
-  width: 100%;
-  min-width: 640px;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-
-th, td {
-  padding: 17px;
-  text-align: left;
-  vertical-align: top;
-  border-bottom: 1px solid var(--line);
-}
-
-th {
-  background: #eaf0f6;
-  color: var(--ink);
-}
-
-td { color: var(--muted); }
-
-td:first-child {
-  color: var(--blue);
-  font-weight: 700;
-}
-
-tr:last-child td { border-bottom: 0; }
-
-.response {
-  display: grid;
-  grid-template-columns: .85fr 1.15fr;
-  gap: 35px;
-  padding: 35px;
-  border-radius: 20px;
-  background: var(--navy);
-  color: white;
-}
-
-.response h2 { color: white; }
-
-.response p { color: #c4d5e5; }
-
-.response strong { color: white; }
-
-.response .formula {
-  --border: #405970;
-  color: #bde6db;
-}
-
-.response small { color: #bacde0; }
-
-.steps {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 18px;
-  margin: 25px 0;
-  padding: 0;
-  list-style: none;
-  counter-reset: step;
-}
-
-.steps li {
-  position: relative;
-  padding: 24px 24px 24px 65px;
-  border: 1px solid var(--line);
-  border-radius: 13px;
-  background: white;
-  color: var(--muted);
-  font-size: 14px;
-  counter-increment: step;
-}
-
-.steps li::before {
-  content: counter(step, decimal-leading-zero);
-  position: absolute;
-  left: 22px;
-  top: 25px;
-  color: var(--green);
-  font-family: monospace;
-  font-weight: 750;
-}
-
-.steps strong {
-  display: block;
-  margin-bottom: 6px;
-  font-size: 16px;
-}
-
-.related {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  margin: 25px 0;
-}
-
-.related a {
-  padding: 10px 15px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: white;
-  font-size: 14px;
-  text-decoration: none;
-}
-
-.back {
-  display: inline-block;
-  margin: 10px 0 35px;
-}
-
-footer {
-  padding: 25px 0;
-  background: var(--navy);
-  color: #bccddd;
-  font-size: 13px;
-}
-
-@media(max-width: 900px) {
-  .hero-grid,
-  .section-top,
-  .normalization,
-  .response {
-    grid-template-columns: 1fr;
-  }
-
-  .descriptor {
-    grid-template-columns: 65px minmax(0, 1fr);
-  }
-
-  .descriptor > div:last-child {
-    grid-column: 2;
-  }
-
-  .hero-aside { max-width: 550px; }
-}
-
-@media(max-width: 650px) {
-  .container { width: calc(100% - 36px); }
-
-  .hero { padding-top: 35px; }
-
-  .framework,
-  .steps,
-  .descriptor {
-    grid-template-columns: 1fr;
-  }
-
-  .descriptor > div:last-child { grid-column: auto; }
-
-  .descriptor,
-  .normalization,
-  .response { padding: 23px; }
-
-  .symbol { font-size: 48px; }
-
-  .schematic { border-radius: 15px; }
-}
-
-@media(prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+
+  <title>Physics-Guided Descriptor Modelling | Rupesh Lal Karn</title>
+
+  <meta name="description"
+        content="Physics-guided descriptor construction, normalization, response modelling, and assessment of sensitivity, uncertainty, and material-level scope.">
+
+  <link rel="canonical"
+        href="https://rlk.com.np/physics-guided-modelling.html">
+
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #faf9f6;
+      --ink: #272e2a;
+      --muted: #606961;
+      --line: #d8dcd4;
+      --nav-accent: #385975;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI",
+              Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 24px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font: 16px/1.8 var(--sans);
+    }
+
+    a {
+      color: var(--nav-accent);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 5px;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--nav-accent);
+      outline-offset: 5px;
+    }
+
+    .container {
+      width: min(1160px, calc(100% - 64px));
+      margin-inline: auto;
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -80px;
+      left: 20px;
+      z-index: 100;
+      padding: 12px 18px;
+      background: white;
+    }
+
+    .skip-link:focus {
+      top: 12px;
+    }
+
+    /* Navigation */
+
+    .site-header {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      min-height: 98px;
+    }
+
+    .name {
+      color: var(--ink);
+      font: 22px/1.3 var(--serif);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .site-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 23px;
+    }
+
+    .site-nav a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      border-bottom: 1px solid transparent;
+      color: var(--muted);
+      font-size: 14px;
+      text-decoration: none;
+    }
+
+    .site-nav a:hover,
+    .site-nav a.active {
+      border-color: var(--nav-accent);
+      color: var(--ink);
+    }
+
+    .menu-button {
+      display: none;
+      min-height: 44px;
+      padding: 9px 14px;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--ink);
+      font: inherit;
+      cursor: pointer;
+    }
+
+    /* Introduction */
+
+    .page-intro {
+      padding: 50px 0 28px;
+    }
+
+    .breadcrumb {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .breadcrumb a {
+      color: inherit;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: var(--serif);
+      font-weight: 400;
+    }
+
+    h1 {
+      max-width: 1050px;
+      margin: 0 0 22px;
+      color: #663d79;
+      font-size: clamp(40px, 4.8vw, 62px);
+      line-height: 1.15;
+      letter-spacing: -.035em;
+      animation: titleGlow 4s ease-in-out infinite alternate;
+    }
+
+    .lead {
+      max-width: 850px;
+      margin: 0 0 16px;
+      font-size: 18px;
+      line-height: 1.85;
+    }
+
+    .intro-note {
+      max-width: 850px;
+      margin: 0;
+    }
+
+    p {
+      margin: 0 0 18px;
+      color: var(--muted);
+    }
+
+    strong {
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .jump-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px 27px;
+      padding: 6px 0 18px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .jump-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+    }
+
+    /* Sections */
+
+    main > section {
+      padding: 35px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-top {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 45px;
+      align-items: start;
+      margin-bottom: 26px;
+    }
+
+    .section-top p:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-label {
+      margin: 0 0 10px;
+      color: #7144a0;
+      font-size: 13px;
+    }
+
+    h2 {
+      margin: 0 0 20px;
+      color: #293b50;
+      font-size: 32px;
+      line-height: 1.3;
+      letter-spacing: -.025em;
+    }
+
+    h3 {
+      margin: 0 0 12px;
+      color: var(--accent, #385975);
+      font-size: 25px;
+      line-height: 1.35;
+      letter-spacing: -.015em;
+    }
+
+    /* Framework schematic */
+
+    .schematic {
+      margin: 25px 0 30px;
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .image-link {
+      display: block;
+    }
+
+    .image-link img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    figcaption {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+      padding: 10px 16px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    figcaption a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 36px;
+    }
+
+    .framework {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 35px;
+    }
+
+    .framework article {
+      min-width: 0;
+      padding-top: 18px;
+      border-top: 2px solid var(--accent);
+    }
+
+    .framework p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .characterization-stage {
+      --accent: #285ca3;
+    }
+
+    .construction-stage {
+      --accent: #7144a0;
+    }
+
+    .response-stage {
+      --accent: #a64b2a;
+    }
+
+    .framework-note {
+      margin: 22px 0 0;
+      font-size: 14px;
+    }
+
+    /* Equations and modelling relationships */
+
+    .normalization,
+    .response {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: 45px;
+      align-items: start;
+      padding: 26px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .normalization {
+      margin: 24px 0;
+    }
+
+    .normalization p:last-child,
+    .response p:last-child {
+      margin-bottom: 0;
+    }
+
+    .formula {
+      padding: 18px 22px;
+      margin: 18px 0;
+      border-left: 3px solid var(--accent, #385975);
+      background: var(--tint, #edf1f5);
+      color: var(--ink);
+      font: clamp(19px, 2.1vw, 24px)/1.85 var(--serif);
+      overflow-wrap: anywhere;
+    }
+
+    .formula > div + div {
+      margin-top: 12px;
+    }
+
+    .normalization .formula,
+    .response .formula {
+      margin-top: 0;
+    }
+
+    .caption {
+      font-size: 13px;
+    }
+
+    /* Descriptor families */
+
+    .descriptor {
+      display: grid;
+      grid-template-columns:
+        65px minmax(0, 1fr) minmax(0, 1.15fr);
+      gap: 28px;
+      align-items: start;
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .symbol {
+      color: var(--accent);
+      font: italic 57px/1.1 var(--serif);
+    }
+
+    .descriptor h3 {
+      color: var(--accent);
+    }
+
+    .descriptor p {
+      margin: 0;
+      font-size: 14px;
+    }
+
+    .descriptor .formula {
+      margin-top: 0;
+      font-size: 21px;
+    }
+
+    .interface-score {
+      --accent: #176b61;
+      --tint: #edf6f1;
+    }
+
+    .vibrational-score {
+      --accent: #7144a0;
+      --tint: #f6f0fc;
+    }
+
+    .dispersion-score {
+      --accent: #886016;
+      --tint: #fcf6e9;
+    }
+
+    .response {
+      --accent: #9a365b;
+      --tint: #faf0f4;
+    }
+
+    .response h2,
+    .response .section-label {
+      color: #9a365b;
+    }
+
+    .response small {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .saturation {
+      --accent: #a64b2a;
+      --tint: #fff3ec;
+    }
+
+    .energy-check {
+      --accent: #285ca3;
+      --tint: #edf3fb;
+    }
+
+    .note {
+      padding: 18px 22px;
+      margin: 22px 0;
+      border-left: 3px solid #a57b36;
+      background: #fcf6e9;
+      color: #655138;
+      font-size: 14px;
+    }
+
+    /* Scientific tables */
+
+    .table-wrap {
+      max-width: 100%;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      background: white;
+    }
+
+    .table-wrap:focus-visible {
+      outline: 2px solid var(--nav-accent);
+      outline-offset: 5px;
+    }
+
+    table {
+      width: 100%;
+      min-width: 640px;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      padding: 17px;
+      text-align: left;
+      vertical-align: top;
+      border-bottom: 1px solid var(--line);
+    }
+
+    th {
+      background: #edf1f5;
+      color: #293b50;
+      font-weight: 600;
+    }
+
+    td {
+      color: var(--muted);
+    }
+
+    td:first-child {
+      color: #285ca3;
+      font-weight: 500;
+    }
+
+    tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    /* MATLAB workflow */
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 8px 40px;
+      margin: 25px 0;
+      padding-left: 25px;
+    }
+
+    .steps li {
+      padding: 18px 0 18px 8px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .steps li::marker {
+      color: #7144a0;
+    }
+
+    .steps strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 17px;
+    }
+
+    .related {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 28px;
+      padding-top: 15px;
+      border-top: 1px solid var(--line);
+    }
+
+    .related a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+    }
+
+    .page-end {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px 30px;
+      padding: 20px 0 38px;
+    }
+
+    .page-end a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+    }
+
+    @keyframes titleGlow {
+      from {
+        text-shadow: 0 0 2px rgba(128, 81, 157, .04);
+      }
+
+      to {
+        text-shadow:
+          0 0 9px rgba(128, 81, 157, .22),
+          0 0 22px rgba(128, 81, 157, .11);
+      }
+    }
+
+    /* Footer */
+
+    .footer {
+      padding: 35px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+    }
+
+    .footer .footer-name {
+      margin: 0 0 10px;
+      color: var(--ink);
+      font: 23px var(--serif);
+    }
+
+    .footer p {
+      margin: 0 0 12px;
+      font-size: 14px;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: flex-end;
+      align-content: start;
+      flex-wrap: wrap;
+      gap: 10px 25px;
+    }
+
+    .footer-links a {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      font-size: 14px;
+    }
+
+    .copyright {
+      grid-column: 1 / -1;
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Responsive layout */
+
+    @media (max-width: 1050px) {
+      .header-inner {
+        flex-wrap: wrap;
+        padding: 20px 0;
+        gap: 12px;
+      }
+
+      .site-nav {
+        gap: 18px;
+      }
+
+      .section-top,
+      .normalization,
+      .response {
+        gap: 30px;
+      }
+
+      .descriptor {
+        grid-template-columns:
+          50px minmax(0, 1fr) minmax(0, 1.1fr);
+        gap: 22px;
+      }
+
+      .framework {
+        gap: 25px;
+      }
+    }
+
+    @media (max-width: 900px) {
+      .section-top,
+      .normalization,
+      .response {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .descriptor {
+        grid-template-columns: 50px minmax(0, 1fr);
+      }
+
+      .descriptor > div:last-child {
+        grid-column: 2;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .container {
+        width: calc(100% - 40px);
+      }
+
+      .header-inner {
+        min-height: 85px;
+        justify-content: space-between;
+      }
+
+      .menu-button {
+        display: block;
+      }
+
+      .site-nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        padding-top: 10px;
+      }
+
+      .site-nav.is-open {
+        display: flex;
+      }
+
+      .site-nav a {
+        min-height: 48px;
+      }
+
+      .page-intro {
+        padding: 35px 0 25px;
+      }
+
+      h1 {
+        font-size: 39px;
+      }
+
+      .lead {
+        font-size: 17px;
+      }
+
+      h2 {
+        font-size: 29px;
+      }
+
+      h3 {
+        font-size: 24px;
+      }
+
+      main > section {
+        padding: 28px 0;
+      }
+
+      .framework,
+      .steps {
+        grid-template-columns: 1fr;
+      }
+
+      .framework {
+        gap: 24px;
+      }
+
+      .steps {
+        gap: 0;
+      }
+
+      .formula {
+        padding: 17px 18px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        justify-content: flex-start;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .descriptor {
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .descriptor > div:last-child {
+        grid-column: auto;
+      }
+
+      .symbol {
+        font-size: 43px;
+      }
+
+      figcaption {
+        flex-wrap: wrap;
+        gap: 4px 15px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      h1 {
+        animation: none;
+      }
+    }
+  </style>
 </head>
 
 <body>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-<header>
-  <div class="container header-inner">
-    <a class="brand" href="index.html">Rupesh Lal Karn</a>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="name" href="index.html">Rupesh Lal Karn</a>
 
-    <nav aria-label="Main navigation">
-      <a href="modelling.html">Modelling</a>
-      <a href="research.html">Research</a>
-    </nav>
-  </div>
-</header>
+      <button class="menu-button"
+              type="button"
+              aria-controls="site-navigation"
+              aria-expanded="false">
+        Menu
+      </button>
 
-<div class="hero">
-  <div class="container hero-grid">
-    <div>
-      <div class="eyebrow">
-        Characterization · Interpretable relationships · Physical checks
-      </div>
+      <nav class="site-nav"
+           id="site-navigation"
+           aria-label="Main navigation">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a class="active" href="research.html">Research</a>
+        <a href="experience.html">Experience</a>
+        <a href="publications.html">Publications</a>
+        <a href="teaching.html">Teaching</a>
+        <a href="projects.html">Projects</a>
+        <a href="skills.html">Skills</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-      <h1>
-        Physics-Guided<br>
-        <span>Descriptor Modelling</span>
-      </h1>
+  <main class="container" id="main">
 
-      <p>
-        Connecting material characterization with response
-        through meaningful descriptors, explicit assumptions,
+    <div class="page-intro">
+      <p class="breadcrumb">
+        <a href="research.html">Research</a> /
+        <a href="modelling.html">Modelling</a> /
+        Physics-guided descriptors
+      </p>
+
+      <h1>Physics-Guided Descriptor Modelling</h1>
+
+      <p class="lead">
+        I connect material characterization with measured response
+        through interpretable descriptors, explicit assumptions,
         and compact mathematical relationships.
       </p>
-    </div>
 
-    <aside class="hero-aside">
-      <small>The modelling principle</small>
-      <div>
-        Measure.<br>
-        Define.<br>
-        Connect.
-      </div>
-      <p>
-        Every input retains its physical meaning.
-        Every relationship has a stated domain.
-      </p>
-    </aside>
-  </div>
-</div>
-
-<main class="container">
-
-  <figure class="schematic">
-    <a href="physics-guided-schematic.png">
-      <img
-        src="physics-guided-schematic.png"
-        alt="Physics-guided workflow connecting characterization,
-        screening, descriptor families, concentration,
-        response models, and physical checks."
-        fetchpriority="high"
-      >
-    </a>
-
-    <figcaption>
-      <span>Physics-guided descriptor framework · Schematic</span>
-      <a href="physics-guided-schematic.png">View full image →</a>
-    </figcaption>
-  </figure>
-
-  <nav class="jump-links" aria-label="Page sections">
-    <a href="#framework">Framework</a>
-    <a href="#screening">Screening</a>
-    <a href="#descriptors">Descriptor families</a>
-    <a href="#response">Response modelling</a>
-    <a href="#assessment">Assessment</a>
-    <a href="#workflow">MATLAB workflow</a>
-  </nav>
-
-  <!-- FRAMEWORK -->
-
-  <section id="framework">
-    <div class="section-top">
-      <div>
-        <div class="number">01 / THE MODELLING FRAMEWORK</div>
-        <h2>From characterization to a physical question.</h2>
-      </div>
-
-      <p>
-        My framework organizes characterization-derived
-        variables before fitting response relationships.
-        Physical reasoning guides the inputs, transformations,
-        targets, and interpretation.
+      <p class="intro-note">
+        Characterization-derived variables are screened and
+        normalized before they enter a response model.
+        Physical reasoning guides their definitions, the candidate
+        relationships, and the limits of interpretation.
       </p>
     </div>
 
-    <div class="framework">
-      <article style="--accent:#17695c">
-        <h3>Characterization</h3>
-        <p>
-          Extract structural, chemical, vibrational,
-          porosity, and dispersion information.
-        </p>
-      </article>
+    <nav class="jump-links" aria-label="Page sections">
+      <a href="#framework">Framework</a>
+      <a href="#screening">Screening</a>
+      <a href="#descriptors">Descriptor families</a>
+      <a href="#response">Response modelling</a>
+      <a href="#assessment">Assessment</a>
+      <a href="#workflow">MATLAB workflow</a>
+    </nav>
 
-      <article style="--accent:#714298">
-        <h3>Descriptor construction</h3>
-        <p>
-          Screen variables and construct explicit,
-          interpretable material coordinates.
-        </p>
-      </article>
+    <!-- FRAMEWORK -->
 
-      <article style="--accent:#986014">
-        <h3>Response modelling</h3>
-        <p>
-          Compare compact relationships with concentration
-          and selected material descriptors.
-        </p>
-      </article>
-    </div>
+    <section id="framework" aria-labelledby="framework-heading">
+      <div class="section-top">
+        <div>
+          <p class="section-label">The modelling framework</p>
 
-    <p style="margin-top:22px">
-      Regression parameters remain estimated from observations.
-      Physics supplies constraints and interpretation;
-      this is not a first-principles calculation of optical absorption.
-    </p>
-  </section>
-
-  <!-- SCREENING -->
-
-  <section id="screening">
-    <div class="number">02 / BEFORE THE FIT</div>
-    <h2>Screen the information entering the model.</h2>
-
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Check</th>
-            <th>Question</th>
-            <th>Why it matters</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>Comparability</td>
-            <td>Are the measured features physically equivalent?</td>
-            <td>
-              Prevents unrelated peaks or measurement
-              definitions from being compared.
-            </td>
-          </tr>
-
-          <tr>
-            <td>Completeness</td>
-            <td>Are inputs available and quantifiable?</td>
-            <td>
-              Missing and below-threshold values require
-              explicit treatment rather than automatic zeros.
-            </td>
-          </tr>
-
-          <tr>
-            <td>Acquisition sensitivity</td>
-            <td>Could instrument settings dominate the quantity?</td>
-            <td>
-              Limits reliance on uncontrolled absolute intensity.
-            </td>
-          </tr>
-
-          <tr>
-            <td>Redundancy</td>
-            <td>Do variables repeat the same information?</td>
-            <td>
-              Reduces duplicated influence and unstable
-              predictor combinations.
-            </td>
-          </tr>
-
-          <tr>
-            <td>Assumption dependence</td>
-            <td>Is the quantity measured or model-derived?</td>
-            <td>
-              Separates independent inputs from
-              assumed-parameter outputs.
-            </td>
-          </tr>
-
-          <tr>
-            <td>Circularity</td>
-            <td>Was the variable derived from the response?</td>
-            <td>
-              Avoids reusing response information
-              as an independent predictor.
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- DESCRIPTORS -->
-
-  <section id="descriptors">
-    <div class="number">03 / MATERIAL COORDINATES</div>
-    <h2>Three descriptor families, with explicit definitions.</h2>
-
-    <div class="normalization">
-      <div>
-        <h3>Normalize before combining</h3>
-        <p>
-          Selected inputs are placed on a common scale.
-          Feature direction and weighting are documented
-          as part of the score definition.
-        </p>
-      </div>
-
-      <div>
-        <div class="formula">
-          <div>
-            N(x) = (x − x<sub>min</sub>) /
-            (x<sub>max</sub> − x<sub>min</sub>)
-          </div>
-
-          <div>
-            N<sub>inverse</sub>(x) = 1 − N(x)
-          </div>
-        </div>
-
-        <p class="caption">
-          Constant-valued features require exclusion
-          or separately defined treatment.
-        </p>
-      </div>
-    </div>
-
-    <article
-      class="descriptor"
-      style="
-        --surface:#eaf5ef;
-        --border:#c4dfd0;
-        --accent:#17695c;
-      "
-    >
-      <div class="symbol">I</div>
-
-      <div>
-        <h3>Structure &amp; interface</h3>
-        <p>
-          Combines apparent stacking coherence, FTIR B2
-          band-area fraction, F/Ti, and pore diameter.
-        </p>
-      </div>
-
-      <div>
-        <div class="formula">
-          I = [1 − N(Lc) + N(B2 fraction)
-          + N(F/Ti) + N(Dp)] / 4
+          <h2 id="framework-heading">
+            From characterization to a physical question.
+          </h2>
         </div>
 
         <p>
-          Lc uses the inverted direction specified
-          by this study's score definition.
-        </p>
-      </div>
-    </article>
-
-    <article
-      class="descriptor"
-      style="
-        --surface:#f2ecf8;
-        --border:#dacbea;
-        --accent:#714298;
-      "
-    >
-      <div class="symbol">D</div>
-
-      <div>
-        <h3>Vibrational features</h3>
-        <p>
-          Retains a selected corresponding Raman-shift
-          variable as a vibrational-change coordinate.
+          My framework organizes characterization-derived
+          variables before fitting response relationships.
+          Physical reasoning guides the inputs, transformations,
+          targets, and interpretation.
         </p>
       </div>
 
-      <div>
-        <div class="formula">
-          D = N(selected Raman-shift variable)
-        </div>
+      <figure class="schematic">
+        <a class="image-link" href="physics-guided-schematic.png">
+          <img src="physics-guided-schematic.png"
+               width="2172"
+               height="724"
+               fetchpriority="high"
+               alt="Physics-guided workflow connecting characterization, screening, descriptor families, concentration, response models, and physical checks.">
+        </a>
 
-        <p>
-          Distinct from linewidth-based broadening
-          and a universal measure of disorder.
-        </p>
-      </div>
-    </article>
+        <figcaption>
+          <span>Physics-guided descriptor framework · Schematic</span>
+          <a href="physics-guided-schematic.png">
+            View full image →
+          </a>
+        </figcaption>
+      </figure>
 
-    <article
-      class="descriptor"
-      style="
-        --surface:#fff4df;
-        --border:#ead4ab;
-        --accent:#986014;
-      "
-    >
-      <div class="symbol">S</div>
+      <div class="framework">
 
-      <div>
-        <h3>Dispersion</h3>
-        <p>
-          Combines electrokinetic magnitude and
-          operational hydrodynamic size.
-        </p>
-      </div>
+        <article class="characterization-stage">
+          <h3>Characterization</h3>
+          <p>
+            Extract structural, chemical, vibrational,
+            porosity, and dispersion information.
+          </p>
+        </article>
 
-      <div>
-        <div class="formula">
-          S = [1 − N(log<sub>10</sub>Dh)
-          + N(|ζ|)] / 2
-        </div>
+        <article class="construction-stage">
+          <h3>Descriptor construction</h3>
+          <p>
+            Screen variables and construct explicit,
+            interpretable material coordinates.
+          </p>
+        </article>
 
-        <p>
-          DLS size can include aggregates;
-          it is not a direct sheet-width measure.
-        </p>
-      </div>
-    </article>
+        <article class="response-stage">
+          <h3>Response modelling</h3>
+          <p>
+            Compare compact relationships with concentration
+            and selected material descriptors.
+          </p>
+        </article>
 
-    <div class="note">
-      These equal-weight scores are comparative within the
-      study's material set, rather than universal constants.
-      Defining I, D, and S does not require fitting all three
-      together or establish a universal direction of performance.
-    </div>
-
-    <a href="descriptor-extraction.html">
-      Explore the individual characterization descriptors →
-    </a>
-  </section>
-
-  <!-- RESPONSE MODELS -->
-
-  <section id="response">
-    <div class="response">
-      <div>
-        <div class="eyebrow">04 / RESPONSE MODELLING</div>
-        <h2>Separate concentration from material information.</h2>
-
-        <p>
-          Concentration describes an experimental condition.
-          Material scores summarize characterization.
-          Reduced candidate models keep those roles explicit.
-        </p>
       </div>
 
-      <div>
-        <div class="formula">
-          Q<sub>net</sub> =
-          β<sub>0</sub> +
-          β<sub>C</sub> ln(C/C<sub>0</sub>) +
-          β<sub>S</sub>S
-        </div>
-
-        <p>
-          <strong>Purpose:</strong> represent concentration
-          dependence alongside a selected material descriptor.
-        </p>
-
-        <small>
-          C0 is a reference concentration that makes the
-          logarithm dimensionless. No fitted coefficients
-          are displayed here.
-        </small>
-      </div>
-    </div>
-
-    <div class="normalization">
-      <div>
-        <h3>Compare candidate response shapes</h3>
-
-        <p>
-          Linear, logarithmic, power-law, and saturation
-          forms express different concentration dependencies.
-          Physical motivation guides the candidates;
-          model checks assess their support.
-        </p>
-      </div>
-
-      <div>
-        <div class="formula">
-          Q(C) = Q<sub>max</sub>C /
-          (K<sub>C</sub> + C)
-        </div>
-
-        <p class="caption">
-          This saturation candidate permits diminishing
-          increments. A fit alone does not establish
-          an optical or aggregation mechanism.
-        </p>
-      </div>
-    </div>
-
-    <div class="normalization">
-      <div>
-        <h3>Retain the energy balance</h3>
-
-        <p>
-          Thermal storage, input, and loss define the
-          physical meaning of the response target.
-          Measured, fitted, and extrapolated quantities
-          remain distinct.
-        </p>
-      </div>
-
-      <div>
-        <div class="formula">
-          <div>
-            C<sub>sys</sub> dΔT/dt =
-            Q<sub>in</sub> − HΔT
-          </div>
-
-          <div>
-            ΔT<sub>∞</sub> = Q<sub>in</sub>/H
-          </div>
-        </div>
-
-        <p class="caption">
-          The equilibrium relation assumes constant effective input.
-          A finite-time switch-off estimator is not silently
-          substituted for equilibrium heat input.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ASSESSMENT -->
-
-  <section id="assessment">
-    <div class="section-top">
-      <div>
-        <div class="number">05 / CHECK THE RELATIONSHIP</div>
-        <h2>Examine sensitivity, stability, and scope.</h2>
-      </div>
-
-      <p>
-        Descriptor choices affect the relationship.
-        Assessment examines alternative definitions,
-        residual structure, parameter stability,
-        and uncertainty alongside model complexity.
+      <p class="framework-note">
+        Regression parameters remain estimated from observations.
+        Physics supplies constraints and interpretation;
+        this is not a first-principles calculation of optical absorption.
       </p>
+    </section>
+
+    <!-- SCREENING -->
+
+    <section id="screening" aria-labelledby="screening-heading">
+      <p class="section-label">Before the fit</p>
+
+      <h2 id="screening-heading">
+        Screen the information entering the model.
+      </h2>
+
+      <div class="table-wrap"
+           role="region"
+           tabindex="0"
+           aria-label="Descriptor screening table; scroll horizontally on small screens">
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Check</th>
+              <th scope="col">Question</th>
+              <th scope="col">Why it matters</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Comparability</td>
+              <td>Are the measured features physically equivalent?</td>
+              <td>
+                Prevents unrelated peaks or measurement
+                definitions from being compared.
+              </td>
+            </tr>
+
+            <tr>
+              <td>Completeness</td>
+              <td>Are inputs available and quantifiable?</td>
+              <td>
+                Missing and below-threshold values require
+                explicit treatment rather than automatic zeros.
+              </td>
+            </tr>
+
+            <tr>
+              <td>Acquisition sensitivity</td>
+              <td>Could instrument settings dominate the quantity?</td>
+              <td>
+                Limits reliance on uncontrolled absolute intensity.
+              </td>
+            </tr>
+
+            <tr>
+              <td>Redundancy</td>
+              <td>Do variables repeat the same information?</td>
+              <td>
+                Reduces duplicated influence and
+                unstable predictor combinations.
+              </td>
+            </tr>
+
+            <tr>
+              <td>Assumption dependence</td>
+              <td>Is the quantity measured or model-derived?</td>
+              <td>
+                Separates independent inputs
+                from assumed-parameter outputs.
+              </td>
+            </tr>
+
+            <tr>
+              <td>Circularity</td>
+              <td>Was the variable derived from the response?</td>
+              <td>
+                Avoids reusing response information
+                as an independent predictor.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- DESCRIPTOR FAMILIES -->
+
+    <section id="descriptors" aria-labelledby="descriptors-heading">
+      <p class="section-label">Material coordinates</p>
+
+      <h2 id="descriptors-heading">
+        Three descriptor families, with explicit definitions.
+      </h2>
+
+      <div class="normalization">
+        <div>
+          <h3>Normalize before combining</h3>
+
+          <p>
+            Selected inputs are placed on a common scale.
+            Feature direction and weighting are documented
+            as part of the score definition.
+          </p>
+        </div>
+
+        <div>
+          <div class="formula">
+            <div>
+              N(x) = (x − x<sub>min</sub>) /
+              (x<sub>max</sub> − x<sub>min</sub>)
+            </div>
+
+            <div>
+              N<sub>inverse</sub>(x) = 1 − N(x)
+            </div>
+          </div>
+
+          <p class="caption">
+            Constant-valued features require exclusion
+            or separately defined treatment.
+          </p>
+        </div>
+      </div>
+
+      <article class="descriptor interface-score">
+        <div class="symbol" aria-hidden="true">I</div>
+
+        <div>
+          <h3>Structure &amp; interface</h3>
+          <p>
+            Combines apparent stacking coherence,
+            FTIR B2 band-area fraction, F/Ti,
+            and pore diameter.
+          </p>
+        </div>
+
+        <div>
+          <div class="formula">
+            I = [1 − N(Lc) + N(B2 fraction)
+            + N(F/Ti) + N(Dp)] / 4
+          </div>
+
+          <p>
+            The inverted direction for Lc is an
+            explicit choice in this score definition.
+          </p>
+        </div>
+      </article>
+
+      <article class="descriptor vibrational-score">
+        <div class="symbol" aria-hidden="true">D</div>
+
+        <div>
+          <h3>Vibrational features</h3>
+          <p>
+            Retains a selected corresponding Raman-shift
+            variable as a vibrational-change coordinate.
+          </p>
+        </div>
+
+        <div>
+          <div class="formula">
+            D = N(selected Raman-shift variable)
+          </div>
+
+          <p>
+            Distinct from linewidth-based broadening
+            and a universal measure of disorder.
+          </p>
+        </div>
+      </article>
+
+      <article class="descriptor dispersion-score">
+        <div class="symbol" aria-hidden="true">S</div>
+
+        <div>
+          <h3>Dispersion</h3>
+          <p>
+            Combines electrokinetic magnitude and
+            operational hydrodynamic size.
+          </p>
+        </div>
+
+        <div>
+          <div class="formula">
+            S = [1 − N(log<sub>10</sub>Dh)
+            + N(|ζ|)] / 2
+          </div>
+
+          <p>
+            DLS size can include aggregates;
+            it is not a direct sheet-width measure.
+          </p>
+        </div>
+      </article>
+
+      <div class="note">
+        These equal-weight scores are comparative within
+        the defined material set, rather than universal constants.
+        Defining I, D, and S does not require fitting all three
+        together or establish a universal direction of performance.
+      </div>
+
+      <a href="descriptor-extraction.html">
+        Explore the individual characterization descriptors →
+      </a>
+    </section>
+
+    <!-- RESPONSE MODELLING -->
+
+    <section id="response" aria-labelledby="response-heading">
+      <div class="response">
+
+        <div>
+          <p class="section-label">Response modelling</p>
+
+          <h2 id="response-heading">
+            Separate concentration from material information.
+          </h2>
+
+          <p>
+            Concentration describes an experimental condition.
+            Material scores summarize characterization.
+            Reduced candidate models keep those roles explicit.
+          </p>
+        </div>
+
+        <div>
+          <div class="formula">
+            Q<sub>net</sub> =
+            β<sub>0</sub> +
+            β<sub>C</sub> ln(C/C<sub>0</sub>) +
+            β<sub>S</sub>S
+          </div>
+
+          <p>
+            <strong>Purpose:</strong>
+            represent concentration dependence alongside
+            a selected material descriptor.
+          </p>
+
+          <small>
+            C<sub>0</sub> is a reference concentration that makes
+            the logarithm dimensionless. No fitted coefficients
+            are displayed here.
+          </small>
+        </div>
+
+      </div>
+
+      <div class="normalization saturation">
+        <div>
+          <h3>Compare candidate response shapes</h3>
+
+          <p>
+            Linear, logarithmic, power-law, and saturation
+            forms express different concentration dependencies.
+            Physical motivation guides the candidates;
+            model checks assess their support.
+          </p>
+        </div>
+
+        <div>
+          <div class="formula">
+            Q(C) = Q<sub>max</sub>C /
+            (K<sub>C</sub> + C)
+          </div>
+
+          <p class="caption">
+            This saturation candidate permits diminishing
+            increments. A fit alone does not establish
+            an optical or aggregation mechanism.
+          </p>
+        </div>
+      </div>
+
+      <div class="normalization energy-check">
+        <div>
+          <h3>Retain the energy balance</h3>
+
+          <p>
+            Thermal storage, input, and loss define the
+            physical meaning of the response target.
+            Measured, fitted, and extrapolated quantities
+            remain distinct.
+          </p>
+        </div>
+
+        <div>
+          <div class="formula">
+            <div>
+              C<sub>sys</sub> dΔT/dt =
+              Q<sub>in</sub> − HΔT
+            </div>
+
+            <div>
+              ΔT<sub>∞</sub> = Q<sub>in</sub>/H
+            </div>
+          </div>
+
+          <p class="caption">
+            The equilibrium relation assumes constant effective
+            input. A finite-time switch-off estimator is not
+            silently substituted for equilibrium heat input.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ASSESSMENT -->
+
+    <section id="assessment" aria-labelledby="assessment-heading">
+      <div class="section-top">
+        <div>
+          <p class="section-label">Assess the relationship</p>
+
+          <h2 id="assessment-heading">
+            Examine sensitivity, stability, and scope.
+          </h2>
+        </div>
+
+        <p>
+          Descriptor choices affect the relationship.
+          Assessment examines alternative definitions,
+          residual structure, parameter stability,
+          and uncertainty alongside model complexity.
+        </p>
+      </div>
+
+      <div class="table-wrap"
+           role="region"
+           tabindex="0"
+           aria-label="Model assessment table; scroll horizontally on small screens">
+
+        <table>
+          <thead>
+            <tr>
+              <th scope="col">Assessment</th>
+              <th scope="col">Purpose</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Descriptor alternatives</td>
+              <td>
+                Compare FTIR fractions with ratios,
+                pore measures, and linear versus
+                logarithmic size transforms.
+              </td>
+            </tr>
+
+            <tr>
+              <td>Residual inspection</td>
+              <td>
+                Identify systematic behaviour the
+                candidate model does not capture.
+              </td>
+            </tr>
+
+            <tr>
+              <td>Parameter stability</td>
+              <td>
+                Examine dependence on individual observations
+                and correlated predictors.
+              </td>
+            </tr>
+
+            <tr>
+              <td>Complexity</td>
+              <td>
+                Limit adjustable terms to what the
+                available material set can support.
+              </td>
+            </tr>
+
+            <tr>
+              <td>Uncertainty</td>
+              <td>
+                Track contributions from transient fitting,
+                reference calibration, and descriptor construction.
+              </td>
+            </tr>
+
+            <tr>
+              <td>Validation scope</td>
+              <td>
+                Distinguish interpolation within measured
+                conditions from prediction for new materials.
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+      <div class="note">
+        Multiple concentrations of one material do not create
+        multiple independent material descriptors. The number
+        of distinct characterized materials limits material-level
+        generalization. Withheld-data checks must reflect
+        the prediction task being assessed.
+      </div>
+    </section>
+
+    <!-- MATLAB WORKFLOW -->
+
+    <section id="workflow" aria-labelledby="workflow-heading">
+      <p class="section-label">MATLAB implementation</p>
+
+      <h2 id="workflow-heading">
+        A traceable path from measurements to models.
+      </h2>
+
+      <ol class="steps">
+        <li>
+          <strong>Assemble the input table</strong>
+          Preserve material identity, measurement origin,
+          units, and missing-value status.
+        </li>
+
+        <li>
+          <strong>Screen candidate variables</strong>
+          Check comparability, redundancy,
+          acquisition sensitivity, and assumptions.
+        </li>
+
+        <li>
+          <strong>Define the scores</strong>
+          Document normalization ranges, transformations,
+          feature directions, and weights.
+        </li>
+
+        <li>
+          <strong>Specify the response target</strong>
+          Keep switch-off estimators, asymptotic quantities,
+          and direct temperature measurements distinct.
+        </li>
+
+        <li>
+          <strong>Fit reduced candidate models</strong>
+          Compare concentration functions and selected
+          descriptor terms with controlled complexity.
+        </li>
+
+        <li>
+          <strong>Assess the relationship</strong>
+          Examine residuals, sensitivity, uncertainty,
+          physical consistency, and validation scope.
+        </li>
+      </ol>
+
+      <div class="related">
+        <a href="descriptor-extraction.html">
+          Descriptor extraction →
+        </a>
+        <a href="photothermal-modelling.html">
+          Photothermal modelling →
+        </a>
+        <a href="thermal-modelling.html">TGA modelling →</a>
+      </div>
+    </section>
+
+    <div class="page-end">
+      <a href="modelling.html">← Back to modelling</a>
+      <a href="data-analysis.html">Scientific data analysis →</a>
     </div>
 
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Assessment</th>
-            <th>Purpose</th>
-          </tr>
-        </thead>
+  </main>
 
-        <tbody>
-          <tr>
-            <td>Descriptor alternatives</td>
-            <td>
-              Compare FTIR fractions with ratios, pore measures,
-              and linear versus logarithmic size transforms.
-            </td>
-          </tr>
+  <footer class="footer">
+    <div class="container footer-grid">
 
-          <tr>
-            <td>Residual inspection</td>
-            <td>
-              Identify systematic behavior the candidate
-              model does not capture.
-            </td>
-          </tr>
+      <div>
+        <p class="footer-name">Rupesh Lal Karn</p>
+        <p>Prairie View, Texas</p>
+        <a href="mailto:rkarn@pvamu.edu">rkarn@pvamu.edu</a>
+      </div>
 
-          <tr>
-            <td>Parameter stability</td>
-            <td>
-              Examine dependence on individual observations
-              and correlated predictors.
-            </td>
-          </tr>
+      <nav class="footer-links" aria-label="Academic profiles">
+        <a href="https://scholar.google.com/citations?user=7RRtNOYAAAAJ&amp;hl=en">
+          Google Scholar
+        </a>
 
-          <tr>
-            <td>Complexity</td>
-            <td>
-              Limit adjustable terms to what the
-              available material set can support.
-            </td>
-          </tr>
+        <a href="https://orcid.org/0009-0008-9261-024X">
+          ORCID
+        </a>
 
-          <tr>
-            <td>Uncertainty</td>
-            <td>
-              Track contributions from transient fitting,
-              reference calibration, and descriptor construction.
-            </td>
-          </tr>
+        <a href="Rupesh_Lal_Karn_CV.pdf">CV</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </nav>
 
-          <tr>
-            <td>Validation scope</td>
-            <td>
-              Distinguish interpolation within measured
-              conditions from prediction for new materials.
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <small class="copyright">
+        © <span id="year">2026</span> Rupesh Lal Karn
+      </small>
+
     </div>
+  </footer>
 
-    <div class="note">
-      Multiple concentrations of one material do not create
-      multiple independent material descriptors. The number
-      of distinct characterized materials limits material-level
-      generalization. Withheld-data checks must reflect
-      the prediction task being assessed.
-    </div>
-  </section>
+  <script>
+    const menuButton = document.querySelector('.menu-button');
+    const navigation = document.getElementById('site-navigation');
 
-  <!-- WORKFLOW -->
+    function setMenu(open) {
+      menuButton.setAttribute('aria-expanded', String(open));
+      menuButton.textContent = open ? 'Close' : 'Menu';
+      navigation.classList.toggle('is-open', open);
+    }
 
-  <section id="workflow">
-    <div class="number">06 / MATLAB IMPLEMENTATION</div>
-    <h2>A traceable path from measurements to models.</h2>
+    menuButton.addEventListener('click', () => {
+      setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
+    });
 
-    <ol class="steps">
-      <li>
-        <strong>Assemble the input table</strong>
-        Preserve material identity, measurement origin,
-        units, and missing-value status.
-      </li>
+    document.addEventListener('keydown', event => {
+      if (
+        event.key === 'Escape' &&
+        menuButton.getAttribute('aria-expanded') === 'true'
+      ) {
+        setMenu(false);
+        menuButton.focus();
+      }
+    });
 
-      <li>
-        <strong>Screen candidate variables</strong>
-        Check comparability, redundancy,
-        acquisition sensitivity, and assumptions.
-      </li>
+    navigation.addEventListener('click', event => {
+      if (event.target.closest('a')) {
+        setMenu(false);
+      }
+    });
 
-      <li>
-        <strong>Define the scores</strong>
-        Document normalization ranges, transformations,
-        feature directions, and weights.
-      </li>
-
-      <li>
-        <strong>Specify the response target</strong>
-        Keep switch-off estimators, asymptotic quantities,
-        and direct temperature measurements distinct.
-      </li>
-
-      <li>
-        <strong>Fit reduced candidate models</strong>
-        Compare concentration functions and selected
-        descriptor terms with controlled complexity.
-      </li>
-
-      <li>
-        <strong>Assess the relationship</strong>
-        Examine residuals, sensitivity, uncertainty,
-        physical consistency, and validation scope.
-      </li>
-    </ol>
-
-    <div class="related">
-      <a href="descriptor-extraction.html">Descriptor extraction →</a>
-      <a href="photothermal-modelling.html">Photothermal modelling →</a>
-      <a href="thermal-modelling.html">TGA modelling →</a>
-    </div>
-  </section>
-
-  <a class="back" href="modelling.html">← Back to modelling</a>
-
-</main>
-
-<footer>
-  <div class="container">
-    Rupesh Lal Karn · Physics-Guided Descriptor Modelling
-  </div>
-</footer>
-
+    document.getElementById('year').textContent =
+      new Date().getFullYear();
+  </script>
 </body>
 </html>
