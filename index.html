@@ -420,73 +420,6 @@
       font-size: 14px;
     }
 
-    .publication-copy { min-width: 0; }
-
-    .publication .publication-takeaway {
-      margin-top: 12px;
-      color: var(--ink);
-      font-size: 14px;
-      line-height: 1.75;
-    }
-
-    .publication-takeaway strong { font-weight: 600; }
-
-    .outputs-intro {
-      max-width: 740px;
-      margin: 0 0 30px;
-      color: var(--muted);
-    }
-
-    .materials-milestone {
-      display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(240px, 1fr);
-      gap: 28px 48px;
-      padding: 30px 0;
-      border-top: 1px solid var(--line);
-    }
-
-    .materials-milestone h3 {
-      margin: 10px 0 16px;
-      color: var(--heading);
-      font: 500 27px/1.4 var(--serif);
-    }
-
-    .milestone-type {
-      margin: 0;
-      color: #57447c;
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
-
-    .milestone-context { color: var(--muted); font-size: 14px; }
-
-    .milestone-metrics { margin: 0; }
-    .milestone-metrics > div + div { margin-top: 24px; }
-    .milestone-metrics dt { margin-bottom: 6px; font-size: 13px; color: var(--muted); }
-    .milestone-metrics dd { margin: 0; }
-    .milestone-metrics strong { display: block; color: var(--heading); font: 500 25px/1.5 var(--serif); }
-    .milestone-metrics span { font-size: 13px; color: var(--muted); }
-
-    .milestone-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 22px;
-      margin-top: 20px;
-      font-size: 14px;
-    }
-
-    .research-pipeline { margin: 0 0 32px; padding: 18px 0; border-top: 1px solid var(--line); }
-    .research-pipeline summary { cursor: pointer; color: #57447c; font-weight: 500; }
-    .research-pipeline summary:focus-visible { outline: 2px solid var(--green); outline-offset: 5px; }
-    .research-pipeline li { margin-top: 12px; font-size: 14px; }
-
-    @media (max-width: 700px) {
-      .materials-milestone { grid-template-columns: 1fr; }
-      .materials-milestone h3 { font-size: 24px; }
-    }
-
     /* EARLIER UNDERGRADUATE WORK */
 
     .earlier-work > h2 {
@@ -1089,62 +1022,16 @@
 
     <section aria-labelledby="publications-heading" id="search-selected-publications">
       <div class="section-heading">
-        <h2 id="publications-heading">Research Outputs &amp; Milestones</h2>
+        <h2 id="publications-heading">Selected Publications</h2>
         <a href="publications.html">Publication List</a>
       </div>
 
-      <p class="outputs-intro">
-        Current materials research and manuscripts in preparation,
-        alongside selected peer-reviewed studies in energy systems.
-      </p>
-
-      <article class="materials-milestone" id="mxene-research-milestone" aria-labelledby="mxene-milestone-title">
-        <div>
-          <p class="milestone-type">Current Materials Research · Conference Poster</p>
-          <h3 id="mxene-milestone-title">Processing-Induced Structural and Surface-Chemical Evolution in Ti₃AlCN-Derived Ti₃CNTₓ</h3>
-          <p>
-            Connecting processing, interlayer structure, and surface chemistry
-            with photothermal response through characterization-derived
-            descriptors and physics-guided modelling.
-          </p>
-          <p class="milestone-context">10th Annual Texas A&amp;M Conference on Energy · Rupesh Lal Karn, Gururaj M. Neelgund, and Raghava R. Kommalapati</p>
-          <div class="milestone-links">
-            <a href="Poster_RLK.pdf">Research Poster (PDF)</a>
-            <a href="two-dimensional-materials.html">Materials &amp; Characterization</a>
-            <a href="physics-guided-modelling.html">Physics-Guided Modelling</a>
-          </div>
-        </div>
-        <dl class="milestone-metrics">
-          <div>
-            <dt>Basal Spacing, d<sub>002</sub></dt>
-            <dd><strong>9.13 → 14.23 Å</strong><span>MAX precursor to DMSO-treated MXene, as reported in the poster.</span></dd>
-          </div>
-          <div>
-            <dt>Poster-Reported Photothermal Model Fit</dt>
-            <dd><strong>R² = 0.923</strong><span>RMSE = 0.041 W for net photothermal heat generation.</span></dd>
-          </div>
-        </dl>
-      </article>
-
-      <details class="research-pipeline" id="mxene-manuscripts">
-        <summary>Two MXene Manuscripts in Preparation</summary>
-        <ul>
-          <li><a href="photothermal-modelling.html">Interfacial Engineering and Thermal Transport Modeling of Nanoparticle-Decorated MXenes for Enhanced Photothermal Conversion</a></li>
-          <li><a href="electrochemical-modelling.html">Electrochemical Behavior and Colloidal Stability of Nanoparticle-Intercalated MXenes: A DLVO-Based Interpretation</a></li>
-        </ul>
-      </details>
-
-      <h3 class="selected-papers-heading">Selected Peer-Reviewed Publications</h3>
-
       <article class="publication" id="search-effect-of-cuo-nanoparticles-in-pine-oildiesel-blends-on-performance-combustion-and-emissio">
-        <div class="publication-copy">
-          <h3>
+        <h3>
           Effect of CuO nanoparticles in pine oil–diesel blends
           on performance, combustion, and emissions
           of a single-cylinder diesel engine
         </h3>
-          <p class="publication-takeaway"><strong>35.55% higher brake thermal efficiency</strong> with 75 ppm CuO in a 20% pine oil–80% diesel blend, compared with the same blend without CuO at 75% load.</p>
-        </div>
 
         <p>Next Research · 2026</p>
 
@@ -1154,15 +1041,12 @@
       </article>
 
       <article class="publication" id="search-evaluation-of-performance-combustion-and-emission-characteristics-of-blends-of-soybean-bio">
-        <div class="publication-copy">
-          <h3>
+        <h3>
           Evaluation of performance, combustion and emission
           characteristics of blends of soybean biodiesel
           in a single cylinder diesel engine:
           An experimental approach
         </h3>
-          <p class="publication-takeaway"><strong>11.94% higher brake thermal efficiency and 5.41% lower brake-specific fuel consumption</strong> for B30 soybean biodiesel compared with diesel under the reported test conditions.</p>
-        </div>
 
         <p>
           Kathmandu University Journal of Science,
@@ -1175,15 +1059,12 @@
       </article>
 
       <article class="publication" id="search-effect-of-green-synthesized-zinc-oxide-nano-additives-and-rice-bran-oil-biodiesel-blend-on">
-        <div class="publication-copy">
-          <h3>
+        <h3>
           Effect of green synthesized zinc oxide nano additives
           and rice bran oil biodiesel blend on performance
           and combustion characteristics of variable compression
           ratio diesel engine: An experimental study
         </h3>
-          <p class="publication-takeaway"><strong>2.45% higher brake thermal efficiency</strong> with 75 ppm ZnO in a 20% rice bran biodiesel blend, compared with the base blend at full load and a 17.5:1 compression ratio.</p>
-        </div>
 
         <p>Biofuels, Bioproducts and Biorefining · 2023</p>
 
