@@ -75,33 +75,32 @@
   dialog.setAttribute("aria-labelledby", "rlk-search-title");
   dialog.innerHTML = `
     <div class="rlk-search-top">
-      <h2 id="rlk-search-title">Search this site</h2>
+      <h2 id="rlk-search-title">Search This Site</h2>
       <button class="rlk-search-close" type="button">Close</button>
     </div>
     <form class="rlk-search-form" role="search">
-      <label for="rlk-search-input">Search topics and pages</label>
-      <input id="rlk-search-input" name="q" type="search" placeholder="Research, publications, skills…" autocomplete="off" spellcheck="false" maxlength="120" aria-describedby="rlk-search-status">
+      <label for="rlk-search-input">Search Names, Topics &amp; Documents</label>
+      <input id="rlk-search-input" name="q" type="search" placeholder="Name, material, publication, grant, or keyword…" autocomplete="off" spellcheck="false" maxlength="120" aria-describedby="rlk-search-status">
     </form>
-    <p class="rlk-search-status" id="rlk-search-status" role="status" aria-live="polite">Try MXene, MATLAB, Argonne, or CV.</p>
+    <p class="rlk-search-status" id="rlk-search-status" role="status" aria-live="polite">Try a name, MXene, MATLAB, a grant number, or CV.</p>
     <ol class="rlk-search-results" aria-label="Search results"></ol>
+    <button class="rlk-search-more" type="button" hidden>Show More Results</button>
   `;
   document.body.appendChild(dialog);
   const input = dialog.querySelector("input");
   const status = dialog.querySelector(".rlk-search-status");
   const results = dialog.querySelector(".rlk-search-results");
+  const moreButton = dialog.querySelector(".rlk-search-more");
   const closeSearch = () => dialog.close();
   const indexURL = new URL("search-index.json", document.currentScript ? document.currentScript.src : document.baseURI);
-  indexURL.searchParams.set("v", "20261123-research-pages");
+  indexURL.searchParams.set("v", "20261123-full-search");
   let records = null;
   let pendingIndex = null;
   let searchTimer;
-
-  const normalize = (value) => String(value || "")
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^\p{L}\p{N}]+/gu, " ")
-    .trim();
+  let matches = [];
+  let shown = 0;
+  let fuzzyOnly = false;
+  const batchSize = 12;
 
   function loadIndex() {
     if (records) return Promise.resolve(records);
@@ -112,15 +111,8 @@
           return response.json();
         })
         .then((data) => {
-          if (!Array.isArray(data.entries)) throw new Error("Invalid search index");
-          records = data.entries.map((entry) => ({
-            ...entry,
-            titleSearch: normalize(entry.title),
-            sectionSearch: normalize(entry.section),
-            descriptionSearch: normalize(entry.description),
-            headingsSearch: normalize(entry.headings),
-            textSearch: normalize(entry.text)
-          }));
+          if (!Array.isArray(data.entries) || !window.RLKSearch) throw new Error("Invalid search index");
+          records = window.RLKSearch.prepare(data.entries);
           return records;
         })
         .catch((error) => {
@@ -131,75 +123,60 @@
     return pendingIndex;
   }
 
-  function snippet(entry, tokens) {
-    const text = entry.text || entry.description;
-    const lower = text.toLowerCase();
-    const positions = tokens.map((token) => lower.indexOf(token)).filter((index) => index >= 0);
-    if (!positions.length) return entry.description;
-    let start = Math.max(0, Math.min(...positions) - 55);
-    if (start > 0) {
-      const nextSpace = text.indexOf(" ", start);
-      if (nextSpace >= 0) start = nextSpace + 1;
+  function appendResults() {
+    const next = matches.slice(shown, shown + batchSize);
+    for (const match of next) {
+      const { entry } = match;
+      const item = document.createElement("li");
+      const link = document.createElement("a");
+      link.href = new URL(entry.url, indexURL).href;
+      link.dataset.searchUrl = entry.url;
+      const title = document.createElement("strong");
+      title.textContent = entry.title;
+      link.appendChild(title);
+      if (entry.pageTitle && entry.pageTitle !== entry.title) {
+        const context = document.createElement("span");
+        context.className = "rlk-search-section";
+        context.textContent = entry.pageTitle;
+        link.appendChild(context);
+      }
+      const summary = document.createElement("p");
+      summary.textContent = window.RLKSearch.excerpt(match);
+      link.appendChild(summary);
+      item.appendChild(link);
+      results.appendChild(item);
     }
-    const excerpt = text.slice(start, start + 190).trim();
-    return (start ? "… " : "") + excerpt + (start + 190 < text.length ? "…" : "");
+    shown += next.length;
+    moreButton.hidden = shown >= matches.length;
+    const count = `${matches.length} ${matches.length === 1 ? "result" : "results"} found`;
+    status.textContent = (fuzzyOnly ? "Showing close spelling matches. " : "") + count + (shown < matches.length ? `; showing ${shown}.` : ".");
   }
 
   function renderSearch() {
     results.replaceChildren();
+    moreButton.hidden = true;
+    shown = 0;
+    matches = [];
     if (!records) return;
-    const query = normalize(input.value);
-    if (query.length < 2) {
-      status.textContent = "Try MXene, MATLAB, Argonne, or CV.";
+    const found = window.RLKSearch.search(records, input.value);
+    if (found.empty) {
+      status.textContent = "Try a name, MXene, MATLAB, a grant number, or CV.";
       return;
     }
-    const tokens = query.split(/\s+/);
-    const bestByPage = new Map();
-    records.forEach((entry) => {
-      const searchable = [entry.titleSearch, entry.sectionSearch, entry.headingsSearch, entry.descriptionSearch, entry.textSearch].join(" ");
-      if (!tokens.every((token) => searchable.includes(token))) return;
-      let score = 0;
-      tokens.forEach((token) => {
-        if (entry.titleSearch.includes(token)) score += 35;
-        if (entry.sectionSearch.includes(token)) score += 20;
-        if (entry.headingsSearch.includes(token)) score += 15;
-        if (entry.descriptionSearch.includes(token)) score += 5;
-        if (entry.textSearch.includes(token)) score += 1;
-      });
-      if (entry.titleSearch === query) score += 100;
-      else if (entry.titleSearch.startsWith(query)) score += 35;
-      else if (entry.titleSearch.includes(query)) score += 25;
-      if (entry.sectionSearch.includes(query)) score += 20;
-      if (entry.section) score += 2;
-      const previous = bestByPage.get(entry.key);
-      if (!previous || score > previous.score) bestByPage.set(entry.key, { entry, score });
-    });
-    const matches = Array.from(bestByPage.values()).sort((a, b) => b.score - a.score || a.entry.title.localeCompare(b.entry.title));
+    matches = found.matches;
+    fuzzyOnly = found.fuzzyOnly;
     if (!matches.length) {
-      status.textContent = `No matches found for “${input.value.trim()}”. Try another topic or method.`;
+      status.textContent = `No matches found for “${input.value.trim()}”. Try a shorter name or another keyword.`;
       return;
     }
-    status.textContent = `${matches.length} ${matches.length === 1 ? "page" : "pages"} found${matches.length > 8 ? "; showing the first 8" : ""}.`;
-    matches.slice(0, 8).forEach(({ entry }) => {
-      const item = document.createElement("li");
-      const link = document.createElement("a");
-      link.href = entry.url;
-      const title = document.createElement("strong");
-      title.textContent = entry.title;
-      link.appendChild(title);
-      if (entry.section) {
-        const section = document.createElement("span");
-        section.className = "rlk-search-section";
-        section.textContent = entry.section;
-        link.appendChild(section);
-      }
-      const summary = document.createElement("p");
-      summary.textContent = snippet(entry, tokens);
-      link.appendChild(summary);
-      item.appendChild(link);
-      results.appendChild(item);
-    });
+    appendResults();
   }
+
+  moreButton.addEventListener("click", () => {
+    const firstNew = shown;
+    appendResults();
+    results.children[firstNew]?.querySelector("a")?.focus();
+  });
 
   searchButton.addEventListener("click", async () => {
     setOpen(false);
@@ -266,5 +243,40 @@
   results.addEventListener("click", (event) => {
     if (event.target.closest("a")) closeSearch();
   });
+
+  function revealTarget() {
+    let id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch (_) { return; }
+    if (!id) return;
+    const target = document.getElementById(id);
+    if (!target) return;
+    const requestedURL = location.href;
+    const panel = target.closest('[role="tabpanel"]');
+    if (panel && panel.hidden) {
+      const tab = Array.from(document.querySelectorAll('[role="tab"], [data-panel], [aria-controls]'))
+        .find((control) => control.getAttribute("aria-controls") === panel.id || control.dataset.panel === panel.id);
+      if (tab) {
+        tab.click();
+        // Some existing tab controllers replace the fragment with the panel ID.
+        history.replaceState(null, "", requestedURL);
+      }
+    }
+    const paper = target.closest("#publication-list .publication");
+    if (paper && paper.hidden) {
+      const paperSearch = document.getElementById("paper-search");
+      const paperYear = document.getElementById("paper-year");
+      if (paperSearch) { paperSearch.value = ""; paperSearch.dispatchEvent(new Event("input", { bubbles: true })); }
+      if (paperYear) { paperYear.value = "all"; paperYear.dispatchEvent(new Event("change", { bubbles: true })); }
+    }
+    for (let ancestor = target; ancestor; ancestor = ancestor.parentElement) {
+      if (ancestor.tagName === "DETAILS") ancestor.open = true;
+    }
+    requestAnimationFrame(() => {
+      target.scrollIntoView({ block: "start", behavior: "instant" });
+    });
+  }
+  window.addEventListener("hashchange", revealTarget);
+  window.addEventListener("pageshow", revealTarget);
+  revealTarget();
 
 })();

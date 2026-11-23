@@ -631,8 +631,9 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="navigation.css?v=20261123-research-pages">
-  <script src="navigation.js?v=20261123-research-pages" defer></script>
+  <link rel="stylesheet" href="navigation.css?v=20261123-full-search">
+  <script src="search-engine.js?v=20261123-full-search" defer></script>
+  <script src="navigation.js?v=20261123-full-search" defer></script>
 
   <!-- Search and sharing metadata -->
   <meta name="description" content="Explore CV, EIS, and GCD analysis, equivalent-circuit models, state-space simulation, and MATLAB workflows for electrochemical response modelling.">
@@ -745,7 +746,7 @@
 
     <!-- Your uploaded CV/EIS/GCD schematic -->
 
-    <figure class="schematic">
+    <figure class="schematic" id="search-cv-eis-gcd-schematic-view-full-image">
       <a class="image-link" href="electrochemical-response.png">
         <img
           src="electrochemical-response.png"
@@ -768,7 +769,7 @@
       <p class="section-label">Potential-controlled response</p>
       <h2 id="cv-heading">Cyclic Voltammetry</h2>
 
-      <article class="model-row">
+      <article class="model-row" id="search-integrate-the-complete-response">
         <div>
           <p class="model-label">Descriptor / Loop capacitance</p>
           <h3>Integrate the complete response</h3>
@@ -805,7 +806,7 @@
         </div>
       </article>
 
-      <article class="model-row">
+      <article class="model-row" id="search-separate-common-background-current">
         <div>
           <p class="model-label">Processing / Branch separation</p>
           <h3>Separate common background current</h3>
@@ -841,7 +842,7 @@
         </div>
       </article>
 
-      <article class="model-row">
+      <article class="model-row" id="search-power-law-and-two-term-analysis">
         <div>
           <p class="model-label">Models / Scan-rate dependence</p>
           <h3>Power-law and two-term analysis</h3>
@@ -878,7 +879,7 @@
         </div>
       </article>
 
-      <details>
+      <details id="search-trasatti-charge-accessibility-analysis">
         <summary>Trasatti charge-accessibility analysis</summary>
 
         <p>
@@ -913,7 +914,7 @@
       <p class="section-label">Frequency-dependent response</p>
       <h2 id="eis-heading">Electrochemical Impedance Spectroscopy</h2>
 
-      <article class="model-row">
+      <article class="model-row" id="search-describe-resistance-and-relaxation">
         <div>
           <p class="model-label">Model / Equivalent circuits</p>
           <h3>Describe resistance and relaxation</h3>
@@ -951,7 +952,7 @@
         </div>
       </article>
 
-      <article class="model-row">
+      <article class="model-row" id="search-re-express-the-measured-impedance">
         <div>
           <p class="model-label">Descriptor / Complex capacitance</p>
           <h3>Re-express the measured impedance</h3>
@@ -994,7 +995,7 @@
       <p class="section-label">Current-controlled response</p>
       <h2 id="gcd-heading">Galvanostatic Charge–Discharge</h2>
 
-      <article class="model-row">
+      <article class="model-row" id="search-quantify-resolved-chargedischarge-segments">
         <div>
           <p class="model-label">
             Descriptors / Time, charge, and energy
@@ -1119,7 +1120,7 @@
         </table>
       </div>
 
-      <article class="model-row">
+      <article class="model-row" id="search-use-capacitor-voltages-as-states">
         <div>
           <p class="model-label">Numerical model / State space</p>
           <h3>Use capacitor voltages as states</h3>
@@ -1153,7 +1154,7 @@
         </div>
       </article>
 
-      <details>
+      <details id="search-cv-simulation-piecewise-linear-potential-ramps">
         <summary>
           CV simulation: piecewise linear potential ramps
         </summary>
@@ -1183,7 +1184,7 @@
         </p>
       </details>
 
-      <details>
+      <details id="search-gcd-simulation-constant-current-segments">
         <summary>GCD simulation: constant-current segments</summary>
 
         <p>
@@ -1194,7 +1195,7 @@
         </p>
       </details>
 
-      <details>
+      <details id="search-cpe-realization-distributed-timescales">
         <summary>CPE realization: distributed timescales</summary>
 
         <p>

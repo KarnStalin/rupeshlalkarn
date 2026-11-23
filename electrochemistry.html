@@ -633,8 +633,9 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="navigation.css?v=20261123-research-pages">
-  <script src="navigation.js?v=20261123-research-pages" defer></script>
+  <link rel="stylesheet" href="navigation.css?v=20261123-full-search">
+  <script src="search-engine.js?v=20261123-full-search" defer></script>
+  <script src="navigation.js?v=20261123-full-search" defer></script>
 
   <!-- Search and sharing metadata -->
   <meta name="description" content="Electrochemical studies by Rupesh Lal Karn using cyclic voltammetry, impedance spectroscopy, and charge–discharge measurements to examine electrode response.">
@@ -774,7 +775,7 @@
 
       <div class="research-questions">
 
-        <article class="storage">
+        <article class="storage" id="search-storage">
           <h3>Storage</h3>
           <p>
             How much charge is accessed within the selected
@@ -782,7 +783,7 @@
           </p>
         </article>
 
-        <article class="relaxation">
+        <article class="relaxation" id="search-relaxation">
           <h3>Relaxation</h3>
           <p>
             Which response times influence frequency
@@ -790,7 +791,7 @@
           </p>
         </article>
 
-        <article class="evolution">
+        <article class="evolution" id="search-evolution">
           <h3>Evolution</h3>
           <p>
             How do measured profiles and derived quantities
@@ -812,7 +813,7 @@
 
       <div class="technique-list">
 
-        <article class="technique cv-method">
+        <article class="technique cv-method" id="search-cyclic-voltammetry">
           <div>
             <span class="technique-symbol">CV</span>
             <h3>Cyclic voltammetry</h3>
@@ -835,7 +836,7 @@
           </div>
         </article>
 
-        <article class="technique eis-method">
+        <article class="technique eis-method" id="search-impedance-spectroscopy">
           <div>
             <span class="technique-symbol">EIS</span>
             <h3>Impedance spectroscopy</h3>
@@ -855,7 +856,7 @@
           </div>
         </article>
 
-        <article class="technique gcd-method">
+        <article class="technique gcd-method" id="search-galvanostatic-chargedischarge">
           <div>
             <span class="technique-symbol">GCD</span>
             <h3>Galvanostatic charge–discharge</h3>
@@ -1006,7 +1007,7 @@
 
     <!-- RELATED MODELLING -->
 
-    <aside class="related">
+    <aside class="related" id="search-explore-the-models-behind-the-response">
       <h2>Explore the models behind the response.</h2>
 
       <div>

@@ -699,8 +699,9 @@
       }
     }
   </style>
-  <link rel="stylesheet" href="navigation.css?v=20261123-research-pages">
-  <script src="navigation.js?v=20261123-research-pages" defer></script>
+  <link rel="stylesheet" href="navigation.css?v=20261123-full-search">
+  <script src="search-engine.js?v=20261123-full-search" defer></script>
+  <script src="navigation.js?v=20261123-full-search" defer></script>
 
   <!-- Search and sharing metadata -->
   <meta name="description" content="Explore photothermal energy-balance modelling, heating–cooling fits, water-reference calibration, and interpretation of transient response parameters.">
@@ -829,7 +830,7 @@
 
       <div class="balance-visual">
 
-        <figure class="response-figure">
+        <figure class="response-figure" id="search-photothermal-transient-model-schematic-view-full-image">
           <a class="image-link" href="photothermal-transient.png">
             <img src="photothermal-transient.png"
                  width="1752"
@@ -847,7 +848,7 @@
         </figure>
 
         <div class="balance">
-          <article class="heat-input">
+          <article class="heat-input" id="search-heat-input">
             <h3>Heat input</h3>
             <p>
               The effective rate of thermal energy supplied
@@ -855,7 +856,7 @@
             </p>
           </article>
 
-          <article class="storage">
+          <article class="storage" id="search-thermal-storage">
             <h3>Thermal storage</h3>
             <p>
               Energy accumulation associated with the
@@ -863,7 +864,7 @@
             </p>
           </article>
 
-          <article class="heat-loss">
+          <article class="heat-loss" id="search-heat-loss">
             <h3>Heat loss</h3>
             <p>
               Effective environmental loss proportional
@@ -909,7 +910,7 @@
 
       <div class="models">
 
-        <article class="model heating">
+        <article class="model heating" id="search-heating-response">
           <span class="segment-label">Laser on</span>
           <h3>Heating response</h3>
 
@@ -935,7 +936,7 @@
           </p>
         </article>
 
-        <article class="model cooling">
+        <article class="model cooling" id="search-cooling-response">
           <span class="segment-label">Laser off</span>
           <h3>Cooling response</h3>
 
@@ -1170,7 +1171,7 @@
       </ol>
     </section>
 
-    <aside class="related">
+    <aside class="related" id="search-connecting-response-to-material-properties">
       <div>
         <h3>Connecting response to material properties</h3>
 
