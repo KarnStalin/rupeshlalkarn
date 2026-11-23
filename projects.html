@@ -503,12 +503,25 @@
         transform: none;
       }
     }
+
+    /* Undergraduate research, followed by the vehicle projects. */
+    .featured-research { display: grid; grid-template-columns: 1.1fr 1fr; align-items: center; gap: 50px; border-block: 1px solid var(--line); padding: 38px 0; margin: 8px 0 42px; }
+    .feature-label { margin: 0 0 15px; font-size: 12px; font-weight: 600; letter-spacing: .06em; color: #a64b2a; }
+    .featured-research h2 { font-size: clamp(29px, 3vw, 40px); line-height: 1.25; margin: 0 0 18px; }
+    .featured-research h2 a { color: #293b50; text-decoration: none; }
+    .featured-research h2 a:hover { text-decoration: underline; }
+    .featured-research p:not(.feature-label) { color: var(--muted); }
+    .feature-institution { font-size: 13px; }
+    .feature-link { display: inline-block; margin-top: 8px; }
+    .feature-photo img { display: block; width: 100%; height: auto; }
+    .vehicle-heading { margin: 0 0 26px; font-size: 30px; line-height: 1.3; }
+    @media (max-width: 700px) { .featured-research { grid-template-columns: 1fr; gap: 28px; padding-block: 28px; } }
   </style>
-  <link rel="stylesheet" href="navigation.css?v=20261123-search">
-  <script src="navigation.js?v=20261123-search" defer></script>
+  <link rel="stylesheet" href="navigation.css?v=20261123-project">
+  <script src="navigation.js?v=20261123-project" defer></script>
 
   <!-- Search and sharing metadata -->
-  <meta name="description" content="Explore Rupesh Lal Karn’s undergraduate engineering projects: Tri-Car vehicle design, simulation and fabrication, and go-kart engine modification.">
+  <meta name="description" content="Explore Rupesh Lal Karn’s undergraduate fuel and engine research, Tri-Car vehicle design, simulation and fabrication, and go-kart engine modification.">
   <meta name="author" content="Rupesh Lal Karn">
   <meta name="theme-color" content="#faf9f6">
   <link rel="canonical" href="https://rlk.com.np/projects.html">
@@ -518,7 +531,7 @@
   <link rel="apple-touch-icon" href="https://rlk.com.np/apple-touch-icon.png" sizes="180x180">
   <meta property="og:site_name" content="Rupesh Lal Karn">
   <meta property="og:title" content="Engineering Projects | Rupesh Lal Karn">
-  <meta property="og:description" content="Explore Rupesh Lal Karn’s undergraduate engineering projects: Tri-Car vehicle design, simulation and fabrication, and go-kart engine modification.">
+  <meta property="og:description" content="Explore Rupesh Lal Karn’s undergraduate fuel and engine research, Tri-Car vehicle design, simulation and fabrication, and go-kart engine modification.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://rlk.com.np/projects.html">
   <meta property="og:image" content="https://rlk.com.np/social-preview/projects.png">
@@ -528,7 +541,7 @@
   <meta property="og:image:alt" content="Rupesh Lal Karn — Engineering Projects">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Engineering Projects | Rupesh Lal Karn">
-  <meta name="twitter:description" content="Explore Rupesh Lal Karn’s undergraduate engineering projects: Tri-Car vehicle design, simulation and fabrication, and go-kart engine modification.">
+  <meta name="twitter:description" content="Explore Rupesh Lal Karn’s undergraduate fuel and engine research, Tri-Car vehicle design, simulation and fabrication, and go-kart engine modification.">
   <meta name="twitter:image" content="https://rlk.com.np/social-preview/projects.png">
   <meta name="twitter:image:alt" content="Rupesh Lal Karn — Engineering Projects">
   <script id="site-seo-data" type="application/ld+json">
@@ -540,7 +553,7 @@
       "@id": "https://rlk.com.np/projects.html#webpage",
       "url": "https://rlk.com.np/projects.html",
       "name": "Engineering Projects | Rupesh Lal Karn",
-      "description": "Explore Rupesh Lal Karn’s undergraduate engineering projects: Tri-Car vehicle design, simulation and fabrication, and go-kart engine modification.",
+      "description": "Explore Rupesh Lal Karn’s undergraduate fuel and engine research, Tri-Car vehicle design, simulation and fabrication, and go-kart engine modification.",
       "inLanguage": "en",
       "isPartOf": {
         "@id": "https://rlk.com.np/#website"
@@ -591,12 +604,27 @@
       <h1>Engineering Projects</h1>
 
       <p class="lead">
-        Selected practical engineering projects involving
-        design, simulation, fabrication, and automotive
-        system modification. Select a project to explore
-        its development and photographs.
+        Undergraduate work in experimental fuel research,
+        vehicle design, simulation, fabrication, and automotive
+        system modification. Explore the methods and photographs
+        behind each project.
       </p>
     </div>
+
+    <section class="featured-research" aria-labelledby="fuel-project-title">
+      <div>
+        <p class="feature-label">UNDERGRADUATE RESEARCH · 2019</p>
+        <h2 id="fuel-project-title"><a href="undergraduate-project.html">Plastic Pyrolysis Oil &amp; Jatropha Blends</a></h2>
+        <p class="feature-institution">Thapathali Campus · Institute of Engineering, Tribhuvan University</p>
+        <p>A team study connecting fuel preparation and characterization with diesel-engine performance and smoke-opacity testing.</p>
+        <a class="feature-link" href="undergraduate-project.html">Explore the undergraduate project <span aria-hidden="true">→</span></a>
+      </div>
+      <a class="feature-photo" href="undergraduate-project.html" aria-label="Explore the undergraduate fuel and engine research project">
+        <img src="undergraduate-engine-testing.jpg" width="1153" height="846" alt="Project team at the research engine test bench" decoding="async">
+      </a>
+    </section>
+
+    <h2 class="vehicle-heading">Vehicle design &amp; fabrication</h2>
 
     <section class="project-grid" aria-label="Engineering projects">
 

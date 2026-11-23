@@ -14,7 +14,8 @@
     "teaching.html": "experience.html",
     "conferences.html": "publications.html",
     "tricar.html": "projects.html",
-    "gokart.html": "projects.html"
+    "gokart.html": "projects.html",
+    "undergraduate-project.html": "projects.html"
   };
   const header = document.querySelector("[data-rlk-header]");
   if (!header) return;
@@ -90,7 +91,7 @@
   const results = dialog.querySelector(".rlk-search-results");
   const closeSearch = () => dialog.close();
   const indexURL = new URL("search-index.json", document.currentScript ? document.currentScript.src : document.baseURI);
-  indexURL.searchParams.set("v", "20261123-search");
+  indexURL.searchParams.set("v", "20261123-project");
   let records = null;
   let pendingIndex = null;
   let searchTimer;
