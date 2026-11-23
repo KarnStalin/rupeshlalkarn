@@ -2,7 +2,6 @@
 (() => {
   const items = [
     ["Home", "index.html"],
-    ["About", "about.html"],
     ["Research", "research.html"],
     ["Experience", "experience.html"],
     ["Publications", "publications.html"],
@@ -11,6 +10,7 @@
     ["Contact", "contact.html"]
   ];
   const parents = {
+    "about.html": "index.html",
     "teaching.html": "experience.html",
     "conferences.html": "publications.html",
     "tricar.html": "projects.html",
@@ -91,7 +91,7 @@
   const results = dialog.querySelector(".rlk-search-results");
   const closeSearch = () => dialog.close();
   const indexURL = new URL("search-index.json", document.currentScript ? document.currentScript.src : document.baseURI);
-  indexURL.searchParams.set("v", "20261123-original-abstracts");
+  indexURL.searchParams.set("v", "20261123-home-about");
   let records = null;
   let pendingIndex = null;
   let searchTimer;

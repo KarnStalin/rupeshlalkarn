@@ -72,6 +72,12 @@ entries = []
 page_count = 0
 for path in sorted(ROOT.glob('*.html')):
     doc = Document(path.read_text(encoding='utf-8')).root
+    redirect_or_noindex = doc.find_all(lambda node: node.tag == 'meta' and (
+        node.attrs.get('http-equiv', '').lower() == 'refresh' or
+        (node.attrs.get('name', '').lower() == 'robots' and 'noindex' in node.attrs.get('content', '').lower())
+    ))
+    if redirect_or_noindex:
+        continue
     mains = doc.find_all(lambda node: node.tag == 'main')
     titles = doc.find_all(lambda node: node.tag == 'title')
     if not mains or not titles:
