@@ -43,7 +43,7 @@ class Node:
         return found
 
     def text(self):
-        if self.tag in {'script', 'style', 'noscript', 'input', 'select', 'option', 'template'} or 'data-rlk-header' in self.attrs:
+        if self.tag in {'script', 'style', 'noscript', 'input', 'select', 'option', 'template'} or 'data-rlk-header' in self.attrs or 'data-rlk-page-navigation' in self.attrs:
             return ''
         if self.tag == 'img':
             return ' ' + self.attrs.get('alt', '') + ' '
