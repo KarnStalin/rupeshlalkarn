@@ -1,389 +1,39 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="light" name="color-scheme"/>
 <title>Magnetic Materials &amp; Crystal Growth | Rupesh Lal Karn</title>
-
-<style>
-:root {
-  --navy: #102237;
-  --ink: #193248;
-  --muted: #566c7d;
-  --paper: #f5f7fa;
-  --line: #d8e2ea;
-  --blue: #165ca6;
-  --green: #17695c;
-  --purple: #714298;
-}
-
-* { box-sizing: border-box; }
-
-html {
-  scroll-behavior: smooth;
-  scroll-padding-top: 24px;
-}
-
-body {
-  margin: 0;
-  background: var(--paper);
-  color: var(--ink);
-  font: 16px/1.75 system-ui, -apple-system,
-    BlinkMacSystemFont, "Segoe UI", sans-serif;
-}
-
-a {
-  color: var(--blue);
-  text-underline-offset: 5px;
-}
-
-a:focus-visible {
-  outline: 3px solid #c87923;
-  outline-offset: 5px;
-}
-
-.container {
-  width: min(1200px, calc(100% - 48px));
-  margin: auto;
-}
-
-header { background: var(--navy); }
-
-.header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 18px;
-  padding: 22px 0;
-}
-
-header a {
-  color: #e5effa;
-  text-decoration: none;
-}
-
-.brand { font-weight: 750; }
-
-nav {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-}
-
-.hero {
-  padding: 60px 0 105px;
-  background:
-    radial-gradient(circle at 88% 20%, #473b68, transparent 42%),
-    var(--navy);
-  color: white;
-}
-
-.eyebrow {
-  margin-bottom: 16px;
-  color: #a5dfd0;
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: .15em;
-  text-transform: uppercase;
-}
-
-h1 {
-  max-width: 1000px;
-  margin: 0 0 25px;
-  font-size: clamp(38px, 5.8vw, 72px);
-  line-height: 1.08;
-  letter-spacing: -.045em;
-}
-
-h1 span { color: #d5c2ff; }
-
-.hero p {
-  max-width: 900px;
-  color: #c6d6e6;
-  font-size: 19px;
-}
-
-.highlights {
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 17px;
-  margin: -45px 0 30px;
-}
-
-.highlights article {
-  padding: 24px;
-  border: 1px solid var(--line);
-  border-top: 4px solid var(--accent);
-  border-radius: 14px;
-  background: white;
-  box-shadow: 0 12px 28px #10223708;
-}
-
-.highlights small {
-  display: block;
-  margin-bottom: 10px;
-  color: var(--accent);
-  font-size: 11px;
-  font-weight: 750;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-.highlights strong {
-  display: block;
-  font-size: 18px;
-  line-height: 1.4;
-}
-
-.jump-links {
-  gap: 9px;
-  padding: 10px 0 30px;
-}
-
-.jump-links a {
-  padding: 8px 15px;
-  border: 1px solid var(--line);
-  border-radius: 24px;
-  background: white;
-  color: var(--ink);
-  font-size: 13px;
-  text-decoration: none;
-}
-
-section { padding: 35px 0; }
-
-.number {
-  color: var(--green);
-  font: 12px/1.6 ui-monospace, monospace;
-  letter-spacing: .12em;
-}
-
-h2 {
-  margin: 10px 0 20px;
-  font-size: clamp(27px, 3.3vw, 38px);
-  line-height: 1.2;
-  letter-spacing: -.035em;
-}
-
-h3 {
-  margin: 0 0 12px;
-  font-size: 21px;
-  line-height: 1.4;
-}
-
-p {
-  margin: 0 0 18px;
-  color: var(--muted);
-}
-
-strong { color: var(--ink); }
-
-.section-top {
-  display: grid;
-  grid-template-columns: .9fr 1.1fr;
-  gap: 35px;
-  align-items: start;
-  margin-bottom: 25px;
-}
-
-.material {
-  display: grid;
-  grid-template-columns: .85fr 1.15fr;
-  gap: 32px;
-  align-items: center;
-  padding: 32px;
-  margin: 24px 0;
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  background: var(--surface);
-}
-
-.formula {
-  padding: 25px 0;
-  color: var(--accent);
-  font: clamp(27px, 3.3vw, 42px)/1.5 Georgia, serif;
-  overflow-wrap: anywhere;
-}
-
-.material-label {
-  color: var(--accent);
-  font-size: 11px;
-  font-weight: 750;
-  letter-spacing: .1em;
-  text-transform: uppercase;
-}
-
-.material h3 { color: var(--accent); }
-
-.tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 18px;
-}
-
-.tags span {
-  padding: 5px 10px;
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  background: #ffffff80;
-  color: var(--accent);
-  font-size: 12px;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-
-.card {
-  padding: 25px;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: white;
-}
-
-.card h3 { color: var(--purple); }
-
-.card p {
-  margin-bottom: 0;
-  font-size: 14px;
-}
-
-.lab {
-  display: grid;
-  grid-template-columns: .8fr 1.2fr;
-  gap: 35px;
-  padding: 32px;
-  margin: 24px 0;
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  background: var(--surface);
-}
-
-.date {
-  display: block;
-  margin-bottom: 16px;
-  color: var(--accent);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.lab h3 { color: var(--accent); }
-
-.lab p:last-child { margin-bottom: 0; }
-
-.table-wrap {
-  overflow-x: auto;
-  border: 1px solid var(--line);
-  border-radius: 14px;
-  background: white;
-}
-
-table {
-  width: 100%;
-  min-width: 650px;
-  border-collapse: collapse;
-  font-size: 14px;
-}
-
-th, td {
-  padding: 17px;
-  text-align: left;
-  vertical-align: top;
-  border-bottom: 1px solid var(--line);
-}
-
-th {
-  background: #eaf0f6;
-  color: var(--ink);
-}
-
-td { color: var(--muted); }
-
-td:first-child {
-  color: var(--purple);
-  font-weight: 700;
-}
-
-tr:last-child td { border-bottom: 0; }
-
-.context {
-  padding: 30px;
-  margin: 25px 0;
-  border-radius: 18px;
-  background: var(--navy);
-}
-
-.context h2 { color: white; }
-.context p { color: #c5d6e6; }
-.context a { color: #acd9ff; }
-
-.back {
-  display: inline-block;
-  margin: 15px 0 35px;
-}
-
-footer {
-  padding: 25px 0;
-  background: var(--navy);
-  color: #bccddd;
-  font-size: 13px;
-}
-
-@media(max-width: 850px) {
-  .section-top,
-  .material,
-  .lab {
-    grid-template-columns: 1fr;
-  }
-
-  .cards { grid-template-columns: 1fr; }
-}
-
-@media(max-width: 600px) {
-  .container { width: calc(100% - 36px); }
-  .hero { padding-top: 35px; }
-  .highlights { grid-template-columns: 1fr; }
-  .material, .lab { padding: 23px; }
-}
-
-@media(prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-}
-</style>
-  <link rel="stylesheet" href="navigation.css?v=20261123-home-about">
-  <script src="navigation.js?v=20261123-home-about" defer></script>
-
-  <!-- Search and sharing metadata -->
-  <meta name="description" content="Explore Rupesh Lal Karn’s work on cobalt-substituted MnGeTeO₆, Mn₃Al₂Ge₃O₁₂ crystal growth, structural characterization, and magnetic measurements.">
-  <meta name="author" content="Rupesh Lal Karn">
-  <meta name="theme-color" content="#faf9f6">
-  <link rel="canonical" href="https://rlk.com.np/magnetic-materials.html">
-  <link rel="icon" href="https://rlk.com.np/favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" href="https://rlk.com.np/favicon-96x96.png" sizes="96x96">
-  <link rel="icon" type="image/svg+xml" href="https://rlk.com.np/favicon.svg">
-  <link rel="apple-touch-icon" href="https://rlk.com.np/apple-touch-icon.png" sizes="180x180">
-  <meta property="og:site_name" content="Rupesh Lal Karn">
-  <meta property="og:title" content="Magnetic Materials &amp; Crystal Growth | Rupesh Lal Karn">
-  <meta property="og:description" content="Explore Rupesh Lal Karn’s work on cobalt-substituted MnGeTeO₆, Mn₃Al₂Ge₃O₁₂ crystal growth, structural characterization, and magnetic measurements.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://rlk.com.np/magnetic-materials.html">
-  <meta property="og:image" content="https://rlk.com.np/social-preview/magnetic-materials.png">
-  <meta property="og:image:type" content="image/png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Rupesh Lal Karn — Magnetic Materials &amp; Crystal Growth">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Magnetic Materials &amp; Crystal Growth | Rupesh Lal Karn">
-  <meta name="twitter:description" content="Explore Rupesh Lal Karn’s work on cobalt-substituted MnGeTeO₆, Mn₃Al₂Ge₃O₁₂ crystal growth, structural characterization, and magnetic measurements.">
-  <meta name="twitter:image" content="https://rlk.com.np/social-preview/magnetic-materials.png">
-  <meta name="twitter:image:alt" content="Rupesh Lal Karn — Magnetic Materials &amp; Crystal Growth">
-  <script id="site-seo-data" type="application/ld+json">
+<link href="research-template.css?v=20261123-research-pages" rel="stylesheet"/>
+<link href="navigation.css?v=20261123-research-pages" rel="stylesheet"/>
+<script defer="" src="navigation.js?v=20261123-research-pages"></script>
+<!-- Search and sharing metadata -->
+<meta content="Explore Rupesh Lal Karn’s work on cobalt-substituted MnGeTeO₆, Mn₃Al₂Ge₃O₁₂ crystal growth, structural characterization, and magnetic measurements." name="description"/>
+<meta content="Rupesh Lal Karn" name="author"/>
+<meta content="#faf9f6" name="theme-color"/>
+<link href="https://rlk.com.np/magnetic-materials.html" rel="canonical"/>
+<link href="https://rlk.com.np/favicon.ico" rel="icon" sizes="any"/>
+<link href="https://rlk.com.np/favicon-96x96.png" rel="icon" sizes="96x96" type="image/png"/>
+<link href="https://rlk.com.np/favicon.svg" rel="icon" type="image/svg+xml"/>
+<link href="https://rlk.com.np/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+<meta content="Rupesh Lal Karn" property="og:site_name"/>
+<meta content="Magnetic Materials &amp; Crystal Growth | Rupesh Lal Karn" property="og:title"/>
+<meta content="Explore Rupesh Lal Karn’s work on cobalt-substituted MnGeTeO₆, Mn₃Al₂Ge₃O₁₂ crystal growth, structural characterization, and magnetic measurements." property="og:description"/>
+<meta content="website" property="og:type"/>
+<meta content="https://rlk.com.np/magnetic-materials.html" property="og:url"/>
+<meta content="https://rlk.com.np/social-preview/magnetic-materials.png" property="og:image"/>
+<meta content="image/png" property="og:image:type"/>
+<meta content="1200" property="og:image:width"/>
+<meta content="630" property="og:image:height"/>
+<meta content="Rupesh Lal Karn — Magnetic Materials &amp; Crystal Growth" property="og:image:alt"/>
+<meta content="summary_large_image" name="twitter:card"/>
+<meta content="Magnetic Materials &amp; Crystal Growth | Rupesh Lal Karn" name="twitter:title"/>
+<meta content="Explore Rupesh Lal Karn’s work on cobalt-substituted MnGeTeO₆, Mn₃Al₂Ge₃O₁₂ crystal growth, structural characterization, and magnetic measurements." name="twitter:description"/>
+<meta content="https://rlk.com.np/social-preview/magnetic-materials.png" name="twitter:image"/>
+<meta content="Rupesh Lal Karn — Magnetic Materials &amp; Crystal Growth" name="twitter:image:alt"/>
+<script id="site-seo-data" type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@graph": [
@@ -410,409 +60,320 @@ footer {
   ]
 }
   </script>
-  <!-- /Search and sharing metadata -->
+<!-- /Search and sharing metadata -->
 </head>
-
-<body>
-
-<header class="rlk-header" data-rlk-header>
-  <div class="rlk-header-inner">
-    <a class="rlk-brand" href="index.html">Rupesh Lal Karn</a>
-    <button class="rlk-menu-button" type="button" aria-controls="rlk-navigation" aria-expanded="false">Menu</button>
-    <nav class="rlk-nav" id="rlk-navigation" aria-label="Main navigation">
-        <a href="index.html">Home</a>
-
-        <a href="research.html" aria-current="page">Research</a>
-        <a href="experience.html">Experience</a>
-        <a href="publications.html">Publications</a>
-        <a href="projects.html">Projects</a>
-        <a href="skills.html">Skills</a>
-        <a href="contact.html">Contact</a>
-    </nav>
-  </div>
+<body class="research-template magnetic-page">
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="rlk-header" data-rlk-header="">
+<div class="rlk-header-inner">
+<a class="rlk-brand" href="index.html">Rupesh Lal Karn</a>
+<button aria-controls="rlk-navigation" aria-expanded="false" class="rlk-menu-button" type="button">Menu</button>
+<nav aria-label="Main navigation" class="rlk-nav" id="rlk-navigation">
+<a href="index.html">Home</a>
+<a aria-current="page" href="research.html">Research</a>
+<a href="experience.html">Experience</a>
+<a href="publications.html">Publications</a>
+<a href="projects.html">Projects</a>
+<a href="skills.html">Skills</a>
+<a href="contact.html">Contact</a>
+</nav>
+</div>
 </header>
-
-<div class="hero">
-  <div class="container">
-    <div class="eyebrow">
-      Synthesis · Doping · Crystal growth · Advanced measurements
-    </div>
-
-    <h1>
-      Magnetic Materials<br>
-      <span>&amp; Crystal Growth</span>
-    </h1>
-
-    <p>
+<main class="container" id="main"><p class="breadcrumb"><a href="research.html">Research</a> / Magnetic Materials &amp; Crystal Growth</p><header class="hero">
+<div class="eyebrow">04 / Magnetic Materials · Graduate Research</div>
+<h1>Magnetic Materials &amp; Crystal Growth</h1>
+<p class="lead">
       My research includes magnetic-powder synthesis,
       compositional doping, single-crystal growth,
       structural refinement, and magnetic characterization.
     </p>
-
-    <p>
+<p>
       Material systems include cobalt-substituted
       MnGeTeO₆ and Mn₃Al₂Ge₃O₁₂ single crystals,
       alongside national-laboratory experience in
       magnetic-domain imaging and quantum-oscillation measurements.
     </p>
-  </div>
+</header>
+<div class="highlights">
+<article>
+<small>Synthesis</small>
+<strong>Magnetic Powders &amp; Compositional Doping</strong>
+</article>
+<article>
+<small>Crystal Growth</small>
+<strong>Mn₃Al₂Ge₃O₁₂ Single Crystals</strong>
+</article>
+<article>
+<small>Advanced Characterization</small>
+<strong>SQUID · LTEM · dHvA</strong>
+</article>
 </div>
-
-<main class="container">
-
-  <div class="highlights">
-    <article style="--accent:#17695c">
-      <small>Synthesis</small>
-      <strong>Magnetic powders &amp; compositional doping</strong>
-    </article>
-
-    <article style="--accent:#714298">
-      <small>Crystal growth</small>
-      <strong>Mn₃Al₂Ge₃O₁₂ single crystals</strong>
-    </article>
-
-    <article style="--accent:#165ca6">
-      <small>Advanced characterization</small>
-      <strong>SQUID · LTEM · dHvA</strong>
-    </article>
-  </div>
-
-  <nav class="jump-links" aria-label="Page sections">
-    <a href="#materials">Material systems</a>
-    <a href="#preparation">Synthesis &amp; growth</a>
-    <a href="#characterization">Characterization</a>
-    <a href="#national-labs">National laboratories</a>
-  </nav>
-
-  <!-- MATERIAL SYSTEMS -->
-
-  <section id="materials">
-    <div class="section-top">
-      <div>
-        <div class="number">01 / MATERIAL SYSTEMS</div>
-        <h2>Composition and crystal structure as research variables.</h2>
-      </div>
-
-      <p>
+<nav aria-label="Page sections" class="jump-links">
+<a href="#materials">Material Systems</a>
+<a href="#preparation">Synthesis &amp; Growth</a>
+<a href="#characterization">Characterization</a>
+<a href="#national-labs">National Laboratories</a>
+</nav>
+<!-- MATERIAL SYSTEMS -->
+<section id="materials">
+<div class="section-top">
+<div>
+<div class="number">01 / MATERIAL SYSTEMS</div>
+<h2>Material Systems</h2>
+</div>
+<p>
         My work combines preparation and characterization
         to investigate how material composition and
         structure relate to magnetic behaviour.
         Powder synthesis, doping, and single-crystal growth
         provide complementary routes to these questions.
       </p>
-    </div>
-
-    <article class="material" style="
-      --surface:#eaf5ef;
-      --border:#c4dfd0;
-      --accent:#17695c;
-    ">
-      <div>
-        <div class="material-label">Cobalt-substituted magnetic oxide</div>
-
-        <div class="formula">
+</div>
+<article class="material">
+<div>
+<div class="material-label">Cobalt-Substituted Magnetic Oxide</div>
+<div class="formula">
           Mn<sub>1−x</sub>Co<sub>x</sub>GeTeO<sub>6</sub>
-        </div>
-
-        <div class="tags">
-          <span>MnGeTeO₆ host</span>
-          <span>Co substitution</span>
-          <span>Composition-dependent study</span>
-        </div>
-      </div>
-
-      <div>
-        <h3>Co-doped MnGeTeO₆</h3>
-
-        <p>
+</div>
+<div class="tags">
+<span>MnGeTeO₆ host</span>
+<span>Co Substitution</span>
+<span>Composition-Dependent Study</span>
+</div>
+</div>
+<div>
+<h3>Co-Doped MnGeTeO₆</h3>
+<p>
           I worked on cobalt substitution in MnGeTeO₆,
           expressed through the composition
           Mn₁₋ₓCoₓGeTeO₆.
         </p>
-
-        <p>
+<p>
           The substitution level x defines the nominal
           replacement of Mn by Co. The research combines
           material preparation with structural and
           magnetic characterization.
         </p>
-
-        <p>
+<p>
           Comparing compositions provides a route to
           investigate changes in phase formation,
           crystallographic parameters, and magnetic response.
         </p>
-      </div>
-    </article>
-
-    <article class="material" style="
-      --surface:#f2ecf8;
-      --border:#dacbea;
-      --accent:#714298;
-    ">
-      <div>
-        <div class="material-label">Single-crystal material</div>
-
-        <div class="formula">
+</div>
+</article>
+<article class="material">
+<div>
+<div class="material-label">Single-Crystal Material</div>
+<div class="formula">
           Mn<sub>3</sub>Al<sub>2</sub>Ge<sub>3</sub>O<sub>12</sub>
-        </div>
-
-        <div class="tags">
-          <span>Single-crystal growth</span>
-          <span>Magnetic oxide</span>
-          <span>Structural characterization</span>
-        </div>
-      </div>
-
-      <div>
-        <h3>Mn₃Al₂Ge₃O₁₂ single crystals</h3>
-
-        <p>
+</div>
+<div class="tags">
+<span>Single-Crystal Growth</span>
+<span>Magnetic Oxide</span>
+<span>Structural Characterization</span>
+</div>
+</div>
+<div>
+<h3>Mn₃Al₂Ge₃O₁₂ Single Crystals</h3>
+<p>
           My experience includes growing
           Mn₃Al₂Ge₃O₁₂ single crystals and preparing
           samples for subsequent characterization.
         </p>
-
-        <p>
+<p>
           Single-crystal specimens complement powder
           studies by providing well-defined samples
           for structural and physical-property investigations.
         </p>
-
-        <p>
+<p>
           Sample identity, preparation history, and
           measurement geometry remain important when
           connecting crystal preparation with measured behaviour.
         </p>
-      </div>
-    </article>
-  </section>
-
-  <!-- PREPARATION -->
-
-  <section id="preparation">
-    <div class="number">02 / EXPERIMENTAL PREPARATION</div>
-    <h2>From magnetic powders to single crystals.</h2>
-
-    <div class="cards">
-      <article class="card">
-        <h3>Magnetic-powder synthesis</h3>
-        <p>
+</div>
+</article>
+</section>
+<!-- PREPARATION -->
+<section id="preparation">
+<div class="number">02 / EXPERIMENTAL PREPARATION</div>
+<h2>Synthesis, Doping &amp; Crystal Growth</h2>
+<div class="cards">
+<article class="card">
+<h3>Magnetic-Powder Synthesis</h3>
+<p>
           Experience with magnetic-powder preparation
           and solid-state synthesis, connecting
           precursor composition and processing history
           with subsequent phase characterization.
         </p>
-      </article>
-
-      <article class="card">
-        <h3>Compositional doping</h3>
-        <p>
+</article>
+<article class="card">
+<h3>Compositional Doping</h3>
+<p>
           Preparation of cobalt-substituted MnGeTeO₆
           compositions, with nominal substitution
           recorded explicitly for comparison across samples.
         </p>
-      </article>
-
-      <article class="card">
-        <h3>Single-crystal growth</h3>
-        <p>
+</article>
+<article class="card">
+<h3>Single-Crystal Growth</h3>
+<p>
           Growth of Mn₃Al₂Ge₃O₁₂ single crystals,
           alongside sample preparation and characterization
           for materials research.
         </p>
-      </article>
-    </div>
-  </section>
-
-  <!-- CHARACTERIZATION -->
-
-  <section id="characterization">
-    <div class="section-top">
-      <div>
-        <div class="number">03 / STRUCTURE–PROPERTY INVESTIGATION</div>
-        <h2>Connect preparation with complementary evidence.</h2>
-      </div>
-
-      <p>
+</article>
+</div>
+</section>
+<!-- CHARACTERIZATION -->
+<section id="characterization">
+<div class="section-top">
+<div>
+<div class="number">03 / STRUCTURE–PROPERTY INVESTIGATION</div>
+<h2>Structural &amp; Magnetic Characterization</h2>
+</div>
+<p>
         My research at Prairie View A&amp;M University,
         including NSF-supported work supervised by
         Dr. Sunil Karna, involved synthesis and structural
         refinement of magnetic materials and crystals.
       </p>
-    </div>
-
-    <div class="table-wrap">
-      <table>
-        <thead>
-          <tr>
-            <th>Technique</th>
-            <th>Information examined</th>
-            <th>Research role</th>
-          </tr>
-        </thead>
-
-        <tbody>
-          <tr>
-            <td>X-ray diffraction</td>
-            <td>Crystalline phases and diffraction profiles</td>
-            <td>
+</div>
+<div class="table-wrap">
+<table>
+<thead>
+<tr>
+<th>Technique</th>
+<th>Information Examined</th>
+<th>Research Role</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-ray diffraction</td>
+<td>Crystalline phases and diffraction profiles</td>
+<td>
               Evaluate phase formation and structural
               differences between prepared samples
             </td>
-          </tr>
-
-          <tr>
-            <td>Rietveld refinement</td>
-            <td>
+</tr>
+<tr>
+<td>Rietveld refinement</td>
+<td>
               Crystallographic parameters supported
               by the diffraction data
             </td>
-            <td>
+<td>
               Compare structural models and
               composition-dependent structural changes
             </td>
-          </tr>
-
-          <tr>
-            <td>Raman spectroscopy</td>
-            <td>
+</tr>
+<tr>
+<td>Raman spectroscopy</td>
+<td>
               Vibrational features associated
               with bonding and symmetry
             </td>
-            <td>Complement diffraction-based interpretation</td>
-          </tr>
-
-          <tr>
-            <td>SQUID magnetometry</td>
-            <td>
+<td>Complement diffraction-based interpretation</td>
+</tr>
+<tr>
+<td>SQUID magnetometry</td>
+<td>
               Magnetic response under defined
               temperature and field conditions
             </td>
-            <td>
+<td>
               Investigate magnetic behaviour
               with explicit measurement protocols
             </td>
-          </tr>
-
-          <tr>
-            <td>Lorentz TEM</td>
-            <td>Magnetic-domain-related electron contrast</td>
-            <td>Examine spatial magnetic structures</td>
-          </tr>
-
-          <tr>
-            <td>dHvA measurements</td>
-            <td>
+</tr>
+<tr>
+<td>Lorentz TEM</td>
+<td>Magnetic-domain-related electron contrast</td>
+<td>Examine spatial magnetic structures</td>
+</tr>
+<tr>
+<td>dHvA measurements</td>
+<td>
               Angle- and temperature-dependent
               quantum oscillations
             </td>
-            <td>
+<td>
               Investigate electronic structure
               in single-crystal HfSn₂
             </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <!-- NATIONAL LABORATORIES -->
-
-  <section id="national-labs">
-    <div class="number">04 / VISITING RESEARCH EXPERIENCE</div>
-    <h2>Advanced measurements at national laboratories.</h2>
-
-    <article class="lab" style="
-      --surface:#f2ecf8;
-      --border:#dacbea;
-      --accent:#714298;
-    ">
-      <div>
-        <span class="date">23 JUNE – 4 JULY 2025</span>
-        <h3>Argonne National Laboratory</h3>
-        <p>Visiting Research Student</p>
-      </div>
-
-      <div>
-        <h3>Magnetic-domain investigation using LTEM</h3>
-
-        <p>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- NATIONAL LABORATORIES -->
+<section id="national-labs">
+<div class="number">04 / VISITING RESEARCH EXPERIENCE</div>
+<h2>National Laboratory Measurements</h2>
+<article class="lab">
+<div>
+<span class="date">23 JUNE – 4 JULY 2025</span>
+<h3>Argonne National Laboratory</h3>
+<p>Visiting Research Student</p>
+</div>
+<div>
+<h3>Magnetic-Domain Investigation Using LTEM</h3>
+<p>
           Performed advanced Lorentz transmission electron
           microscopy analysis to investigate magnetic
           domain structures.
         </p>
-
-        <p>
+<p>
           LTEM provides spatial information that complements
           bulk magnetic measurements. Interpretation considers
           imaging conditions, specimen geometry,
           and non-magnetic contrast contributions.
         </p>
-      </div>
-    </article>
-
-    <article class="lab" style="
-      --surface:#eaf3fd;
-      --border:#bdd4eb;
-      --accent:#165ca6;
-    ">
-      <div>
-        <span class="date">4–15 AUGUST 2025</span>
-        <h3>Los Alamos National Laboratory</h3>
-        <p>Visiting Research Student</p>
-      </div>
-
-      <div>
-        <h3>Quantum oscillations in HfSn₂</h3>
-
-        <p>
+</div>
+</article>
+<article class="lab">
+<div>
+<span class="date">4–15 AUGUST 2025</span>
+<h3>Los Alamos National Laboratory</h3>
+<p>Visiting Research Student</p>
+</div>
+<div>
+<h3>Quantum Oscillations in HfSn₂</h3>
+<p>
           Performed angle- and temperature-dependent
           de Haas–van Alphen measurements on HfSn₂ crystals.
         </p>
-
-        <p>
+<p>
           Angular dependence provides information relevant
           to Fermi-surface geometry, while temperature-dependent
           amplitudes support effective-mass analysis
           under the appropriate measurement and modelling conditions.
         </p>
-
-        <p>
+<p>
           This work concerns quantum-oscillation measurements
           on HfSn₂, distinct from my oxide synthesis
           and Mn₃Al₂Ge₃O₁₂ crystal-growth activities.
         </p>
-      </div>
-    </article>
-  </section>
-
-  <aside class="context">
-    <h2>Preparation, structure, and physical response.</h2>
-
-    <p>
+</div>
+</article>
+</section>
+<aside class="context">
+<h2>Preparation, Structure &amp; Physical Response</h2>
+<p>
       My experience connects magnetic-powder synthesis,
       cobalt substitution, and single-crystal growth
       with structural refinement and advanced
       magnetic and electronic measurements.
     </p>
-
-    <a href="experience.html">Explore research experience →</a>
-    <br>
-    <a href="Rupesh_Lal_Karn_CV.pdf">View CV →</a>
-  </aside>
-
-  <a class="back" href="research.html">
+<a href="experience.html">Explore research experience →</a>
+<br/>
+<a href="Rupesh_Lal_Karn_CV.pdf">View CV →</a>
+</aside>
+<a class="back" href="research.html">
     ← Back to research interests
   </a>
-
 </main>
-
-<footer>
-  <div class="container">
-    Rupesh Lal Karn · Magnetic Materials &amp; Crystal Growth
-  </div>
-</footer>
-
+<footer><div class="wrap footer-inner"><span>Rupesh Lal Karn · Research &amp; Engineering</span><a href="research.html">Research Interests</a><a href="contact.html">Contact</a></div></footer>
 </body>
 </html>
