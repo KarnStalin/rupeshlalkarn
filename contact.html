@@ -514,37 +514,29 @@
       }
     }
   </style>
+  <link rel="stylesheet" href="navigation.css?v=20261123">
+  <script src="navigation.js?v=20261123" defer></script>
 </head>
 
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="name" href="index.html">Rupesh Lal Karn</a>
-
-      <button class="menu-button"
-              type="button"
-              aria-controls="site-navigation"
-              aria-expanded="false">
-        Menu
-      </button>
-
-      <nav class="site-nav"
-           id="site-navigation"
-           aria-label="Main navigation">
+  <header class="rlk-header" data-rlk-header>
+  <div class="rlk-header-inner">
+    <a class="rlk-brand" href="index.html">Rupesh Lal Karn</a>
+    <button class="rlk-menu-button" type="button" aria-controls="rlk-navigation" aria-expanded="false">Menu</button>
+    <nav class="rlk-nav" id="rlk-navigation" aria-label="Main navigation">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="research.html">Research</a>
         <a href="experience.html">Experience</a>
         <a href="publications.html">Publications</a>
-        <a href="teaching.html">Teaching</a>
         <a href="projects.html">Projects</a>
         <a href="skills.html">Skills</a>
         <a href="contact.html" aria-current="page">Contact</a>
-      </nav>
-    </div>
-  </header>
+    </nav>
+  </div>
+</header>
 
   <main class="container" id="main">
 
@@ -712,34 +704,7 @@
   </footer>
 
   <script>
-    const menuButton = document.querySelector('.menu-button');
-    const navigation = document.getElementById('site-navigation');
 
-    function setMenu(open) {
-      menuButton.setAttribute('aria-expanded', String(open));
-      menuButton.textContent = open ? 'Close' : 'Menu';
-      navigation.classList.toggle('is-open', open);
-    }
-
-    menuButton.addEventListener('click', () => {
-      setMenu(menuButton.getAttribute('aria-expanded') !== 'true');
-    });
-
-    document.addEventListener('keydown', event => {
-      if (
-        event.key === 'Escape' &&
-        menuButton.getAttribute('aria-expanded') === 'true'
-      ) {
-        setMenu(false);
-        menuButton.focus();
-      }
-    });
-
-    navigation.addEventListener('click', event => {
-      if (event.target.closest('a')) {
-        setMenu(false);
-      }
-    });
 
     document.getElementById('year').textContent =
       new Date().getFullYear();
