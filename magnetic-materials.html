@@ -74,6 +74,10 @@
 .magnetic-page .magnetic-figure .figure-original { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; font-size: 13px; }
 .magnetic-page .crystal-specimens { max-width: 480px; }
 .magnetic-page .synthesis-stages { padding-top: 26px; border-top: 1px solid #d8dcd4; }
+/* Show only the original nine-panel figure; hide the blank area and embedded caption. */
+.magnetic-page .synthesis-stages > .synthesis-crop { width: min(100%, 760px); aspect-ratio: 2086 / 2230; overflow: hidden; }
+.magnetic-page .synthesis-crop img { width: 206.9511%; max-width: none; height: auto; }
+
 @media (max-width: 760px) {
   .magnetic-page figure.magnetic-figure { margin-top: 20px; }
   .magnetic-page .crystal-specimens { max-width: 100%; }
@@ -257,10 +261,10 @@
 </article>
 </div>
 <figure class="magnetic-figure synthesis-stages" id="mngeteo6-synthesis-stages">
-<a href="MnGeTeO6.jpg" aria-label="Enlarge the original MnGeO₃ and MnGeTeO₆ preparation-stage figure">
+<a class="synthesis-crop" href="MnGeTeO6.jpg" aria-label="View the original MnGeO₃ and MnGeTeO₆ preparation-stage figure">
 <img src="MnGeTeO6.jpg" width="4317" height="2337" loading="lazy" decoding="async" alt="Photographs and optical-microscope views of MnGeO₃ prepared in phase 1, MnGeTeO₆ prepared in phase 2, and heat-treated MnGeTeO₆, arranged in panels A through I"/>
 </a>
-<figcaption><strong>MnGeO₃ to MnGeTeO₆: Preparation Stages</strong><p>Photographic and optical-microscope records of the MnGeO₃ precursor, phase-2 MnGeTeO₆, and heat-treated MnGeTeO₆. Original panel letters and annotations are retained.</p><a class="figure-original" href="MnGeTeO6.jpg">Enlarge Figure <span aria-hidden="true">↗</span></a></figcaption>
+<figcaption><strong>MnGeO₃ to MnGeTeO₆: Preparation Stages</strong><p><b>A:</b> Freshly prepared MnGeO₃; <b>B and C:</b> Microscopic images of MnGeO₃; <b>D:</b> MnGeTeO₆ prepared from phase 2; <b>E and F:</b> Microscopic images of MnGeTeO₆ prepared from phase 2; <b>G:</b> Heat-treated MnGeTeO₆; <b>H and I:</b> Microscopic images of heat-treated MnGeTeO₆.</p><a class="figure-original" href="MnGeTeO6.jpg">View Original Figure <span aria-hidden="true">↗</span></a></figcaption>
 </figure>
 </section>
 <!-- CHARACTERIZATION -->
