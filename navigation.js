@@ -91,7 +91,7 @@
   const results = dialog.querySelector(".rlk-search-results");
   const closeSearch = () => dialog.close();
   const indexURL = new URL("search-index.json", document.currentScript ? document.currentScript.src : document.baseURI);
-  indexURL.searchParams.set("v", "20261123-grant-roles");
+  indexURL.searchParams.set("v", "20261123-grant-links");
   let records = null;
   let pendingIndex = null;
   let searchTimer;
