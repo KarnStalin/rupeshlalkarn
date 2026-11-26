@@ -280,7 +280,7 @@
 
     .profile-columns {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 35px;
       margin-top: 28px;
     }
@@ -330,6 +330,8 @@
     .cv {
       --accent: #7144a0;
     }
+
+    .linkedin { --accent: #0a66c2; }
 
     /* Research link */
 
@@ -395,6 +397,7 @@
     /* Responsive layout */
 
     @media (max-width: 1050px) {
+      .profile-columns { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .header-inner {
         flex-wrap: wrap;
         padding: 20px 0;
@@ -663,11 +666,11 @@
 
     <section class="profiles" aria-labelledby="profiles-heading" id="search-academic-profiles">
       <div class="profile-intro">
-        <h2 id="profiles-heading">Academic Profiles</h2>
+        <h2 id="profiles-heading">Academic &amp; Professional Profiles</h2>
 
         <p>
           Find my publications, research contributions,
-          and academic experience through the links below.
+          and professional experience through the links below.
         </p>
       </div>
 
@@ -703,6 +706,14 @@
           <span class="profile-action">
             View ORCID profile →
           </span>
+        </a>
+
+        <a class="profile linkedin" id="linkedin-profile"
+           href="https://www.linkedin.com/in/rupesh-karn-38891b136/"
+           aria-labelledby="linkedin-heading">
+          <h3 id="linkedin-heading">LinkedIn</h3>
+          <p>Professional background, research experience, and connections.</p>
+          <span class="profile-action">View LinkedIn profile →</span>
         </a>
 
         <a class="profile cv"
@@ -749,7 +760,8 @@
       </span>
 
       <a href="index.html">Back to home →</a>
-    </div>
+     <a href="https://www.linkedin.com/in/rupesh-karn-38891b136/">LinkedIn</a>
+</div>
   </footer>
 
   <script>
